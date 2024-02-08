@@ -1,0 +1,189 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[mathscr]{euscript}
+
+\title{\textbf{Solved selected problems of General Relativity - Thomas A. Moore}}
+\author{Franco Zacco}
+\date{}
+
+\addtolength{\topmargin}{-3cm}
+\addtolength{\textheight}{3cm}
+
+\newcommand{\hatr}{\bm{\hat{r}}}
+\newcommand{\hatx}{\bm{\hat{x}}}
+\newcommand{\haty}{\bm{\hat{y}}}
+\newcommand{\hatz}{\bm{\hat{z}}}
+\newcommand{\hatth}{\bm{\hat{\theta}}}
+\newcommand{\hatphi}{\bm{\hat{\phi}}}
+\newcommand{\hatrho}{\bm{\hat{\rho}}}
+\theoremstyle{definition}
+\newtheorem*{solution*}{Solution}
+\renewcommand*{\proofname}{Solution}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{Chapter 1 - Introduction}
+
+\begin{proof}{\textbf{P1.2}}
+\begin{itemize}
+    \item [\textbf{a.}] We know that the relativistic Doppler effect is given
+    by
+    \begin{align*}
+        \frac{\lambda}{\lambda_0} = \sqrt{\frac{1-v/c}{1 + v/c}}
+    \end{align*}
+    Hence the fractional shift in wavelength is
+    \begin{align*}
+        \frac{\lambda_0 - \lambda}{\lambda_0} = 1 -\frac{\lambda}{\lambda_0} 
+        &= 1 -\sqrt{\frac{1-v/c}{1 + v/c}}\\
+        &\approx 1 - \bigg(1-\frac{v}{2c}\bigg)\bigg(1-\frac{v}{2c}\bigg)\\
+        &\approx 1 - \bigg(1-\frac{v}{2c}\bigg)^2\\
+        &\approx \frac{v}{c}
+    \end{align*}
+    Where we used the binomial approximation twice, from the first line
+    to the second and from the third line to the last one.
+
+    On the other hand, we know that the lab is moving upward with respect to
+    the IRF (Inertial Reference Frame) with a velocity $v = gt$ where $t$ is 
+    the time it takes for the laser to get to the floor hence we can assume
+    it to be $t = d/c$ since the lab is moving slowly with respect to
+    the laser. Therefore joining this reasoning we have that
+    \begin{align*}
+        \frac{\lambda_0 - \lambda}{\lambda_0}
+        \approx \frac{v}{c} = \frac{gd}{c^2}
+    \end{align*}
+
+    \item [\textbf{b.}] The last result also holds in this case because of the
+    Equivalence Principle hence numerically we have that the fractional shift
+    in wavelength in a lab on the earth's surface is
+    \begin{align*}
+        \frac{\lambda_0 - \lambda}{\lambda_0}
+        \approx \frac{gd}{c^2}
+        = \frac{(9.8~m/s^2)(25~m)}{(299792458~m/s)^2}
+        = 2.725 \times 10^{-15} 
+    \end{align*}
+
+    \item [\textbf{c.}] If we suppose now that the lab is located on
+    the surface of a neutron star the magnitude of $g$ using Newton's law
+    of universal gravitation is
+    \begin{align*}
+        g &= G\frac{M}{r^2}
+        = (6.674\times 10^{-11}~Nm^2/kg^2)
+        \frac{(3.0 \times 10^{30}~kg)}{(12000~m)^2}\\
+        &= 1.3904 \times 10^{12}~m/s^2
+    \end{align*}
+    Therefore
+    \begin{align*}
+        \frac{\lambda_0 - \lambda}{\lambda_0}
+        \approx \frac{gd}{c^2}
+        = \frac{(1.3904 \times 10^{12}~m/s^2)(25~m)}{(299792458~m/s)^2}
+        = 0.0003867
+    \end{align*}
+
+\end{itemize}
+\end{proof}
+\begin{proof}{\textbf{P1.3}}
+\begin{itemize}
+    \item [\textbf{a.}] Let us suppose that the laboratory is accelerating in
+    deep space with uniform acceleration $\bm{a} = -\bm{g}$ which is equivalent
+    to the laboratory being at the earth's surface.
+
+    The laser takes $t = d/c$ to travel the distance $d$
+    but in this period the lab moves a distance $y = 1/2gt^2$ perpendicular
+    to the laser so we have that the deflection is
+    \begin{align*}
+        y = \frac{1}{2}gt^2 = \frac{gd^2}{2c^2}
+        = \frac{(9.8~m/s^2)\cdot(3.0~m)^2}{2\cdot(299792458~m/s)^2}
+        = 4.906 \times 10^{-16}~m
+    \end{align*}
+
+    \item [\textbf{b.}] If we suppose that the laboratory sits on the surface
+    of a neutron star having a mass of $M = 3.0 \times 10^{30}~kg$ and a radius
+    of $R = 12~km$ then the magnitude of $\bm{g}$ is
+    \begin{align*}
+        g &= G\frac{M}{r^2}
+        = (6.674\times 10^{-11}~Nm^2/kg^2)
+        \frac{(3.0 \times 10^{30}~kg)}{(12000~m)^2}\\
+        &= 1.3904 \times 10^{12}~m/s^2
+    \end{align*}
+    Therefore using the same equation we have from before the deflection in
+    this case is
+    \begin{align*}
+        y = \frac{gd^2}{2c^2}
+        = \frac{(1.3904 \times 10^{12}~m/s^2)\cdot(3.0~m)^2}{2\cdot(299792458~m/s)^2}
+        = 6.962 \times 10^{-5}~m
+    \end{align*}
+
+\end{itemize}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P1.4}}
+    First, we want to determine $v_y$ by integrating $a_y$ as follows
+    \begin{align*}
+        \int_{-\infty}^{\infty} a_y dt &= \int_{-\infty}^{\infty}
+        \frac{GM}{r^2} \cos \varphi~ dt\\
+        v_y &= \int_{-\infty}^{\infty} \frac{GMR}{r^3}~ dt\\
+        v_y &= \int_{-\infty}^{\infty} \frac{GMR}{(x^2 + R^2)^{3/2}}\frac{dx}{c}\\
+        v_y &= \frac{GMR}{c}\left[\frac{x}{R^2\sqrt{R^2 + x^2}}\right]_{-\infty}^{\infty}\\
+        v_y &= \frac{GMR}{c}\frac{2}{R^2}
+    \end{align*}
+    Where $\varphi$ is the angle between $r$ and $R$.
+    Assuming $\delta$ is small we can approximate it by
+    $\delta \approx \sin\delta = v_y/c$ hence we have that
+    \begin{align*}
+        \delta = v_y/c &= \frac{2GM}{Rc^2}\\
+            &= \frac{2(6.67 \times 10^{-11}~Nm^2/kg^2)(1.988 \times 10^{30}~kg)}
+            {(6.957 \times 10^8~m)(299792458~m/s)^2}\\
+            &= 4.24 \times 10^{-6}
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P1.5}}
+    Because of Newtonian mechanics, we know that the acceleration of the ball A
+    is
+    \begin{align*}
+        a_A = \frac{GM}{r_A^2} = \frac{GM}{(R + r)^2}
+    \end{align*}
+    where $r_A$ is the radius of the earth $R$ plus $r = 22~m$ where the
+    frame's center is. In the same way, we have that $a_B$ and $a_C$ are
+    \begin{align*}
+        a_B = \frac{GM}{(R + 2r)^2} \quad\quad a_C = \frac{GM}{R^2}
+    \end{align*}
+    Then the relative acceleration $a_B - a_A$ is
+    \begin{align*}
+        a_B - a_A &= \frac{GM}{R^2(1 + 2r/R)^2} - \frac{GM}{R^2(1 + r/R)^2}\\
+            &= \frac{GM}{R^2}\left(\left(1 + \frac{2r}{R}\right)^{-2}
+            - \left(1 + \frac{r}{R}\right)^{-2}\right)\\
+            &= \frac{GM}{R^2}\left(\left(1 - \frac{4r}{R}\right)
+            - \left(1 - \frac{2r}{R}\right)\right)\\
+            &= \frac{GM}{R^2}\left(- \frac{2r}{R}\right)\\
+            &= -\frac{(6.67 \times 10^{-11}~Nm^2/kg^2)(5.972\times10^{24}~kg)(44~m)}
+            {(6380000~m)^3}\\
+            &= -6.75 \times 10^{-5}~m/s^2
+    \end{align*}
+    Assuming $a_A$ has a downward direction then the relative acceleration
+    has an upward direction.
+    In the same way, we have for $a_C - a_A$ that
+    \begin{align*}
+        a_C - a_A &= \frac{GM}{R^2} - \frac{GM}{R^2(1 + r/R)^2}\\
+            &= \frac{GM}{R^2}\left(1 - \left(1 + \frac{r}{R}\right)^{-2}\right)\\
+            &= \frac{GM}{R^2}\left(1 - \left(1 - \frac{2r}{R}\right)\right)\\
+            &= \frac{GM}{R^2}\left(\frac{2r}{R}\right)\\
+            &= \frac{(6.67 \times 10^{-11}~Nm^2/kg^2)(5.972\times10^{24}~kg)(44~m)}
+            {(6380000~m)^3}\\
+            &= 6.75 \times 10^{-5}~m/s^2
+    \end{align*}
+    In this case, the relative acceleration also points downward.
+\end{proof}
+\end{document}
+
+

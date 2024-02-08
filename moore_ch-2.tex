@@ -1,0 +1,152 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[mathscr]{euscript}
+
+\title{\textbf{Solved selected problems of General Relativity - Thomas A. Moore}}
+\author{Franco Zacco}
+\date{}
+
+\addtolength{\topmargin}{-3cm}
+\addtolength{\textheight}{3cm}
+
+\newcommand{\hatr}{\bm{\hat{r}}}
+\newcommand{\hatx}{\bm{\hat{x}}}
+\newcommand{\haty}{\bm{\hat{y}}}
+\newcommand{\hatz}{\bm{\hat{z}}}
+\newcommand{\hatth}{\bm{\hat{\theta}}}
+\newcommand{\hatphi}{\bm{\hat{\phi}}}
+\newcommand{\hatrho}{\bm{\hat{\rho}}}
+\theoremstyle{definition}
+\newtheorem*{solution*}{Solution}
+\renewcommand*{\proofname}{Solution}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{Chapter 2 - Review of Special Relativity}
+
+\begin{proof}{\textbf{BOX 2.2}}
+    We want to compute $g$ and $G$ in GR units, hence
+    \begin{align*}
+        g &= 9.81~\frac{m}{s^2}\left(\frac{1~s}{2.99792458 \times 10^8~m}\right)^2\\
+          &= 1.091 \times 10^{-16}~m^{-1} = \frac{1}{9.17 \times 10^{15}~m}
+    \end{align*}
+    and since a light year is $9.4607 \times 10^{15}~m$ we could say that
+    $g \approx 1~ly^{-1}$.
+    
+    Knowing that $N = kg~m/s^2$ for $G = 6.6743 \times 10^{-11}~Nm^2/kg^2$
+    we have that
+    \begin{align*}
+        G &= 6.6743 \times 10^{-11} \frac{m^3}{s^2kg}
+        \left(\frac{1~s}{2.99792458 \times 10^8~m}\right)^2\\
+        &= 7.4261\times 10^{-28} \frac{m}{kg}
+    \end{align*}
+    and since 1 solar mass is equivalent to $1.988 \times 10^{30}~kg$
+    we have that
+    \begin{align*}
+        G &= 7.4261\times 10^{-28} \frac{m}{kg}
+        \left(\frac{1.988 \times 10^{30}~kg}{1~\text{solar mass}}\right)\\
+        &= 1477~m/\text{solar mass}
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{BOX 2.6}}
+    Let $\Delta t > 0$ in the frame $S$ and $\Delta s^2 > 0$,
+    the last inequality implies that
+    $\Delta x^2 + \Delta y^2 + \Delta z^2 > \Delta t^2$ and since
+    the events occur in the $+x$ axis we have that $\Delta x^2 > \Delta t^2$
+    thus $\Delta x > \Delta t > 0$.
+    
+    Also, let us propose $\beta = \Delta t / \Delta x$ since we know that
+    $0 < \Delta t < \Delta x$ then we have that 
+    $0 < \beta = \Delta t/\Delta x < 1$.
+    We want to prove next that it's possible to get $\Delta t' < 0$ for some
+    $\beta$ such that $0 < \Delta t/ \Delta x < \beta < 1$. We see that
+    \begin{align*}
+        \Delta t &< \beta \Delta x\\
+        \Delta t - \beta \Delta x &< 0\\
+        \gamma\Delta t - \gamma\beta \Delta x &< 0
+    \end{align*}
+    But by the Lorentz transformations for a frame $S'$ moving at a speed
+    $\beta$ with respect to $S$ we know that
+    \begin{align*}
+        \Delta t' = \gamma \Delta t - \gamma \beta \Delta x
+    \end{align*}
+    Therefore we have that $\Delta t' < 0$.
+
+    If we now suppose $\Delta s^2 < 0$ then this implies that
+    $\Delta x < \Delta t$ and for $\Delta t' < 0$ we know it must happen for
+    $\beta$ that $\Delta t /\Delta x < \beta < 1$ but this is not possible
+    since as we said $\Delta x < \Delta t$ implying that
+    $1 < \Delta t/ \Delta x $. 
+\end{proof}
+\begin{proof}{\textbf{BOX 2.7}}
+    We know that $d\tau = dt'$ since a clock carried by the particle should
+    read the same time as an inertial clock in the same infinitesimal path
+    then in terms of the spacetime interval we have that
+    \begin{align*}
+        d\tau = dt' &= \sqrt{-ds^2}\\
+            &= \sqrt{dt^2 - dx^2 - dy^2 - dz^2}\\
+            &= \sqrt{dt^2(1 - (dx/dt)^2 - (dy/dt)^2 - (dz/dt)^2)}\\
+            &= dt\sqrt{1 - v^2}
+    \end{align*}
+    Where we used that $v^2 = (dx/dt)^2 + (dy/dt)^2 + (dz/dt)^2$
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P2.9}}
+\begin{itemize}
+    \item [(a)] We want to calculate the trip measured by clocks on A.
+    We know that $v = 6/13$ since A travels
+    at a constant speed and in a straight path from Alpha to Beta then
+    using the proper time equation we have that
+    \begin{align*}
+        \Delta t_A &= \sqrt{1 - v^2}\int_0^{13} dt\\
+        \Delta t_A &= 13 \sqrt{1 - (6/13)^2}\\ 
+        \Delta t_A &= \sqrt{133}~\text{Tm} = 11.53~\text{Tm} 
+    \end{align*}
+    \item [(b)] We want to calculate now the trip measured by clocks on B.
+    In this case, the semi-circular motion gives us a velocity
+    $v = \omega r = (\pi/13)\cdot 3$ hence
+    \begin{align*}
+        \Delta t_B &= \sqrt{1 - v^2}\int_0^{13} dt\\
+        \Delta t_B &= 13 \sqrt{1 - (3\pi/13)^2}\\
+        \Delta t_B &= 8.95~\text{Tm} 
+    \end{align*}
+\end{itemize}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P2.12}}
+\begin{itemize}
+    \item [(a)] Let us analyze a light ray that is going upwards in the $S'$
+    frame then it does not have a velocity component in the $x'$ direction.
+    Since $S'$ is travelling at a speed $\beta$, seen from frame $S$ this
+    light ray will have a velocity component in the $x$ direction of magnitude
+    $\beta$ and since the total velocity of the light ray must be $c = 1$
+    then the velocity component in the $y$ direction must be
+    $\sqrt{1 - \beta^2}$ so the angle with respect to the $x$ axis is given by
+    \begin{align*}
+        \sin(\theta) &= \frac{\sqrt{1 - \beta^2}}{1}\\
+        \theta &= \sin^{-1}(\sqrt{1 - \beta^2})
+    \end{align*}
+
+    \item [(b)] Replacing the value of $\beta = 0.99$ in the above equation
+    we get that
+    \begin{align*}
+        \theta &= \sin^{-1}(\sqrt{1 - (0.99)^2}) = 0.1415~\text{rad} = 8.10^\circ
+    \end{align*}
+
+
+\end{itemize}
+\end{proof}
+\end{document}
+
+
