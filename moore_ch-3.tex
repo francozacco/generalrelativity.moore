@@ -1,0 +1,234 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[mathscr]{euscript}
+
+\title{\textbf{Solved selected problems of General Relativity - Thomas A. Moore}}
+\author{Franco Zacco}
+\date{}
+
+\addtolength{\topmargin}{-3cm}
+\addtolength{\textheight}{3cm}
+
+\newcommand{\hatr}{\bm{\hat{r}}}
+\newcommand{\hatx}{\bm{\hat{x}}}
+\newcommand{\haty}{\bm{\hat{y}}}
+\newcommand{\hatz}{\bm{\hat{z}}}
+\newcommand{\hatth}{\bm{\hat{\theta}}}
+\newcommand{\hatphi}{\bm{\hat{\phi}}}
+\newcommand{\hatrho}{\bm{\hat{\rho}}}
+\theoremstyle{definition}
+\newtheorem*{solution*}{Solution}
+\renewcommand*{\proofname}{Solution}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{Chapter 3 - Four Vectors}
+
+\begin{proof}{\textbf{BOX 3.1}}
+    Let us compute the ${A'}^t$ and ${A'}^x$ components of $\bm{A'}\cdot \bm{B'}$ using the Lorentz
+    transformations as follows
+    \begin{align*}
+        -{A'}^t {B'}^t + {A'}^x {B'}^x
+        &= -(\gamma A^t - \gamma\beta A^x)(\gamma B^t - \gamma\beta B^x)\\
+        &\quad\quad + (\gamma A^x - \gamma\beta A^t)(\gamma B^x - \gamma\beta B^t)\\
+        &= (\gamma^2\beta A^x B^t - \gamma^2\beta^2 A^x B^x
+        - \gamma^2A^t B^t + \gamma^2\beta A^tB^x)\\
+        &\quad\quad +(\gamma^2A^xB^x - \gamma^2\beta B^tA^x
+        - \gamma^2\beta A^t B^x + \gamma^2\beta^2 A^t B^t)\\
+        &= \gamma^2A^xB^x(1 - \beta^2) - \gamma^2A^tB^t(1 - \beta^2)\\
+        &= -A^tB^t + A^xB^x
+    \end{align*}
+    Also, we have that ${A'}^y{B'}^y + {A'}^z{B'}^z = {A}^yB^y + {A}^zB^z$
+    therefore
+    \begin{align*}
+        -{A'}^t {B'}^t + {A'}^x {B'}^x + {A'}^y{B'}^y + {A'}^z{B'}^z
+        &= -A^tB^t + A^xB^x + {A}^yB^y + {A}^zB^z
+    \end{align*}
+\end{proof}
+\begin{proof}{\textbf{BOX 3.2}}
+    We know that
+    \begin{align*}
+        d\bm{s} \cdot d\bm{s} = ds^2 = -dt^2 + dx^2 + dy^2 + dz^2
+    \end{align*}
+    and that $d\tau = \sqrt{dt^2 - dx^2 - dy^2 - dz^2}$
+    so let us compute $\bm{u} \cdot \bm{u}$ as follows
+    \begin{align*}
+        \bm{u} \cdot \bm{u} &= \frac{ds^2}{d\tau^2}\\
+        &= \frac{-dt^2 + dx^2 + dy^2 + dz^2}{d\tau^2}\\
+        &= \frac{-(dt^2 - dx^2 - dy^2 - dz^2)}{dt^2 - dx^2 - dy^2 - dz^2}\\
+        &= -1
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{BOX 3.5}}
+    We want to verify equation 3.44. We know that
+    \begin{align*}
+        p_p^2 + 2\bm{p}_p\bm{p}_\gamma &= -m_p^2 -2m_pm_\pi - m_\pi^2\\
+        2\bm{p}_p\bm{p}_\gamma &= -2m_pm_\pi - m_\pi^2
+    \end{align*}
+    Where we used that $p_p^2 = -m_p^2$ and that $p_\gamma^2 = -m_\gamma^2 = 0$.
+    Since we are considering an approximation of $p_{px} \approx E$ we get that
+    \begin{align*}
+        \bm{p}_p = \begin{bmatrix}E_p \\ E_p\\ 0 \\ 0\end{bmatrix}\quad
+        \bm{p}_\gamma = \begin{bmatrix}E \\ -E \\ 0 \\ 0\end{bmatrix}
+    \end{align*}
+    Then
+    \begin{align*}
+        -2(E_pE + E_p E) &= -2m_pm_\pi - m_\pi^2\\
+        4E_pE &= 2m_pm_\pi + m_\pi^2\\
+        E_p &= \frac{m_\pi(2m_p + m_\pi)}{4E}
+    \end{align*}
+    Finally, we know that $m_p = 938~MeV$, $m_\pi= 135~MeV$ and
+    $E = 6.4\times10^{-4}~eV$ hence $E_p$ is
+    \begin{align*}
+        E_p &= \frac{135\times10^{6}~eV(2(938\times10^{6}~eV) + 135\times10^{6}~eV)}{4(6.4\times10^{-4}~eV)}\\
+        E_p &= 1.06 \times 10^{20}~eV
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P3.1}}
+    \begin{itemize}
+        \item[\bf{a.}] We know that $u^x = dx/d\tau$ hence $u^x = \sinh(g\tau)$.
+        \item[\bf{b.}] We know that
+        \begin{align*}
+            \bm{u}\cdot\bm{u} = -(u^{t})^2 + (u^{x})^2 = -1
+        \end{align*}
+        Hence
+        \begin{align*}
+            -(u^{t})^2 + \sinh^2(g\tau) &= -1\\
+            u^t &= \sqrt{1 +\sinh^2(g\tau)}\\
+            u^t &= \cosh(g\tau)
+        \end{align*}
+        \item[\bf{c.}] Given that we know $u^t$ and $u^x$ we can compute
+        $v = v_x$ as
+        $$v = u^x/u^t = \tanh(g\tau)$$
+        and since $\tanh$ is asymptotic to 1 then $v$ cannot be greater than 1.
+
+        \item[\bf{d.}] We know that $dt/d\tau = u^t = \cosh(g\tau)$ then
+        \begin{align*}
+            \int dt &= \int \cosh(g\tau)~d\tau\\
+            t &= \frac{\sinh(g\tau)}{g} + C\\
+            gt &= \sinh(g\tau)
+        \end{align*}
+        Where we used that $t=0$ when $\tau=0$ and hence $C = 0$.
+
+        \item[\bf{e.}] From the previous part we have that $g\tau = \sinh^{-1}(gt)$
+        hence
+        \begin{align*}
+            u^x &= \sinh(\sinh^{-1}(gt)) = gt
+        \end{align*}
+        Also, we get that
+        \begin{align*}
+            u^t &= \cosh(\sinh^{-1}(gt))\\
+                &= \sqrt{1 + (gt)^2}
+        \end{align*}
+        And finally that
+        \begin{align*}
+            v &= \tanh(\sinh^{-1}(gt))\\
+                &= \frac{\sinh(\sinh^{-1}(gt))}{\cosh(\sinh^{-1}(gt))}\\
+                &= \frac{gt}{\sqrt{1 + (gt)^2}}
+        \end{align*}
+    \end{itemize}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P3.2}}
+    \begin{itemize}
+    \item[\bf{a.}] We know that $u^t = 1/\sqrt{1 - v^2}$ so
+    \begin{align*}
+        u^t &= \frac{1}{\sqrt{1 - v^2}}\\
+        &= \frac{1}{\sqrt{1 - (1 - 1/(gt + 1)^2)}}\\
+        &= \frac{1}{\sqrt{\frac{1}{(gt + 1)^2}}}\\
+        &= gt + 1
+    \end{align*}
+    \item[\bf{b.}] We know that $dt/d\tau = u^t = gt + 1$ then
+    \begin{align*}
+        \int_0^t \frac{dt}{gt + 1} &= \int_0^\tau d\tau\\
+        \frac{\log(gt + 1)}{g} - 0 &= \tau - 0\\
+        \log(gt + 1) &= g\tau
+    \end{align*}
+    \item[\bf{c.}] Using the equations we got in part $\bf{a}$ and $\bf{b}$
+    we get that
+    \begin{align*}
+        \log(u^t) &= \log(gt +1)\\
+        \log(u^t) &= g\tau\\
+        u^t &= e^{g\tau}
+    \end{align*}
+    \item[\bf{d.}] We know that $u^x = u^t v$ so we have that
+    \begin{align*}
+        u^x &= (gt + 1)\sqrt{1 - \frac{1}{(gt + 1)^2}}\\
+            &= (gt + 1)\sqrt{\frac{(gt + 1)^2 - 1}{(gt + 1)^2}}\\
+            &= \sqrt{(gt + 1)^2 - 1}
+    \end{align*}
+    Also we know that $gt + 1 = e^{g\tau}$ so we can write
+    \begin{align*}
+        u^x &= \sqrt{e^{2g\tau} - 1}
+    \end{align*}
+    \item[\bf{e.}] We know that $u^x = dx/d\tau$ so we can integrate $u^x$ to
+    obtain $x(\tau)$ as follows
+    \begin{align*}
+        \int_0^{x(\tau)} dx &= \int_0^\tau \sqrt{e^{2g\tau} - 1}~d\tau\\
+        x(\tau) - 0 &= \frac{\sqrt{e^{2g\tau} - 1} - \arctan(\sqrt{e^{2g\tau} - 1})}{g} - 0\\
+        x(\tau) &= \frac{\sqrt{e^{2g\tau} - 1} - \arctan(\sqrt{e^{2g\tau} - 1})}{g}
+    \end{align*}
+    Finally, we know that $u^t = dt/d\tau$ so we can integrate $u^t$ to
+    obtain $t(\tau)$ as follows
+    \begin{align*}
+        \int_0^{t(\tau)} dt &= \int_0^\tau e^{g\tau}~d\tau\\
+        t(\tau) - 0 &= \frac{e^{g\tau}}{g} - \frac{1}{g}\\
+        t(\tau) &= \frac{e^{g\tau} - 1}{g}
+    \end{align*}
+\end{itemize}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P3.7}}
+    \begin{itemize}
+    \item [\bf{a.}] In the source frame we have that $p^t = E$ and that
+    $p^x = Ev_x = E$ since $v_x = 1, v_y = 0, v_z = 0$ so using the Lorentz transformations
+    we get that
+    \begin{align*}
+        p'^t &= \gamma E - \gamma vE\\
+        E' &= E\frac{(1  - v)}{\sqrt{1 - v^2}}\\
+        E' &= E\frac{(1  - v)\sqrt{1 - v}}{\sqrt{(1 + v)}\sqrt{(1 - v)^2}}\\
+        E' &= \frac{h}{\lambda_0}\frac{\sqrt{1 - v}}{\sqrt{1 + v}}
+    \end{align*}
+    Where we also used that $p'^t = E'$.
+    Hence the wavelength $\lambda'$ in the source frame is given by
+    \begin{align*}
+        \frac{h}{\lambda'} &= \frac{h}{\lambda_0}\frac{\sqrt{1 - v}}{\sqrt{1 + v}}\\
+        \lambda' &= \lambda_0\frac{\sqrt{1 + v}}{\sqrt{1 - v}}
+    \end{align*}
+
+    \item [\bf{b.}] Let now $\bm{u}_{obs}$ be the velocity of the observer
+    seen from the source frame then we have that $u_{obs}^t = \gamma$,
+    $u_{obs}^x = \gamma v$ and $u_{obs}^y = u_{obs}^z = 0$.
+    Also, let $\bm{p}$ be the 4-momentum of the photon in the source frame
+    where $p^t = E$ and that $p^x = Ev_x = E$
+    since $v_x = 1$ and $v_y = v_z = 0$.
+
+    On the other hand, we know that $E_{obs} = -\bm{p}\bm{u}_{obs}$ so
+    \begin{align*}
+        E_{obs} &= - (-p^t u_{obs}^t
+        + p^x u_{obs}^x + p^y u_{obs}^y + p^z u_{obs}^z)\\
+        E_{obs} &= -(-E\gamma + E\gamma v + 0 + 0)\\
+        E_{obs} &= E\gamma(1 - v)
+    \end{align*}
+    We have the same equation we got in part $\bf{a}$ so we can follow the same
+    steps to show that
+    \begin{align*}
+        E_{obs} &= \frac{h}{\lambda_0}\frac{\sqrt{1 - v}}{\sqrt{1 + v}}\\
+        \lambda_{obs} &= \lambda_0\frac{\sqrt{1 + v}}{\sqrt{1 - v}}
+    \end{align*}
+    \end{itemize}
+\end{proof}
+
+\end{document}
