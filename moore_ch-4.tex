@@ -1,0 +1,401 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[mathscr]{euscript}
+
+\title{\textbf{Solved selected problems of General Relativity - Thomas A. Moore}}
+\author{Franco Zacco}
+\date{}
+
+\addtolength{\topmargin}{-3cm}
+\addtolength{\textheight}{3cm}
+
+\newcommand{\hatr}{\bm{\hat{r}}}
+\newcommand{\hatx}{\bm{\hat{x}}}
+\newcommand{\haty}{\bm{\hat{y}}}
+\newcommand{\hatz}{\bm{\hat{z}}}
+\newcommand{\hatth}{\bm{\hat{\theta}}}
+\newcommand{\hatphi}{\bm{\hat{\phi}}}
+\newcommand{\hatrho}{\bm{\hat{\rho}}}
+\theoremstyle{definition}
+\newtheorem*{solution*}{Solution}
+\renewcommand*{\proofname}{Solution}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{Chapter 4 - Index Notation}
+
+\begin{proof}{\textbf{BOX 4.1}}
+    We want to check ${\delta^\mu}_{\nu}A^\nu = A^\mu$ by writing explicitly
+    the summation then for $\mu = t$ we have that
+    \begin{align*}
+        {\delta^t}_t A^t + {\delta^t}_x A^x + {\delta^t}_y A^y
+        + {\delta^t}_z A^z = A^t
+    \end{align*}
+    Since ${\delta^t}_x = {\delta^t}_y = {\delta^t}_z = 0$ and ${\delta^t}_t = 1$.
+    In the same way for $\mu = x,y,z$ we have that
+    \begin{align*}
+        {\delta^x}_t A^t + {\delta^x}_x A^x + {\delta^x}_y A^y
+        + {\delta^x}_z A^z &= A^x\\
+        {\delta^y}_t A^t + {\delta^y}_x A^x + {\delta^y}_y A^y
+        + {\delta^y}_z A^z &= A^y\\
+        {\delta^z}_t A^t + {\delta^z}_x A^x + {\delta^z}_y A^y
+        + {\delta^z}_z A^z &= A^z
+    \end{align*}
+    Since ${\delta^x}_t = {\delta^x}_y = {\delta^x}_z = 0$,
+    ${\delta^y}_t = {\delta^y}_x = {\delta^y}_z = 0$ and
+    ${\delta^z}_t = {\delta^z}_x = {\delta^z}_y = 0$ but
+    ${\delta^x}_x = {\delta^y}_y = {\delta^z}_z = 1$.
+    Therefore we get that ${\delta^\mu}_{\nu}A^\nu = A^\mu$.
+
+    Now let us compute ${\delta^\mu}_{\nu}\eta_{\mu\alpha} = \eta_{\nu\alpha}$
+    where the summation in this case is over $\mu$
+    then for $\nu = t$ we have that
+    \begin{align*}
+        {\delta^t}_t \eta_{t\alpha} + {\delta^x}_t \eta_{x\alpha}
+        + {\delta^y}_t \eta_{y\alpha} + {\delta^z}_t \eta_{z\alpha}
+        &= \eta_{t\alpha}
+    \end{align*}
+    In the same way for $\nu = x,y,z$ we have that
+    \begin{align*}
+        {\delta^t}_x \eta_{t\alpha} + {\delta^x}_x \eta_{x\alpha}
+        + {\delta^y}_x \eta_{y\alpha} + {\delta^z}_x \eta_{z\alpha}
+        &= \eta_{x\alpha}\\
+        {\delta^t}_y \eta_{t\alpha} + {\delta^x}_y \eta_{x\alpha}
+        + {\delta^y}_y \eta_{y\alpha} + {\delta^z}_y \eta_{z\alpha}
+        &= \eta_{y\alpha}\\
+        {\delta^t}_z \eta_{t\alpha} + {\delta^x}_z \eta_{x\alpha}
+        + {\delta^y}_z \eta_{y\alpha} + {\delta^z}_z \eta_{z\alpha}
+        &= \eta_{z\alpha}
+    \end{align*}
+    Therefore we get that ${\delta^\mu}_{\nu}\eta_{\mu\alpha} = \eta_{\nu\alpha}$
+    as we wanted.
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{BOX 4.3} - Exercise 4.3.1.}
+    We want to write the implied sum of
+    $dp^\mu/d\tau = qF^{\mu\nu} \eta_{\nu\alpha}u^\alpha$
+    for $\mu = x$ hence
+    \begin{align*}
+        \frac{dp^x}{d\tau} &=
+        q(F^{xt} \eta_{tt}u^t + F^{xx} \eta_{xt}u^t
+        + F^{xy} \eta_{yt}u^t + F^{xz} \eta_{zt}u^t\\
+        &\quad+ F^{xt} \eta_{tx}u^x + F^{xx} \eta_{xx}u^x
+        + F^{xy} \eta_{yx}u^x + F^{xz} \eta_{zx}u^x\\
+        &\quad+ F^{xt} \eta_{ty}u^y + F^{xx} \eta_{xy}u^y
+        + F^{xy} \eta_{yy}u^y + F^{xz} \eta_{zy}u^y\\
+        &\quad+ F^{xt} \eta_{tz}u^z + F^{xx} \eta_{xz}u^z
+        + F^{xy} \eta_{yz}u^z + F^{xz} \eta_{zz}u^z)
+    \end{align*}
+    We know that $F^{tt} = F^{xx} = F^{yy} = F^{zz} = 0$ and that
+    except for $\eta^{tt}, \eta^{xx}, \eta^{yy}$ and $\eta^{zz}$ any other
+    component is equal to 0 so we are left with
+    \begin{align*}
+        \frac{dp^x}{d\tau} &=
+        q(F^{xt} \eta_{tt}u^t + F^{xy} \eta_{yy}u^y + F^{xz} \eta_{zz}u^z)\\
+        &= q((-E_x \cdot -1 \cdot 1) + (B_z \cdot 1 \cdot v_y)
+        + (-B_y \cdot 1 \cdot v_z))\\
+        &= q(E_x + v_yB_z  - v_zB_y)
+    \end{align*}
+    Where we used that $\eta_{tt} = -1$, $\eta_{yy} = \eta_{zz} = 1$,
+    $F^{xt} = - E_x$, $F^{xy} = B_z$ and $F^{xz} = -B_y$ but also since we are
+    considering low velocities we have that $u^t = 1$, $u^y = v_y$ and
+    $u^z = v_z$. We see that the equation we have is the $x$ component of the
+    Lorentz force law where
+    $(\vec{v} \times \vec{B})\bm{\hat{x}} = (v_yB_z  - v_zB_y)\bm{\hat{x}}$.    
+\end{proof}
+\begin{proof}{\textbf{BOX 4.3} - Exercise 4.3.2.}
+    First, we want to show that
+    $$\partial F^{\mu\nu}/\partial x^v = 4\pi kJ^{\mu}$$
+    becomes Gauss's law when $\mu = t$ so we see that
+    \begin{align*}
+        \frac{\partial F^{tt}}{\partial t} + \frac{\partial F^{tx}}{\partial x}
+        + \frac{\partial F^{ty}}{\partial y} + \frac{\partial F^{tz}}{\partial z}
+        &= 4\pi kJ^t\\
+        \frac{\partial E_x}{\partial x}
+        + \frac{\partial E_y}{\partial y} + \frac{\partial E_z}{\partial z}
+        &= \frac{\rho}{\epsilon_0}
+    \end{align*} 
+    Where we used that $4\pi k = 1/\epsilon_0$, $J^t = \rho$, $F^{tt} = 0$,
+    $F^{tx} = E_x$, $F^{ty} = E_y$ and $F^{tz} = E_z$. Therefore, as we wanted,
+    the result is Gauss's law.
+
+    Finally, we want to show that
+    $$\partial F^{\mu\nu}/\partial x^v = 4\pi kJ^{\mu}$$
+    becomes the $x$ component of Ampere-Maxwell relation when
+    $\mu = x$ so we see that
+    \begin{align*}
+        \frac{\partial F^{xt}}{\partial t} + \frac{\partial F^{xx}}{\partial x}
+        + \frac{\partial F^{xy}}{\partial y} + \frac{\partial F^{xz}}{\partial z}
+        &= 4\pi kJ^x\\
+        -\frac{\partial E_x}{\partial t}
+        + \frac{\partial B_z}{\partial y} -\frac{\partial B_y}{\partial z}
+        &= \mu_0J^x\\
+        \frac{\partial B_z}{\partial y} -\frac{\partial B_y}{\partial z}
+        - \mu_0\epsilon_0\frac{\partial E_x}{\partial t}
+        &= \mu_0J^x
+    \end{align*} 
+    Where we used that $4\pi k = \mu_0$ and that $\epsilon_0\mu_0 = 1$.
+    Therefore, as we wanted, the result is the $x$ component of Ampere-Maxwell
+    relation.
+\end{proof}
+\begin{proof}{\textbf{BOX 4.4}}
+\begin{itemize}
+    \item [(a)] Equation:
+    $$\eta_{\mu\nu}\frac{du^\mu}{d\tau} u^\nu = 0$$
+    Has no free indexes, and represents 1 component.
+    \item [(b)] Equation:
+    $$\eta_{\mu\nu}{(\Lambda^{-1})^\nu}_\alpha = \eta_{\mu\beta}{\Lambda^\beta}_\alpha$$
+    Has 2 free indexes $\mu$ and $\alpha$, and the equation represents 16
+    components which are the combination of $\mu$'s 4 components $\alpha$'s 4 components.
+    \item [(c)] Equation:
+    $$\frac{dp^\mu}{d\tau} = 0$$
+    Has 1 free index $\mu$, and the equation represents the 4 components from
+    $\mu$.
+    \item [(d)] Equation:
+    $$\eta_{\alpha\mu}\eta_{\beta\nu}\frac{\partial F^{\mu\nu}}{\partial x^\sigma}
+    + \eta_{\sigma\mu}\eta_{\alpha\nu}\frac{\partial F^{\mu\nu}}{\partial x^\beta}
+    + \eta_{\beta\mu}\eta_{\sigma\nu}\frac{\partial F^{\mu\nu}}{\partial x^\alpha}
+    = 0$$
+    Has 3 free indexes, $\alpha$, $\beta$, and $\sigma$,
+    and the equation represents 64 components.
+    \item [(e)] Equation:
+    $$F^{\mu\nu}\eta_{\mu\alpha}\eta_{\nu\beta}u^\alpha u^\beta = 0$$
+    Has no free indexes, and the equation represents 1 component.
+    \item [(f)] Equation:
+    $$\eta_{\mu\nu}\eta^{\mu\nu} = 4$$
+    Has no free indexes, and the equation represents 1 component.
+\end{itemize}
+\end{proof}
+\begin{proof}{\textbf{BOX 4.5} - Exercise 4.5.1.}
+    \begin{itemize}
+        \item [(a)] Violates Rule 1 since $\alpha$ and $\beta$ are not in
+        both sides of the equation.
+        \item [(b)] Does not violate Rule 1.
+        \item [(c)] Does not violate Rule 1.
+        \item [(d)] Does not violate Rule 1.
+        \item [(e)] Violates Rule 1 since $\mu$ and $\nu$ are not in
+        both sides of the equation.
+    \end{itemize}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{BOX 4.5} - Exercise 4.5.2.}
+    \begin{itemize}
+        \item [(a)] Violates Rule 2 since now $\mu$ appears only once on the RHS.
+        \item [(b)] Violates Rule 2 since $\mu$ is already in use.
+        \item [(c)] Does not violate Rule 2.
+        \item [(d)] Does not violate Rule 2.
+        \item [(e)] Does not violate Rule 2.
+        \item [(f)] Violates Rule 2 since $\mu$ and $\nu$ are already in use
+        in the same term.
+    \end{itemize}
+\end{proof}
+\begin{proof}{\textbf{BOX 4.6}}
+    Let $\bm{A}$ be an arbitrary four-vector then we know that
+    $A^2 = \eta_{\mu\nu}A^\mu A^\nu$ so we have that
+    \begin{align*}
+        \frac{d}{d\tau}(A^2) &= \frac{d}{d\tau}(\eta_{\mu\nu}A^\mu A^\nu)\\
+            &= \eta_{\mu\nu}\bigg[
+                A^\mu\frac{d}{d\tau}(A^\nu) + A^\nu\frac{d}{d\tau}(A^\mu)
+            \bigg] + A^\mu A^\nu\frac{d}{d\tau}(\eta_{\mu\nu})\\
+            &=\eta_{\mu\nu}A^\mu\frac{dA^\nu}{d\tau}
+            + \eta_{\mu\nu}A^\nu\frac{dA^\mu}{d\tau}
+        \end{align*}
+    We see that $A^\mu A^\nu\frac{d}{d\tau}(\eta_{\mu\nu}) = 0$ since
+    $\eta_{\mu\nu}$ does not depend on $\tau$.
+    Also, we can invert the superscripts in the last term since the order in
+    which we multiply gives us the same result therefore
+    \begin{align*}
+        \frac{d}{d\tau}(A^2)
+        &=\eta_{\mu\nu}A^\mu\frac{dA^\nu}{d\tau}
+        + \eta_{\mu\nu}A^\mu\frac{dA^\nu}{d\tau}\\
+        &= 2\eta_{\mu\nu}A^\mu\frac{dA^\nu}{d\tau}
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P4.1}}
+\begin{itemize}
+    \item [\bf{a.}] The equation
+    \begin{align*}
+        0 = m^2 + (p^{\mu})^2
+    \end{align*}
+    is not a valid index equation since $m^2$ doesn't have the $\mu$ free index.
+    \item [\bf{b.}] The equation
+    \begin{align*}
+        dF^{\mu\nu}/d\tau = 0
+    \end{align*}
+    is a valid index equation.
+    \item [\bf{c.}] The equation
+    \begin{align*}
+        dp^{\mu}/d\tau = g
+    \end{align*}
+    is not a valid index equation since $g$ doesn't have the $\mu$ free index.
+    \item [\bf{d.}] The equation
+    \begin{align*}
+        F_{\alpha\beta} = \eta_{\alpha\mu}\eta_{\beta\nu}F^{\mu\sigma}
+    \end{align*}
+    is not a valid index equation since the RHS of the equation has $\nu$ and
+    $\sigma$ as free indexes in addition to $\alpha$ and $\beta$ but they do
+    not appear in the LHS.
+    \item [\bf{e.}] The equation
+    \begin{align*}
+        A^{\alpha\beta} = \eta_{\alpha\mu}\eta_{\beta\nu}F^{\mu\nu}
+    \end{align*}
+    is not a valid index equation since the RHS of the equation does not have
+    the same free indexes superscripts as the LHS.
+    \item [\bf{f.}] The equation
+    \begin{align*}
+        A^{\mu} = {\delta^\mu}_\alpha A^\alpha
+    \end{align*}
+    is a valid index equation.
+    \item [\bf{g.}] The equation
+    \begin{align*}
+        0 = A^\mu + B^\nu
+    \end{align*}
+    is not a valid index equation since A and B have different free indexes
+    superscripts.
+    \item [\bf{h.}] The equation
+    \begin{align*}
+        qF^{\mu\nu} = dp^\mu/d\tau
+    \end{align*}
+    is not a valid index equation since $dp$ doesn't have the same LHS
+    superscripts.
+\end{itemize}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P4.2}}
+\begin{itemize}
+    \item [\bf{a.}]
+    $$A^2 = \eta_{\alpha\beta}A^\alpha A^\beta
+    \Rightarrow A^2 = \eta_{\mu\nu} A^\alpha A^\beta$$
+    This isn't a valid renaming since not every occurrence was renamed.
+    \item [\bf{b.}]
+    $$0 = \eta_{\alpha\beta}A^\beta + \eta_{\alpha\mu}B^\mu
+    \Rightarrow 0 = \eta_{\alpha\beta}(A^\beta + B^\beta)$$
+    This is a valid renaming.
+    \item [\bf{c.}]
+    $$\eta_{\mu\nu} = \eta_{\alpha\beta}{\Lambda^\alpha}_\mu{\Lambda^\beta}_\nu
+    \Rightarrow
+    \eta_{\mu\nu} = \eta_{\alpha\alpha}{\Lambda^\alpha}_\mu{\Lambda^\alpha}_\nu$$
+    This isn't a valid renaming since $\alpha$ is already used in the equation.
+    \item [\bf{d.}]
+    $$dp^\mu/d\tau = qF^{\mu\nu}\eta_{\nu\alpha}u^\alpha
+    \Rightarrow
+    dp^\mu/d\tau = qF^{\mu\nu}\eta_{\nu\mu}u^\mu$$
+    This isn't a valid renaming since $\mu$ is already used in the equation as
+    a free index.
+    \item [\bf{e.}]
+    $${(\Lambda^{-1})^\alpha}_\mu \eta_{\alpha\nu} = \eta_{\mu\beta}{\Lambda^{\beta}}_\nu
+    \Rightarrow
+    {(\Lambda^{-1})^\beta}_\mu \eta_{\beta\nu} = \eta_{\mu\alpha}{\Lambda^{\alpha}}_\nu$$
+    This is a valid renaming.
+\end{itemize}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P4.3}}
+    We have from equation (4.18) with $\alpha$ and $\nu$ as free indexes that
+    \begin{align*}
+        \eta_{\alpha\nu} = \eta_{\sigma\beta} {\Lambda^\sigma}_\alpha {\Lambda^\beta}_\nu
+    \end{align*}
+    So multiplying both sides by ${(\Lambda^{-1})^\alpha}_\mu$ we get that
+    \begin{align*}
+        {(\Lambda^{-1})^\alpha}_\mu \eta_{\alpha\nu}
+        &= \eta_{\sigma\beta} {\Lambda^\sigma}_\alpha {(\Lambda^{-1})^\alpha}_\mu {\Lambda^\beta}_\nu\\
+        {(\Lambda^{-1})^\alpha}_\mu \eta_{\alpha\nu}
+        &= \eta_{\sigma\beta} {\delta^\sigma}_\mu {\Lambda^\beta}_\nu
+    \end{align*}
+    Where we used that
+    ${\Lambda^\sigma}_\alpha {(\Lambda^{-1})^\alpha}_\mu = {\delta^\sigma}_\mu$
+    hence since $\eta_{\sigma\beta} {\delta^\sigma}_\mu = \eta_{\mu\beta}$
+    we have that
+    \begin{align*}
+        {(\Lambda^{-1})^\alpha}_\mu \eta_{\alpha\nu}
+        &= \eta_{\mu\beta}  {\Lambda^\beta}_\nu
+    \end{align*}
+\end{proof}
+\begin{proof}{\textbf{P4.4}}
+    From the equation we derived on P4.3 but using $\alpha$ and $\nu$ as free
+    indexes we have that
+    \begin{align*}
+        \eta_{\alpha\sigma}  {\Lambda^\sigma}_\nu
+        &= \eta_{\mu\nu} {(\Lambda^{-1})^\mu}_\alpha 
+    \end{align*}
+    So multiplying both sides by ${(\Lambda^{-1})^\nu}_\beta$ we get that
+    \begin{align*}
+        \eta_{\alpha\sigma}  {\Lambda^\sigma}_\nu {(\Lambda^{-1})^\nu}_\beta
+        &= \eta_{\mu\nu} {(\Lambda^{-1})^\mu}_\alpha {(\Lambda^{-1})^\nu}_\beta\\
+        \eta_{\alpha\sigma}  {\delta^\sigma}_\beta
+        &= \eta_{\mu\nu} {(\Lambda^{-1})^\mu}_\alpha {(\Lambda^{-1})^\nu}_\beta\\
+        \eta_{\alpha\beta}
+        &= \eta_{\mu\nu} {(\Lambda^{-1})^\mu}_\alpha {(\Lambda^{-1})^\nu}_\beta
+    \end{align*}
+    Where we used that
+    ${\Lambda^\sigma}_\nu {(\Lambda^{-1})^\nu}_\beta = {\delta^\sigma}_\beta$
+    and that $\eta_{\alpha\sigma} {\delta^\sigma}_\beta = \eta_{\alpha\beta}$.
+\end{proof}
+\begin{proof}{\textbf{P4.5}}
+    We want to know what is the value of ${\delta^\mu}_\mu$ hence we write the
+    implied sum as
+    \begin{align*}
+        \sum_{\mu=1}^4 {\delta^\mu}_\mu &= {\delta^1}_1 + {\delta^2}_2 + {\delta^3}_3 + {\delta^4}_4
+            = 1 + 1 + 1 + 1
+            = 4
+    \end{align*}
+\end{proof}
+\begin{proof}{\textbf{P4.6}}
+    From Eq. 4.20 we have that
+    \begin{align*}
+        \frac{dp^2}{d\tau} = 2\eta_{\alpha\mu}p^{\alpha} \frac{dp^\mu}{d\tau}
+    \end{align*}
+    We know that $p^{\alpha} = m u^\alpha$ and using Eq. 4.15 we have that
+    \begin{align*}
+        \frac{dp^2}{d\tau}
+        &= 2\eta_{\mu\alpha}~mu^\alpha qF^{\mu\nu}\eta_{\nu\beta}u^{\beta}\\
+        &= 2mq~F^{\mu\nu}\eta_{\mu\alpha}\eta_{\nu\beta}u^\alpha u^{\beta}
+    \end{align*}
+    We changed $\eta_{\alpha\mu}$ to $\eta_{\mu\alpha}$ since the order
+    of multiplication doesn't matter.
+    Finally, we know that
+    $F^{\mu\nu}\eta_{\mu\alpha}\eta_{\nu\beta}u^\alpha u^{\beta} = 0$
+    from Eq. 4.21 therefore $dp^2/d\tau = 0$ i.e.
+    the square magnitude of a charged particle's four-momentum is conserved.
+\end{proof}
+\begin{proof}{\textbf{P4.8}}
+    Let $F^{\mu\nu}$ be the electromagnetic field tensor then by writing the
+    implied sum of $\eta_{\mu\nu}F^{\mu\nu}$ we have that
+    \begin{align*}
+        &\eta_{tt}F^{tt} + \eta_{tx}F^{tx} + \eta_{ty}F^{ty} + \eta_{tz}F^{tz}\\
+        &~~+ \eta_{xt}F^{xt} + \eta_{xx}F^{xx} + \eta_{xy}F^{xy} + \eta_{xz}F^{xz}\\
+        &~~+ \eta_{yt}F^{yt} + \eta_{yx}F^{yx} + \eta_{yy}F^{yy} + \eta_{yz}F^{yz}\\
+        &~~+ \eta_{zt}F^{zt} + \eta_{zx}F^{zx} + \eta_{zy}F^{zy} + \eta_{zz}F^{zz}\\
+        &= -1 \cdot 0 + 0 \cdot E_x + 0 \cdot E_y + 0 \cdot E_z\\
+        &~~- 0 \cdot E_x + 1 \cdot 0 + 0 \cdot B_z - 0 \cdot B_y\\
+        &~~- 0 \cdot E_y - 0 \cdot B_z + 1 \cdot 0 + 0 \cdot B_x\\
+        &~~- 0 \cdot E_z + 0 \cdot B_y - 0 \cdot B_x + 1 \cdot 0\\
+        &= 0
+    \end{align*}
+    Therefore $\eta_{\mu\nu} F^{\mu\nu} = 0$.
+\end{proof}
+\begin{proof}{\textbf{P4.11}}
+    By writing $\bm{u} \cdot \bm{a}$ on index notation we get that
+    \begin{align*}
+        \bm{u} \cdot \bm{a} = \eta_{\mu\nu} u^\mu \frac{du}{d\tau}^\nu
+    \end{align*}
+    but we know that $d(A^2)/d\tau = 2\eta_{\mu\nu} A^\mu (dA/d\tau)^\nu$ for
+    any four-vector $\bm A$ hence 
+    \begin{align*}
+        \bm{u} \cdot \bm{a} = \frac{1}{2}\frac{d(u^2)}{d\tau}
+        = \frac{1}{2}\frac{d(\bm u \cdot \bm u)}{d\tau} = 0 
+    \end{align*}
+    where we used that $d(\bm u \cdot \bm u)/d\tau = d(-1) /d\tau = 0$.
+\end{proof}
+\end{document}
