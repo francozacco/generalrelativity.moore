@@ -1,0 +1,718 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{physics,amsmath}
+\usepackage{bm}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[mathscr]{euscript}
+
+
+\title{\textbf{Solved selected problems of General Relativity - Thomas A. Moore}}
+\author{Franco Zacco}
+\date{}
+
+\addtolength{\topmargin}{-3cm}
+\addtolength{\textheight}{3cm}
+
+\newcommand{\hatr}{\bm{\hat{r}}}
+\newcommand{\hatx}{\bm{\hat{x}}}
+\newcommand{\haty}{\bm{\hat{y}}}
+\newcommand{\hatz}{\bm{\hat{z}}}
+\newcommand{\hatth}{\bm{\hat{\theta}}}
+\newcommand{\hatphi}{\bm{\hat{\phi}}}
+\newcommand{\hatrho}{\bm{\hat{\rho}}}
+\newcommand{\er}{\bm{e}_r}
+\newcommand{\etht}{\bm{e}_\theta}
+
+\theoremstyle{definition}
+\newtheorem*{solution*}{Solution}
+\renewcommand*{\proofname}{Solution}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{Chapter 5 - Arbitrary Coordinates}
+
+\begin{proof}{\textbf{BOX 5.1}}
+    Let us define a coordinate basis where  $\er$ has magnitude $1$ and $\etht$
+    has magnitude $r=1$ then we can write $\Delta \bm{s}$ as
+    \begin{align*}
+        \Delta \bm{s} = \er + 2\etht
+    \end{align*}
+    but if we use polar coordinates then $\Delta \bm{s}$ is given by
+    \begin{align*}
+        \Delta \bm{s} = \Delta r \bm{e}_{\hat{r}} + r\Delta \theta \bm{e}_{\hat{\theta}}
+            = \bm{e}_{\hat{r}} + \frac{\pi}{2}\bm{e}_{\hat{\theta}}
+    \end{align*}
+    Which is not the same vector.
+\end{proof}
+\begin{proof}{\textbf{BOX 5.2}}
+    We know that
+    \begin{align*}
+        g'_{\mu\nu} dx'^\mu dx'^\nu
+        = g_{\alpha\beta} \frac{\partial x^\alpha}{\partial x'^\mu}
+        \frac{\partial x^\beta}{\partial x'^\nu} dx'^\mu dx'^\nu
+    \end{align*}
+    but we can write it as
+    \begin{align*}
+        g'_{\mu\nu} dx'^\mu dx'^\nu
+        - g_{\alpha\beta} \frac{\partial x^\alpha}{\partial x'^\mu}
+        \frac{\partial x^\beta}{\partial x'^\nu} dx'^\mu dx'^\nu &= 0\\
+        dx'^\mu dx'^\nu \left(g'_{\mu\nu} 
+        - g_{\alpha\beta} \frac{\partial x^\alpha}{\partial x'^\mu}
+        \frac{\partial x^\beta}{\partial x'^\nu}\right) &= 0
+    \end{align*}
+    And since this must be true for any displacement $dx'^\mu, dx'^\nu$
+    then it must be that
+    \begin{align*}
+    g'_{\mu\nu} 
+    = g_{\alpha\beta} \frac{\partial x^\alpha}{\partial x'^\mu}
+    \frac{\partial x^\beta}{\partial x'^\nu}
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{BOX 5.3} - Exercise 5.3.1.}
+    We want to check equations ($5.24$) are the correct inverses of the
+    equations ($5.23$) so suppose we start from a set of cartesian coordinates
+    $x$ and $y$ then we transform them to $p = x$ and $q = y - cx^2$
+    so if equations ($5.24$) are the correct inverses from the $p$ and $q$ we
+    got we should get again our $x$ and $y$ coordinates so we see that
+    \begin{align*}
+        x(p, q) &= p = x\\
+        y(p, q) &= cp^2 + q = cx^2 + y - cx^2 = y
+    \end{align*}
+    Hence they are the correct inverses.
+\end{proof}
+\begin{proof}{\textbf{BOX 5.3} - Exercise 5.3.2.}
+    Assuming $p$ and $q$ are represented by the unprimed coordinates $x^\mu$
+    and $x$ and $y$ are represented by the primed coordinates $x'^{\mu}$
+    we have that
+    \begin{align*}
+        &\frac{\partial x(p, q)}{\partial p} = 1
+        \quad
+        \frac{\partial x(p, q)}{\partial q} = 0
+        \quad
+        \frac{\partial y(p, q)}{\partial p} = 2cp
+        \quad
+        \frac{\partial y(p, q)}{\partial q} = 1\\\\
+        &\frac{\partial p(x, y)}{\partial x} = 1
+        \quad
+        \frac{\partial p(x, y)}{\partial y} = 0
+        \quad
+        \frac{\partial q(x, y)}{\partial x} = -2cp
+        \quad
+        \frac{\partial q(x, y)}{\partial y} = 1
+    \end{align*}
+\end{proof}
+\begin{proof}{\textbf{BOX 5.3} - Exercise 5.3.3.}
+    If $\mu=\nu=p$ we have that
+    \begin{align*}
+        g_{pp} &= \frac{\partial x^{\alpha}}{\partial p}\frac{\partial x^{\beta}}{\partial p}g_{\alpha\beta}\\
+        &=\frac{\partial x}{\partial p}\frac{\partial x}{\partial p}g_{xx} +
+        \frac{\partial x}{\partial p}\frac{\partial y}{\partial p}g_{xy} +
+        \frac{\partial y}{\partial p}\frac{\partial x}{\partial p}g_{yx} +
+        \frac{\partial y}{\partial p}\frac{\partial y}{\partial p}g_{yy}\\
+        &= 1\cdot 1\cdot 1 + 1\cdot 2cp\cdot 0 + 2cp\cdot 1\cdot 0 + 2cp\cdot 2cp\cdot 1\\
+        &= 1 + 4c^2p^2
+    \end{align*}
+    If $\mu=q$ and $\nu=p$ we have that
+    \begin{align*}
+        g_{qp} &= \frac{\partial x^{\alpha}}{\partial q}\frac{\partial x^{\beta}}{\partial p}g_{\alpha\beta}\\
+        &=\frac{\partial x}{\partial q}\frac{\partial x}{\partial p}g_{xx} +
+        \frac{\partial x}{\partial q}\frac{\partial y}{\partial p}g_{xy} +
+        \frac{\partial y}{\partial q}\frac{\partial x}{\partial p}g_{yx} +
+        \frac{\partial y}{\partial q}\frac{\partial y}{\partial p}g_{yy}\\
+        &= 0\cdot 1\cdot 1 + 0\cdot 2cp\cdot 0 + 1\cdot 1\cdot 0 + 1\cdot 2cp\cdot 1\\
+        &= 2cp
+    \end{align*}
+    Finally, if $\mu=\nu =q$ we have that
+    \begin{align*}
+        g_{qq} &= \frac{\partial x^{\alpha}}{\partial q}\frac{\partial x^{\beta}}{\partial q}g_{\alpha\beta}\\
+        &=\frac{\partial x}{\partial q}\frac{\partial x}{\partial q}g_{xx} +
+        \frac{\partial x}{\partial q}\frac{\partial y}{\partial q}g_{xy} +
+        \frac{\partial y}{\partial q}\frac{\partial x}{\partial q}g_{yx} +
+        \frac{\partial y}{\partial q}\frac{\partial y}{\partial q}g_{yy}\\
+        &= 0\cdot 1\cdot 1 + 0\cdot 1\cdot 0 + 1\cdot 0\cdot 0 + 1\cdot 1\cdot 1\\
+        &= 1
+    \end{align*}
+    The off-diagonal of the metric tensor makes sense because the basis vectors
+    are not orthogonal i.e. $\bm{e}_p\cdot\bm{e}_q \neq 0$. 
+\end{proof}
+\begin{proof}{\textbf{BOX 5.3} - Exercise 5.3.4.}
+    Let $\bm{A}$ be a vector with $p,q$ components $A^p = 1$ and $A^q = 0$
+    \begin{itemize}
+    \item [a)] From equation (5.7) we know that
+    \begin{align*}
+        A^{\mu} = \frac{\partial x^{\mu}}{\partial x'^{\nu}} A'^{\nu}
+    \end{align*}
+    Hence
+    \begin{align*}
+        A^x &=
+        \frac{\partial x}{\partial p}A^p + \frac{\partial x}{\partial q}A^q
+        = 1 \cdot 1 + 0 \cdot 0 = 1\\
+        A^y &=
+        \frac{\partial y}{\partial p}A^p + \frac{\partial y}{\partial q}A^q
+        = 2cp \cdot 1 + 1 \cdot 0 = 2cp
+    \end{align*}
+
+    \item[b)] Yes the components make sense since both of them gives us the
+    same vector.
+
+    \item[c)] We want to show $A^2 = \bm{A} \cdot \bm{A}$
+    has the same value in both systems then we see that
+    \begin{align*}
+        A^2 &= (A^p\bm{e}_p + A^q\bm{e}_q)\cdot(A^p\bm{e}_p + A^q\bm{e}_q)\\
+        &= (A^p)^2(\bm{e}_p \cdot\bm{e}_p) + (A^pA^q)(\bm{e}_p \cdot \bm{e}_q)\\
+        &\quad+ (A^qA^p)(\bm{e}_q \cdot \bm{e}_p) + (A^q)^2(\bm{e}_q \cdot\bm{e}_q)\\
+        &= 1 \cdot (1 + 4c^2p^2) + 0 \cdot 2cp + 0 \cdot 2cp + 0 \cdot 1\\
+        &= 1 + 4c^2p^2
+    \end{align*}
+    and also
+    \begin{align*}
+        A^2 &= (A^x\bm{e}_x + A^y\bm{e}_y)\cdot(A^x\bm{e}_x + A^y\bm{e}_y)\\
+        &= (A^x)^2(\bm{e}_x \cdot\bm{e}_x) + (A^xA^y)(\bm{e}_x \cdot \bm{e}_y)\\
+        &\quad+ (A^yA^x)(\bm{e}_y \cdot \bm{e}_x) + (A^y)^2(\bm{e}_y \cdot\bm{e}_y)\\
+        &= 1 \cdot 1 + 2cp \cdot 0 + 2cp \cdot 0 + 4c^2p^2 \cdot 1\\
+        &= 1 + 4c^2p^2
+    \end{align*}
+    \end{itemize}
+\end{proof}
+\begin{proof}{\textbf{BOX 5.4} - Exercise 5.4.1.}
+    Let $\mu=x$ and $\nu=t$ then we have that
+    \begin{align*}
+        \frac{\partial x'^{x}}{\partial x^t}
+        = \frac{\partial x'}{\partial t}
+        = \frac{\partial}{\partial t}\gamma(x-\beta t)
+        = -\gamma\beta
+        = {\Lambda^x}_t
+    \end{align*}
+    And for $\mu=\nu=y$ we have that
+    \begin{align*}
+        \frac{\partial x'^{y}}{\partial x^y}
+        = \frac{\partial y'}{\partial y}
+        = \frac{\partial}{\partial y}y
+        = 1
+        = {\Lambda^y}_y
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{BOX 5.5} - Exercise 5.5.1.}
+    Let $\alpha=t$ and $\beta=x$ then we have that
+    \begin{align*}
+        \eta'_{tx} &= \eta_{\mu\nu} {(\Lambda^{-1})^{\mu}}_{t} {(\Lambda^{-1})^{\nu}}_{x}\\
+        &= \eta_{t\nu}{(\Lambda^{-1})^{t}}_{t} {(\Lambda^{-1})^{\nu}}_{x}
+        + \eta_{x\nu}{(\Lambda^{-1})^{x}}_{t} {(\Lambda^{-1})^{\nu}}_{x}\\
+        &\quad + \eta_{y\nu}{(\Lambda^{-1})^{y}}_{t} {(\Lambda^{-1})^{\nu}}_{x}
+        + \eta_{z\nu}{(\Lambda^{-1})^{z}}_{t} {(\Lambda^{-1})^{\nu}}_{x}
+    \end{align*}
+    Now $\eta_{t\nu}$ is only nonzero when $\nu = t$, $\eta_{x\nu}$ only when
+    $\nu = x$ and so on. Moreover
+    ${(\Lambda^{-1})^y}_t = {(\Lambda^{-1})^z}_t = 0$ then
+    \begin{align*}
+        \eta'_{tx}
+        &= \eta_{tt}{(\Lambda^{-1})^{t}}_{t} {(\Lambda^{-1})^{t}}_{x}
+        + \eta_{xx}{(\Lambda^{-1})^{x}}_{t} {(\Lambda^{-1})^{x}}_{x}\\
+        &\quad + \eta_{yy}{(\Lambda^{-1})^{y}}_{t} {(\Lambda^{-1})^{y}}_{x}
+        + \eta_{zz}{(\Lambda^{-1})^{z}}_{t} {(\Lambda^{-1})^{z}}_{x}\\
+        %
+        &= -1\cdot \gamma \cdot (\gamma \beta)
+        + 1\cdot (\gamma \beta)\cdot \gamma + 0 + 0\\
+        &= 0 = \eta_{tx}
+    \end{align*}
+    Now let $\alpha=\beta=x$ then we have that
+    \begin{align*}
+        \eta'_{xx} &= \eta_{\mu\nu} {(\Lambda^{-1})^{\mu}}_{x} {(\Lambda^{-1})^{\nu}}_{x}\\
+        &= \eta_{t\nu}{(\Lambda^{-1})^{t}}_{x} {(\Lambda^{-1})^{\nu}}_{x}
+        + \eta_{x\nu}{(\Lambda^{-1})^{x}}_{x} {(\Lambda^{-1})^{\nu}}_{x}\\
+        &\quad + \eta_{y\nu}{(\Lambda^{-1})^{y}}_{x} {(\Lambda^{-1})^{\nu}}_{x}
+        + \eta_{z\nu}{(\Lambda^{-1})^{z}}_{x} {(\Lambda^{-1})^{\nu}}_{x}
+    \end{align*}
+    Using the same reasoning as before we have that
+    \begin{align*}
+        \eta'_{xx}
+        &= \eta_{tt}{(\Lambda^{-1})^{t}}_{x} {(\Lambda^{-1})^{t}}_{x}
+        + \eta_{xx}{(\Lambda^{-1})^{x}}_{x} {(\Lambda^{-1})^{x}}_{x}\\
+        &\quad + \eta_{yy}{(\Lambda^{-1})^{y}}_{x} {(\Lambda^{-1})^{y}}_{x}
+        + \eta_{zz}{(\Lambda^{-1})^{z}}_{x} {(\Lambda^{-1})^{z}}_{x}\\
+        &= -1\cdot (\gamma \beta) \cdot (\gamma \beta)
+        + 1\cdot \gamma \cdot \gamma + 0 + 0\\
+        &= \gamma^2(1 - \beta^2) = 1 = \eta_{xx}
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{BOX 5.6} - Exercise 5.6.1.}
+    If we measure $\theta$ up from the equator then we would have that
+    a curve of constant latitude $\theta$ would be at a distance from the
+    vertical line crossing north-south of $R\cos\theta$ instead of
+    $R\sin\theta$ (see figure below) and hence the length of the infinitesimal
+    displacement corresponding to an infinitesimal change $d\phi$ along a
+    circle of constant latitude must have a length $R\cos\theta d\phi$
+    therefore the metric component would be $g_{\phi\phi} = R^2\cos^2\theta$.
+    \begin{center}
+        \includegraphics*[scale=0.3]{ch5_5.6.1.png}
+    \end{center}
+\end{proof}
+\begin{proof}{\textbf{P5.1}}
+\begin{itemize}
+    \item [\bf{a.}] The transformation equations are given by
+    \begin{align*}
+        x(r, \theta) = r\cos\theta \quad\quad y(r, \theta) = r\sin\theta
+    \end{align*}
+    and oppositely they are
+    \begin{align*}
+        r(x, y) = \sqrt{x^2 + y^2} \quad\quad
+        \theta(x, y) = \arctan\left(\frac{y}{x}\right)
+    \end{align*}
+    \item [\bf{b.}] The required partial derivatives are
+    \begin{align*}
+        \frac{\partial x}{\partial r} &= \cos\theta \quad\quad
+        \frac{\partial x}{\partial \theta} = -r\sin\theta\\
+        \frac{\partial y}{\partial r} &= \sin\theta \quad\quad
+        \frac{\partial y}{\partial \theta} = r\cos\theta
+    \end{align*}
+    and oppositely 
+    \begin{align*}
+        \frac{\partial r}{\partial x} &= \frac{x}{\sqrt{x^2 + y^2}} \quad\quad
+        \frac{\partial r}{\partial y} = \frac{y}{\sqrt{x^2 + y^2}}\\
+        \frac{\partial \theta}{\partial x} &= -\frac{y}{x^2 + y^2}\quad\quad
+        \frac{\partial \theta}{\partial y} = \frac{x}{x^2 + y^2}
+    \end{align*}
+\cleardoublepage
+    \item [\bf{c.}] The metric tensor for the cartesian coordinates is given by
+    $$g_{\alpha\beta} = \begin{bmatrix}
+        1 & 0\\
+        0 & 1\\
+    \end{bmatrix}$$
+    So we can get the metric tensor for the polar coordinates by applying the
+    following equation
+    \begin{align*}
+        g'_{\mu\nu} = \frac{\partial x^\alpha}{\partial x'^\mu}
+        \frac{\partial x^\beta}{\partial x'^\nu} g_{\alpha\beta}
+    \end{align*}
+    Thus
+    \begin{align*}
+        g_{rr} &= \frac{\partial x}{\partial r}
+        \frac{\partial x}{\partial r} g_{xx} + \frac{\partial x}{\partial r}
+        \frac{\partial y}{\partial r} g_{xy} + \frac{\partial y}{\partial r}
+        \frac{\partial x}{\partial r} g_{yx} + \frac{\partial y}{\partial r}
+        \frac{\partial y}{\partial r} g_{yy}\\
+        &= \cos^2\theta + 0 + 0 + \sin^2\theta\\
+        &= 1
+    \end{align*}
+    \begin{align*}
+        g_{r \theta} &= \frac{\partial x}{\partial r}
+        \frac{\partial x}{\partial \theta} g_{xx} +
+        \frac{\partial x}{\partial r}
+        \frac{\partial y}{\partial \theta} g_{xy} +
+        \frac{\partial y}{\partial r}
+        \frac{\partial x}{\partial \theta} g_{yx} +
+        \frac{\partial y}{\partial r}
+        \frac{\partial y}{\partial \theta} g_{yy}\\
+        &= -r\cos\theta\sin\theta + 0 + 0 + r\sin\theta\cos\theta\\
+        &= 0
+    \end{align*}
+    \begin{align*}
+        g_{\theta r} &= \frac{\partial x}{\partial \theta}
+        \frac{\partial x}{\partial r} g_{xx} +
+        \frac{\partial x}{\partial \theta}
+        \frac{\partial y}{\partial r} g_{xy} +
+        \frac{\partial y}{\partial \theta}
+        \frac{\partial x}{\partial r} g_{yx} +
+        \frac{\partial y}{\partial \theta}
+        \frac{\partial y}{\partial r} g_{yy}\\
+        &= -r\sin\theta\cos\theta + 0 + 0 + r\cos\theta\sin\theta\\
+        &= 0
+    \end{align*}
+    \begin{align*}
+        g_{\theta \theta} &= \frac{\partial x}{\partial \theta}
+        \frac{\partial x}{\partial \theta} g_{xx} +
+        \frac{\partial x}{\partial \theta}
+        \frac{\partial y}{\partial \theta} g_{xy} +
+        \frac{\partial y}{\partial \theta}
+        \frac{\partial x}{\partial \theta} g_{yx} +
+        \frac{\partial y}{\partial \theta}
+        \frac{\partial y}{\partial \theta} g_{yy}\\
+        &= r^2\sin^2\theta + 0 + 0 + r^2\cos^2\theta\\
+        &= r^2
+    \end{align*}
+    Therefore the metric tensor for polar coordinates is
+    \begin{align*}
+        g_{\mu\nu} = \begin{bmatrix}
+            1 & 0 \\ 0 & r^2
+        \end{bmatrix}
+    \end{align*}
+    Which is consistent with equation 5.19.
+\end{itemize}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P5.2}}
+\begin{itemize}
+    \item[\bf{a.}] We know from the polar metric equation that
+    \begin{align*}
+        ds^2 = dr^2 + r^2 d\theta^2
+    \end{align*}
+    so dividing by $dt^2$ we get that
+    \begin{align*}
+        \left(\frac{ds}{dt}\right)^2 &=
+        \left(\frac{dr}{dt}\right)^2 + r^2 \left(\frac{d\theta}{dt}\right)^2\\
+        v^2 &= (v^r)^2 + r^2 (v^\theta)^2\\
+        v^\theta &= \pm\frac{v}{r}
+    \end{align*}
+    Where we used that $v^r = 0$ for an object in a uniform circular motion.
+
+    \item[\bf{b.}] We know from problem $\bm{P5.1}$ that
+    \begin{align*}
+        x = r\cos\theta \quad\quad y = r\sin\theta
+    \end{align*}
+    so by derivating these expressions, we get that
+    \begin{align*}
+        v^x = \frac{dx}{dt} &= \frac{dr}{dt}\cos\theta - r\frac{d\theta}{dt}\sin\theta\\
+        &= v^r \cos\theta - rv^\theta\sin\theta\\
+        &= (\pm v)(-\sin\theta)
+    \end{align*}
+    and in the same way
+    \begin{align*}
+        v^y = \frac{dy}{dt} &= \frac{dr}{dt}\sin\theta + r\frac{d\theta}{dt}\cos\theta\\
+        &= v^r \sin\theta + rv^\theta\cos\theta\\
+        &= \pm v \cos\theta
+    \end{align*}
+    So we can write the velocity vector as
+    $\bm{v} = \pm v(-\sin\theta\bm{\hat{x}} + \cos\theta\bm{\hat{y}})$
+    which is going to be tangent to a circle.
+\end{itemize}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P5.3}}
+\begin{itemize}
+    \item[\bf{a.}] We know from problem $\bm{P5.1}$ that
+    \begin{align*}
+        r(x, y) = \sqrt{x^2 + y^2} \quad\quad
+        \theta(x, y) = \arctan\left(\frac{y}{x}\right)
+    \end{align*}
+    so by derivating these expressions, we get that
+    \begin{align*}
+        v^r = \frac{dr}{dt} &= \frac{x(dx/dt) + y(dy/dt)}{\sqrt{x^2 + y^2}}\\
+        &= \frac{xv^x + yv^y}{\sqrt{x^2 + y^2}}\\
+        &= \frac{yv}{\sqrt{x^2 + y^2}}\\
+        &= v\sin\theta
+    \end{align*}
+    and in the same way
+    \begin{align*}
+        v^\theta = \frac{d\theta}{dt} &= \frac{x(dy/dt) - y(dx/dt)}{x^2 + y^2}\\
+        &= \frac{xv^y - yv^x}{x^2 + y^2}\\
+        &= \frac{xv}{x^2 + y^2}\\
+        &= \frac{v\cos\theta}{r}
+    \end{align*}
+    \item[\bf{b.}] By replacing the values for $t > 0$ we get that
+    \begin{align*}
+        r = \sqrt{b^2 + (vt)^2} \quad\quad
+        \theta = \arctan\left(\frac{vt}{b}\right)
+    \end{align*}
+    And for the velocities, we have that
+    \begin{align*}
+        v^r &= \frac{v^2t}{\sqrt{b^2 + (vt)^2}} = \frac{v^2t}{r}\\
+        v^\theta &= \frac{bv}{b^2 + (vt)^2} = \frac{vb}{r^2}
+    \end{align*}
+    We see that when $t < b/vr$ then
+    $$v^r = \frac{v^2t}{r} < \frac{vb}{r^2} = v^\theta$$
+    Hence there is a predominance of $v^\theta$ over $v^r$ and when $t > b/vr$
+    we get that $v^r$ is predominant over $v^\theta$.
+\end{itemize}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P5.4}}
+    \begin{itemize}
+        \item[\bf{a.}] The following is a sketch of the "curves" of constant
+        $p$ and $q$ when $b = 0.4~cm^{-1}$
+        \begin{center}
+            \includegraphics*[scale=0.3]{ch5_p5.4.png}
+        \end{center}
+        \item[\bf{b.}] Since any vector must transform as
+        $$A'^\mu = \frac{\partial x'^\mu}{\partial x^\nu} A^\nu$$
+        and the acceleration $\bf{a}$ is a vector then we have that
+        \begin{align*}
+            a^p &= \frac{\partial p}{\partial x}a^x
+            + \frac{\partial p}{\partial y}a^y
+            = a^x = 0.2~cm/s^2\\
+            a^q &= \frac{\partial q}{\partial x}a^x
+            + \frac{\partial q}{\partial y}a^y
+            = be^{by}a^y = -0.445~1/s^2
+        \end{align*}
+        \item[\bf{c.}] The metric tensor for the cartesian coordinates is given by
+        $$g_{\alpha\beta} = \begin{bmatrix}
+            1 & 0\\
+            0 & 1\\
+        \end{bmatrix}$$
+        So we can get the metric tensor for the semilog coordinate system
+        by applying the following equation
+        \begin{align*}
+            g'_{\mu\nu} = \frac{\partial x^\alpha}{\partial x'^\mu}
+            \frac{\partial x^\beta}{\partial x'^\nu} g_{\alpha\beta}
+        \end{align*}
+        using that $x = p$ and that $y = \log(q)/b$ thus
+        \begin{align*}
+            g_{pp} &= \frac{\partial x}{\partial p}
+            \frac{\partial x}{\partial p} g_{xx} + \frac{\partial x}{\partial p}
+            \frac{\partial y}{\partial p} g_{xy} + \frac{\partial y}{\partial p}
+            \frac{\partial x}{\partial p} g_{yx} + \frac{\partial y}{\partial p}
+            \frac{\partial y}{\partial p} g_{yy}\\
+            &= 1 + 0 + 0 + 0\\
+            &= 1
+        \end{align*}
+        \begin{align*}
+            g_{p q} &= \frac{\partial x}{\partial p}
+            \frac{\partial x}{\partial q} g_{xx} +
+            \frac{\partial x}{\partial p}
+            \frac{\partial y}{\partial q} g_{xy} +
+            \frac{\partial y}{\partial p}
+            \frac{\partial x}{\partial q} g_{yx} +
+            \frac{\partial y}{\partial p}
+            \frac{\partial y}{\partial q} g_{yy}\\
+            &= 0 + 0 + 0 + 0\\
+            &= 0
+        \end{align*}
+        \begin{align*}
+            g_{qp} &= \frac{\partial x}{\partial q}
+            \frac{\partial x}{\partial p} g_{xx} +
+            \frac{\partial x}{\partial q}
+            \frac{\partial y}{\partial p} g_{xy} +
+            \frac{\partial y}{\partial q}
+            \frac{\partial x}{\partial p} g_{yx} +
+            \frac{\partial y}{\partial q}
+            \frac{\partial y}{\partial p} g_{yy}\\
+            &= 0 + 0 + 0 + 0\\
+            &= 0
+        \end{align*}
+        \begin{align*}
+            g_{qq} &= \frac{\partial x}{\partial q}
+            \frac{\partial x}{\partial q} g_{xx} +
+            \frac{\partial x}{\partial q}
+            \frac{\partial y}{\partial q} g_{xy} +
+            \frac{\partial y}{\partial q}
+            \frac{\partial x}{\partial q} g_{yx} +
+            \frac{\partial y}{\partial q}
+            \frac{\partial y}{\partial q} g_{yy}\\
+            &= 0 + 0 + 0 + \frac{1}{bq} \frac{1}{bq}\\
+            &= \frac{1}{(bq)^2}
+        \end{align*}
+        Therefore the metric tensor for the semilog coordinate system is
+        \begin{align*}
+            g_{\mu\nu} = \begin{bmatrix}
+                1 & 0 \\ 0 & 1/(bq)^2
+            \end{bmatrix}
+        \end{align*}
+        As we see the metric is diagonal which makes sense since the basis vectors
+        are orthogonal.
+        \item[\bf{d.}] The magnitude of $\bm{a}$ in cartesian coordinates is
+        given by
+        \begin{align*}
+            |\bm{a}| &= \sqrt{(a^x)^2(\bm{e}_x\cdot \bm{e}_x) + (a^y)^2(\bm{e}_y\cdot \bm{e}_y)}\\
+                &= \sqrt{(0.2)^2 + (-0.5)^2}\\
+                &= 0.538
+        \end{align*}
+        And in the semilog coordinate system is given by
+        \begin{align*}
+            |\bm{a}| &= \sqrt{(a^p)^2(\bm{e}_p\cdot \bm{e}_p) + (a^q)^2(\bm{e}_q\cdot \bm{e}_q)}\\
+                &= \sqrt{(0.2)^2 + (-0.445)^2\left(\frac{1}{(0.4 \cdot 2.225)^2}\right)}\\
+                &= 0.538
+        \end{align*}
+        Where we used that $b=0.4~cm^{-1}$ and $q = 2.225$.
+        
+        \item[\bf{e.}] The length of the basis vector $\bm{e}_q$ is
+        $|\bm{e}_q| = 1/bq$ as we can see from the metric we computed.
+    \end{itemize}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P5.5}}
+    \begin{itemize}
+        \item [\bf{a.}] The following is a sketch of the curves of constant
+        $u$ and $w$ when $A = 1.0~cm^{-1}$ and $b = \pi/2~cm^{-1}$
+        \begin{center}
+            \includegraphics*[scale=0.4]{ch5_p5.5.png}
+        \end{center}
+        \item[\bf{b.}] The metric tensor for the cartesian coordinates is given by
+        $$g_{\alpha\beta} = \begin{bmatrix}
+            1 & 0\\
+            0 & 1\\
+        \end{bmatrix}$$
+        So we can get the metric tensor for the sinusoidal coordinate system
+        by applying the following equation
+        \begin{align*}
+            g'_{\mu\nu} = \frac{\partial x^\alpha}{\partial x'^\mu}
+            \frac{\partial x^\beta}{\partial x'^\nu} g_{\alpha\beta}
+        \end{align*}
+        using that $x = u$ and that $y = w + A\sin(bu)$ thus
+        \begin{align*}
+            g_{uu} &=
+            \partialderivative{x}{u}\partialderivative{x}{u}g_{xx}
+            + \partialderivative{x}{u}\partialderivative{y}{u}g_{xy}
+            + \partialderivative{y}{u}\partialderivative{x}{u}g_{yx}
+            + \partialderivative{y}{u}\partialderivative{y}{u}g_{yy}\\
+            &= 1 + 0 + 0 + (Ab)^2\cos^2(bu)\\
+            &= 1 + (Ab)^2\cos^2(bu)
+        \end{align*}
+        \begin{align*}
+            g_{uw} &= 
+            \partialderivative{x}{u}\partialderivative{x}{w}g_{xx}
+            + \partialderivative{x}{u}\partialderivative{y}{w}g_{xy}
+            + \partialderivative{y}{u}\partialderivative{x}{w}g_{yx}
+            + \partialderivative{y}{u}\partialderivative{y}{w}g_{yy}\\
+            &= 0 + 0 + 0 + (Ab)^2\cos^2(bu)\\
+            &= Ab\cos(bu)
+        \end{align*}
+        \begin{align*}
+            g_{wu} &= 
+            \partialderivative{x}{w}\partialderivative{x}{u}g_{xx}
+            + \partialderivative{x}{w}\partialderivative{y}{u}g_{xy}
+            + \partialderivative{y}{w}\partialderivative{x}{u}g_{yx}
+            + \partialderivative{y}{w}\partialderivative{y}{u}g_{yy}\\
+            &= 0 + 0 + 0 + Ab\cos(bu)\\
+            &= Ab\cos(bu)
+        \end{align*}
+        \begin{align*}
+            g_{ww} &= 
+            \partialderivative{x}{w}\partialderivative{x}{w}g_{xx}
+            + \partialderivative{x}{w}\partialderivative{y}{w}g_{xy}
+            + \partialderivative{y}{w}\partialderivative{x}{w}g_{yx}
+            + \partialderivative{y}{w}\partialderivative{y}{w}g_{yy}\\
+            &= 0 + 0 + 0 + 1\\
+            &= 1
+        \end{align*}
+        Therefore the metric tensor for the sinusoidal coordinate system is
+        \begin{align*}
+            g_{\mu\nu} = \begin{bmatrix}
+                1 + (Ab)^2\cos^2(bu) & Ab\cos(bu) \\ Ab\cos(bu) & 1
+            \end{bmatrix}
+        \end{align*}
+        As we see the metric is not diagonal which makes sense since
+        the basis vectors are not always orthogonal.
+        \item[\bf{c.}] By derivating the expressions of $x = u$ and
+        $y = w + A\sin(bx)$ with respect to $t$ we have that
+        \begin{align*}
+            v^x = \frac{dx}{dt} = \frac{du}{dt} = v^u
+        \end{align*}
+        and that
+        \begin{align*}
+            v^y = \frac{dy}{dt} &= \frac{dw}{dt}
+            + Ab \frac{dx}{dt}\cos(bx)\\
+            &= v^w + Ab v^x\cos(bx)
+        \end{align*}
+        Hence
+        \begin{align*}
+            v^u &= v\quad\quad
+            v^w = - Ab v\cos\left(bvt\right)
+        \end{align*}
+        Where we used that $v^y = 0$ and that $x = vt$.
+        \item[\bf{d.}] Let us compute $\bm{v}^2$ in this coordinate system as follows
+        \begin{align*}
+            \bm{v}^2 &= (v^u \bm{e}_u + v^w \bm{e}_w) \cdot (v^u \bm{e}_u + v^w \bm{e}_w)\\
+                &= (v^u)^2 (\bm{e}_u \cdot \bm{e}_u)
+                + v^uv^w (\bm{e}_u \cdot \bm{e}_w)\\
+                &\quad+ v^wv^u (\bm{e}_w \cdot \bm{e}_u)
+                + (v^w)^2 (\bm{e}_w \cdot \bm{e}_w)\\
+                &= v^2(1 + (Ab)^2\cos^2(bvt)) -2 (Ab)^2v^2\cos(bvt)\\
+                &\quad + (Ab)^2v^2\cos^2(bvt)\\
+                &= v^2
+        \end{align*}
+        We used that $u = x = vt$.
+        The component $v^w$ is not constant because $\bm{e}_w$ changes
+        directions in this coordinate system. So to maintain $\bm{v}$'s direction
+        and magnitude the component $v^w$ must change according to the changes
+        in the direction product of the coordinate system.
+\cleardoublepage
+        \item[\bf{e.}] Given that $v^w$ changes with time we want to prove that
+        $dv^w/dt \neq a^w$ where $a^w$ is the component of the object's
+        accelertaion vector $\bm{a}$.
+        So by derivating $v^w$ we get that
+        $$\derivative{v^w}{t} = -Ab^2v^2\sin(bvt)$$
+        But on the other hand, the acceleration $\bm{a}$ is a vector so $a^w$
+        must transform as follows
+        \begin{align*}
+            a^w = \partialderivative{w}{x}a^x + \partialderivative{w}{y}a^y
+        \end{align*}
+        but we know that $a^x = a^y = 0$ hence $a^w = 0$ which implies that
+        $dv^w/dt \neq a^w$.
+    \end{itemize}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P5.6}}
+    We are considering a system where the coordinates look like the following 
+    \begin{center}
+        \includegraphics*[scale=0.4]{ch5_p5.6.png}
+    \end{center}
+    Let us consider an infinitesimal displacement in the $r$ direction.
+    The basis vector $\bm{e}_r$ has a magnitude of $1$ so
+    \begin{align*}
+        d\bm{s} = dr\bm{e}_r
+    \end{align*}
+    Now if we consider an infinitesimal displacement in the $\phi$ direction
+    we see that the basis vector has a magnitude $R\sin(r/R)$ since the angle
+    between the vertical and the line connecting the center of the sphere and
+    the coordinate point $r$ is $\theta = r/R$ hence we have that
+    \begin{align*}
+        d\bm{s} = d\phi\bm{e}_\phi
+    \end{align*}
+    So an arbitrary infinitesimal displacement in any direction can
+    be written as
+    \begin{align*}
+        d\bm{s} = dr\bm{e}_r + d\phi\bm{e}_\phi
+    \end{align*}
+    Then the metric in this case is given by
+    \begin{align*}
+        g_{\mu\nu} = \begin{bmatrix}
+            \bm{e}_r\cdot\bm{e}_r & \bm{e}_r\cdot\bm{e}_\phi\\
+            \bm{e}_\phi\cdot\bm{e}_r & \bm{e}_\phi\cdot\bm{e}_\phi\\
+        \end{bmatrix}
+        = \begin{bmatrix}
+            1 & 0\\
+            0 & R^2\sin^2 (r/R)\\
+        \end{bmatrix}
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P5.7}}
+    \begin{itemize}
+    \item [\bf{a.}] We are considering a system where the coordinates look like
+    the following
+    \begin{center}
+        \includegraphics*[scale=0.5]{ch5_p5.7.png}
+    \end{center}
+\cleardoublepage
+    \item [\bf{b.}]
+    Let us consider an infinitesimal distance $d\bm s$ along the surface
+    in the $r$ direction with $\phi$ fixed.
+    This displacement involves not only a displacement $dr$ in the $r$ direction
+    but also a displacement $dz$ in the $z$ direction. Knowing that $z = br^2$
+    we can compute $dz/dr = 2br$ and hence $dz = 2brdr$.
+
+    Now if we consider an infinitesimal distance $d\bm s$ along the surface
+    in the $\phi$ direction (with $r$ fixed), then the infinitesimal displacement
+    of an infinitesimal angle $d\phi$ is $rd\phi$.
+ 
+    Finally, given that the displacements are perpendicular we can use
+    the Pythagorean theorem to compute $ds^2$ for an arbitrary displacement
+    as follows
+    \begin{align*}
+        ds^2 &= dr^2 + (rd\phi)^2 + dz^2\\
+            &= dr^2 + r^2d\phi^2 + 4b^2r^2dr^2\\
+            &= (1 + 4br^2) dr^2 + r^2d\phi^2
+    \end{align*}
+    Now, comparing this to the abstract form of the metric equation
+    $ds^2 = g_{\mu\nu}dx^\mu dx^\nu$ we see that
+    $g_{rr} = 1 + 4br^2$ and $g_{\phi\phi} = r^2$. Therefore the metric
+    tensor is given by
+    \begin{align*}
+        g_{\mu\nu}
+        = \begin{bmatrix}
+            1 + 4br^2 & 0\\
+            0 & r^2 
+        \end{bmatrix}
+    \end{align*}
+    \end{itemize}
+\end{proof}
+\end{document}
