@@ -1,0 +1,211 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{physics,amsmath}
+\usepackage{bm}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[mathscr]{euscript}
+
+
+\title{\textbf{Solved selected problems of General Relativity - Thomas A. Moore}}
+\author{Franco Zacco}
+\date{}
+
+\addtolength{\topmargin}{-3cm}
+\addtolength{\textheight}{3cm}
+
+\newcommand{\hatr}{\bm{\hat{r}}}
+\newcommand{\hatx}{\bm{\hat{x}}}
+\newcommand{\haty}{\bm{\hat{y}}}
+\newcommand{\hatz}{\bm{\hat{z}}}
+\newcommand{\hatth}{\bm{\hat{\theta}}}
+\newcommand{\hatphi}{\bm{\hat{\phi}}}
+\newcommand{\hatrho}{\bm{\hat{\rho}}}
+\newcommand{\er}{\bm{e}_r}
+\newcommand{\etht}{\bm{e}_\theta}
+
+\theoremstyle{definition}
+\newtheorem*{solution*}{Solution}
+\renewcommand*{\proofname}{Solution}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{Chapter 6 - Tensor Equations}
+
+\begin{proof}{\textbf{BOX 6.1} - Exercise 6.1.1.}
+    The required partial derivatives are
+    \begin{align*}
+        \frac{\partial x}{\partial r} &= \cos\theta \quad\quad
+        \frac{\partial x}{\partial \theta} = -r\sin\theta\\
+        \frac{\partial y}{\partial r} &= \sin\theta \quad\quad
+        \frac{\partial y}{\partial \theta} = r\cos\theta
+    \end{align*}
+\end{proof}
+\begin{proof}{\textbf{BOX 6.1} - Exercise 6.1.2.}
+    Let $\Phi = bxy = br^2\cos\theta\sin\theta$ then the components of the gradient
+    are
+    \begin{align*}
+        \partialderivative{\Phi}{x} = by \quad\quad
+        \partialderivative{\Phi}{y} = bx
+    \end{align*}
+    On the other hand, for $r$ and $\theta$ we have that
+    \begin{align*}
+        \partialderivative{\Phi}{r} &= 2br\cos\theta\sin\theta\\
+        \partialderivative{\Phi}{\theta} &= br^2(\cos^2\theta - \sin^2\theta)
+    \end{align*}
+\end{proof}
+\begin{proof}{\textbf{BOX 6.1} - Exercise 6.1.3.}
+    Now, if we treat the gradient as a covector we have that
+    \begin{align*}
+        \partialderivative{\Phi}{r} &=
+        \partialderivative{x}{r}\partialderivative{\Phi}{x}
+        + \partialderivative{y}{r}\partialderivative{\Phi}{y}\\
+        &= by\cos\theta + bx\sin\theta\\
+        &= br\sin\theta\cos\theta + br\cos\theta\sin\theta\\
+        &= 2br\sin\theta\cos\theta
+    \end{align*}
+    And that
+    \begin{align*}
+        \partialderivative{\Phi}{\theta} &=
+        \partialderivative{x}{\theta}\partialderivative{\Phi}{x}
+        + \partialderivative{y}{\theta}\partialderivative{\Phi}{y}\\
+        &= -byr\sin\theta + bxr\cos\theta\\
+        &= -br^2\sin^2\theta + br^2\cos^2\theta\\
+        &= br^2(\cos^2\theta- \sin^2\theta)
+    \end{align*}
+    Which match the equations we got in Exercise 6.1.2.
+\end{proof}
+\begin{proof}{\textbf{BOX 6.2} - Exercise 6.2.1.}
+    Let $v^x = 1$ and $v^y = 0$ then to lower the indices we compute
+    the following
+    \begin{align*}
+        v_x &= g_{x\nu} v^{\nu}
+            = g_{xx}v^x + g_{xy}v^y = 1\cdot 1 + 0 \cdot 0 = 1\\
+        v_y &= g_{y\nu} v^{\nu}
+        = g_{yx}v^x + g_{yy}v^y = 0\cdot 1 + 1 \cdot 0 = 0
+    \end{align*}
+    where we used that
+    $$g_{\mu\nu} = \begin{bmatrix}
+        1 & 0\\ 0& 1
+    \end{bmatrix}$$
+\end{proof}
+\begin{proof}{\textbf{BOX 6.2} - Exercise 6.2.2.}
+    Now, we compute $v_r$ and $v_\theta$ by using the covector transformations
+    as follows
+    \begin{align*}
+        v_r &= \partialderivative{x^\alpha}{r} v_\alpha
+            = \partialderivative{x}{r}v_x + \partialderivative{y}{r}v_y
+            = \cos\theta\cdot 1 + \sin\theta\cdot 0
+            = \cos\theta
+    \end{align*}
+    And
+    \begin{align*}
+        v_\theta &= \partialderivative{x^\alpha}{\theta} v_\alpha
+            = \partialderivative{x}{\theta}v_x + \partialderivative{y}{\theta}v_y
+            = -r\sin\theta\cdot 1 + r\cos\theta\cdot 0
+            = -r\sin\theta
+    \end{align*}
+\end{proof}
+\begin{proof}{\textbf{BOX 6.2} - Exercise 6.2.3.}
+    Finally, we want to show that $v'^\mu v'_\mu = 1$ hence we have that
+    \begin{align*}
+        v'^\mu v'_\mu &= v^r v_r + v^\theta v_\theta\\
+            &= (\cos\theta)(\cos\theta)
+            + \left(-\frac{\sin\theta}{r}\right)(-r\sin\theta)\\
+            &= \cos^2\theta + \sin^2\theta\\
+            &= 1
+    \end{align*}
+    This makes sense since the length of the vector is $1$ and this generalizes
+    the notion of length.
+\end{proof}
+\begin{proof}{\textbf{BOX 6.3} - Exercise 6.3.1.}
+    By using equation 6.16 and summing over the resulting Kronecker delta
+    we get that
+    \begin{align*}
+        g'^{\mu\beta}g'_{\beta\nu} &= \partialderivative{x'^\mu}{x^\alpha}
+        \partialderivative{x^\delta}{x'^\nu} g^{\alpha\sigma}g_{\sigma\delta}\\
+        &= \partialderivative{x'^\mu}{x^\alpha}
+        \partialderivative{x^\delta}{x'^\nu} \delta^{\alpha}_{\delta}\\
+        &= \partialderivative{x'^\mu}{x^\alpha}\partialderivative{x^\alpha}{x'^\nu}\\
+        &= \delta^{\mu}_\nu
+    \end{align*}
+\end{proof}
+\begin{proof}{\textbf{BOX 6.4} - Exercise 6.4.1.}
+    By using the fundamental identity we have that
+    \begin{align*}
+        \partialderivative{x'^\mu}{x^\alpha}
+        \partialderivative{x^\beta}{x'^\nu} \delta^{\alpha}_\beta
+        &= \partialderivative{x'^\mu}{x^\alpha}
+        \partialderivative{x^\alpha}{x'^\nu}
+        = \delta^\mu_\nu
+    \end{align*}
+\end{proof}
+\begin{proof}{\textbf{BOX 6.5} - Exercise 6.5.1.}
+    We want to show that ${C_{\mu\nu}}^\alpha = A_{\mu\nu} B^\alpha$ satisfies
+    the tensor transformations.
+    \begin{align*}
+        {C'_{\mu\nu}}^\alpha &= A'_{\mu\nu} B'^\alpha
+        = \bigg(\partialderivative{x^\beta}{x'^\mu}
+        \partialderivative{x^\gamma}{x'^\nu} A_{\beta\gamma}\bigg)
+        \bigg(\partialderivative{x'^\alpha}{x^\sigma}B^{\sigma}\bigg)\\
+        &= \partialderivative{x^\beta}{x'^\mu}
+        \partialderivative{x^\gamma}{x'^\nu}
+        \partialderivative{x'^\alpha}{x^\sigma}
+        \bigg(A_{\beta\gamma}B^{\sigma}\bigg) =
+        \partialderivative{x^\beta}{x'^\mu}
+        \partialderivative{x^\gamma}{x'^\nu}
+        \partialderivative{x'^\alpha}{x^\sigma}~
+        {C_{\beta\gamma}}^{\sigma}
+    \end{align*}
+\end{proof}
+\begin{proof}{\textbf{BOX 6.5} - Exercise 6.5.2.}
+    As we saw, to raise the first index of ${C_{\mu\nu}}^\alpha$
+    we multiply it by $g^{\mu\sigma}$ then we have that
+    \begin{align*}
+        {{C'^\mu}_{\nu}}^\alpha &= {g'}^{\mu\sigma}{C'_{\sigma\nu}}^\alpha
+        = \bigg(\partialderivative{x'^\mu}{x^\beta}
+        \partialderivative{x'^\sigma}{x^\gamma}~
+        {g}^{\beta\gamma}\bigg)
+        \bigg(
+        \partialderivative{x^\gamma}{x'^\sigma}
+        \partialderivative{x^\delta}{x'^\nu}
+        \partialderivative{x'^\alpha}{x^\phi}~
+        {C_{\gamma\delta}}^\phi\bigg)\\
+        &= \bigg(\partialderivative{x'^\mu}{x^\beta}
+        \partialderivative{x'^\sigma}{x^\gamma}
+        \partialderivative{x^\gamma}{x'^\sigma}
+        \partialderivative{x^\delta}{x'^\nu}
+        \partialderivative{x'^\alpha}{x^\phi}\bigg)~
+        \bigg({g}^{\beta\gamma}{C_{\gamma\delta}}^\phi\bigg)\\
+        &= \partialderivative{x'^\mu}{x^\beta}
+        \partialderivative{x^\delta}{x'^\nu}
+        \partialderivative{x'^\alpha}{x^\phi}~
+        {{C^{\beta}}_{\delta}}^\phi
+    \end{align*}
+    Therefore ${{C^\mu}_{\nu}}^\alpha$ transforms like a tensor as we wanted.
+\end{proof}
+\begin{proof}{\textbf{BOX 6.5} - Exercise 6.5.3.}
+    We saw that ${{C^\mu}_{\nu}}^\alpha$ transforms like a tensor, hence for
+    $\nu = \mu$ we have that
+    \begin{align*}
+        {{C'^\mu}_{\mu}}^\alpha
+        &= \partialderivative{x'^\mu}{x^\beta}
+        \partialderivative{x^\beta}{x'^\mu}
+        \partialderivative{x'^\alpha}{x^\phi}~
+        {{C^{\beta}}_{\beta}}^\phi
+        = \partialderivative{x'^\alpha}{x^\phi}~
+        {{C^{\beta}}_{\beta}}^\phi
+    \end{align*}
+    But the four-vector $C^{\alpha}$ transforms as
+    $C'^{\alpha} = (\partial x'^\alpha/\partial x^\phi) C^\phi$.\\
+    Therefore ${{C^\mu}_{\mu}}^\alpha$ transforms as a four-vector.
+
+\end{proof}
+
+\end{document}
