@@ -205,7 +205,297 @@
     But the four-vector $C^{\alpha}$ transforms as
     $C'^{\alpha} = (\partial x'^\alpha/\partial x^\phi) C^\phi$.\\
     Therefore ${{C^\mu}_{\mu}}^\alpha$ transforms as a four-vector.
-
 \end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P6.1}}
+    Let us consider the following polar coordinates in 2D flat space
+    \begin{align*}
+        r = \sqrt{x^2 + y^2} \quad\quad \theta = \arctan(\frac{y}{x})
+    \end{align*}
+    \begin{itemize}
+        \item [\textbf{a.}]
+        \begin{align*}
+            &\partialderivative{r}{x} = \frac{x}{\sqrt{x^2 + y^2}} \quad\quad
+            \partialderivative{r}{y} = \frac{y}{\sqrt{x^2 + y^2}}\\
+            &\partialderivative{\theta}{x} = -\frac{y}{x^2 + y^2} \quad\quad
+            \partialderivative{\theta}{y} = \frac{x}{x^2 + y^2}
+        \end{align*}
+        \item [\textbf{b.}] Using the vector transformations we have that
+        \begin{align*}
+            v^r &= \partialderivative{r}{x^\alpha} v^\alpha
+            = \partialderivative{r}{x} v^x + \partialderivative{r}{y} v^y
+            = \frac{x}{\sqrt{x^2 + y^2}} = \cos\theta\\
+            v^\theta &= \partialderivative{\theta}{x^\alpha} v^\alpha
+            = \partialderivative{\theta}{x} v^x + \partialderivative{\theta}{y} v^y
+            = -\frac{y}{x^2 + y^2} = -\frac{\sin\theta}{r}
+        \end{align*}
+        Where in the last step of each equation we used that $x = r\cos\theta$
+        and $y = r\sin\theta$ respectively.
+        \item [\textbf{c.}] We know that the inverse metric should satisfy
+        $${g'}^{\mu\alpha}{g'}_{\alpha\nu} = {\delta^\mu}_\nu$$
+        hence
+        \begin{align*}
+            {g'}^{r\alpha}{g'}_{\alpha r}
+            &= {g'}^{rr}{g'}_{rr} + {g'}^{r\theta}{g'}_{\theta r}
+            = {g'}^{rr}\cdot 1 + {g'}^{r\theta}\cdot 0 = 1\\
+            {g'}^{r\alpha}{g'}_{\alpha \theta}
+            &= {g'}^{rr}{g'}_{r\theta} + {g'}^{r\theta}{g'}_{\theta\theta}
+            = {g'}^{rr}\cdot 0 + {g'}^{r\theta}\cdot r^2 = 0\\
+            {g'}^{\theta\alpha}{g'}_{\alpha r}
+            &= {g'}^{\theta r}{g'}_{rr} + {g'}^{\theta\theta}{g'}_{\theta r}
+            = {g'}^{\theta r}\cdot 1 + {g'}^{\theta\theta}\cdot 0 = 0\\
+            {g'}^{\theta\alpha}{g'}_{\alpha \theta}
+            &= {g'}^{\theta r}{g'}_{r\theta} + {g'}^{\theta\theta}{g'}_{\theta\theta}
+            = {g'}^{\theta r}\cdot 0 + {g'}^{\theta\theta}\cdot r^2 = 1
+        \end{align*}
+        So from each equation we see that $g'^{rr} = 1$,
+        $g'^{r\theta} = g'^{\theta r} = 0$ and $g'^{\theta\theta} = 1/r^2$
+        which implies that
+        \begin{align*}
+            g'^{\mu\nu} = \begin{bmatrix}
+                1 & 0\\
+                0 & 1/r^2
+            \end{bmatrix}
+        \end{align*}
+        \item [\textbf{d.}] To raise the polar-coordinates components
+        of the covector $v_{\mu}$ we compute the following
+        \begin{align*}
+            v^r &= g'^{r\nu} v_\nu = g'^{rr}v_r + g'^{r\theta} v_\theta
+            = \cos\theta\\
+            v^\theta &= g'^{\theta\nu} v_\nu
+            = g'^{\theta r}v_r + g'^{\theta\theta} v_\theta
+            = \frac{-r\sin\theta}{r^2} = -\frac{\sin\theta}{r}
+        \end{align*}
+    \end{itemize}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P6.2}}
+    Let's compute $v^\mu \partial_\mu \Phi$ in both the cartesian and polar
+    coordinates. From the result of BOX 6.1 we have the following
+    for cartesian coordinates
+    \begin{align*}
+        v^\mu \partial_\mu \Phi
+        = v^x \partial_x \Phi + v^y \partial_y \Phi
+        = 1 \cdot by + 0 \cdot bx = by
+    \end{align*}
+    and the following for polar coordinates
+    \begin{align*}
+        v^\mu \partial_\mu \Phi
+        &= v^r \partial_r \Phi + v^\theta \partial_\theta \Phi\\
+        &= (\cos\theta) \cdot (2br\cos\theta\sin\theta) -
+        \bigg(\frac{\sin\theta}{r}\bigg) \cdot br^2(\cos^2\theta - \sin^2\theta)\\
+        &= br\sin\theta(2\cos^2\theta - (\cos^2\theta - \sin^2\theta))\\
+        &= br\sin\theta(\cos^2\theta + \sin^2\theta)\\
+        &= br\sin\theta = by
+    \end{align*}
+    Therefore we see that the value of $v^\mu \partial_\mu \Phi$ is the same
+    in both coordinate systems.
+\end{proof}
+\begin{proof}{\textbf{P6.3}}
+    Let $F^{\mu\nu}$ be a second-rank tensor and let
+    $F = {F^\mu}_\mu = g_{\mu\nu} F^{\mu\nu}$ be the trace of $F^{\mu\nu}$
+    we want to prove that it transforms like a scalar invariant. Then
+    by applying the definition in a primed coordinate system we have that 
+    \begin{align*}
+        {F'^\mu}_\mu &= g'_{\mu\nu} F'^{\mu\nu}\\
+           &= \bigg[\partialderivative{x^\alpha}{x'^\mu}
+           \partialderivative{x^\beta}{x'^\nu}
+           g_{\alpha\beta}\bigg]
+           \bigg[\partialderivative{x'^\mu}{x^\alpha}
+           \partialderivative{x'^\nu}{x^\beta} F^{\alpha\beta}\bigg]\\
+           &=\partialderivative{x^\alpha}{x'^\mu}
+           \partialderivative{x'^\mu}{x^\alpha}
+           \partialderivative{x^\beta}{x'^\nu}
+           \partialderivative{x'^\nu}{x^\beta}
+           g_{\alpha\beta} F^{\alpha\beta}\\
+           &= g_{\alpha\beta} F^{\alpha\beta}\\
+           &= {F^{\alpha}}_\alpha
+    \end{align*}
+    Therefore ${F^\mu}_\mu$ transforms like a scalar invariant.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P6.4}}
+\begin{itemize}
+    \item [\textbf{a.}] No we cannot add the four-vectors $\bm{A}$ and $\bm{B}$
+    because they have different units and makes no sense to add quantities with
+    different units.
+
+    \item [\textbf{b.}] The components of the second-rank tensor product
+    $M^{\mu\nu} = A^\mu B^\nu$ are given by
+    \begin{align*}
+        M^{00} &= A^{0}B^0 = 1~m \cdot 3 ~s^{-1} = 3~ms^{-1}\\
+        M^{10} &= A^{1}B^0 = 2~m \cdot 3 ~s^{-1} = 6~ms^{-1}\\
+        M^{20} &= A^{2}B^0 = -1~m \cdot 3 ~s^{-1} = -3~ms^{-1}\\
+        M^{30} &= A^{3}B^0 = 0~m \cdot 3 ~s^{-1} = 0~ms^{-1}
+    \end{align*}
+    Continuing this process for the rest of the components we get that
+    \begin{align*}
+        M^{\mu\nu} =\begin{bmatrix}
+            3 & -1 & 0 & -2\\
+            6 & -2 & 0 & -4\\
+            -3 & 1 & 0 & 2\\
+            0 & 0 & 0 & 0\\
+        \end{bmatrix}~ms^{-1}
+    \end{align*}
+    
+    \item [\textbf{c.}] We want to check now if the tensor product
+    is commutative, so we compute the following
+    \begin{align*}
+        B^\mu A^{\nu} =\begin{bmatrix}
+            3 & 6 & -3 & 0\\
+            -1 & -2 & 1 & 0\\
+            0 & 0 & 0 & 0\\
+            -2 & -4 & 2 & 0\\
+        \end{bmatrix}~ms^{-1}
+    \end{align*}
+    We see then that the tensor product is not commutative.
+    
+    \item [\textbf{d.}] If the metric for this coordinate system is the
+    flat-space metric $\eta_{\mu\nu}$ then ${M^\mu}_\mu$ is given by
+    \begin{align*}
+        {M^{\mu}}_\mu &= \eta_{\mu\nu} M^{\mu\nu}\\
+        &= \eta_{0\nu} M^{0\nu} +
+            \eta_{1\nu} M^{1\nu} +
+            \eta_{2\nu} M^{2\nu} +
+            \eta_{3\nu} M^{3\nu}\\
+        &= -3  -2 + 0 + 0\\
+        &=-5
+    \end{align*}
+    The relation of ${M^\mu}_\mu$ to $\bm{A\cdot B}$ is that ${M^\mu}_\mu$
+    is the sum of the diagonal with the first component with
+    the opposite sign.
+\end{itemize}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P6.5}}
+    To compute the numerical value of the scalar $g_{\mu\nu}g^{\mu\nu}$
+    let us recall that $g^{\mu\alpha}g_{\alpha\nu} = {\delta^{\mu}}_\nu$
+    hence we have that
+    \begin{align*}
+        g_{\mu\nu}g^{\mu\nu} &= g^{\mu\nu}g_{\mu\nu}\\
+            &= g^{\mu\nu}g_{\nu\mu}\\
+            &= {\delta^{\mu}}_\mu\\
+            &= D
+    \end{align*}
+    Where we used that $g_{\mu\nu} = g_{\nu\mu}$ i.e. that the metric tensor
+    is symmetric and $D$ is the number of dimensions of $g_{\mu\nu}$. 
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P6.6}}
+    \begin{itemize}
+        \item [\textbf{a.}] Let us suppose $M^{\mu\nu} = M^{\nu\mu}$ i.e.
+        $\bm{M}$ is symmetric we want to prove it's also symmetric
+        in a different coordinate system. Since a tensor transforms as
+        \begin{align*}
+            M'^{\mu\nu} &=
+            \partialderivative{x'^\mu}{x^\alpha}
+            \partialderivative{x'^\nu}{x^\beta} M^{\alpha\beta}
+        \end{align*}
+        Hence we have that
+        \begin{align*}            
+            M'^{\mu\nu} =\partialderivative{x'^\mu}{x^\alpha}
+            \partialderivative{x'^\nu}{x^\beta} M^{\alpha\beta}
+            = \partialderivative{x'^\nu}{x^\beta}
+            \partialderivative{x'^\mu}{x^\alpha}
+             M^{\beta\alpha} = M'^{\nu\mu}
+        \end{align*}
+        Therefore $\bm{M}$ is also symmetric in a different coordinate system.
+        The same can be proven for antisymmetric tensors.
+
+        \item [\textbf{b.}] Let $F^{\mu\nu}$ be antisymmetric then
+        $F^{\mu\nu} = - F^{\nu\mu}$. Let us compute the following 
+        \begin{align*}
+            F_{\mu\nu} = g_{\mu\alpha}g_{\nu\beta} F^{\alpha\beta}
+            = g_{\nu\beta}g_{\mu\alpha} (-F^{\beta\alpha})
+            = -(g_{\nu\beta}g_{\mu\alpha} F^{\beta\alpha})
+            = -F_{\nu\mu}
+        \end{align*}
+        Therefore $F_{\mu\nu}$ is also antisymmetric.
+
+        Now, let $M^{\mu\nu}$ be symmetric then $M^{\mu\nu} = M^{\nu\mu}$.
+        So let us compute the following
+        \begin{align*}
+            M_{\mu\nu} = g_{\mu\alpha}g_{\nu\beta} M^{\alpha\beta}
+            = g_{\nu\beta}g_{\mu\alpha} M^{\beta\alpha}
+            = M_{\nu\mu}
+        \end{align*}
+        Therefore $M_{\mu\nu}$ is also symmetric.
+
+        \item [\textbf{c.}] Let $\bm{M}$ be symmetric and $\bm{F}$
+        be antisymmetric then we have that
+        \begin{align*}
+            M_{\mu\nu}F^{\mu\nu} = -M_{\nu\mu}F^{\nu\mu}
+        \end{align*}
+        Then it must be that $M_{\mu\nu}F^{\mu\nu} = 0$.
+
+        \item [\textbf{d.}] Let $\bm{F}$ be antisymmetric, then the trace
+        ${F^\mu}_\mu$ is given by
+        \begin{align*}
+            {F^\mu}_\mu = g_{\mu\nu}F^{\mu\nu} = g_{\mu\nu}(-F^{\nu\mu})
+            = -(g_{\nu\mu}F^{\nu\mu}) = -{F^\nu}_\nu
+        \end{align*}
+        Where we used that $g_{\mu\nu}$ is symmetric.
+        This implies that ${F^{\mu}}_\mu = 0$.
+
+        \item [\textbf{e.}] A symmetric tensor in $4D$ spacetime has
+        16 components, but the components above and below the diagonal are equal
+        hence they depend on each other this implies that only 10 components
+        are independent.
+        For an antisymmetric tensor, the components of the diagonal are 0
+        and the components above and below the diagonal depend on each other
+        therefore only 6 components are independent.
+    \end{itemize}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P6.7}}
+    Let $\bm{A}$ be an arbitrary four-vector that depends on a particle's 
+    position in spacetime.
+    \begin{itemize}
+        \item [\textbf{a.}] We want to show that $dA^\mu/d\tau$ is not a
+        four-vector unless the coordinate transformation partials
+        are independent of position in spacetime.
+
+        Given that $\bm{A}$ is a four-vector then it transforms like it so
+        knowing this and using the product rule we have that
+        \begin{align*}
+            \derivative{A'^\mu}{\tau} &= \derivative{}{\tau}
+            \bigg(\partialderivative{x'^\mu}{x^\nu}A^\nu \bigg)\\
+            &= A^\nu\derivative{}{\tau}
+            \bigg(\partialderivative{x'^\mu}{x^\nu}\bigg)
+            + \partialderivative{x'^\mu}{x^\nu}\derivative{A^\nu}{\tau}
+        \end{align*}
+        Then we see that $dA^\mu/d\tau$ does not transform like a four-vector
+        and hence it's not a four-vector.
+        But if the coordinate transformation partials
+        $\partial x'^\mu/\partial x^\nu$ are independent of position in
+        spacetime then the derivative of this quatity with respect to $\tau$
+        is zero and hence we get that
+        \begin{align*}
+            \derivative{A'^\mu}{\tau} 
+            = \partialderivative{x'^\mu}{x^\nu}\derivative{A^\nu}{\tau}
+        \end{align*}
+        Which transforms like a four-vector and therefore is a four-vector.
+
+        \item [\textbf{b.}] Let now $\bm{\phi}(x^\mu)$ be a scalar that depends
+        on position, we want to prove that $d\bm{\phi}/d\tau$ along a particle's
+        worldline is a valid scalar. Then by the chain rule we have that
+        \begin{align*}
+            \derivative{\bm{\phi}(x^\mu)}{\tau}
+            &= \derivative{\bm{\phi}}{x^\mu}\derivative{x^\mu}{\tau}
+        \end{align*}
+        Also, we know that the scalar $\bm\phi$ depends on $x^\mu$ and so
+        $d\bm{\phi}/dx^\mu$ is a scalar value, but also $x^\mu$ depends
+        on $\tau$ so $dx^\mu/d\tau$ is a scalar value.
+        
+        Therefore the implied sum gives us a scalar as we wanted.
+    \end{itemize}
+\end{proof}
+
+    
+
+
+
+
 
 \end{document}
