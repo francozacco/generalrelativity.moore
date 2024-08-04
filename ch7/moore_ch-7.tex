@@ -1,0 +1,589 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{physics,amsmath}
+\usepackage{bm}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[mathscr]{euscript}
+
+
+\title{\textbf{Solved selected problems of General Relativity - Thomas A. Moore}}
+\author{Franco Zacco}
+\date{}
+
+\addtolength{\topmargin}{-3cm}
+\addtolength{\textheight}{3cm}
+
+\newcommand{\hatr}{\bm{\hat{r}}}
+\newcommand{\hatn}{\bm{\hat{n}}}
+\newcommand{\hatx}{\bm{\hat{x}}}
+\newcommand{\haty}{\bm{\hat{y}}}
+\newcommand{\hatz}{\bm{\hat{z}}}
+\newcommand{\hatth}{\bm{\hat{\theta}}}
+\newcommand{\hatphi}{\bm{\hat{\phi}}}
+\newcommand{\hatrho}{\bm{\hat{\rho}}}
+\newcommand{\er}{\bm{e}_r}
+\newcommand{\etht}{\bm{e}_\theta}
+
+\theoremstyle{definition}
+\newtheorem*{solution*}{Solution}
+\renewcommand*{\proofname}{Solution}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{Chapter 7 - Maxwell's Equations}
+
+\begin{proof}{\textbf{BOX 7.1} - Exercise 7.1.1.}
+    In the same way, as we did for the $x$ direction the flux going through 
+    the face which has a unit vector $\hatn$ pointing to the $-y$ direction is
+    $$\bm{\bar{E}}(x, y - \frac{1}{2}\Delta y, z) \cdot \hatn \Delta x \Delta z
+    = -E_y(x, y - \frac{1}{2}\Delta y, z)\Delta x \Delta z$$
+    Similarly, the flux through the face with a unit vector pointing to the $+y$
+    direction gives us
+    $$\bm{\bar{E}}(x, y + \frac{1}{2}\Delta y, z) \cdot \hatn \Delta x \Delta z
+    = E_y(x, y + \frac{1}{2}\Delta y, z)\Delta x \Delta z$$
+    Therefore the net flux through these two faces is
+    \begin{align*}
+        [E_y(x, y + \frac{1}{2}\Delta y, z)&-E_y(x, y - \frac{1}{2}\Delta y, z)]
+        \Delta x \Delta z
+        =\\
+        &=\bigg[\frac{E_y(x, y + \frac{1}{2}\Delta y, z)
+         - E_y(x, y - \frac{1}{2}\Delta y, z)}{\Delta y}\bigg]
+        \Delta x \Delta y\Delta z\\
+        &\approx \partialderivative{E_y}{y} \Delta x \Delta y\Delta z
+    \end{align*}
+    On the other hand, by the same means, we can get that net flux in the faces
+    perpendicular to the $z$ axis is
+    \begin{align*}
+        [E_z(x, y, z+ \frac{1}{2}\Delta z)&-E_z(x, y, z - \frac{1}{2}\Delta z)]
+        \Delta x \Delta y
+        =\\
+        &=\bigg[\frac{E_z(x, y, z + \frac{1}{2}\Delta z)
+         - E_z(x, y, z- \frac{1}{2}\Delta z)}{\Delta z}\bigg]
+        \Delta x \Delta y\Delta z\\
+        &\approx \partialderivative{E_z}{z} \Delta x \Delta y\Delta z
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{BOX 7.2} - Exercise 7.2.1.}
+    We know that $-m^2 = p_\mu p^\mu = p^\mu \eta_{\mu\nu}p^\nu$ hence
+    by derivating with respect to $\tau$ and applying the product rule
+    we get that
+    \begin{align*}
+        \frac{d}{d\tau}(-m^2) &= \frac{d}{d\tau}(p^\mu \eta_{\mu\nu}p^\nu)\\
+        0 &= \eta_{\mu\nu}p^\nu \frac{dp^\mu}{d\tau}
+        + p^\mu \frac{d(\eta_{\mu\nu}p^\nu)}{d\tau}\\
+        0 &= \eta_{\mu\nu}p^\nu \frac{dp^\mu}{d\tau}
+        + \eta_{\nu\mu}p^\mu \frac{dp^\nu}{d\tau}\\
+        0 &= 2\eta_{\mu\nu}p^\nu \frac{dp^\mu}{d\tau}\\
+        0 &= 2p_\mu \frac{dp^\mu}{d\tau} 
+    \end{align*}
+    Where we used that the metric tensor $\eta_{\mu\nu}$ is symmetric.
+\end{proof}
+\begin{proof}{\textbf{BOX 7.3} - Exercise 7.3.1.}
+    Let $B_\mu$ be an arbitrary covector, then let us raise the index
+    in cartesian coordinates as follows
+    \begin{align*}
+        B^t &= \eta^{tt}B_t + \eta^{tx}B_x + \eta^{ty}B_y + \eta^{tz}B_z
+            = (-1)\cdot B_t + 0 + 0 + 0 = -B_t\\
+        B^x &= \eta^{xt}B_t + \eta^{xx}B_x + \eta^{xy}B_y + \eta^{xz}B_z
+            = 0 + 1\cdot B_x + 0 + 0 = B_x\\
+        B^y &= \eta^{yt}B_t + \eta^{yx}B_x + \eta^{yy}B_y + \eta^{yz}B_z
+            = 0 + 0 + 1\cdot B_y + 0 = B_y\\
+        B^x &= \eta^{zt}B_t + \eta^{zx}B_x + \eta^{zy}B_y + \eta^{zz}B_z
+            = 0 + 0 + 0 + 1\cdot B_z = B_z
+        \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{BOX 7.4} - Exercise 7.4.1.}
+    In the same way, as we did for the $x$ direction the total amount of 
+    charge that moves out of the box through the front face during a 
+    time interval $\Delta t$ is
+    \begin{align*}
+        \Delta q_{\text{front}} &\approx
+        - \rho(x, y - \frac{1}{2}\Delta y, z)
+        v_y(x, y - \frac{1}{2}\Delta y, z)\Delta t \Delta x \Delta z\\
+        &\approx - J^y(x, y - \frac{1}{2}\Delta y, z)\Delta t \Delta x \Delta z
+    \end{align*}
+    In the same way, the amount of charge flowing out of the back face
+    is $ \Delta q_{\text{back}}
+    \approx J^y(x, y + \frac{1}{2}\Delta y, z)\Delta t \Delta x \Delta z$
+    and hence the net amount of charge flowing out of these two faces during
+    $\Delta t$ will be
+    \begin{align*}
+        \Delta q_{\text{back}} + \Delta q_{\text{front}}
+        &\approx [J^y(x, y + \frac{1}{2}\Delta y, z)
+        - J^y(x, y - \frac{1}{2}\Delta y, z)]\Delta t \Delta x \Delta z\\
+        \frac{\Delta q_{\text{back}} + \Delta q_{\text{front}}
+        }{\Delta t\Delta x \Delta y\Delta z}
+        &\approx \frac{J^y(x, y + \frac{1}{2}\Delta y, z) 
+        - J^y(x, y - \frac{1}{2}\Delta y, z)}{\Delta y}
+    \end{align*}
+    Note that this approximations become exact in the limit when
+    $\Delta x, \Delta y, \Delta z$ and $\Delta t$ goes to zero, hence by the 
+    definition of partial derivative we get that
+    \begin{align*}
+    \lim_{\Delta y \to 0} \frac{J^y(x, y + \frac{1}{2}\Delta y, z) 
+        - J^y(x, y - \frac{1}{2}\Delta y, z)}{\Delta y} 
+    = \partialderivative{J^y}{y}
+    \end{align*}
+
+    On the other hand, by the same means, we can get the net amount of charge
+    flowing out of the top and bottom faces during $\Delta t$ as
+    \begin{align*}
+        \Delta q_{\text{top}} + \Delta q_{\text{bottom}}
+        &\approx [J^z(x, y, z + \frac{1}{2}\Delta z)
+        - J^z(x, y, z - \frac{1}{2}\Delta z)]\Delta t \Delta x \Delta y\\
+        \frac{\Delta q_{\text{top}} + \Delta q_{\text{bottom}}
+        }{\Delta t\Delta x \Delta y\Delta z}
+        &\approx \frac{J^z(x, y, z + \frac{1}{2}\Delta z) 
+        - J^z(x, y, z - \frac{1}{2}\Delta z)}{\Delta z}
+    \end{align*}
+    And as $\Delta z$ goes to 0 we get that
+    \begin{align*}
+        \lim_{\Delta z \to 0} \frac{J^z(x, y, z + \frac{1}{2}\Delta z) 
+            - J^y(x, y, z - \frac{1}{2}\Delta z)}{\Delta z} 
+        = \partialderivative{J^z}{z}
+        \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{BOX 7.4} - Exercise 7.4.2.}
+    Combining expressions 7.29 and 7.30 we get that
+    \begin{align*}
+        &\frac{\Delta q_{\text{left}} + \Delta q_{\text{right}}
+        }{\Delta t\Delta x \Delta y\Delta z}
+        +
+        \frac{\Delta q_{\text{back}} + \Delta q_{\text{front}}
+        }{\Delta t\Delta x \Delta y\Delta z}
+        +
+        \frac{\Delta q_{\text{top}} + \Delta q_{\text{bottom}}
+        }{\Delta t\Delta x \Delta y\Delta z} \approx\\
+        &\qquad\approx \frac{J^x(x + \frac{1}{2}\Delta x, y, z) 
+        - J^x(x - \frac{1}{2}\Delta x, y, z)}{\Delta x} +\\
+        &\qquad+ \frac{J^y(x, y + \frac{1}{2}\Delta y, z) 
+        - J^y(x, y - \frac{1}{2}\Delta y, z)}{\Delta y} +\\
+        &\qquad+ \frac{J^z(x, y, z + \frac{1}{2}\Delta z) 
+        - J^z(x, y, z - \frac{1}{2}\Delta z)}{\Delta z}
+    \end{align*}
+    Hence by applying the limit to both sides and using equation 7.32 we have that
+    \begin{align*}
+        -\partialderivative{\rho}{t} = \partialderivative{J^x}{x}
+        + \partialderivative{J^y}{y} + \partialderivative{J^z}{z}
+    \end{align*}
+    But also we know that $\rho = J^t$ therefore
+    \begin{align*}
+        \partialderivative{J^t}{t} + \partialderivative{J^x}{x}
+         + \partialderivative{J^y}{y} + \partialderivative{J^z}{z} = 0
+    \end{align*}
+    Or using Einstein notation $\partial_\mu J^\mu = 0$.
+\end{proof}
+\begin{proof}{\textbf{BOX 7.5} - Exercise 7.5.1.}
+    We know that $F^{\mu\nu} = -F^{\nu\mu}$ then we have that
+    \begin{align*}
+        \partial_\mu\partial_\nu F^{\mu\nu}
+        = \partial_\mu\partial_\nu (-F^{\nu\mu})
+        = -\partial_\nu\partial_\mu F^{\nu\mu}
+        = -\partial_\mu\partial_\nu F^{\mu\nu}
+    \end{align*}
+    where we used that the order of partial derivatives is irrelevant
+    and in the last equality, we renamed the variables
+    $\nu \to \mu$ and $\mu \to \nu$.
+    This implies that $\partial_\mu\partial_\nu F^{\mu\nu} = 0$.
+\end{proof}
+\begin{proof}{\textbf{BOX 7.6} - Exercise 7.6.1.}
+    Let $\vec{B} = \vec\nabla \times \vec A$ then by solving the cross product
+    we have that
+    \begin{align*}
+        \vec{B} = \vec\nabla \times \vec A
+        &= \begin{vmatrix}
+            \hatx & \haty & \hatz\\
+            \partial_x & \partial_y & \partial_z\\
+            A^x & A^y & A^z
+        \end{vmatrix}\\
+        &= (\partial_yA^z -  \partial_zA^y)\hatx
+        + (\partial_zA^x - \partial_xA^z)\haty
+        + (\partial_xA^y - \partial_yA^x)\haty\\
+        &= \bigg(
+            \partialderivative{A^z}{y} -  \partialderivative{A^y}{z}
+        \bigg)\hatx
+        + \bigg(
+            \partialderivative{A^x}{z} - \partialderivative{A^z}{x}
+        \bigg)\haty
+        + \bigg(
+            \partialderivative{A^y}{x} - \partialderivative{A^x}{y}
+        \bigg)\haty
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{BOX 7.6} - Exercise 7.6.2.}
+    Let $F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu$ then for
+    $\mu = t$ and $\nu = x$ we have that
+    \begin{align*}
+        F^{tx} &= \partial^t A^x - \partial^x A^t\\
+        E_x &= -\partialderivative{A^x}{t} - \partialderivative{A^t}{x}
+    \end{align*}
+    which is the $x$ component of equation 7.35.
+    For $\mu = \nu = t$ we have that
+    \begin{align*}
+        F^{tt} = \partial^t A^t - \partial^t A^t = 0
+    \end{align*}
+    which is the correct component of the field tensor.
+\end{proof}
+\begin{proof}{\textbf{BOX 7.7} - Exercise 7.7.1.}
+    Let $F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu$ then by replacing 
+    we have that
+    \begin{align*}
+        \partial^\alpha F^{\mu\nu} + \partial^\nu F^{\alpha\mu}
+        + \partial^\mu F^{\nu\alpha}
+        %
+        &= \partial^\alpha (\partial^\mu A^\nu - \partial^\nu A^\mu)
+        + \partial^\nu (\partial^\alpha A^\mu - \partial^\mu A^\alpha) +\\
+        &\quad+ \partial^\mu (\partial^\nu A^\alpha - \partial^\alpha A^\nu)\\
+        %
+        &= \partial^\alpha\partial^\mu A^\nu - \partial^\alpha\partial^\nu A^\mu
+        + \partial^\nu \partial^\alpha A^\mu - \partial^\nu \partial^\mu A^\alpha +\\
+        &\quad+ \partial^\mu\partial^\nu A^\alpha - \partial^\mu\partial^\alpha A^\nu\\
+        %
+        &= (\partial^\alpha\partial^\mu A^\nu
+        - \partial^\alpha\partial^\mu A^\nu)
+        + (\partial^\nu \partial^\alpha A^\mu
+        - \partial^\nu \partial^\alpha A^\mu)\\
+        &\quad+ (\partial^\mu\partial^\nu A^\alpha
+        - \partial^\mu\partial^\nu A^\alpha)\\
+        &= 0
+    \end{align*}
+    Where we used that the order of partial derivatives does not matter.
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P7.1}}
+    From the general equation for the transformation properties of a tensor
+    we have that
+    \begin{align*}
+        F'^{\mu\nu} = \partialderivative{x'^\mu}{x^\alpha}
+        \partialderivative{x'^\nu}{x^\beta} F^{\alpha\beta}
+    \end{align*}
+    In the special case for the Lorentz transformations the partial derivatives
+    become
+    \begin{align*}
+        \partialderivative{x'^\mu}{x^\alpha} = \begin{bmatrix}
+            \gamma & -\gamma\beta & 0 & 0\\
+            -\gamma\beta & \gamma & 0 & 0\\
+            0 & 0 & 1 & 0\\
+            0 & 0 & 0 & 1
+        \end{bmatrix}
+    \end{align*}
+    So in particular for $\mu=t$ and $\nu=x$ we get that
+    \begin{align*}
+        F'^{tx} = E'_x &= \partialderivative{x'^t}{x^\alpha}
+        \partialderivative{x'^x}{x^\beta} F^{\alpha\beta}\\
+        &= \partialderivative{x'^t}{x^\alpha}[
+            \partialderivative{x'^x}{x^t} F^{\alpha t}
+            + \partialderivative{x'^x}{x^x} F^{\alpha x}
+            + \partialderivative{x'^x}{x^y} F^{\alpha y}
+            + \partialderivative{x'^x}{x^z} F^{\alpha z}
+        ]\\
+        &= \partialderivative{x'^t}{x^\alpha}[
+            -\gamma\beta F^{\alpha t}
+            + \gamma F^{\alpha x}
+        ]\\
+        &= \partialderivative{x'^t}{x^t}[
+            -\gamma\beta F^{t t}
+            + \gamma F^{t x}
+        ] + \partialderivative{x'^t}{x^x}[
+            -\gamma\beta F^{x t}
+            + \gamma F^{x x}
+        ]\\
+        &= \gamma^2 E_x - \gamma^2\beta^2 E_x\\
+        &= \gamma^2 E_x(1 - \beta^2)\\
+        &= E_x
+    \end{align*}
+    For $\mu=t$ and $\nu=y$ we get that
+    \begin{align*}
+        F'^{ty} = E'_y &= \partialderivative{x'^t}{x^\alpha}
+        \partialderivative{x'^y}{x^\beta} F^{\alpha\beta}\\
+        &= \partialderivative{x'^t}{x^\alpha}[
+            \partialderivative{x'^y}{x^t} F^{\alpha t}
+            + \partialderivative{x'^y}{x^x} F^{\alpha x}
+            + \partialderivative{x'^y}{x^y} F^{\alpha y}
+            + \partialderivative{x'^y}{x^z} F^{\alpha z}
+        ]\\
+        &= \partialderivative{x'^t}{x^\alpha}F^{\alpha y}\\
+        &= \partialderivative{x'^t}{x^t}F^{t y}
+        + \partialderivative{x'^t}{x^x}F^{x y}\\
+        &= \gamma E_y - \gamma\beta B_z
+    \end{align*}
+    And for $\mu=t$ and $\nu=z$ we get that
+    \begin{align*}
+        F'^{tz} = E'_z &= \partialderivative{x'^t}{x^\alpha}
+        \partialderivative{x'^z}{x^\beta} F^{\alpha\beta}\\
+        &= \partialderivative{x'^t}{x^\alpha}[
+            \partialderivative{x'^z}{x^t} F^{\alpha t}
+            + \partialderivative{x'^z}{x^x} F^{\alpha x}
+            + \partialderivative{x'^z}{x^y} F^{\alpha y}
+            + \partialderivative{x'^z}{x^z} F^{\alpha z}
+        ]\\
+        &= \partialderivative{x'^t}{x^\alpha}F^{\alpha z}\\
+        &= \partialderivative{x'^t}{x^t}F^{t z}
+        + \partialderivative{x'^t}{x^x}F^{x z}\\
+        &= \gamma E_z + \gamma\beta B_y
+    \end{align*}
+    On the other hand, for the magnetic field, taking $\mu=y$ and $\nu=z$
+    we get the following
+    \begin{align*}
+        F'^{yz} = B'_x &= \partialderivative{x'^y}{x^\alpha}
+        \partialderivative{x'^z}{x^\beta} F^{\alpha\beta}\\
+        &= \partialderivative{x'^y}{x^\alpha}[
+            \partialderivative{x'^z}{x^t} F^{\alpha t}
+            + \partialderivative{x'^z}{x^x} F^{\alpha x}
+            + \partialderivative{x'^z}{x^y} F^{\alpha y}
+            + \partialderivative{x'^z}{x^z} F^{\alpha z}
+        ]\\
+        &= \partialderivative{x'^y}{x^\alpha}F^{\alpha z}\\
+        &= \partialderivative{x'^y}{x^y}F^{y z}\\
+        &= B_x
+    \end{align*}
+    For $\mu=z$ and $\nu=x$ we have that
+    \begin{align*}
+        F'^{zx} = B'_y &= \partialderivative{x'^z}{x^\alpha}
+        \partialderivative{x'^x}{x^\beta} F^{\alpha\beta}\\
+        &= \partialderivative{x'^z}{x^\alpha}[
+            \partialderivative{x'^x}{x^t} F^{\alpha t}
+            + \partialderivative{x'^x}{x^x} F^{\alpha x}
+            + \partialderivative{x'^x}{x^y} F^{\alpha y}
+            + \partialderivative{x'^x}{x^z} F^{\alpha z}
+        ]\\
+        &= \partialderivative{x'^z}{x^\alpha}[
+            \partialderivative{x'^x}{x^t} F^{\alpha t}
+            + \partialderivative{x'^x}{x^x} F^{\alpha x}
+        ]\\
+        &= \partialderivative{x'^z}{x^z}[
+            \partialderivative{x'^x}{x^t} F^{z t}
+            + \partialderivative{x'^x}{x^x} F^{z x}
+        ]\\
+        &= \gamma B_y + \gamma\beta E_z
+    \end{align*}
+    And finally, for $\mu=x$ and $\nu=y$ we have that
+    \begin{align*}
+        F'^{xy} = B'_z &= \partialderivative{x'^x}{x^\alpha}
+        \partialderivative{x'^y}{x^\beta} F^{\alpha\beta}\\
+        &= \partialderivative{x'^x}{x^\alpha}[
+            \partialderivative{x'^y}{x^t} F^{\alpha t}
+            + \partialderivative{x'^y}{x^x} F^{\alpha x}
+            + \partialderivative{x'^y}{x^y} F^{\alpha y}
+            + \partialderivative{x'^y}{x^z} F^{\alpha z}
+        ]\\
+        &= \partialderivative{x'^z}{x^\alpha} F^{\alpha y}\\
+        &= \partialderivative{x'^x}{x^t}F^{t y}
+        + \partialderivative{x'^x}{x^x}F^{x y}\\
+        &= \gamma B_z - \gamma\beta E_y
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P7.2}}
+\begin{itemize}
+    \item [\textbf{a.}] The equation 7.20 states that
+    $$\partial^\alpha F^{\mu\nu} + \partial^\nu F^{\alpha\mu}
+    + \partial^\mu F^{\nu\alpha} = 0$$
+    In the first term, for example, we know that $F^{\mu\nu}$ has 16 components
+    since $F^{\mu\nu}$ is a second rank tensor.
+    Viewing then $\partial^\alpha F^{\mu\nu}$ as a product of tensors of rank
+    $1$ and rank $2$ the result gives us a tensor of rank $1 + 2 = 3$ which
+    by definition has $64$ components.
+    The same can be said for the rest of the terms so the equation has $64$
+    components.
+
+    \item[\textbf{b.}] Let us suppose that $\mu = \nu$ and $\alpha \neq \mu$
+    then we see that
+    \begin{align*}
+        \partial^\alpha F^{\mu\mu} + \partial^\mu F^{\alpha\mu}
+        + \partial^\mu F^{\mu\alpha} = 0\\
+        0 + \partial^\mu F^{\alpha\mu}
+        + \partial^\mu F^{\mu\alpha} = 0\\
+        \partial^\mu F^{\alpha\mu}
+        - \partial^\mu F^{\alpha\mu} = 0
+    \end{align*}
+    Where we used that $F^{\mu\mu} = 0$ and that
+    $F^{\mu\alpha} = - F^{\alpha\mu}$ since $F^{\mu\nu}$ is antisymmetric.
+    So in this case, we see that the equation is identically zero.
+
+    In the case where $\mu = \nu = \alpha$ since $F^{\mu\mu} = 0$ then
+    the equation is also identically zero.
+
+    Therefore in the only case where the equation is not identically zero
+    is when $\mu \neq \nu \neq \alpha$.
+
+    \item[\textbf{c.}] Let $\alpha = t$, $\mu = x$ and $\nu = y$ then we have
+    that
+    \begin{align*}
+        \partial^t F^{xy} + \partial^y F^{tx} + \partial^x F^{yt} &= 0\\
+        \partial^t B_z + \partial^y E_x - \partial^x E_y &= 0\\
+        -\partialderivative{B_z}{t} + \partialderivative{E_x}{y}
+        - \partialderivative{E_y}{x} &= 0\\
+        \partialderivative{B_z}{t} + \partialderivative{E_y}{x}
+        - \partialderivative{E_x}{y}&= 0
+    \end{align*}
+    Where we see that $\partial^t B_z$ is the negative $z$ component of
+    $\partial \vec{B} / \partial t$.
+
+    On the other hand, let us compute $\curl \vec{E}$ as follows
+    \begin{align*}
+        \curl \vec{E} &= \begin{vmatrix}
+            \hatx & \haty & \hatz \\
+            \partialderivative{}{x} & \partialderivative{}{y}
+            & \partialderivative{}{z}\\
+            E_x  & E_y & E_z
+        \end{vmatrix}\\
+        &= \partialderivative{E_z}{y}\hatx
+        + \partialderivative{E_x}{z}\haty
+        + \partialderivative{E_y}{x}\hatz
+        - \partialderivative{E_y}{z}\hatx
+        - \partialderivative{E_z}{x}\haty
+        - \partialderivative{E_x}{y}\hatz\\
+        &= \bigg(\partialderivative{E_z}{y}- \partialderivative{E_y}{z}\bigg)\hatx
+        + \bigg(\partialderivative{E_x}{z}
+        - \partialderivative{E_z}{x}\bigg)\haty
+        + \bigg(\partialderivative{E_y}{x}
+        - \partialderivative{E_x}{y}\bigg)\hatz
+    \end{align*}
+    So we see that $\partial^y E_x - \partial^x E_y$ is the negative $z$
+    component of $\curl \vec{E}$.
+    Therefore with these indexes, we get the $z$ component of Faraday's law
+    as shown.
+\cleardoublepage
+    Let now $\alpha = x$, $\mu = y$ and $\nu = z$
+    \begin{align*}
+        \partial^x F^{yz} + \partial^z F^{xy} + \partial^y F^{zx} &= 0\\
+        \partial^x B_x + \partial^z B_z + \partial^y B_y &= 0\\
+        \partialderivative{B_x}{x} + \partialderivative{B_y}{y}
+        + \partialderivative{B_z}{z}&= 0
+    \end{align*}
+    Therefore we see that this is $\div \vec{B} = 0$ i.e. Gauss's law for
+    the magnetic field.
+
+    Finally for $\alpha = y$, $\mu = z$ and $\nu = t$ we get that
+    \begin{align*}
+        \partial^y F^{zt} + \partial^t F^{yz} + \partial^z F^{ty} &= 0\\
+        -\partial^y E_z + \partial^t B_x + \partial^z E_y &= 0\\
+        - \partialderivative{B_x}{t}
+        + \partialderivative{E_y}{z}
+        - \partialderivative{E_z}{y} &= 0\\
+        \partialderivative{B_x}{t}
+        + \partialderivative{E_z}{y}
+        - \partialderivative{E_y}{z} &= 0
+    \end{align*}
+    Where we see that $\partial^t B_x$ is the negative $x$ component of
+    $\partial \vec{B} / \partial t$ and $\partial^z E_y - \partial^y E_z$
+    is the negative $x$ component of $\curl \vec{E}$.
+
+    Therefore we get the $x$ component of Faraday's law with these indexes.
+\end{itemize}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P7.3}}
+\begin{itemize}
+    \item [\textbf{a.}] Equation (7.5) states the following
+    \begin{align*}
+        \partial_\nu F^{\mu\nu} = 4\pi k J^\mu
+    \end{align*}
+    So since $F^{\mu\nu} = \partial^\mu A^\nu - \partial^\nu A^\mu$ we have
+    that
+    \begin{align*}
+        \partial_\nu (\partial^\mu A^\nu - \partial^\nu A^\mu) = 4\pi k J^\mu
+    \end{align*}
+
+    \item [\textbf{b.}] Let $A^\mu_{\text{new}} = A^\mu + \partial^\mu\Lambda$
+    be a new four-potential then the equation (7.5) becomes
+    \begin{align*}
+        \partial_\nu (\partial^\mu A^\nu_{\text{new}} - \partial^\nu A^\mu_{\text{new}})
+        &= 4\pi k J^\mu\\
+        \partial_\nu (\partial^\mu (A^\nu + \partial^\nu\Lambda)
+         - \partial^\nu (A^\mu + \partial^\mu \Lambda))
+        &= 4\pi k J^\mu\\
+        \partial_\nu (\partial^\mu A^\nu + \partial^\mu\partial^\nu\Lambda
+         - \partial^\nu A^\mu - \partial^\mu\partial^\nu \Lambda)
+        &= 4\pi k J^\mu\\
+        \partial_\nu (\partial^\mu A^\nu - \partial^\nu A^\mu)
+        &= 4\pi k J^\mu
+    \end{align*}
+    Where we used the fact that the order in which we apply the partial
+    derivatives don't matter.
+    Therefore we get the equation (7.5) in its original.
+
+    \item [\textbf{c.}] Let $A^\mu$ now be a four-potential such that
+    $\partial_\mu A^\mu = 0$ then the equation (7.5) becomes
+    \begin{align*}
+        \partial_\nu (\partial^\mu A^\nu - \partial^\nu A^\mu) &= 4\pi k J^\mu\\
+        \partial^\mu \partial_\nu A^\nu - \partial_\nu \partial^\nu A^\mu &= 4\pi k J^\mu\\
+        - \partial_\nu \partial^\nu A^\mu &= 4\pi k J^\mu\\
+        \partial_\nu \partial^\nu A^\mu &= -4\pi k J^\mu
+    \end{align*}
+\end{itemize}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P7.5}}
+    We know from equation (7.7) that
+    \begin{align*}
+        \derivative{p^\mu}{\tau} = qF^{\mu\nu}u_\nu
+    \end{align*}
+    So for example for $\mu = x$ we have that
+    \begin{align*}
+        \derivative{p^x}{\tau} &= qF^{x\nu}u_\nu\\
+        \derivative{p^x}{\tau} &=
+        q(F^{xt}u_t + F^{xx}u_x + F^{xy}u_y + F^{xz}u_z)\\
+        \derivative{p^x}{\tau} &= q(-E_xu_t + B_zu_y - B_yu_z)\\
+        \derivative{p^x}{\tau} &= q(E_xu^t + B_zu^y - B_yu^z)
+    \end{align*}
+    But since the particle is moving relativistically we have that
+    \begin{align*}
+        \derivative{p^x}{\tau} &=
+        q\bigg(\frac{E_x}{\sqrt{1 - v^2}} + B_z\frac{v_y}{\sqrt{1 - v^2}}
+        - B_y\frac{v_z}{\sqrt{1 - v^2}}\bigg)
+    \end{align*}
+    And mutiplying the equation by $d\tau/dt$ we get that
+    \begin{align*}
+        \derivative{\tau}{t}\derivative{p^x}{\tau} &=
+        q\bigg(\frac{E_x}{\sqrt{1 - v^2}} + B_z\frac{v_y}{\sqrt{1 - v^2}}
+        - B_y\frac{v_z}{\sqrt{1 - v^2}}\bigg)\derivative{\tau}{t}\\
+        \derivative{p^x}{t} &=
+        q\bigg(\frac{E_x}{\sqrt{1 - v^2}} + B_z\frac{v_y}{\sqrt{1 - v^2}}
+        - B_y\frac{v_z}{\sqrt{1 - v^2}}\bigg)\derivative{t\sqrt{1 - v^2}}{t}\\
+        \derivative{p^x}{t} &= q(E_x + B_z v_y - B_y v_z)
+    \end{align*}
+    Which is the $x$ component of the Lorentz force equation in the reference
+    frame where $t, \vec{v}, \vec{E}$ and $\vec{B}$ are measured.
+
+    In the same way, for $\mu = y$ we have that
+    \begin{align*}
+        \derivative{p^y}{\tau} &= qF^{y\nu}u_\nu\\
+        \derivative{p^y}{\tau} &=
+        q(F^{yt}u_t + F^{yx}u_x + F^{yy}u_y + F^{yz}u_z)\\
+        \derivative{p^y}{\tau} &= q(-E_yu_t - B_zu_x + B_xu_z)\\
+        \derivative{p^y}{\tau} &= q(E_yu^t + B_xu^z - B_zu^x)\\
+        \derivative{\tau}{t}\derivative{p^y}{\tau} &=
+        q\bigg(\frac{E_y}{\sqrt{1 - v^2}} + B_x\frac{v_z}{\sqrt{1 - v^2}}
+        - B_z\frac{v_x}{\sqrt{1 - v^2}}\bigg)\derivative{\tau}{t}\\
+        \derivative{p^y}{t} &= q(E_y + B_x v_z - B_z v_x)
+    \end{align*}
+    And finally, for $\mu = z$ we have that
+    \begin{align*}
+        \derivative{p^z}{\tau} &= qF^{z\nu}u_\nu\\
+        \derivative{p^z}{\tau} &=
+        q(F^{zt}u_t + F^{zx}u_x + F^{zy}u_y + F^{zz}u_z)\\
+        \derivative{p^z}{\tau} &= q(-E_zu_t + B_yu_x - B_xu_y)\\
+        \derivative{p^z}{\tau} &= q(E_zu^t + B_yu^x - B_xu^y)\\
+        \derivative{\tau}{t}\derivative{p^z}{\tau} &=
+        q\bigg(\frac{E_z}{\sqrt{1 - v^2}} + B_y\frac{v_x}{\sqrt{1 - v^2}}
+        - B_x\frac{v_y}{\sqrt{1 - v^2}}\bigg)\derivative{\tau}{t}\\
+        \derivative{p^z}{t} &= q(E_z + B_y v_x - B_x v_y)
+    \end{align*}
+    Which are the $y$ and $z$ components of the Lorentz force equation.
+    Therefore the Lorentz force equation is correct even in the relativistic
+    limit.
+\end{proof}
+\end{document}
