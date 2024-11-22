@@ -1,0 +1,381 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{physics,amsmath}
+\usepackage{bm}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[mathscr]{euscript}
+
+
+\title{\textbf{Solved selected problems of General Relativity - Thomas A. Moore}}
+\author{Franco Zacco}
+\date{}
+
+\addtolength{\topmargin}{-3cm}
+\addtolength{\textheight}{3cm}
+
+\newcommand{\hatr}{\bm{\hat{r}}}
+\newcommand{\hatn}{\bm{\hat{n}}}
+\newcommand{\hatx}{\bm{\hat{x}}}
+\newcommand{\haty}{\bm{\hat{y}}}
+\newcommand{\hatz}{\bm{\hat{z}}}
+\newcommand{\hatth}{\bm{\hat{\theta}}}
+\newcommand{\hatphi}{\bm{\hat{\phi}}}
+\newcommand{\hatrho}{\bm{\hat{\rho}}}
+\newcommand{\er}{\bm{e}_r}
+\newcommand{\etht}{\bm{e}_\theta}
+
+\theoremstyle{definition}
+\newtheorem*{solution*}{Solution}
+\renewcommand*{\proofname}{Solution}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{Chapter 9 - The Schwarzschild Metric}
+
+\begin{proof}{\textbf{BOX 9.1} - Exercise 9.1.1.}
+    Applying the  binomial approximation to the integral
+    \begin{align*}
+        \Delta s = \int_{r_A}^{r_B} \frac{dr}{\sqrt{1 - 2GM/r}}
+    \end{align*}
+    We get that
+    \begin{align*}
+        \Delta s \approx \int_{r_A}^{r_B} (1 + GM/r)~dr
+    \end{align*}
+    Therefore
+    \begin{align*}
+        \Delta s \approx \bigg[r + GM\ln(r)\bigg]_{r_A}^{r_B}
+        = (r_B - r_A) + GM\ln(\frac{r_B}{r_A})
+    \end{align*}
+    if $2GM \ll r$.
+\end{proof}
+\begin{proof}{\textbf{BOX 9.1} - Exercise 9.1.2.}
+    For every point above the surface of the earth we get that
+    $r \approx 6380~km$ and $GM = 4.44~mm$ then we have that $2GM \ll r$
+    so we can apply the approximation.
+    Therefore the extra distance beyond 100 km is 
+    \begin{align*}
+        \Delta s &= (6480 - 6380) + 4.44 \times 10^{-6} \ln(\frac{6480}{6380})\\
+            &= 100 + (  (4.44 \times 10^{-6})\cdot 0.015552)\\
+            &= 100.00000006905272~km
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{BOX 9.2} - Exercise 9.2.1.}
+    From the tensor equation $\bm{u}\cdot\bm{u} = u^\mu g_{\mu\nu} u^{\nu} = -1$
+    assuming that the spatial components of $u^{\mu}$ are all zero we have that
+    \begin{align*}
+        u^tg_{tt}u^t &= -1\\
+        \bigg(1 - \frac{r_s}{r}\bigg) (u^t)^2 &= 1\\
+        (u^t)^2 &= \frac{1}{1 - 2GM/r}\\
+        u^t &= \sqrt{\frac{1}{1 - 2GM/r}}\\
+        u^t &= \bigg(1 - \frac{2GM}{r}\bigg)^{-1/2}
+    \end{align*}
+\end{proof}
+\begin{proof}{\textbf{BOX 9.2} - Exercise 9.2.2.}
+    We know that the geodesic equation for $\gamma = r$ is
+    \begin{align*}
+        \derivative[2]{r}{\tau}
+        &= -g^{r\alpha}(\partial_\nu g_{\alpha\mu}
+        - \frac{1}{2}\partial_\alpha g_{\mu\nu}) u^\mu u^\nu
+    \end{align*}
+    but we know that the only nonzero terms in the implicit sums for $\mu$ and
+    $\nu$ are the $t$ components so
+    \begin{align*}
+        \derivative[2]{r}{\tau}
+        &= -g^{r\alpha}(\partial_t g_{\alpha t}
+        - \frac{1}{2}\partial_\alpha g_{tt}) (u^t)^2
+    \end{align*}
+    Also, no element of the metric depends on $t$ so the derivatives with
+    respect to $t$ are zero
+    \begin{align*}
+        \derivative[2]{r}{\tau}
+        &= \frac{1}{2}g^{r\alpha} \partial_\alpha g_{tt} (u^t)^2
+    \end{align*}
+    Finally, the $g_{tt}$ component only depends on the $r$ component so
+    the derivatives with respect to $\theta$, $\phi$ and $t$ are zero, hence
+    \begin{align*}
+        \derivative[2]{r}{\tau}
+        &= \frac{1}{2}g^{rr} \partial_r g_{tt} (u^t)^2\\
+        &= \frac{1}{2}\frac{1}{g_{rr}} \partial_r g_{tt} (u^t)^2\\
+        &= \frac{1}{2}\frac{1}{(1 - r_s/r)^{-1}} \bigg(-\frac{r_s}{r^2}\bigg)
+        (1 - r_s/r)^{-1}\\
+        &= -\frac{1}{2} \frac{2GM}{r^2}
+    \end{align*}
+    Where we used that $r_s = 2GM$ and $(u^t)^2 = (1 - r_s/r)^{-1}$. Therefore
+    \begin{align*}
+        \derivative[2]{r}{\tau} = -\frac{GM}{r^2}
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{BOX 9.3} - Exercise 9.3.1.}\\
+    Given that $G = 7.426 \times 10^{-28}~m/kg$ we have for the earth that
+    \begin{align*}
+        GM_{earth} = 7.426 \times 10^{-28}~m/kg \cdot 5.97 \times 10^{24}~kg
+        = 0.00443~m = 4.43~mm
+    \end{align*}
+    and for the sun
+    \begin{align*}
+        GM_{sun} = 7.426 \times 10^{-28}~m/kg \cdot 1.988 \times 10^{30}~kg
+        = 1476.28~m
+    \end{align*}
+\end{proof}
+\begin{proof}{\textbf{BOX 9.4} - Exercise 9.4.1.}\\
+    After the approximations we know that
+    \begin{align*}
+        \frac{\lambda_R}{\lambda_E}
+        = 1 + \frac{GM}{r_E}\bigg(1 - \frac{1}{1 + h/r_E}\bigg)
+        = 1 + \frac{GM}{r_E}\bigg(1 - \bigg(1 + \frac{h}{r_E}\bigg)^{-1}\bigg)
+    \end{align*}
+    If we assume that $h \ll r_E$ we can apply the binomial approximation
+    as follows
+    \begin{align*}
+        \frac{\lambda_R}{\lambda_E}
+        &= 1 + \frac{GM}{r_E}\bigg(1 - \bigg(1 - \frac{h}{r_E}\bigg)\bigg)\\
+        &= 1 + \frac{GM}{r_E} \frac{h}{r_E}\\
+        &= 1 + \frac{GM}{r_E^2}h\\
+        &= 1 + gh
+    \end{align*}
+    Where $g = GM/r_E^2$.
+\end{proof}
+\begin{proof}{\textbf{BOX 9.4} - Exercise 9.4.2.}\\
+    Knowing that $u^t_R \approx 1$, $u^x_R = u^y_R = 0$ and $u^z_R \approx v \approx gh$
+    but also that $p^t = E_E$, $p^x = p^y = 0$ and $p^z = E_E$, we get by
+    using the equation $E_R = -\bm{p}\cdot\bm{u}_R$ that
+    \begin{align*}
+        E_R = -\bm{p}\cdot\bm{u}_R
+        &= -(-E_E\cdot 1 + 0 + 0 + E_E \cdot gh)\\
+        &= E_E - E_E \cdot gh\\
+        &= E_E(1 - gh)
+    \end{align*}
+    Hence
+    \begin{align*}
+        \frac{\lambda_R}{\lambda_E} = \frac{E_E}{E_R} = \frac{1}{1 - gh}
+        = (1 - gh)^{-1}
+    \end{align*}
+    And by the binomial approximation we get that
+    \begin{align*}
+        \frac{\lambda_R}{\lambda_E} = 1 + gh
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P9.1}}
+\begin{itemize}
+    \item [a.]
+    In this case, we have that
+    \begin{align*}
+        g = \frac{GM}{R_S^2}
+        = \frac{7.426 \times 10^{-31} \cdot 3 \times 10^{30}}{12^2}
+        = 0.01547~km^{-1}
+    \end{align*}
+    Then the fractional redshift using the approximate method is
+    \begin{align*}
+        \frac{\lambda_R - \lambda_E}{\lambda_E}
+        = \frac{\lambda_R}{\lambda_E} - 1
+        = gh
+    \end{align*}
+    Where $h = R_R - R_S = 5~km$ then
+    \begin{align*}
+        \frac{\lambda_R - \lambda_E}{\lambda_E} = 0.01547~km^{-1} \cdot 5~km
+        = 0.07735
+    \end{align*}
+    If we evaluate $g$ halfway between the surface and the spaceship we get
+    that
+    \begin{align*}
+        g = \frac{7.426 \times 10^{-28} \cdot 3 \times 10^{30}}{14.5^2}
+        = 0.01059~km^{-1}
+    \end{align*}
+    And hence
+    \begin{align*}
+        \frac{\lambda_R - \lambda_E}{\lambda_E} = 0.01059~km^{-1} \cdot 5~km
+        = 0.05295
+    \end{align*}
+
+    \item [b.] The fractional redshift using the exact formula gives us
+    \begin{align*}
+        \frac{\lambda_R - \lambda_E}{\lambda_E}
+        = \frac{\lambda_R}{\lambda_E} - 1
+        = \sqrt{\frac{1- 2GM/R_R}{1- 2GM/R_S}} - 1
+    \end{align*}
+    Hence
+    \begin{align*}
+        \frac{\lambda_R - \lambda_E}{\lambda_E}
+        = \sqrt{\frac{1- (2\cdot 2.2278/17)}{1- (2\cdot 2.2278/12)}} - 1
+        = 0.08337
+    \end{align*}
+\end{itemize}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P9.3}}
+    Let us consider a sphere of radius $R$ then the spherical metric states
+    that
+    \begin{align*}
+        ds^2 = R^2d\theta^2 + R^2\sin^2\theta d\phi^2
+    \end{align*}
+    Let us consider a point on the sphere of fixed latitude angle $\theta$
+    if we use latitude-longitude coordinates for the sphere.
+    Then the length of a differential step from the north pole
+    in the direction of $\theta$ following the surface of the sphere
+    ($d\phi = 0$) is
+    \begin{align*}
+        ds = Rd\theta
+    \end{align*}
+    and hence by integration between $0$ and $\theta$ we get that the radial
+    distance along the surface of a sphere is $R\theta$.
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P9.4}}
+    We know the total radial distance between two points with $r$ coordinates
+    $r_A$ and $r_B$ is 
+    \begin{align*}
+        \Delta s = \int_{r_A}^{r_B} \frac{dr}{\sqrt{1 - 2GM/r}}
+    \end{align*}
+    Let $u = 2GM/r$ then $du = -2GM dr/r^2$ and hence $dr = -2GM du/u^2$
+    the integral then becomes
+    \begin{align*}
+        \Delta s &= -2GM\int_{u_A}^{u_B} \frac{du}{u^2\sqrt{1 - u}}\\
+            &= 2GM\bigg[\frac{\sqrt{1-u}}{u} + \arctan(\sqrt{1-u})\bigg]_{u_A}^{u_B}\\
+            &= 2GM\bigg[\frac{\sqrt{1-2GM/r}}{2GM/r}
+            + \arctan(\sqrt{1-\frac{2GM}{r}})\bigg]_{r_A}^{r_B}\\
+            &= \bigg[r\sqrt{1-\frac{2GM}{r}}
+            + 2GM\arctan(\sqrt{1-\frac{2GM}{r}})\bigg]_{r_A}^{r_B}\\
+        \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P9.5}}
+    Given that the inner shell has a circumference of $6\pi GM$ and the outer
+    shell has a circumference of $20\pi GM$ then the radial coordinate
+    for each of them are $r_i = 6\pi GM/2\pi = 3GM$ and
+    $r_o = 20\pi GM / 2\pi = 10GM$.
+
+    Also, we know from problem P9.4 that the physical distance between the two
+    shells with $r$ coordinates $r_i$ and $r_o$ is 
+    \begin{align*}
+        \Delta s
+        &= \bigg[r\sqrt{1-\frac{2GM}{r}}
+        + 2GM\arctan(\sqrt{1-\frac{2GM}{r}})\bigg]_{r_i}^{r_o}
+    \end{align*}
+    Hence
+    \begin{align*}
+        \Delta s
+        &= \bigg[
+        10GM\sqrt{1-\frac{2}{10}}
+        + 2GM\arctan(\sqrt{1-\frac{2}{10}})\\
+        &\quad
+        -3GM\sqrt{1-\frac{2}{3}}
+        - 2GM\arctan(\sqrt{1-\frac{2}{3}})
+        \bigg]\\
+        &= \bigg[\frac{20GM}{\sqrt{5}} + 2GM\arctan(\frac{2}{\sqrt{5}})
+        -\frac{3GM}{\sqrt{3}} - 2GM\frac{\pi}{6}\bigg]\\
+        &= GM\bigg[4\sqrt{5} + 2\arctan(\frac{2}{\sqrt{5}})
+        -\sqrt{3} - \frac{\pi}{3}\bigg]\\
+        &= 7.624~GM
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P9.6}}
+    From equation 9.20 which applies to the observer we know that
+    \begin{align*}
+        u^{t} = \bigg(1 - \frac{2GM}{R}\bigg)^{-1/2}
+    \end{align*}
+    And since the observer is stationary we know that
+    $u^r = u^\theta = u^\phi = 0$.
+    Also, we know that $-\bm{p}\cdot \bm{u}_{obs} = E$ where $E$ is the energy
+    measured in the observer's frame, hence
+    \begin{align*}
+        -(g_{tt}u^{t}p^{t} + g_{rr}\cdot 0\cdot p^r
+        + g_{\theta\theta}\cdot0\cdot p^\theta
+        + g_{\phi\phi}\cdot0\cdot p^\phi) &= E\\
+        \bigg(1-\frac{2GM}{R}\bigg)u^{t}p^{t} &= E\\
+        \bigg(1-\frac{2GM}{R}\bigg)\bigg(1 - \frac{2GM}{R}\bigg)^{-1/2}p^t &= E\\
+        p^t &= E\bigg(1 - \frac{2GM}{R}\bigg)^{-1/2}
+    \end{align*}
+    On the other hand, for a photon we have that
+    $\bm{p}\cdot\bm{p} = 0$ and in this case $p^\theta = p^\phi = 0$ because
+    the photon moves radially then
+    \begin{align*}
+        -\bigg(1-\frac{2GM}{R}\bigg)(p^t)^2
+        + \bigg(1-\frac{2GM}{R}\bigg)^{-1}(p^r)^2
+        + r^2(p^\theta)^2
+        + r^2\sin^2\theta(p^\phi)^2 &= 0\\
+        -E^2\bigg(1 - \frac{2GM}{R}\bigg)\bigg(1-\frac{2GM}{R}\bigg)
+        + \bigg(1-\frac{2GM}{R}\bigg)^{-1}(p^r)^2 &= 0
+    \end{align*}
+    Hence
+    \begin{align*}
+        \bigg(1-\frac{2GM}{R}\bigg)^{-1}(p^r)^2 &= 
+        E^2\bigg(1 - \frac{2GM}{R}\bigg)^2\\
+        p^r &= E\bigg(1 - \frac{2GM}{R}\bigg)^{1/2}
+    \end{align*}
+    Therefore the four momentum for the photon is
+    \begin{align*}
+        \bm{p} = \begin{bmatrix}
+            E\bigg(1 - \frac{2GM}{R}\bigg)^{-1/2}\\
+            E\bigg(1 - \frac{2GM}{R}\bigg)^{1/2}\\ 0\\ 0
+        \end{bmatrix}
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P9.7}}
+\begin{itemize}
+    \item [\textbf{a.}] Consider a clock at rest at a given $r$ coordinate
+    ($dr = d\theta = d\phi = 0$). According to the metric the proper time
+    $\Delta \tau$ that this clock measures between two events at its location
+    is related to the coordinate difference $\Delta t$ between those events
+    as follows
+    \begin{align*}
+        \Delta \tau &= \int d\tau = \int \sqrt{-ds^2}
+        = \int \sqrt{dt^2 + 0 + 0 + 0}
+        = \Delta t 
+    \end{align*}
+    We see that the clock's proper time between the events agrees with the $t$
+    coordinate difference between those events.
+    So the $t$ coordinate registers the same time a clock at rest registers at
+    any point.
+
+    \item [\textbf{b.}] Yes, this metric describes a spherically symmetric
+    spacetime since the spatial part of the metric only depends on the
+    coordinate $r$, not on $\theta$ or $\phi$.
+    
+    \item [\textbf{c.}]
+    Let us consider a radial line i.e. a line made up of steps where
+    $dt = d\theta = d\phi = 0$ then we get that
+    \begin{align*}
+        ds^2 &= 0 + dr^2 + 0 + 0\\
+        ds &= dr
+    \end{align*}
+    So by integration we see that in this case the $r$ coordinate is equivalent
+    to the radial distance to the origin and hence the $r$ coordinate is a
+    radial coordinate.
+
+    Let us consider now a circle of constant $r$
+    (meaning that $dr = 0$ for all steps around the circle) in the equatorial
+    plane ($\theta = \pi/2$, so $\sin\theta = 1$, and $d\theta = 0$)
+    at an instant of time (meaning that $dt = 0$ for all events on the circle).
+    The physical distance around this circle is given by integration of
+    \begin{align*}
+        ds^2 &= 0 + 0 + 0 + R^2\sinh^2(r/R)d\phi^2\\
+        ds &= R\sinh(r/R)d\phi
+    \end{align*}
+    Hence
+    \begin{align*}
+        C = \int ds = R\sinh(r/R)\int_0^{2\pi}d\phi
+        = 2\pi R\sinh(r/R)
+    \end{align*}
+    Where $C$ is the circumference of this circle.
+
+    Therefore the circumference will be bigger than $2\pi r$
+    since $R\sinh(r/R)$ is bigger than $r$.
+
+    \item [\textbf{d.}] This coordinate system doesn't have off-diagonal terms
+    in metric tensor this imply that the basis vectors are orthogonal.
+\end{itemize}
+\end{proof}
+
+\end{document}
