@@ -1,0 +1,957 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{physics,amsmath}
+\usepackage{bm}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[mathscr]{euscript}
+
+
+\title{\textbf{Solved selected problems of General Relativity - Thomas A. Moore}}
+\author{Franco Zacco}
+\date{}
+
+\addtolength{\topmargin}{-3cm}
+\addtolength{\textheight}{3cm}
+
+\newcommand{\hatr}{\bm{\hat{r}}}
+\newcommand{\hatn}{\bm{\hat{n}}}
+\newcommand{\hatx}{\bm{\hat{x}}}
+\newcommand{\haty}{\bm{\hat{y}}}
+\newcommand{\hatz}{\bm{\hat{z}}}
+\newcommand{\hatth}{\bm{\hat{\theta}}}
+\newcommand{\hatphi}{\bm{\hat{\phi}}}
+\newcommand{\hatrho}{\bm{\hat{\rho}}}
+\newcommand{\er}{\bm{e}_r}
+\newcommand{\etht}{\bm{e}_\theta}
+
+\theoremstyle{definition}
+\newtheorem*{solution*}{Solution}
+\renewcommand*{\proofname}{Solution}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{Chapter 10 - Particle Orbits}
+
+\begin{proof}{\textbf{BOX 10.1} - Exercise 10.1.1.}
+    The $\mu = \theta$ component of the geodesic equation is
+    \begin{align*}
+        0 = \dv{\tau}(g_{\theta\nu}\dv{x^\nu}{\tau})
+        - \frac{1}{2}\partial_\theta g_{\alpha\beta}
+        \dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}
+    \end{align*}
+    Given that the only non-zero component of $g_{\theta\nu}$ is
+    $g_{\theta\theta}$ and that the only $\theta$-dependent component is
+    $g_{\phi\phi}$ we have theta
+    \begin{align*}
+        0 = \dv{\tau}(g_{\theta\theta}\dv{\theta}{\tau})
+        - \frac{1}{2}\partial_\theta g_{\phi\phi}
+        \dv{\phi}{\tau}\dv{\phi}{\tau}
+    \end{align*}
+    Hence
+    \begin{align*}
+        0 &= \dv{\tau}(r^2\dv{\theta}{\tau})
+        - r^2\sin\theta\cos\theta \bigg(\dv{\phi}{\tau}\bigg)^2\\
+        0 &= r^2\bigg(\dv{\theta}{\tau}\bigg)^2
+        + 2r\dv{r}{\tau}\dv{\theta}{\tau}
+        - r^2\sin\theta\cos\theta \bigg(\dv{\phi}{\tau}\bigg)^2
+    \end{align*}
+    Finally if $\theta = \pi/2$ then $\dv[2]{\theta}{\tau} = 0$,
+    $\dv{\theta}{\tau} = 0$ and $\cos\theta = 0$ therefore $\theta = \pi/2$
+    is a solution to the equation.
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{BOX 10.2} - Exercise 10.2.1.}
+    We want to verify equation (10.22) using that
+    \begin{align*}
+        \bigg(1 - \frac{2GM}{r}\bigg)\dv{t}{\tau} = e
+        \qquad r^2\sin^2\theta\dv{\phi}{\tau} = l
+    \end{align*}
+    Hence considering orbits in the equatorial plane $\theta = \pi/2$ we get
+    that
+    \begin{align*}
+        -1 &= g_{tt}\left(\dv{t}{\tau}\right)^2 + g_{rr}\left(\dv{r}{\tau}\right)^2
+        + g_{\theta\theta}\left(\dv{\theta}{\tau}\right)^2
+        + g_{\phi\phi}\left(\dv{\phi}{\tau}\right)^2\\
+        -1 &= -\bigg(1 - \frac{2GM}{r}\bigg)\left(\dv{t}{\tau}\right)^2
+        + \bigg(1 - \frac{2GM}{r}\bigg)^{-1}\left(\dv{r}{\tau}\right)^2
+        + r^2\left(\dv{\phi}{\tau}\right)^2\\
+        1 &= \bigg(1 - \frac{2GM}{r}\bigg)^{-1}e^2
+        - \bigg(1 - \frac{2GM}{r}\bigg)^{-1}\left(\dv{r}{\tau}\right)^2
+        - \frac{l^2}{r^2}
+    \end{align*}
+    Where we used that $d\theta/d\tau = 0$.
+\end{proof}
+\begin{proof}{\textbf{BOX 10.2} - Exercise 10.2.2.}
+    From the equation
+    \begin{align*}
+        1 &= \bigg(1 - \frac{2GM}{r}\bigg)^{-1}e^2
+        - \bigg(1 - \frac{2GM}{r}\bigg)^{-1}\left(\dv{r}{\tau}\right)^2
+        - \frac{l^2}{r^2}
+    \end{align*}
+    We obtain equation (10.8) as follows
+    \begin{align*}
+        1 &= \bigg(1 - \frac{2GM}{r}\bigg)^{-1}e^2
+        - \bigg(1 - \frac{2GM}{r}\bigg)^{-1}\left(\dv{r}{\tau}\right)^2
+        - \frac{l^2}{r^2}\\
+        \bigg(1 - \frac{2GM}{r}\bigg) &= e^2
+        - \left(\dv{r}{\tau}\right)^2
+        - \bigg(1 - \frac{2GM}{r}\bigg)\frac{l^2}{r^2}\\
+        1 - e^2 &= \frac{2GM}{r}
+        - \left(\dv{r}{\tau}\right)^2
+        - \frac{l^2}{r^2} + \frac{2GMl^2}{r^3}\\
+        \frac{1}{2}(e^2 - 1) &=
+        \frac{1}{2}\left(\dv{r}{\tau}\right)^2
+        - \frac{GM}{r}
+        + \frac{l^2}{2r^2} - \frac{GMl^2}{r^3}
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{BOX 10.3} - Exercise 10.3.1.}
+    Newtonian Energy is defined as
+    \begin{align*}
+        E = \frac{1}{2}m\left[\left(\dv{r}{t}\right)^2 + r^2\left(\dv{\phi}{t}\right)^2\right]
+        - \frac{GMm}{r}
+    \end{align*}
+    So dividing the equation by $m$ and defining $\tilde{E}_N = E/m$ we get
+    that
+    \begin{align*}
+        \tilde{E}_N = \frac{1}{2}
+        \left[\left(\dv{r}{t}\right)^2 + r^2\left(\dv{\phi}{t}\right)^2\right]
+        - \frac{GM}{r}
+    \end{align*}
+    Also, using $l = r^2 d\phi/dt$ then $r^2(d\phi/dt)^2 = l^2/r^2$ hence
+    \begin{align*}
+        \tilde{E}_N = \frac{1}{2}\left(\dv{r}{t}\right)^2 + \frac{l^2}{2r^2}
+        - \frac{GM}{r}
+    \end{align*}
+    Finally defining
+    \begin{align*}
+        \tilde{V}_N(r) = \frac{l^2}{2r^2} - \frac{GM}{r}
+    \end{align*}
+    We get that
+    \begin{align*}
+        \tilde{E}_N = \frac{1}{2}\left(\dv{r}{t}\right)^2 + \tilde{V}_N(r)
+    \end{align*}
+    Which is equation (10.10).
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{BOX 10.4} - Exercise 10.4.1}\\
+    Equation (10.9) states that
+   \begin{align*}
+        \tilde{V}(r) = -\frac{GM}{r} + \frac{l^2}{2r^2} - \frac{GMl^2}{r^3} 
+   \end{align*}
+   Hence derivating with respect to $r$ and setting it equal to zero gives us
+   \begin{align*}
+    0 = \frac{GM}{r^2} - \frac{l^2}{r^3} + \frac{3GMl^2}{r^4} 
+    \end{align*}
+\end{proof}
+\begin{proof}{\textbf{BOX 10.4} - Exercise 10.4.2}\\
+    Let $u_c = 1/r_c$ then equation (10.26) becomes
+    \begin{align*}
+        0 &= u_c^2GM - u_c^3l^2 + 3u_c^4GMl^2\\
+        0 &= GM - u_cl^2 + 3u_c^2GMl^2
+    \end{align*}
+    Where we divided by $u_c^2$. Then solving this quadratic equation we get
+    that
+    \begin{align*}
+        u_c &= \frac{l^2 \pm \sqrt{l^4 - 12(GMl)^2}}{6GMl^2}\\
+        u_c &= \frac{1 \pm \sqrt{1 - 12(GM/l)^2}}{6GM}
+    \end{align*}
+    Now we replace $u_c = 1/r_c$ again and we solve for $r_c$ as follows
+    \begin{align*}
+        \frac{1}{r_c} &= \frac{1 \pm \sqrt{1 - 12(GM/l)^2}}{6GM}\\
+        r_c &= \frac{6GM}{1 \pm \sqrt{1 - 12(GM/l)^2}}
+    \end{align*}
+\end{proof}
+\begin{proof}{\textbf{BOX 10.4} - Exercise 10.4.3}\\
+    We know that the square root must be real so we can get the smallest
+    value $l$ can have from there, hence
+    \begin{align*}
+        1 - 12\left(\frac{GM}{l}\right)^2 &\geq 0\\
+        \left(\frac{GM}{l}\right)^2 &\leq \frac{1}{12}\\
+        \left(\frac{1}{l^2}\right) &\leq \frac{1}{12(GM)^2}\\
+        l^2 &\geq 12(GM)^2\\
+        l &\geq \sqrt{12}GM
+    \end{align*}
+    Therefore the smallest value $l$ can have is $\sqrt{12}GM$.
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{BOX 10.5} - Exercise 10.5.1}
+    We know that
+    \begin{align*}
+        0 &= \dv{\tau}(g_{rr}\dv{r}{\tau})
+        - \frac{1}{2}\pdv{g_{\alpha\beta}}{r}\dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}\\
+        0 &= \dv{\tau}(g_{rr}\dv{r}{\tau}) - \frac{1}{2}\left(
+            \pdv{g_{tt}}{r}\dv{t}{\tau}\dv{t}{\tau}
+            + \pdv{g_{rr}}{r}\dv{r}{\tau}\dv{r}{\tau}
+            + \pdv{g_{\theta}}{r}\dv{\theta}{\tau}\dv{\theta}{\tau}
+            + \pdv{g_{\phi}}{r}\dv{\phi}{\tau}\dv{\phi}{\tau}
+        \right)
+    \end{align*}
+    If we let $dr/d\tau = 0$ and $d\theta/d\tau = 0$ we get that
+    \begin{align*}
+        0 &= - \frac{1}{2}\left(
+            \pdv{g_{tt}}{r}\dv{t}{\tau}\dv{t}{\tau}
+            + \pdv{g_{\phi}}{r}\dv{\phi}{\tau}\dv{\phi}{\tau}
+        \right)\\
+        0 &= \pdv{g_{tt}}{r}\left(\dv{t}{\tau}\right)^2
+        + \pdv{g_{\phi}}{r}\left(\dv{\phi}{\tau}\right)^2
+    \end{align*}
+    Which is the equation we were looking for.
+\end{proof}
+\begin{proof}{\textbf{BOX 10.5} - Exercise 10.5.2}
+    We know that 
+    \begin{align*}
+        0 &= \pdv{g_{tt}}{r} + \pdv{g_{\phi\phi}}{r}\Omega^2
+    \end{align*}
+    Replacing the values of $g_{tt}$, $g_{\phi\phi}$ and considering
+    that $\theta =\pi/2$ we get that
+    \begin{align*}
+        0 &= -\pdv{r}(1-\frac{2GM}{r}) + \pdv{r}(r^2)\Omega^2\\
+        0 &= -\frac{2GM}{r^2} + 2r\Omega^2\\
+        \Omega^2 &= \frac{GM}{r^3}
+    \end{align*}
+    Finally since $T = |2\pi/\Omega|$ we have that
+    \begin{align*}
+        T^2 = \frac{4\pi^2}{\Omega^2} &= \frac{4\pi^2}{\frac{GM}{r^3}}
+        = \frac{4\pi^2}{GM}r^3
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{BOX 10.6} - Exercise 10.6.1}\\
+    Setting the first expression equal to 0 and multiplying by $2/r$ we get
+    that
+    \begin{align*}
+        0 &= \frac{2GM}{r^3} - \frac{2l^2}{r^4} + \frac{6GMl^2}{r^5}
+    \end{align*}
+    Now we add it the the second expression to get
+    \begin{align*}
+        \dv[2]{\tilde{V}}{r}
+        &= \frac{l^2}{r^4} - \frac{6GMl^2}{r^5}
+    \end{align*}
+    But we know that $\dv[2]{\tilde{V}}{r} > 0$ hence
+    \begin{align*}
+        \frac{l^2}{r^4} - \frac{6GMl^2}{r^5} &> 0\\
+        l^2 &> \frac{6GMl^2}{r}\\
+        r &>\frac{6GMl^2}{l^2}
+    \end{align*}
+    Therefore the minima can only exist for $r > 6GM$.
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{BOX 10.7} - Exercise 10.7.1}\\
+    Let $l/GM = \sqrt{12}$, $r = 6GM$ and $dr/d\tau = 0$ then from equation 
+    10.8 we have that
+    \begin{align*}
+        \frac{1}{2}(e^2 - 1) &= -\frac{1}{6} + \frac{12}{72} - \frac{12}{216}\\
+        e^2 - 1 &= - \frac{1}{9}\\
+        e &= \sqrt{\frac{8}{9}}
+    \end{align*}
+    Now, let us subtract the value $e=1$ for the particle when it was at
+    infinity to find the change in $e$ during the inspiral process
+    \begin{align*}
+        \Delta e = \sqrt{\frac{8}{9}} - 1 = -0.057
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P10.1}}
+    Let us approximate the area of the disk between $R = 6GM$ and $2R$ as
+    \begin{align*}
+        A = \pi(4R^2 - R^2) = 3\pi R^2 = 108\pi (GM)^2   
+    \end{align*}
+    Then from equation (10.17) we have that
+    \begin{align*}
+        L &= \sigma A T^4
+    \end{align*}
+    Hence
+    \begin{align*}
+        T^4 &= \frac{L}{\sigma (108\pi (GM)^2)}\\
+        T^4 &= \frac{L}{L_\odot}\frac{M_\odot^2}{M^2}
+        \frac{L_\odot}{\sigma 108\pi G^2M_\odot^2}\\
+        T^4 &= \frac{L}{L_\odot}\frac{M_\odot^2}{M^2}
+        \frac{3.9 \times 10^{26}}{(5.67\times 10^{-8})108\pi(1477)^2}\\
+        T &= \left(\frac{L}{L_\odot}\right)^{1/4}
+        \left(\frac{M_\odot}{M}\right)^{1/2}
+        1.74 \times 10^6~K\\
+        T &\approx \left(\frac{L}{L_\odot}\right)^{1/4}
+        \left(\frac{M_\odot}{M}\right)^{1/2} 2 \times 10^6~K
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P10.2}}
+    An object falling radially inward towards a black hole starting at rest
+    at infinity will have $\tilde{E} = 0$ hence
+    \begin{align*}
+        \frac{1}{2}\bigg(\dv{r}{\tau}\bigg)^2 - \frac{GM}{r} + \frac{l^2}{2r^2}
+        - \frac{GMl^2}{r^3} &= 0
+    \end{align*}
+    But for a radially falling object we have that $l = 0$ then
+    \begin{align*}
+        \frac{1}{2}\bigg(\dv{r}{\tau}\bigg)^2 &= \frac{GM}{r}\\
+        \dv{r}{\tau} &= \sqrt{\frac{2GM}{r}}\\
+        \int_0^\tau d\tau &= \int^{10GM}_{2GM} \sqrt{\frac{r}{2GM}} dr\\
+        \tau &= \frac{1}{\sqrt{2GM}}
+        \bigg[\frac{2}{3}r^{2/3}\bigg]^{10GM}_{2GM}\\
+        \tau &= \frac{2}{3\sqrt{2GM}}\bigg[r^{3/2}\bigg]^{10GM}_{2GM}\\
+        \tau &= \frac{2(GM)^{3/2}}{3\sqrt{2GM}}\bigg[10^{3/2} - 2^{3/2}\bigg]\\
+        \tau &= \frac{\sqrt{2}GM}{3}\bigg[10\sqrt{10}-2\sqrt{2}\bigg]\\
+        \tau &\approx 13.6GM
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P10.3}}
+    For an observer at rest we know that $u^t$ is the only non-zero component
+    then the product $-\bm{p} \cdot \bm{u}_{obs}$ becomes
+    \begin{align*}
+        -\bm{p} \cdot \bm{u}_{obs} = g_{tt}p^t u^t_{obs}
+    \end{align*}
+    From equation 9.20 we know that
+    \begin{align*}
+        u^t_{obs} = \bigg(1 - \frac{2GM}{r}\bigg)^{-1/2}
+    \end{align*}
+    Also, we know that for the falling object
+    \begin{align*}
+        \bigg(1 - \frac{2GM}{r}\bigg)u^t = e
+    \end{align*}
+    Hence 
+    \begin{align*}
+        p^t = m u^t = me\bigg(1 - \frac{2GM}{r}\bigg)^{-1}
+    \end{align*}
+    Then
+    \begin{align*}
+        E &= -\bm{p} \cdot \bm{u}_{obs}\\
+        &=\bigg(1 - \frac{2GM}{r}\bigg)m e\bigg(1 - \frac{2GM}{r}\bigg)^{-1}
+        \bigg(1 - \frac{2GM}{r}\bigg)^{-1/2}\\
+        &= m e\bigg(1 - \frac{2GM}{r}\bigg)^{-1/2}
+    \end{align*}
+    But if the observer is at $r = 6GM$ we get that
+    \begin{align*}
+        E &= m e\bigg(1 - \frac{2GM}{6GM}\bigg)^{-1/2} = 1.2247~me
+    \end{align*}
+    On the other hand, the speed the observer will measure can be computed from
+    the following formula
+    \begin{align*}
+        E &= \frac{m}{\sqrt{1-v^2}}\\
+        v &= \sqrt{1 -\frac{m^2}{E^2}}
+    \end{align*}
+    Then for an object falling with $e = 1$ we have that
+    \begin{align*}
+        v &= \sqrt{1 -\frac{1}{(1.2247)^2}} = 0.5773
+    \end{align*}
+    and for an object where $e = 2$ we have that
+    \begin{align*}
+        v &= \sqrt{1 -\frac{1}{4(1.2247)^2}} = 0.9128
+    \end{align*}
+    Therefore the object moving with $e=2$ will be
+    $0.9128/0.5773 \approx 1.5811$ faster than the one moving with $e=1$.
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P10.4}}
+\begin{itemize}
+    \item [\textbf{a.}] From BOX 10.2 we know that
+    \begin{align*}
+        \bigg(1 - \frac{2GM}{r}\bigg)^{-1}\left(\dv{r}{\tau}\right)^2
+        &= \bigg(1 - \frac{2GM}{r}\bigg)^{-1}e^2 - \frac{l^2}{r^2} - 1
+    \end{align*}
+    Hence
+    \begin{align*}
+        \left(\dv{r}{\tau}\right)^2
+        &= e^2 - \bigg(1 - \frac{2GM}{r}\bigg)\frac{l^2}{r^2}
+        - \bigg(1 - \frac{2GM}{r}\bigg)\\
+        \dv{r}{t}\dv{t}{\tau}
+        &= \sqrt{e^2 - \bigg(1 - \frac{2GM}{r}\bigg)\frac{l^2}{r^2}
+        - \bigg(1 - \frac{2GM}{r}\bigg)}\\
+        \dv{r}{t}e\bigg(1 - \frac{2GM}{r}\bigg)^{-1}
+        &= \sqrt{e^2 - \bigg(1 - \frac{2GM}{r}\bigg)\frac{l^2}{r^2}
+        - \bigg(1 - \frac{2GM}{r}\bigg)}\\
+        \dv{r}{t}
+        &= \bigg(1 - \frac{2GM}{r}\bigg)\sqrt{1 - \bigg(1 - \frac{2GM}{r}\bigg)
+        \frac{l^2}{r^2e^2}
+        - \bigg(1 - \frac{2GM}{r}\bigg)\frac{1}{e^2}}
+    \end{align*}
+    Where we used the value we have for $dt/d\tau$.
+    Then as $r$ approaches to $2GM$ we see that $dr/dt$ approaches to 0.
+    \item [\textbf{b.}]
+    If we drop an object from rest in the equatorial plane at radial
+    coordinate $r_0$, then $e$ and $l$ become
+    \begin{align*}
+        l &= 0 \qquad e^2 = 1 - \frac{2GM}{r_0} 
+    \end{align*}
+    Hence for $dr/dt$ we have that
+    \begin{align*}
+        \dv{r}{t}
+        &= \bigg(1 - \frac{2GM}{r}\bigg)\sqrt{
+        1 - \bigg(1 - \frac{2GM}{r}\bigg)\bigg(1 - \frac{2GM}{r_0}\bigg)^{-1}}\\
+        &= \bigg(1 - \frac{2GM}{r}\bigg)\sqrt{
+        \bigg(1 - \frac{2GM}{r_0}\bigg)^{-1}\bigg(
+            \bigg(1 - \frac{2GM}{r_0}\bigg)- \bigg(1 - \frac{2GM}{r}\bigg)
+        \bigg)}\\
+        &= \bigg(1 - \frac{2GM}{r}\bigg)
+        \bigg(1 - \frac{2GM}{r_0}\bigg)^{-1/2}
+        \sqrt{\frac{2GM}{r} - \frac{2GM}{r_0}}
+    \end{align*}
+    And for $dr/d\tau$ we get that
+    \begin{align*}
+        \dv{r}{\tau}
+        &= \sqrt{e^2 - \bigg(1 - \frac{2GM}{r}\bigg)}\\
+        &= \sqrt{\bigg(1 - \frac{2GM}{r_0}\bigg) - \bigg(1 - \frac{2GM}{r}\bigg)}\\
+        &= \sqrt{\frac{2GM}{r} - \frac{2GM}{r_0}}
+    \end{align*}
+\end{itemize}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P10.5}}
+    Let us assume the proper time measured by the object is the same as the
+    object goes from $r_0$ to $r_1$ and as it falls from $r_1$ to $r_0$.
+    When the object falls from $r_1$ to $r_0$ it does so from rest and 
+    radially so we can assume that $l = 0$ and at $r = r_1$ the object comes
+    to rest then $dr_1/d\tau = 0$ at this moment hence
+    \begin{align*}
+        \frac{1}{2}(e^2 - 1) &= -\frac{GM}{r_1}\\
+        e &= \sqrt{1 - \frac{2GM}{r_1}}
+    \end{align*}
+    Then using the equation (10.8) replacing the value we have for $e$ we get
+    that
+    \begin{align*}
+        \frac{1}{2}\left(\left(1 - \frac{2GM}{r_1}\right) - 1\right)
+        &= \frac{1}{2}\left(\dv{r}{\tau}\right)^2 - \frac{GM}{r}\\
+        - \frac{2GM}{r_1}
+        &= \left(\dv{r}{\tau}\right)^2 - \frac{2GM}{r}\\
+        \dv{r}{\tau} &= \sqrt{\frac{2GM}{r} - \frac{2GM}{r_1}}
+    \end{align*}
+    Hence by integration and changing variables to $u = r/r_1$ we have that
+    \begin{align*}
+        \int_0^\tau d\tau
+        &= \int_{r_0}^{r_1} \left(\frac{2GM}{r} - \frac{2GM}{r_1}\right)^{-1/2}~dr\\
+        \tau
+        &= \int_{r_0/r_1}^{1} \left(\frac{2GM}{ur_1} - \frac{2GM}{r_1}\right)^{-1/2}~r_1du\\
+        \tau &= r_1\left(\frac{2GM}{r_1}\right)^{-1/2} \int_{r_0/r_1}^{1}
+        \left(\frac{1}{u} - 1\right)^{-1/2}~du\\
+        \tau &= r_1\left(\frac{2GM}{r_1}\right)^{-1/2}
+        \left[-\arctan\sqrt{\frac{1}{u} - 1} - u\sqrt{\frac{1}{u} - 1}
+        \right]_{r_0/r_1}^{1}\\
+        \tau &= r_1\left(\frac{2GM}{r_1}\right)^{-1/2}
+        \left[\arctan\sqrt{\frac{r_1}{r_0} - 1} + \frac{r_0}{r_1}\sqrt{\frac{r_1}{r_0} - 1}
+        \right]
+    \end{align*}
+    Finally since this is the proper time to go from $r_0$ to $r_1$ we multiply
+    by 2 to get the total proper time of the round trip, then
+    \begin{align*}
+        \tau_{total} &= 2r_1\left(\frac{2GM}{r_1}\right)^{-1/2}
+        \left[ \arctan\sqrt{\frac{r_1}{r_0} - 1}
+        + \frac{r_0}{r_1}\sqrt{\frac{r_1}{r_0} - 1}\right]
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P10.6}}
+\begin{itemize}
+    \item [\textbf{a.}] Given that the object is in a stable circular orbit we
+    can compute the radius of the orbit as follows
+    \begin{align*}
+        r &= \frac{6GM}{1 - \sqrt{1 - 12(GM/l)^2}}\\ 
+        &= \frac{6\cdot 2.2}{1 - \sqrt{1 - 12(2.2/13.2)^2}}\\
+        &= \frac{13.2}{1 - 0.816}\\
+        &= 71.93~km
+    \end{align*}
+    Where we used the negative result of the square root because it gives us
+    the stable orbit radius.
+    \item [\textbf{b.}] From equation (10.7) assuming the circular orbit is
+    in the equatorial plane we can compute $d\phi/d\tau$ as follows
+    \begin{align*}
+        \dv{\phi}{\tau} = \frac{l}{r^2} = 0.00255
+    \end{align*}
+    Now by integration we have that
+    \begin{align*}
+        \int_0^\tau d\tau &= \frac{1}{0.00255} \int_0^{2\pi} d\phi\\
+        \tau &= \frac{2\pi}{0.00255}\\
+        \tau &= 2463.99 ~km
+    \end{align*}
+    But since $299.8~km = 1~ms$ the period of orbit is
+    \begin{align*}
+        \tau &= 8.21~ms
+    \end{align*}
+    \item [\textbf{c.}] From Box 10.5 we know an observer at infinity
+    measures the period of an object's circular orbit as follows
+    \begin{align*}
+         T = \sqrt{\frac{4\pi^2}{GM} r^3} = \sqrt{\frac{4\pi^2}{2.2} \cdot 71.93^3}
+         = 2584.24~km = 8.62~ms 
+    \end{align*}
+\end{itemize}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P10.7}}
+\begin{itemize}
+    \item [\textbf{a.}] From equation 10.11 we know that
+    \begin{align*}
+        r_c = \frac{6GM}{1 \pm \sqrt{1 - 12(GM/l)^2}}
+    \end{align*}
+    Then 
+    \begin{align*}
+        \pm \sqrt{1 - 12(GM/l)^2} &= \frac{6GM}{r_c} - 1\\
+        1 - 12(GM/l)^2 &= \left(\frac{6GM - r_c}{r_c}\right)^2\\
+        (1/l)^2 &= \frac{1}{12(GM)^2}\left(1 - \frac{(6GM - r_c)^2}{r_c^2}\right)\\
+        l^2 &= 12(GM)^2\left(\frac{r_c^2 - 36(GM)^2 +12GMr_c - r_c^2}{r_c^2}\right)^{-1}\\
+        l^2 &= 12(GM)^2\frac{r_c^2}{12GM(r_c - 3GM)}\\
+        l^2 &= \frac{GMr_c^2}{r_c - 3GM}
+    \end{align*}
+    \item [\textbf{b.}] From equation 10.8 we know that
+    \begin{align*}
+        \tilde{E} = \frac{1}{2}\left(\dv{r}{\tau}\right)^2
+        - \frac{GM}{r} + \frac{l^2}{2r^2} - \frac{GMl^2}{r^3}
+    \end{align*}
+    But for a circular orbit we replace $r$ to $r_c$ and we drop the term
+    $dr/d\tau$, also, we replace the value of $l^2$ we got as follows
+    \begin{align*}
+        \tilde{E} &=
+        - \frac{GM}{r_c} + \frac{1}{2r_c^2}\frac{GMr_c^2}{r_c - 3GM}
+        - \frac{GM}{r_c^3}\frac{GMr_c^2}{r_c - 3GM}\\
+        &= - \frac{GM}{r_c} + \frac{GM}{2(r_c - 3GM)}
+        - \frac{(GM)^2}{r_c(r_c - 3GM)}\\
+        &= - \frac{GM}{r_c} + \frac{GM}{2r_c}\frac{1}{1 - \frac{3GM}{r_c}}
+        - \frac{GM}{r_c}\frac{GM}{r_c - 3GM}\\
+        &= - \frac{GM}{r_c} - \frac{(GM)^2}{r_c^2}\left(1 - \frac{3GM}{r_c}\right)^{-1}
+        + \frac{GM}{2r_c}\left(1 - \frac{3GM}{r_c}\right)^{-1}\\
+        &= - \frac{GM}{2r_c}\left(1 - \frac{3GM}{r_c}\right)^{-1}
+        \left[2\left(1 - \frac{3GM}{r_c}\right) +\frac{2GM}{r_c} -1\right]\\
+        &= - \frac{GM}{2r_c}\left(1 - \frac{3GM}{r_c}\right)^{-1}
+        \left[1 - \frac{4GM}{r_c}\right]
+    \end{align*}
+\cleardoublepage
+    \item [\textbf{c.}] From equation 10.8 and the result from part (b) we
+    have that
+    \begin{align*}
+        \frac{1}{2}(e^2 -1 ) = - \frac{GM}{2r_c}\left(1 - \frac{3GM}{r_c}\right)^{-1}
+        \left[1 - \frac{4GM}{r_c}\right]
+    \end{align*}
+    Hence
+    \begin{align*}
+        e = \sqrt{1 - \frac{GM}{r_c}\left(1 - \frac{3GM}{r_c}\right)^{-1}
+        \left[1 - \frac{4GM}{r_c}\right]}
+    \end{align*}
+    Replacing $r_c = 6GM$ we get that
+    \begin{align*}
+        e &= \sqrt{1 - \frac{GM}{6GM}\left(1 - \frac{3GM}{6GM}\right)^{-1}
+        \left[1 - \frac{4GM}{6GM}\right]}\\
+        &= \sqrt{1 - \frac{1}{6}\left(1 - \frac{1}{2}\right)^{-1}
+        \left[1 - \frac{2}{3}\right]}\\
+        &= \sqrt{1 - \frac{1}{9}}\\
+        &= \sqrt{\frac{8}{9}}
+    \end{align*}
+\end{itemize}
+\end{proof}
+\begin{proof}{\textbf{P10.8}}
+    If an object starts at rest at infinity with an angular-momentum-per-unit-mass
+    $l$ the equation (10.8) becomes
+    \begin{align*}
+        0 = - \frac{GM}{r} + \frac{l^2}{2r^2} - \frac{GMl^2}{r^3}
+    \end{align*}
+    since $e = 1$ and $dr/d\tau = 0$. Hence we can write it as
+    \begin{align*}
+        0 &= - GMr^2 + \frac{l^2}{2}r - GMl^2
+    \end{align*}
+    And the solutions to this quadratic equation are
+    \begin{align*}
+        r &= \frac{-l^2/2 \pm \sqrt{l^4/4 - 4G^2M^2l^2}}{-2GM}\\
+        r &= \frac{-l^2/2 \pm \sqrt{l^4/4(1 - 16G^2M^2/l^2)}}{-2GM}\\
+        r &= \frac{-l^2(1 \mp \sqrt{1 - 16G^2M^2/l^2})}{-4GM}\\
+        r &= \frac{l^2(1 \mp \sqrt{1 - 16G^2M^2/l^2})}{4GM}
+    \end{align*}
+    Hence we see that if $l = 4GM$ we get that 
+    \begin{align*}
+        r = 4GM
+    \end{align*}
+    Which is an unstable orbit since $r < 6GM$ therefore the particle can
+    spiral into an unstable circular orbit at $r_c = 4GM$.
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P10.9}}
+    Let a spaceship be in a stable circular orbit at $r = 10GM$ around a
+    supermassive black hole whose mass is $10^6$ solar masses.
+    \begin{itemize}
+        \item [\textbf{a.}] The physical distance around the orbit or the
+        circumference of the orbit can be found by integrating the spacetime
+        interval $ds = rd\phi$ as follows
+        \begin{align*}
+            \text{circumference} = \oint ds
+            &= \int_0^{2\pi} rd\phi = 2\pi r = 20\pi GM
+        \end{align*}
+        Hence 
+        \begin{align*}
+            \text{circumference}
+            &= 20\pi \cdot 1477 \cdot 10^6\\
+            &= 92802646987~m\\
+            &= 92802646.987~km
+        \end{align*}
+        \item [\textbf{b.}] From the results of problem P10.7 we know that for
+        an object in a stable circular orbit $\tilde{E}$ is given by
+        \begin{align*}
+            \tilde{E} &= - \frac{GM}{2r_c}\left(1 - \frac{3GM}{r_c}\right)^{-1}
+            \left[1 - \frac{4GM}{r_c}\right]\\
+            &= - \frac{1}{20}\left(1 - \frac{3}{10}\right)^{-1}
+            \left[1 - \frac{4}{10}\right]\\
+            &= - \frac{1}{20} \cdot 1.4285 \cdot 0.6\\
+            &= -0.042855
+        \end{align*}
+        Also, we know that $l$ is given by
+        \begin{align*}
+            l &= \sqrt{\frac{GMr_c^2}{r_c - 3GM}}\\
+            &= \sqrt{\frac{100(GM)^3}{7GM}}\\
+            &= 3.7796 GM\\
+            &= 5582469200~m
+        \end{align*}
+\cleardoublepage
+        \item [\textbf{c.}] From equation (10.7) assuming the circular orbit is
+        in the equatorial plane we can compute $d\phi/d\tau$ as follows
+        \begin{align*}
+            \dv{\phi}{\tau} = \frac{l}{r^2} = \frac{3.7796}{100 GM}
+            = 2.5589 \times 10^{-11}~m^{-1}
+        \end{align*}
+        Now by integration we have that
+        \begin{align*}
+            \int_0^\tau d\tau &= \frac{1}{2.5589 \times 10^{-11}} \int_0^{2\pi} d\phi\\
+            \tau &= \frac{2\pi}{2.5589 \times 10^{-11}}\\
+            \tau &= 245535630720.29~m = 245535630.72029~km
+        \end{align*}
+        But since $17.99 \times 10^6 km = 1~min$ the period of orbit is
+        \begin{align*}
+            \tau &= 13.648~min
+        \end{align*}
+    \end{itemize}
+\end{proof}
+\begin{proof}{\textbf{P10.10}}
+    From equation (10.7) assuming a circular orbit in the equatorial plane
+    we know that
+    \begin{align*}
+        \omega = \dv{\phi}{\tau} = \frac{l}{r^2}
+    \end{align*}
+    But also we know that for a circular orbit
+    \begin{align*}
+        l &= \sqrt{\frac{GMr^2}{r - 3GM}} = \sqrt{\frac{GMr}{1 - 3GM/r}}
+    \end{align*}
+    Hence
+    \begin{align*}
+        \omega &= \sqrt{\frac{1}{r^4}\frac{GMr}{1 - 3GM/r}}
+        = \sqrt{\frac{GM}{r^3}\frac{1}{1 - 3GM/r}}
+    \end{align*}
+    Then the ratio $\omega/\Omega$ gives us
+    \begin{align*}
+        \frac{\omega}{\Omega}
+        = \frac{\sqrt{\frac{GM}{r^3}\frac{1}{1 - 3GM/r}}}{\sqrt{\frac{GM}{r^3}}}
+        = \left(1 - \frac{3GM}{r}\right)^{-1/2}
+    \end{align*}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P10.11}}
+    We know Newtonian potential energy is given by
+    \begin{align*}
+        \tilde{V}_N(r) = - \frac{GM}{r} + \frac{l^2}{2r^2}
+    \end{align*}
+    The radii $r_c$ of possible circular orbits correspond to values of the
+    radial coordinate $r$ where $d\tilde{V}_N/dr = 0$ then setting the derivative
+    of the equation for $\tilde{V}_N$ equal to zero gives us
+    \begin{align*}
+        0 = \frac{GM}{r^2} - \frac{l^2}{r^3}
+    \end{align*}
+    Hence the equation analogous to (10.11) for Newtonian mechanics is
+    \begin{align*}
+        \frac{GM}{r_c^2} &= \frac{l^2}{r_c^3}\\
+        GM &= \frac{l^2}{r_c}\\
+        r_c &= \frac{l^2}{GM}
+    \end{align*}
+    Now, if we consider a large $l$ we can use the binomial approximation
+    on equation (10.11) for the stable orbit as follows
+    \begin{align*}
+        r_c &= \frac{6GM}{1 - (1 - 6(GM)^2/l^2)}\\
+        &= \frac{6GM}{6(GM)^2/l^2}\\
+        &= \frac{1}{GM/l^2}\\
+        &= \frac{l^2}{GM}
+    \end{align*}
+    Which is the result we got for Newtonian mechanics.
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P10.12}}
+    Let an observer in a spaceship in a circular orbit of radius $r$. We know
+    that for a circular trajectory on the equatorial plane 
+    \begin{align*}
+        l = r^2\bigg(\frac{d\phi}{d\tau}\bigg)
+    \end{align*}
+    So by integration we get the period this observer experiences as follows
+    \begin{align*}
+        \int_0^\tau d\tau &= \frac{r^2}{l}\int_0^{2\pi}d\phi\\
+        \tau &= \frac{2\pi r^2}{l}
+    \end{align*}
+    Replacing the value of $l$ from equation (10.32) we get that
+    \begin{align*}
+        \tau &= \frac{2\pi r^2}{\sqrt{GMr^2/(r - 3GM)}}\\
+        \tau &= 2\pi r\sqrt{\frac{(r - 3GM)}{GM}}
+    \end{align*}
+    Thus the speed for this observer is
+    $$v_\tau = \frac{2\pi r}{\tau} = \sqrt{\frac{GM}{(r - 3GM)}}$$
+    For an observer at infinity we know the period measured is
+    \begin{align*}
+        T_\infty = \sqrt{\frac{4\pi^2}{GM}r^3} = 2\pi r \sqrt{\frac{r}{GM}}
+    \end{align*}
+    and hence the speed for this observer is
+    $$v_\infty = \frac{2\pi r}{T_\infty} = \sqrt{\frac{GM}{r}}$$
+
+    On the other hand, we know that a clock at rest at $r$ measures a time
+    $T_r$ between two events and this is related to the time $T_\infty$
+    a clock at $r = \infty$ measures by the following equation
+    \begin{align*}
+        T_r = \sqrt{1 - \frac{2GM}{r}} T_\infty
+    \end{align*}
+    Hence
+    \begin{align*}
+        T_r = 2\pi r \sqrt{\frac{r}{GM}\bigg(1 - \frac{2GM}{r}\bigg)} 
+    \end{align*}
+    Thus in this case the speed is
+    \begin{align*}
+        v_r = \frac{2\pi r}{T_r}
+        =\sqrt{\frac{GM}{}}\bigg(1 - \frac{2GM}{r}\bigg)^{-1/2}
+    \end{align*}
+    We see that $v_\tau > v_r > v_\infty$. The speeds can be bigger than 1
+    depending on the values of $GM$ and $r$ but these are not actual speeds.
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P10.13}}
+\begin{itemize}
+    \item [\textbf{a.}] From Schwarzschild metric equation where $dr = 0$ and
+    $d\theta = 0$ but also since along a photon worldline $ds = 0$ we have that
+    \begin{align*}
+        0 &= -\left(1 - \frac{2GM}{r}\right)dt^2 + r^2d\phi^2\\
+        \frac{r^2d\phi^2}{dt^2} &= \left(1 - \frac{2GM}{r}\right)\\
+        V =\frac{rd\phi}{dt} &= \sqrt{1 - \frac{2GM}{r}}
+    \end{align*}
+    Where $rd\phi/dt$ is the photon's speed as measured by an observer at
+    infinity. Considering that photons can orbit a Schwarzschild black hole at
+    a constant radial coordinate of $r = 3GM$ we get that
+    \begin{align*}
+        V &= \sqrt{1 - \frac{2}{3}} = 0.577
+    \end{align*}
+    \item [\textbf{b.}] From Schwarzschild metric equation for the stationary
+    observer at $r = 3GM$ we have that
+    \begin{align*}
+        T &= \int d\tau = \int \sqrt{-ds^2}
+        = \int \sqrt{\left(1 - \frac{2GM}{r}\right)dt^2} = \\
+        &= \sqrt{1 - \frac{2}{3}} \int dt = 0.577 \Delta t
+    \end{align*}
+    Then the photon's speed $v$ as measured by the stationary observer is
+    \begin{align*}
+        v = \frac{rd\phi }{d\tau} = \frac{1}{0.577}\frac{rd\phi }{dt} = 1
+    \end{align*}
+    \item [\textbf{c.}] The velocities are not the same because the time is
+    not measured by the same clocks. Velocity $V$ is computed using the
+    time measuments of an observer at $r = \infty$ and velocity $v$ is
+    computed using the time measurements of an stationary observer.
+\end{itemize}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P10.14}}
+\begin{itemize}
+    \item [\textbf{a.}] We know that in the equatorial plane
+    $l = r^2 \dv{\phi}{\tau}$ then
+    \begin{align*}
+        \dv{\phi}{\tau} = \frac{l}{r^2}
+    \end{align*}
+    So for any finite $l$ as $r$ goes to infinity we have that
+    $d\phi/d\tau \to 0$.\\    
+    On the other hand, the Schwarzschild metric equation in the equatorial plane
+    where $d\theta = 0$ gives us 
+    \begin{align*}
+        ds^2 = -\left(1 - \frac{2GM}{r}\right)dt^2
+        + \left(1 - \frac{2GM}{r}\right)^{-1}dr^2 + r^2d\phi^2
+    \end{align*}
+    Also, we know that $d\tau^2 = -ds^2$ hence
+    \begin{align*}
+        d\tau^2 = \left(1 - \frac{2GM}{r}\right)dt^2
+        - \left(1 - \frac{2GM}{r}\right)^{-1}dr^2 - r^2d\phi^2\\
+        \left(1 - \frac{2GM}{r}\right)d\tau^2 = \left(1 - \frac{2GM}{r}\right)^2dt^2
+        - dr^2 - \left(1 - \frac{2GM}{r}\right)r^2d\phi^2\\
+        \left(1 - \frac{2GM}{r}\right)
+        = \left(1 - \frac{2GM}{r}\right)^2\left(\dv{t}{\tau}\right)^2
+        - \left(\dv{r}{\tau}\right)^2
+        - \left(1 - \frac{2GM}{r}\right)r^2\left(\dv{\phi}{\tau}\right)^2\\
+        \left(1 - \frac{2GM}{r}\right)
+        = \left(1 - \frac{2GM}{r}\right)^2\left(\dv{t}{\tau}\right)^2
+        - \left(\dv{r}{\tau}\right)^2
+        - \left(1 - \frac{2GM}{r}\right)l\dv{\phi}{\tau}
+    \end{align*}
+    Now from the definition of $e$ and assuming that $dr/d\tau \approx 0$
+    and $r \to \infty$ we get that
+    \begin{align*}
+        1 = e^2 - 0 - l\dv{\phi}{\tau}
+    \end{align*}
+    But also we saw that as $r \to \infty$ we have that $d\phi/d\tau \to 0$ hence
+    \begin{align*}
+        e = 1
+    \end{align*}
+    \item [\textbf{b.}] From the Schwarzschild metric for any $r$ and $e = 1$
+    we know that 
+    \begin{align*}
+        \left(1 - \frac{2GM}{r}\right)\dv{t}{\tau} = 1
+    \end{align*}
+    Multiplying both sides by $l$ and using that $l = r^2d\phi/d\tau$ we get
+    that
+    \begin{align*}
+        l = \left(1 - \frac{2GM}{r}\right)l\dv{t}{\tau}\\
+        r^2\dv{\phi}{\tau} = \left(1 - \frac{2GM}{r}\right)l\dv{t}{\tau}\\
+        \dv{\phi}{\tau} = \left(1 - \frac{2GM}{r}\right)\frac{l}{r^2}\dv{t}{\tau}
+    \end{align*}
+\cleardoublepage
+    \item [\textbf{c.}] The relation $-1 = \bm{u} \cdot \bm{u}$ give us 
+    \begin{align*}
+        -\left(1 - \frac{2GM}{R}\right) (u^t)^2
+        + \left(1 - \frac{2GM}{R}\right)^{-1} (u^r)^2 + R^2 (u^\theta)^2
+        + R^2 \sin^2\theta(u^\phi)^2 = -1
+    \end{align*}
+    But assuming the path is in the equatorial plane and at the point of
+    closest approach $u^r = 0$ and $u^\theta = 0$ we get that
+    \begin{align*}
+        -\left(1 - \frac{2GM}{R}\right) (u^t)^2 + R^2 (u^\phi)^2 &= -1\\
+        -\left(1 - \frac{2GM}{R}\right) (u^t)^2
+        + R^2 \left(\dv{\phi}{\tau}\right)^2 &= -1\\
+        -\left(1 - \frac{2GM}{R}\right) (u^t)^2
+        + R^2 \left(1 - \frac{2GM}{R}\right)^2\frac{l^2}{R^4}
+        \bigg(\dv{t}{\tau}\bigg)^2 &= -1\\
+        -\left(1 - \frac{2GM}{R}\right) (u^t)^2
+        + \left(1 - \frac{2GM}{R}\right)^2\frac{l^2}{R^2} (u^t)^2 &= -1\\
+        (u^t)^2\left(\left(1 - \frac{2GM}{R}\right)^2\frac{l^2}{R^2}
+        - \left(1 - \frac{2GM}{R}\right) \right) &= -1
+    \end{align*}
+    Where we used the result of part b. Then
+    \begin{align*}
+        u^t &= \frac{1}{\sqrt{\left(1 - \frac{2GM}{R}\right)
+        - \left(1 - \frac{2GM}{R}\right)^2\frac{l^2}{R^2}}}
+    \end{align*}
+    And therefore $p^t = mu^t$ is
+    \begin{align*}
+        p^t &= \frac{m}{\sqrt{\left(1 - \frac{2GM}{R}\right)
+        - \left(1 - \frac{2GM}{R}\right)^2\frac{l^2}{R^2}}}
+    \end{align*}
+    \item [\textbf{d.}] For an observer at rest at $R$ we know that $u^t$ is
+    the only non-zero component and from equation (9.20) we know that
+    \begin{align*}
+        u_{obs}^t = \left(1 - \frac{2GM}{R}\right)^{-1/2}
+    \end{align*}
+    Then $E_{obs}$ is 
+    \begin{align*}
+        E_{obs} &= -p^tu_{obs}^t \\
+        &= m\sqrt{\frac{\left(1 - \frac{2GM}{R}\right)}{\left(1 - \frac{2GM}{R}\right)
+        - \left(1 - \frac{2GM}{R}\right)^2\frac{l^2}{R^2}}}\\
+        &= \frac{m}{\sqrt{1 - \left(1 - \frac{2GM}{R}\right)\frac{l^2}{R^2}}}
+    \end{align*}
+    \item [\textbf{e.}] Comparing the equation $E = m/\sqrt{1-v^2}$ to the result
+    we got in part d we see that the speed $v$ as seen by and observer
+    stationary at $R$ is
+    \begin{align*}
+        v &= \sqrt{\left(1 - \frac{2GM}{R}\right)\frac{l^2}{R^2}}
+    \end{align*}
+    \item [\textbf{f.}] Equation (10.8) for the closest approach becomes
+    \begin{align*}
+        \frac{1}{2}(1 -1) &= 0 - \frac{GM}{R} + \frac{l^2}{2R^2} - \frac{GMl^2}{R^3}\\
+        0 &= \frac{2GMl^2}{R^2} - \frac{l^2}{R} + 2GM
+    \end{align*}
+    Where we used that $e = 1$ and $dr/d\tau = 0$ for the closest point. Hence
+    taking $x = 1/R$ and solving the second degree equation we get that
+    \begin{align*}
+        x  &= \frac{l^2 \pm \sqrt{l^4 - 16(GM)^2l^2}}{4GMl^2}
+        = \frac{1 \pm \sqrt{1 - 16(GM)^2/l^2}}{4GM}
+    \end{align*}
+    So changing to $R$ gives us
+    \begin{align*}
+        R = \frac{4GM}{1 \pm \sqrt{1 - 16(GM)^2/l^2}}
+    \end{align*}
+    There are two solutions because in the figure 10.1 the energy graph has two
+    roots and we are essentially looking for them.
+    Also, the smaller solution (the plus sign) is unstable so we take the bigger
+    solution (the negative sign).
+    
+    If we consider a large-$l$ then we can approximate the square root by its
+    binomial approximation i.e.
+    \begin{align*}
+        R = \frac{4GM}{1 - 1 + 8(GM)^2/l^2}
+         = \frac{l^2}{2GM}
+    \end{align*}
+    Which gives us the Newtonian result.
+
+    By analyzing figure 10.1 we see that the energy plot in the Schwarzschild
+    case should have a smaller root compared to the Newtonian solution i.e.
+    the Newtonian solution says $R$ should be farther this makes sense cause
+    the Schwarzschild case takes into account the term $-GMl^2/R^3$.
+\end{itemize}
+\end{proof}
+\cleardoublepage
+\begin{proof}{\textbf{P10.15}}
+\begin{itemize}
+    \item [\textbf{a.}] If we start at rest at a very large raidus but with
+    enough tangential velocity to give us some $l$ we saw in problem P10.8
+    that we can spiral into an unstable circular orbit at $r = 4GM$ if
+    $l = 4GM$ and since the orbit is unstable we will spiral back out again.
+    
+    For the portion of the trajectory where the orbit is approximately circular
+    at $r = 4GM$ our clock measures a time $\tau$ and a clock at $r=\infty$
+    measures a time $t$ hence by equation (10.5) and using that $e= 1$ since
+    we start at rest we have that
+    \begin{align*}
+        \bigg(1 -\frac{2GM}{r}\bigg)\dv{t}{\tau} &= 1
+    \end{align*}
+    So integrating and replacing $r = 4GM$ we get that
+    \begin{align*}
+        \int d\tau &= \bigg(1 -\frac{2GM}{4GM}\bigg)\int dt\\
+        \tau &= 0.5 t
+    \end{align*}
+    Then our clock will run slower by a factor of $0.5$ with respect to the
+    clock at $r = \infty$.
+
+    \item [\textbf{b.}] Suppose we want our clock to run 10 times more slowly 
+    than the clock at large $r$ when we are at an approximately circular orbit
+    then $\tau$ and $t$ are related by $t = 10\tau$.
+
+    From problem P10.7(c) we know that 
+    \begin{align*}
+        e = \sqrt{1 - \frac{GM}{r}\left(1 - \frac{3GM}{r}\right)^{-1}
+        \left[1 - \frac{4GM}{r}\right]}
+    \end{align*}
+    And joining this result to equation (10.5) we have that 
+    \begin{align*}
+        \left(1 - \frac{2GM}{r}\right)\dv{t}{\tau}
+        &= \sqrt{1 - \frac{GM}{r}\left(1 - \frac{3GM}{r}\right)^{-1}
+        \left[1 - \frac{4GM}{r}\right]}\\
+        \left(1 - \frac{2GM}{r}\right)\int dt
+        &= \sqrt{1 - \frac{GM}{r}\left(1 - \frac{3GM}{r}\right)^{-1}
+        \left[1 - \frac{4GM}{r}\right]}\int d\tau \\
+        t &= \left(1 - \frac{2GM}{r}\right)^{-1} 
+        \sqrt{1 - \frac{GM}{r}\left(1 - \frac{3GM}{r}\right)^{-1}
+        \left[1 - \frac{4GM}{r}\right]} \tau
+    \end{align*}
+    Then must happen that 
+    \begin{align*}
+        \left(1 - \frac{2GM}{r}\right)^{-1} 
+        \sqrt{1 - \frac{GM}{r}\left(1 - \frac{3GM}{r}\right)^{-1}
+        \left[1 - \frac{4GM}{r}\right]} &= 10
+    \end{align*}
+    Which by solving for $r$ we get that $r = 3.03GM$ hence $e = 3.41$.
+
+    On the other hand, by the equation (10.32) we know that this implies an
+    angular momentum of
+    \begin{align*}
+        l = \sqrt{\frac{9.18(GM)^3}{(3.03GM - 3GM)}}
+        = \sqrt{\frac{9.18}{0.03}(GM)^2}
+        = 17.49GM
+    \end{align*}
+
+    Finally, since at large $r$ the spacetime is essentially flat we can use
+    that $e = (1 - v^2)^{-1/2}$ to determine $v$ hence
+    \begin{align*} 
+        v = \sqrt{1 - 1/e^2} = \sqrt{1 - 1/(3.41)^2} = 0.956
+    \end{align*}
+\end{itemize}
+\end{proof}
+
+\end{document}
