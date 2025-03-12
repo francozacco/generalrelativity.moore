@@ -1,11 +1,16 @@
 import math 
 import matplotlib.pyplot as plt
 
+EPSILON = 10e-12
+
 
 def r_fn(GM, l, dtau, r_n, r_nm1):
     l_2 = l**2
     right_side = (dtau**2) * (-(GM/(r_n**2)) + (l_2/(r_n**3)) - ((3 * GM * l_2)/(r_n**4)))
-    return right_side + (2 * r_n) - r_nm1
+    ans = right_side + (2 * r_n) - r_nm1
+    if ans < 0:
+        return EPSILON
+    return ans
 
 
 def phi_fn(l, dtau, r_n, r_np1, phi_n):
@@ -13,15 +18,15 @@ def phi_fn(l, dtau, r_n, r_np1, phi_n):
 
 
 def main():
-    steps = 2500
+    steps = 5000
     GM = 1
 
     r_init = 50 * GM
     _l_circ = r_init / (math.sqrt((r_init/GM) - 3))
     _dphidtau_circ = _l_circ / (r_init**2)
     _tau = 2 * math.pi * ((r_init**2) / _l_circ)
-    dtau = _tau / 500
-    dphidtau_init = 0.75 * _dphidtau_circ
+    dtau = _tau / 500  # For spiraling orbits set dtau = 0.2
+    dphidtau_init = 0.75 * _dphidtau_circ  # Spiraling orbits starts at 0.52 
     phi_init = 0.5 * dphidtau_init * dtau
     l = (r_init**2) * (dphidtau_init)
 
@@ -37,7 +42,6 @@ def main():
     
     fig, ax = plt.subplots(subplot_kw={'projection': 'polar'})
     ax.plot(phi_list, r_list)
-    ax.set_rmax(r_init + 10)
     ax.set_rticks([r_init])
     ax.set_rlabel_position(0)
     ax.grid(True)
