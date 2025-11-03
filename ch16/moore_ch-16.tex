@@ -1,0 +1,434 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{physics,amsmath}
+\usepackage{bm}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[mathscr]{euscript}
+
+
+\title{\textbf{Solved selected problems of General Relativity - Thomas A. Moore}}
+\author{Franco Zacco}
+\date{}
+
+\addtolength{\topmargin}{-3cm}
+\addtolength{\textheight}{3cm}
+
+\newcommand{\hatr}{\bm{\hat{r}}}
+\newcommand{\hatn}{\bm{\hat{n}}}
+\newcommand{\hatx}{\bm{\hat{x}}}
+\newcommand{\haty}{\bm{\hat{y}}}
+\newcommand{\hatz}{\bm{\hat{z}}}
+\newcommand{\hatth}{\bm{\hat{\theta}}}
+\newcommand{\hatphi}{\bm{\hat{\phi}}}
+\newcommand{\hatrho}{\bm{\hat{\rho}}}
+\newcommand{\er}{\bm{e}_r}
+\newcommand{\etht}{\bm{e}_\theta}
+\newcommand{\sci}[1]{\times 10^{#1}}
+
+\theoremstyle{definition}
+\newtheorem*{solution*}{Solution}
+\renewcommand*{\proofname}{Solution}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{Chapter 16 - Blackhole Thermodynamics}
+
+\begin{proof}{\textbf{BOX 16.1} - Exercise 16.1.1.}\\
+From BOX 14.2 we know a free-falling object falling from $2GM + \varepsilon$
+has
+\begin{align*}
+    e^2 = 1 - \frac{2GM}{2GM + \varepsilon}
+\end{align*}
+Then replacing into the equation (16.12) where $l =0$ we get that
+\begin{align*}
+    \dv{r}{\tau} &= \sqrt{
+        \bigg(1 - \frac{2GM}{2GM + \varepsilon}\bigg) - 
+        \bigg(1 - \frac{2GM}{r}\bigg)
+    }\\
+    \dv{r}{\tau} &= \sqrt{\frac{2GM}{r}-\frac{2GM}{2GM + \varepsilon}}
+\end{align*}
+Now, integrating between $2GM + \varepsilon$ and $2GM$ we see that
+\begin{align*}
+    \Delta \tau = -\int_{2GM + \varepsilon}^{2GM}
+    \frac{dr}{\sqrt{\frac{2GM}{r}-\frac{2GM}{2GM + \varepsilon}}}
+\end{align*}
+Let $\rho = r - 2GM$ then $d\rho = dr$ and inverting the integral limits we
+have that
+\begin{align*}
+    \Delta \tau = +\int^{\varepsilon}_{0}
+    \frac{d\rho}{\sqrt{\frac{2GM}{2GM + \rho}-\frac{2GM}{2GM + \varepsilon}}}
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{BOX 16.1} - Exercise 16.1.2.}\\
+Let us write equation (16.13) as follows
+\begin{align*}
+    \Delta \tau &= \int^{\varepsilon}_{0}
+    \frac{d\rho}{\sqrt{\frac{2GM}{2GM + \rho}-\frac{2GM}{2GM + \varepsilon}}}\\
+    &= \int^{\varepsilon}_{0}
+    \frac{d\rho}{\sqrt{\frac{1}{1 + \rho/2GM}-\frac{1}{1 + \varepsilon/2GM}}}\\
+    &= \int^{\varepsilon}_{0}
+    \frac{d\rho}{\sqrt{(1 + \rho/2GM)^{-1}- (1 + \varepsilon/2GM)^{-1}}} 
+\end{align*}
+Then if we let $\varepsilon \ll 2GM$ applying the binomial approximation gives
+us
+\begin{align*}
+    \Delta \tau &\approx \int^{\varepsilon}_{0}
+    \frac{d\rho}{\sqrt{(1 - \rho/2GM)- (1 - \varepsilon/2GM)}}\\
+    &\approx \sqrt{2GM}\int^{\varepsilon}_{0}\frac{d\rho}{\sqrt{\varepsilon - \rho}}\\
+    &\approx \sqrt{2GM}\bigg[-2\sqrt{\varepsilon - \rho}\bigg]_0^\varepsilon\\
+    &\approx 2\sqrt{2GM\varepsilon}
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{BOX 16.2} - Exercise 16.2.1.}\\
+Given that the spatial components of the frame's four-velocity will be zero
+at the time the particle-antiparticle pair is formed, then the only nonzero
+component is $u^t$ then
+\begin{align*}
+    \bm{u}\cdot\bm{u} = g_{\mu\nu}u^{\mu}u^{\nu} &= -1\\
+    -\bigg(1 - \frac{2GM}{r}\bigg) (u^t)^2 &= -1\\
+    u^t &= \frac{1}{\sqrt{1 - \frac{2GM}{r}}}
+\end{align*}
+\end{proof}
+\begin{proof}{\textbf{BOX 16.2} - Exercise 16.2.2.}\\
+We compute $E = -\bm{o}_t\cdot\bm{p} = -\bm{u}\cdot\bm{p}$ as follows
+\begin{align*}
+    E &= -g_{\mu\nu}u^\mu p^\nu
+    = \bigg(1 - \frac{2GM}{r}\bigg)\frac{1}{\sqrt{1 - \frac{2GM}{r}}} m\dv{t}{\tau}
+    = \sqrt{1 - \frac{2GM}{r}} m\dv{t}{\tau}
+\end{align*}
+Where we used again that $u^r=u^\theta=u^\phi = 0$ initially.
+\end{proof}
+\begin{proof}{\textbf{BOX 16.2} - Exercise 16.2.3.}\\
+We know that
+\begin{align*}
+    e = \bigg(1 - \frac{2GM}{r}\bigg)\dv{t}{\tau}
+\end{align*}
+Then mutiplying the equation by $m$ we get that
+\begin{align*}
+    me &= \bigg(1 - \frac{2GM}{r}\bigg)m\dv{t}{\tau}\\
+    E_\infty &= \bigg(1 - \frac{2GM}{r}\bigg)\frac{E}{\sqrt{1 - \frac{2GM}{r}}}\\
+    E_\infty &= \sqrt{1 - \frac{2GM}{r}}E
+\end{align*}
+Hence
+\begin{align*}
+    E &= \frac{E_\infty}{\sqrt{1 - \frac{2GM}{r}}}
+\end{align*}
+Where $E_\infty$ is the particle's energy at infinity.
+
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{BOX 16.3} - Exercise 16.3.1.}\\
+We know that in SI $k_B = 1.3807 \times 10^{-23} J/K$ and
+$\hbar = 1.0546 \times 10^{-34} Js$ then
+
+\begin{align*}
+\frac{\hbar}{8\pi k_B GM_{\odot}}
+&= \frac{1.0546 \times 10^{-34}~Js \cdot (299800000~m/1~s)}
+{8 \pi \cdot 1.3807 \times 10^{-23} J/K \cdot 1477~m}
+= 6.168\times 10^{-8} K
+\end{align*}
+\end{proof}
+\begin{proof}{\textbf{BOX 16.4} - Exercise 16.4.1.}\\
+We know that a black hole's mass-energy $M$ is radiated away following the
+Stefan-Boltzmann formula
+\begin{align*}
+    \dv{M}{t} = A\sigma T^4
+\end{align*}
+Hence, we need to integrate as follows
+\begin{align*}
+    \int_0^{\tau} dt &= \frac{1}{\sigma} \int_0^M \frac{dM}{A T^4}
+\end{align*}
+So, using that $T = \hbar/8\pi k_B GM$ and $A = 4\pi (2GM)^2$ we get that
+\begin{align*}
+    \tau &=  \frac{(8\pi k_B G)^4}{16\pi G^2\sigma \hbar^4}\int_0^M M^2 dM
+    = \frac{8^4\pi^3 k_B^4 G^2}{16\sigma \hbar^4}\frac{M^3}{3}
+    = \frac{256\pi^3 k_B^4}{3G\sigma \hbar^4}(GM)^3
+\end{align*}
+\end{proof}
+\begin{proof}{\textbf{BOX 16.4} - Exercise 16.4.2.}\\
+Using that $k_B = 1.536\times10^{-40}~kg/K$, $\hbar = 3.518\times 10^{-43}~kgm$, 
+and $\sigma = 2.105\times 10^{-33}~kgm^{-3}K^{-4}$ we have that
+\begin{align*}
+    \tau &= \frac{256\pi^3 (1.536\times10^{-40})^4}
+    {3 \cdot (7.426 \times 10^{-28}) (2.105\times 10^{-33}) (3.518\times 10^{-43})^4}(1477)^3
+    \bigg(\frac{M}{M_{\odot}}\bigg)^3\\
+    &= 1.982 \times 10^{83}~m\cdot \frac{1~y}{9.461\times 10^{15}~m} \cdot
+    \bigg(\frac{M}{M_{\odot}}\bigg)^3\\
+    &= (2.095 \times 10^{67}~y)\bigg(\frac{M}{M_{\odot}}\bigg)^3
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P16.1}}
+From equation 16.6 we know that the relativistic energy at infinity is
+\begin{align*}
+    E_\infty = \frac{\hbar}{4GM}
+\end{align*}
+If $M$ is a solar mass then we get that
+\begin{align*}
+    E_\infty = \frac{3.518\sci{-43}~kg\cdot m}{4 \cdot 1477~m} = 5.95\sci{-47}~kg
+    \approx 6\sci{-47}~kg
+\end{align*}
+Or in eV
+$$E_\infty = 5.95\sci{-47}~kg \cdot \frac{1~eV}{1.782\sci{-36}~kg}
+= 3.33\sci{-11}~eV$$
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P16.2}}
+\begin{itemize}
+\item [\textbf{a.}] Using equation 16.9 we know that a blackhole survives
+for
+$$\tau_{\text{life}} = (2.095 \times 10^{67}~y)\bigg(\frac{M}{M_{\odot}}\bigg)^3$$
+So if a balckhole is just evaporating today, then we can compute how massive it
+was in the beginning as follows
+\begin{align*}
+    (2.095 \times 10^{67}~y)\bigg(\frac{M}{M_{\odot}}\bigg)^3 &= 13.7\sci{9}~y\\
+    \frac{M}{M_{\odot}} &= \sqrt[3]{\frac{13.7\sci{9}}{2.095 \times 10^{67}}}\\
+    M &= 8.679\sci{-20}M_{\odot}
+\end{align*}
+So the black hole was $8.679\sci{-20}$ solar masses or $173.58\sci{9} ~kg$.
+
+\item [\textbf{b.}] We want to know now how much energy a black hole releases
+in the last second of its life. So, from the Stefan-Boltzmann formula we know
+that
+\begin{align*}
+    -\dv{M}{t} = \dv{E_{rad}}{t} = A\sigma T^4
+\end{align*}
+We need to integrate it to get the energy radiated but we integrate with
+respect to the mass. So we get again that 
+$$1~s = (2.095 \times 10^{67}~y)\bigg(\frac{M}{M_{\odot}}\bigg)^3$$
+Where we inegrated $t$ from 0 to 1 second.
+Then solving for $M = E_{rad}$ we see that
+\begin{align*}
+    E_{rad} &= M = \sqrt[3]{\frac{3.17098\sci{-8}~y}{2.095 \times 10^{67}~y}}M_\odot\\
+    &= 229632.39~kg \cdot \frac{1~J}{1.1126\sci{-17}~kg}\\
+    &= 2.06\sci{22}~J
+\end{align*}
+This is $51.5\sci{6}$ times an atomic bomb.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P16.3}}
+A black hole of $1~TeV$ mass or $1.782\sci{-24}~kg$ will have a lifetime of
+\begin{align*}
+    \tau &= (2.095 \times 10^{67}~y)\bigg(\frac{1.782\sci{-24}~kg}{2\sci{30}~kg}\bigg)^3\\
+    &= 2.095 \times 10^{67} \cdot 7.073\sci{-163}~y\\
+    &= 1.481\sci{-95}~y = 4.67\sci{-88}~s
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P16.4}}
+\begin{itemize}
+\item [\textbf{a.}] From equation 14.3 we know that the physical distance from
+$r = R$ to $r = 2GM$ is
+\begin{align*}
+    \Delta s = R\sqrt{1 - \frac{2GM}{r}} + 2GM\tanh^{-1}\sqrt{1 - \frac{2GM}{r}}
+\end{align*}
+We know that the box can be lowered down at most a physical distance from the
+event horizon of $\Delta s = \lambda/2$, also, applying the approximation
+$\tanh^{-1}x \approx x$ and assuming that $R \approx 2GM$ we get that
+\begin{align*}
+    \frac{\lambda}{2}
+    &\approx 2GM\sqrt{1 - \frac{2GM}{r}} + 2GM\sqrt{1 - \frac{2GM}{r}}\\
+    \frac{\lambda}{2} 
+    &\approx 4GM\sqrt{1 - \frac{2GM}{r}}\\
+    \bigg(\frac{\lambda}{2}\bigg)^2
+    &\approx (4GM)^2\bigg(1 - \frac{2GM}{r}\bigg)
+\end{align*}
+\item [\textbf{b.}] From equation 10.8 we know that
+\begin{align*}
+    \frac{1}{2}(e^2 - 1)
+    &= \frac{1}{2}\bigg(\dv{r}{\tau}\bigg)^2 - \frac{GM}{r} + \frac{l^2}{2r^2}
+    - \frac{GMl^2}{r^3}
+\end{align*}
+Using that $dr/d\tau = 0$ and $l = 0$ since the object is at rest
+we get that
+\begin{align*}
+    e &= \sqrt{1 - \frac{2GM}{r}}
+\end{align*}
+Also, from part (a) we see that
+\begin{align*}
+    \bigg(\frac{\lambda}{8GM}\bigg)^2 &\approx \bigg(1 - \frac{2GM}{r}\bigg)\\
+    \frac{\lambda}{8GM} &\approx \sqrt{1 - \frac{2GM}{r}}
+\end{align*}
+Therefore
+\begin{align*}
+    e &\approx \frac{\lambda}{8GM}
+\end{align*}
+\item [\textbf{c.}] If we consider that at the beginning the energy per unit
+of mass of the box is $e = 1$, close to the event horizon is $e$ and that 
+the difference $1 - e$ has become work done on the winch, then the efficiency
+must be $1 - e$ since all the energy has become work.
+
+Then must be that $e = T_C/T_H$ but we know that $\lambda \approx \hbar / k_B T_H$
+so
+\begin{align*}
+    e = \frac{\lambda}{8GM} = \frac{\lambda k_B T_C}{\hbar} = \frac{T_C}{T_H}
+\end{align*}
+Therefore $T_C$ must be $T_C = \hbar/8GM k_B$.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P16.5}}
+According to equation (12.15) observers at $r = R$ will see photons with
+energy $E_{obs}$
+\begin{align*}
+    E_{obs} = \frac{E_\infty}{\sqrt{1 - 2GM/R}}
+\end{align*}
+Where $E_\infty$ is the photon's energy at infinity. So an observer at $r = R$
+will consider the temperature of the black hole to be higher by a factor of
+$1/\sqrt{1 - 2GM/R}$ than that of an observer at infinity.
+\\
+As $R \to 2GM$ the temperature tends to infinity.
+\\
+Let us note that
+\begin{align*}
+    k_B T = E_{obs} = \frac{E_\infty}{\sqrt{1 - 2GM/R}}
+    = \frac{k_B T_\infty}{\sqrt{1 - 2GM/R}}
+\end{align*}
+Then 
+\begin{align*}
+    T = \frac{T_\infty}{\sqrt{1 - 2GM/R}}
+\end{align*}
+So since we are considering a solar-mass black hole we have that
+$T_\infty = 6.17 \times 10^{-8}~K$. Therefore to observe a temperature of
+$T = 300~K$ we need to be at the following distance (in $R$) from the event
+horizon
+\begin{align*}
+    R - 2GM &= \frac{2GM}{1 - (T_\infty/T)^2} - 2GM\\
+    &= 2\cdot 1477 \bigg(\frac{1}{1 - (6.17 \times 10^{-8}/300)^2} - 1\bigg)\\
+    &= 1.249 \sci{-16} ~m
+\end{align*}
+
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P16.6}}
+We know from equation (16.18) that
+\begin{align*}
+    \dv{M}{t} = -A\sigma T^4
+    = -\frac{4\pi(4G^2M^2)\sigma\hbar^4}{4096\pi^4 k_B^4 G^4M^4}
+    = -\frac{\sigma\hbar^4}{256\pi^3 k_B^4 G^2M^2}
+\end{align*}
+Where we replaced the values we have for $A$ and $T$. Then by integration we
+get that
+\begin{align*}
+    \int_{M_0}^M M^2~dM
+    &= -\frac{\sigma\hbar^4}{256\pi^3 k_B^4 G^2}\int_0^t~dt\\
+    \frac{M^3}{3} - \frac{M_0^3}{3}
+    &= -\frac{\sigma\hbar^4}{256\pi^3 k_B^4 G^2}t\\
+    M^3 &= -\frac{3\sigma\hbar^4}{256\pi^3 k_B^4 G^2}t + M_0^3
+\end{align*}
+But we know that the lifetime of a black hole is
+\begin{align*}
+    t_0 = \frac{256\pi^3k_B^4G^2}{3\sigma \hbar^4} M_0^3
+\end{align*}
+Therefore
+\begin{align*}
+    M^3 &= -\frac{M_0^3}{t_0}t + M_0^3\\
+    M^3 &= M_0^3\bigg(1-\frac{t}{t_0}\bigg)\\
+    M &= M_0\sqrt[3]{1-\frac{t}{t_0}}
+\end{align*}
+Below we leave a plot of $M/M_0$ as a function of $t/t_0$
+\begin{center}
+    \includegraphics[scale=0.25]{ch16-p16.6.png}
+\end{center}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P16.7}}
+Let two black holes have masses $M_1$ and $M_2$ then the entropy of each is
+\begin{align*}
+    S_1 = \frac{4\pi k_B G}{\hbar} M_1^2
+    \quad\text{and}\quad
+    S_2 = \frac{4\pi k_B G}{\hbar} M_2^2
+\end{align*}
+So the total entropy is
+\begin{align*}
+    S_1 + S_2 &= \frac{4\pi k_B G}{\hbar} M_1^2 + \frac{4\pi k_B G}{\hbar} M_2^2
+    = \frac{4\pi k_B G}{\hbar} (M_1^2 + M_2^2)
+\end{align*}
+Now, if we consider they merge toghether to a new black hole of mass $M_1 + M_2$
+then the entropy of this new black hole would be
+\begin{align*}
+    S_M &= \frac{4\pi k_B G}{\hbar} (M_1 + M_2)^2
+\end{align*}
+And since $M_1^2 + M_2^2 < M_1^2 + 2M_1M_2 + M_2^2 = (M_1 + M_2)^2$
+we see that
+\begin{align*}
+    S_1 + S_2 < S_M 
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P16.8}}
+Let us consider a system composed of a thermal reservoir and a black hole, then
+the entropy of the reservoir is
+\begin{align*}
+    S_R = \frac{U_{tot} - M}{T_R} + C
+\end{align*}
+Where $U_{tot}$ is the total conserved energy of the system, $M$ is the mass
+of the black hole, $T_R$ is the constant temperature of the reservoir and $C$
+is a constant.
+\\
+Also, the entropy of the black hole we know it is 
+\begin{align*}
+    S_{BH} = \frac{4\pi k_B G}{\hbar} M^2
+\end{align*}
+So the total entropy of the system is
+\begin{align*}
+    S_{tot} = S_{BH} + S_R
+    = \frac{4\pi k_B G}{\hbar} M^2 -\frac{M}{T_R} + \bigg(\frac{U_{tot}}{T_R} + C\bigg)
+\end{align*}
+We know that a stable equilibrium is when energy is distributed in such a way
+that the total entropy of the system is a local maximum.
+\\
+In this case, $S_{tot}$ is a quadratic equation of $M$ and since the term
+involving $M^2$ is positive then the branches point upward, hence the only
+extremum point point is a minimum.
+\\
+Also, $S_{tot}$ cannot take values such that $M < 0$ and $M > U_{tot}$ so the
+only local maximum of the quadratic equation can happen for $M = 0$ and
+$M = U_{tot}$ i.e. the extremes.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P16.9}}
+Let us compute the entropy $S$ of a solar-mass black hole as follows
+\begin{align*}
+    S = \frac{4\pi k_B GM^2}{\hbar}
+    = \frac{4\pi \cdot 1.536\sci{-40} \cdot 1477 \cdot 2\sci{30}}{3.518\sci{-43}} 
+    = 1.621\sci{37}~kg/K
+\end{align*}
+On the other hand, if we consider that the black hole was formed by pure
+ionized hydrogen (protons), then the number of particles forming it is
+\begin{align*}
+    N = \frac{M}{m_p}
+    = \frac{2\sci{30}}{1.672\sci{-27}}
+    = 1.196\sci{57}
+\end{align*}
+Therefore the ratio $S/Nk_B$ for a solar-mass blackhole is 
+\begin{align*}
+    \frac{S}{Nk_B} = \frac{1.621\sci{37}}{1.196\sci{57} \cdot 1.536\sci{-40}}
+    = 8.823\sci{19}
+\end{align*}
+In comparison to the normal matter, where the ratio is $S/Nk_B = 1$, we see
+that it is 19 orders of magnitude bigger.
+\end{proof}
+\end{document}
