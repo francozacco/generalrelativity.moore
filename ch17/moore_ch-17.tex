@@ -1,0 +1,868 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{physics,amsmath}
+\usepackage{bm}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[mathscr]{euscript}
+
+
+\title{\textbf{Solved selected problems of General Relativity - Thomas A. Moore}}
+\author{Franco Zacco}
+\date{}
+
+\addtolength{\topmargin}{-3cm}
+\addtolength{\textheight}{3cm}
+
+\newcommand{\hatr}{\bm{\hat{r}}}
+\newcommand{\hatn}{\bm{\hat{n}}}
+\newcommand{\hatx}{\bm{\hat{x}}}
+\newcommand{\haty}{\bm{\hat{y}}}
+\newcommand{\hatz}{\bm{\hat{z}}}
+\newcommand{\hatth}{\bm{\hat{\theta}}}
+\newcommand{\hatphi}{\bm{\hat{\phi}}}
+\newcommand{\hatrho}{\bm{\hat{\rho}}}
+\newcommand{\er}{\bm{e}_r}
+\newcommand{\etht}{\bm{e}_\theta}
+\newcommand{\sci}[1]{\times 10^{#1}}
+
+\theoremstyle{definition}
+\newtheorem*{solution*}{Solution}
+\renewcommand*{\proofname}{Solution}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{Chapter 17 - The Absolute Gradient}
+
+\begin{proof}{\textbf{BOX 17.1} - Exercise 17.1.1.}\\
+Let $d\bm{A} = d(A^{\mu}\bm{e}_\mu)$ then by the product rule we have that
+\begin{align*}
+    d(A^{\mu}\bm{e}_\mu)
+    = \pdv{A^{\mu}}{x^\sigma}dx^{\sigma}\bm{e}_\mu
+    + A^{\mu}\pdv{\bm{e}_\mu}{x^{\sigma}}dx^{\sigma}
+\end{align*}
+Also, by definition we know that
+$\partial \bm{e}_\alpha/\partial x^{\mu} = \Gamma^\nu_{\mu\alpha}\bm{e}_\nu$
+so
+\begin{align*}
+    d(A^{\mu}\bm{e}_\mu)
+    &= \pdv{A^{\mu}}{x^\sigma}dx^{\sigma}\bm{e}_\mu
+    + A^{\nu}\pdv{\bm{e}_\nu}{x^{\sigma}}dx^{\sigma}\\
+    &= \pdv{A^{\mu}}{x^\sigma}dx^{\sigma}\bm{e}_\mu
+    + A^{\nu}\Gamma^{\mu}_{\sigma\nu}\bm{e}_{\mu} dx^{\sigma}\\
+    &= \bigg[\pdv{A^{\mu}}{x^\sigma} + A^{\nu}\Gamma^{\mu}_{\sigma\nu}\bigg]
+    \bm{e}_{\mu} dx^{\sigma}
+\end{align*}
+Where in the first step we renamed in the second term $\mu$ to $\nu$.
+\end{proof}
+\begin{proof}{\textbf{BOX 17.2} - Exercise 17.2.1.}\\
+From equation (17.17) we know that
+\begin{align*}
+    \nabla_\alpha(A^\mu B_\mu)
+    = \bigg[\pdv{A^\mu}{x^{\alpha}} + \Gamma^\mu_{\alpha\nu}A^\nu\bigg]B_\mu
+    + A^\mu(\nabla_\alpha B_\mu)
+\end{align*}
+And from equation (17.18) we know that
+\begin{align*}
+    \nabla_\alpha(A^\mu B_\mu) = \pdv{A^\mu}{x^\alpha}B_\mu + A^\mu\pdv{B_\mu}{x^\alpha}
+\end{align*}
+Then
+\begin{align*}
+    \pdv{A^\mu}{x^{\alpha}}B_\mu + \Gamma^\mu_{\alpha\nu}A^\nu B_\mu
+    + A^\mu(\nabla_\alpha B_\mu)
+    &= \pdv{A^\mu}{x^\alpha}B_\mu + A^\mu\pdv{B_\mu}{x^\alpha}\\
+    \Gamma^\mu_{\alpha\nu}A^\nu B_\mu + A^\mu(\nabla_\alpha B_\mu)
+    &= A^\mu\pdv{B_\mu}{x^\alpha}\\
+    - A^\mu\pdv{B_\mu}{x^\alpha} + \Gamma^\sigma_{\alpha\mu}A^\mu B_\sigma
+    + A^\mu(\nabla_\alpha B_\mu) &= 0\\
+    A^\mu\bigg[-\pdv{B_\mu}{x^\alpha} + \Gamma^\sigma_{\alpha\mu}B_\sigma
+    + \nabla_\alpha B_\mu \bigg] &= 0
+\end{align*}
+Where in the third step we renamed the $\nu$ index to $\mu$ and the $\mu$
+index to $\sigma$.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{BOX 17.4} - Exercise 17.4.1.}\\
+Equations (17.22), (17.23) and (17.24) state that
+\begin{align*}
+    \Gamma_{\mu\alpha}^\nu g_{\nu\rho} + \Gamma_{\rho\alpha}^\nu g_{\nu\mu}
+    &= \partial_{\alpha}g_{\mu\rho}\\
+    %
+    \Gamma_{\rho\mu}^\nu g_{\nu\alpha} + \Gamma_{\alpha\mu}^\nu g_{\nu\rho}
+    &= \partial_{\mu}g_{\rho\alpha}\\
+    %
+    \Gamma_{\alpha\rho}^\nu g_{\nu\mu} + \Gamma_{\mu\rho}^\nu g_{\nu\alpha}
+    &= \partial_{\rho}g_{\alpha\mu}
+\end{align*}
+Then adding (17.22) to (17.23) and subtracting (17.24) we get that
+\begin{align*}
+    \Gamma_{\mu\alpha}^\nu g_{\nu\rho} + \Gamma_{\rho\alpha}^\nu g_{\nu\mu}
+    + \Gamma_{\rho\mu}^\nu g_{\nu\alpha} + \Gamma_{\alpha\mu}^\nu g_{\nu\rho}
+    - \Gamma_{\alpha\rho}^\nu g_{\nu\mu} - \Gamma_{\mu\rho}^\nu g_{\nu\alpha}
+    &= \partial_{\alpha}g_{\mu\rho} + \partial_{\mu}g_{\rho\alpha}
+    - \partial_{\rho}g_{\alpha\mu}\\
+    %
+    g_{\nu\rho}(\Gamma_{\mu\alpha}^\nu + \Gamma_{\alpha\mu}^\nu)
+    + g_{\nu\mu}(\Gamma_{\rho\alpha}^\nu - \Gamma_{\alpha\rho}^\nu)
+    + g_{\nu\alpha}(\Gamma_{\rho\mu}^\nu - \Gamma_{\mu\rho}^\nu)
+    &= \partial_{\alpha}g_{\mu\rho} + \partial_{\mu}g_{\rho\alpha}
+    - \partial_{\rho}g_{\alpha\mu}\\
+    %
+    g_{\nu\rho}(\Gamma_{\mu\alpha}^\nu + \Gamma_{\mu\alpha}^\nu)
+    + g_{\nu\mu}(\Gamma_{\rho\alpha}^\nu - \Gamma_{\rho\alpha}^\nu)
+    + g_{\nu\alpha}(\Gamma_{\rho\mu}^\nu - \Gamma_{\rho\mu}^\nu)
+    &= \partial_{\alpha}g_{\mu\rho} + \partial_{\mu}g_{\rho\alpha}
+    - \partial_{\rho}g_{\alpha\mu}
+\end{align*}
+Where we used the symmetry in the lower indices of the Christoffel symbols,
+then
+\begin{align*}
+    2g_{\nu\rho}\Gamma_{\mu\alpha}^\nu
+    &= \partial_{\alpha}g_{\mu\rho} + \partial_{\mu}g_{\rho\alpha}
+    - \partial_{\rho}g_{\alpha\mu}
+\end{align*}
+So multiplying this equation by $\frac{1}{2}g^{\sigma\rho}$ and using that
+$g^{\sigma\rho}g_{\nu\rho} = \delta^\sigma_\nu$ we get that
+\begin{align*}
+    g^{\sigma\rho}g_{\nu\rho}\Gamma_{\mu\alpha}^\nu
+    &= \frac{1}{2}g^{\sigma\rho}[
+    \partial_{\alpha}g_{\mu\rho} + \partial_{\mu}g_{\rho\alpha}
+    - \partial_{\rho}g_{\alpha\mu}
+    ]\\
+    \delta^\sigma_\nu\Gamma_{\mu\alpha}^\nu
+    &= \frac{1}{2}g^{\sigma\rho}[
+    \partial_{\alpha}g_{\mu\rho} + \partial_{\mu}g_{\rho\alpha}
+    - \partial_{\rho}g_{\alpha\mu}
+    ]\\
+    \Gamma_{\mu\alpha}^\sigma
+    &= \frac{1}{2}g^{\sigma\rho}[
+    \partial_{\alpha}g_{\mu\rho} + \partial_{\mu}g_{\rho\alpha}
+    - \partial_{\rho}g_{\alpha\mu}
+    ]
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{BOX 17.5} - Exercise 17.5.1.}\\
+Equation (17.27) states that
+\begin{align*}
+    \frac{1}{2}\partial_\sigma g_{\mu\nu} \dv{x^\sigma}{\tau}\dv{x^\nu}{\tau}
+    + \frac{1}{2}\partial_\sigma g_{\mu\nu} \dv{x^\sigma}{\tau}\dv{x^\nu}{\tau}
+    + g_{\mu\nu}\dv[2]{x^\nu}{\tau}
+    - \frac{1}{2}\partial_\mu g_{\alpha\beta} \dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}
+    = 0
+\end{align*}
+Renaming $\sigma \to \alpha$, $\nu\to\beta$ in the first term and
+$\sigma \to \beta, \nu \to \alpha$ in the second term we get that
+\begin{align*}
+    \frac{1}{2}\partial_\alpha g_{\mu\beta} \dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}
+    + \frac{1}{2}\partial_\beta g_{\mu\alpha} \dv{x^\beta}{\tau}\dv{x^\alpha}{\tau}
+    + g_{\mu\nu}\dv[2]{x^\nu}{\tau}
+    - \frac{1}{2}\partial_\mu g_{\alpha\beta} \dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}
+    = 0
+\end{align*}
+So, multiplying the equation by $g^{\sigma\mu}$ and using the fact that
+$g^{\sigma\mu}g_{\mu\nu} = \delta^\sigma_\nu$ we see that
+\begin{align*}
+    \frac{1}{2}g^{\sigma\mu}\bigg[
+        \partial_\alpha g_{\mu\beta} \dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}
+        + \partial_\beta g_{\mu\alpha} \dv{x^\beta}{\tau}\dv{x^\alpha}{\tau}
+        - \partial_\mu g_{\alpha\beta} \dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}
+    \bigg]
+    + \delta^\sigma_\nu\dv[2]{x^\nu}{\tau}
+    &= 0\\
+    \frac{1}{2}g^{\sigma\mu}\bigg[
+        \partial_\alpha g_{\mu\beta} + \partial_\beta g_{\mu\alpha}
+        - \partial_\mu g_{\alpha\beta}
+    \bigg]\dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}
+    + \dv[2]{x^\sigma}{\tau}
+    &= 0
+\end{align*}
+Finally, using equation (17.10) we have that
+\begin{align*}
+    \Gamma_{\alpha\beta}^\sigma\dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}
+    + \dv[2]{x^\sigma}{\tau}
+    &= 0
+\end{align*}
+Which renaming $\sigma \to \mu$ gives us equation (17.12).
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{BOX 17.6} - Exercise 17.6.1.}\\
+Let $\mu = \theta$ then the geodesic equation becomes
+\begin{align*}
+    \partial_\sigma g_{\theta\nu} \dv{x^\sigma}{\tau}\dv{x^\nu}{\tau}
+    + g_{\theta\nu}\dv[2]{x^\nu}{\tau}
+    - \frac{1}{2}\partial_\theta g_{\alpha\beta} \dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}
+    = 0
+\end{align*}
+For the first and second term, since the metric is diagonal the only non-zero
+term is $g_{\theta\theta}$ and this term only depends on $r$ so the only
+derivative that is non-zero is when $\sigma = r$.
+\\
+For the last term, the only component that depends on $\theta$ is the
+$g_{\phi\phi}$ component, then the equation reduces to
+\begin{align*}
+    \partial_r g_{\theta\theta} \dv{r}{\tau}\dv{\theta}{\tau}
+    + g_{\theta\theta}\dv[2]{\theta}{\tau}
+    - \frac{1}{2}\partial_\theta g_{\phi\phi} \dv{\phi}{\tau}\dv{\phi}{\tau}
+    &= 0\\
+    \partial_r (r^2) \dv{r}{\tau}\dv{\theta}{\tau}
+    + r^2 \dv[2]{\theta}{\tau}
+    - \frac{1}{2}\partial_\theta (r^2\sin^2\theta)\dv{\phi}{\tau}\dv{\phi}{\tau}
+    &= 0\\
+    2r \dv{r}{\tau}\dv{\theta}{\tau} + r^2 \dv[2]{\theta}{\tau}
+    - r^2\sin\theta\cos\theta \dv{\phi}{\tau}\dv{\phi}{\tau}
+    &= 0\\
+    \frac{2}{r} \dv{r}{\tau}\dv{\theta}{\tau} + \dv[2]{\theta}{\tau}
+    - \sin\theta\cos\theta \dv{\phi}{\tau}\dv{\phi}{\tau}
+    &= 0
+\end{align*}
+Therefore, from the 16 Christoffel symbols $\Gamma^\theta_{\mu\nu}$ that have
+$\theta$ as a superscript the only non-zero terms are
+\begin{align*}
+    \Gamma^\theta_{r\theta} = \Gamma^\theta_{\theta r} = \frac{1}{r}
+    \quad\text{ and }\quad
+    \Gamma^\theta_{\phi\phi} = -\sin\theta\cos\theta
+\end{align*}
+
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{BOX 17.7} - Exercise 17.7.1.}\\
+Let us list all 20 valid combinations of the three indices as follows
+\begin{align*}
+    333 && 233 && 322 && 311 && 300 && 012\\ 
+    222 && 133 && 122 && 211 && 200 && 123\\ 
+    111 && 033 && 022 && 011 && 100 && 230\\ 
+    000 &&     &&     &&     &&     && 301
+\end{align*}
+\end{proof}
+\begin{proof}{\textbf{BOX 17.7} - Exercise 17.7.2.}\\
+From equation (17.35) we know that
+\begin{align*}
+    \bm{g}' = [\bm{a} + \bm{b}\Delta\bm{x}' + \bm{c}(\Delta\bm{x}')^2 + ...]^2
+    [\bm{g}_P + \partial\bm{g}_P\Delta\bm{x}'
+    + \frac{1}{2}\partial^2\bm{g}_P(\Delta\bm{x}')^2 + ...]
+\end{align*}
+Then expanding this expression we get that
+\begin{align*}
+    &\bm{g}' =
+    [\bm{a}^2 + \bm{a}\bm{b}\Delta\bm{x}' + \bm{a}\bm{c}(\Delta\bm{x}')^2
+    + \bm{b}\bm{a}\Delta\bm{x}' + \bm{b}^2(\Delta\bm{x}')^2
+    + \bm{b}\bm{c}(\Delta\bm{x}')^3 + \bm{c}\bm{a}(\Delta\bm{x}')^2\\
+    &\qquad + \bm{c}\bm{b}(\Delta\bm{x}')^3 + \bm{c}^2(\Delta\bm{x}')^4
+    + ...][\bm{g}_P + \partial\bm{g}_P\Delta\bm{x}'
+    + \frac{1}{2}\partial^2\bm{g}_P(\Delta\bm{x}')^2 + ...]\\
+    &\quad =
+    [\bm{a}^2 + [\bm{a}\bm{b} + \bm{b}\bm{a}]\Delta\bm{x}'
+    + [\bm{a}\bm{c} + \bm{b}^2 + \bm{c}\bm{a}](\Delta\bm{x}')^2 + ...]
+    [\bm{g}_P + \partial\bm{g}_P\Delta\bm{x}'
+    + \frac{1}{2}\partial^2\bm{g}_P(\Delta\bm{x}')^2 + ...]\\
+    &\quad = \bm{a}^2\bm{g}_P + \bm{a}^2\partial\bm{g}_P\Delta\bm{x}'
+    + \bm{a}^2\frac{1}{2}\partial^2\bm{g}_P(\Delta\bm{x}')^2
+    + [\bm{a}\bm{b} + \bm{b}\bm{a}]\bm{g}_P\Delta\bm{x}'
+    + [\bm{a}\bm{b} + \bm{b}\bm{a}]\partial\bm{g}_P(\Delta\bm{x}')^2\\
+    &\qquad + \bm{g}_P[\bm{a}\bm{c} + \bm{b}^2 + \bm{c}\bm{a}](\Delta\bm{x}')^2
+    + ...\\
+    &\quad = \bm{a}^2\bm{g}_P
+    + [\bm{a}^2\partial\bm{g}_P + [\bm{a}\bm{b} + \bm{b}\bm{a}]\bm{g}_P]\Delta\bm{x}'\\
+    &\qquad+ [\bm{a}^2\frac{1}{2}\partial^2\bm{g}_P
+    + [\bm{a}\bm{b} + \bm{b}\bm{a}]\partial\bm{g}_P
+    + \bm{g}_P[\bm{a}\bm{c} + \bm{b}^2 + \bm{c}\bm{a}]](\Delta\bm{x}')^2
+    + ...
+\end{align*}
+Where we removed the higher order terms. Therefore we get that
+\begin{align*}
+    \bm{g}' &= \bm{a}^2\bm{g}_P
+    + [\bm{a}^2\partial\bm{g}_P + \bm{a}\bm{b}\bm{g}_P
+    + \bm{b}\bm{a}\bm{g}_P]\Delta\bm{x}'\\
+    &\quad+ [\frac{1}{2}\bm{a}^2\partial^2\bm{g}_P
+    + \bm{a}\bm{b}\partial\bm{g}_P + \bm{b}\bm{a}\partial\bm{g}_P
+    + \bm{a}\bm{c}\bm{g}_P + \bm{b}^2\bm{g}_P + \bm{c}\bm{a}\bm{g}_P
+    ](\Delta\bm{x}')^2
+    + ...
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P17.1}}\\
+We know that in polar-coordinates
+\begin{align*}
+    ds^2 = dr^2 + r^2d\theta^2
+\end{align*}
+So the geodesic equation for $\mu = r$ is
+\begin{align*}
+    \partial_\sigma g_{r\nu} \dv{x^\sigma}{\tau}\dv{x^\nu}{\tau}
+    + g_{r\nu}\dv[2]{x^\nu}{\tau}
+    - \frac{1}{2}\partial_r g_{\alpha\beta} \dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}
+    = 0
+\end{align*}
+For the first and second term, since the metric is diagonal the only non-zero
+term is $g_{rr}$ and it's constant so every derivative is 0.
+\\
+For the last term, the only component that depends on $r$ is the
+$g_{\theta\theta}$ component, then the equation reduces to
+\begin{align*}
+    g_{rr}\dv[2]{r}{\tau}
+    - \frac{1}{2}\partial_r g_{\theta\theta} \dv{\theta}{\tau}\dv{\theta}{\tau}
+    &= 0\\
+    \dv[2]{r}{\tau} - r \dv{\theta}{\tau}\dv{\theta}{\tau}
+    &= 0
+\end{align*}
+Comparing this to the 4 Christoffel symbols $\Gamma^r_{\mu\nu}$ that have $r$
+as a superscript the only-non-zero term is
+\begin{align*}
+    \Gamma^r_{\theta\theta} = -r
+\end{align*}
+Now, if we let $\mu = \theta$ the geodesic equation becomes
+\begin{align*}
+    \partial_\sigma g_{\theta\nu} \dv{x^\sigma}{\tau}\dv{x^\nu}{\tau}
+    + g_{\theta\nu}\dv[2]{x^\nu}{\tau}
+    - \frac{1}{2}\partial_\theta g_{\alpha\beta} \dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}
+    = 0
+\end{align*}
+For the first and second term, since the metric is diagonal the only non-zero
+term is $g_{\theta\theta}$ and it depends only on $r$ so the $r$-derivative 
+is the only non-zero derivative.
+\\
+For the last term, no component of the metric depends on $\theta$ so all
+derivatives with respect to $\theta$ are zero. Then the equation becomes
+\begin{align*}
+    \partial_r g_{\theta\theta} \dv{r}{\tau}\dv{\theta}{\tau}
+    + g_{\theta\theta}\dv[2]{\theta}{\tau}
+    &= 0\\
+    2r \dv{r}{\tau}\dv{\theta}{\tau}
+    + r^2\dv[2]{\theta}{\tau}
+    &= 0\\
+    \frac{2}{r}\dv{r}{\tau}\dv{\theta}{\tau}
+    + \dv[2]{\theta}{\tau}
+    &= 0
+\end{align*}
+Comparing this to the 4 Christoffel symbols $\Gamma^\theta_{\mu\nu}$ that have
+$\theta$ as a superscript the only-non-zero terms are
+\begin{align*}
+    \Gamma^\theta_{r\theta} = \Gamma^\theta_{\theta r} = \frac{1}{r} 
+\end{align*}
+Therefore, from the 8 Christoffel symbols for polar coordinates only 3 are
+non-zero.
+Finally, we can check that the result we got for $\Gamma^r_{\theta\theta}$
+matches to the result given by equation (17.10) by computing it as follows
+\begin{align*}
+    \Gamma^r_{\theta\theta}
+    = \frac{1}{2} g^{r\sigma}[
+    \partial_\theta g_{\theta\sigma} + \partial_\theta g_{\sigma\theta}
+    - \partial_\sigma g_{\theta\theta}
+    ]
+\end{align*}
+Given that no metric component depends on $\theta$ we can drop the first two
+terms, and since the metric inverse is also diagonal the only non-zero term is
+$g^{rr}$, then we get that
+\begin{align*}
+    \Gamma^r_{\theta\theta}
+    &= -\frac{1}{2} g^{rr} \partial_r g_{\theta\theta}
+    = -\frac{1}{2} \frac{1}{g_{rr}} (2r)
+    = -\frac{1}{2} \cdot 1 \cdot (2r)
+    = -r
+\end{align*}
+Since the metric is diagonal, we used that $g^{\mu\nu} = 1/g_{\mu\nu}$ and we
+see that the result matches the previous one.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P17.2}}\\
+We computed the Christoffel symbols for when $t$ and $\theta$ are superscripts
+in BOX 17.6, so we have to compute Christoffel symbols for when $r$ and $\phi$
+are superscripts.
+\\
+Let us start considering the metric equation for $\mu = r$.
+\begin{align*}
+    \partial_\sigma g_{r\nu} \dv{x^\sigma}{\tau}\dv{x^\nu}{\tau}
+    + g_{r\nu}\dv[2]{x^\nu}{\tau}
+    - \frac{1}{2}\partial_r g_{\alpha\beta} \dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}
+    = 0
+\end{align*}
+For the first and second term, since the metric is diagonal the only non-zero
+term is $g_{rr}$ and this term only depends on $r$ so the only
+derivative that is non-zero is when $\sigma = r$.
+\\
+Then the equation reduces to
+\begin{align*}
+    &\partial_r g_{rr} \dv{r}{\tau}\dv{r}{\tau}
+    + g_{rr}\dv[2]{r}{\tau}\\
+    &\quad- \frac{1}{2}\bigg[
+    \partial_r g_{tt} \dv{t}{\tau}\dv{t}{\tau}
+    + \partial_r g_{rr} \dv{r}{\tau}\dv{r}{\tau}
+    + \partial_r g_{\theta\theta} \dv{\theta}{\tau}\dv{\theta}{\tau}
+    + \partial_r g_{\phi\phi} \dv{\phi}{\tau}\dv{\phi}{\tau}
+    \bigg]
+    = 0\\[10pt]
+    &-\frac{2GM}{r^2}\bigg(1 - \frac{2GM}{r}\bigg)^{-2}\dv{r}{\tau}\dv{r}{\tau}
+    + \bigg(1 - \frac{2GM}{r}\bigg)^{-1}\dv[2]{r}{\tau}\\
+    &\quad- \frac{1}{2}\bigg[
+    -\frac{2GM}{r^2} \dv{t}{\tau}\dv{t}{\tau}
+    -\frac{2GM}{r^2}\bigg(1 - \frac{2GM}{r}\bigg)^{-2}\dv{r}{\tau}\dv{r}{\tau}
+    + 2r \dv{\theta}{\tau}\dv{\theta}{\tau}
+    + 2r\sin^2\theta \dv{\phi}{\tau}\dv{\phi}{\tau}
+    \bigg]
+    = 0\\[10pt]
+    &-\frac{2GM}{r^2}\bigg(1 - \frac{2GM}{r}\bigg)^{-1}\dv{r}{\tau}\dv{r}{\tau}
+    + \dv[2]{r}{\tau}\\
+    &\quad- \frac{1}{2}\bigg[
+    -\frac{2GM}{r^2}\bigg(1 - \frac{2GM}{r}\bigg) \dv{t}{\tau}\dv{t}{\tau}
+    -\frac{2GM}{r^2}\bigg(1 - \frac{2GM}{r}\bigg)^{-1}\dv{r}{\tau}\dv{r}{\tau}\\
+    &\quad+ 2r\bigg(1 - \frac{2GM}{r}\bigg) \dv{\theta}{\tau}\dv{\theta}{\tau}
+    + 2r\sin^2\theta\bigg(1 - \frac{2GM}{r}\bigg)\dv{\phi}{\tau}\dv{\phi}{\tau}
+    \bigg]
+    = 0\\[10pt]
+    &-\frac{GM}{r^2}\bigg(1 - \frac{2GM}{r}\bigg)^{-1}\dv{r}{\tau}\dv{r}{\tau}
+    + \dv[2]{r}{\tau}
+    + \frac{GM}{r^2}\bigg(1 - \frac{2GM}{r}\bigg) \dv{t}{\tau}\dv{t}{\tau}\\
+    &\quad- r\bigg(1 - \frac{2GM}{r}\bigg) \dv{\theta}{\tau}\dv{\theta}{\tau}
+    - r\sin^2\theta\bigg(1 - \frac{2GM}{r}\bigg)\dv{\phi}{\tau}\dv{\phi}{\tau}
+    = 0
+\end{align*}
+So from the 16 Christoffel symbols $\Gamma^r_{\mu\nu}$ that have $r$ as a
+superscript the only non-zero terms are
+\begin{align*}
+    \Gamma^r_{tt} &= \frac{GM}{r^2}\bigg(1 - \frac{2GM}{r}\bigg)
+    &\qquad
+    \Gamma^r_{rr} &= -\frac{GM}{r^2}\bigg(1 - \frac{2GM}{r}\bigg)^{-1}\\
+    \Gamma^r_{\theta\theta} &= -r\bigg(1 - \frac{2GM}{r}\bigg)
+    &\qquad
+    \Gamma^r_{\phi\phi} &= -r\sin^2\theta\bigg(1 - \frac{2GM}{r}\bigg)
+\end{align*}
+Now, let us consider the metric equation for $\mu = \phi$.
+\begin{align*}
+    \partial_\sigma g_{\phi\nu} \dv{x^\sigma}{\tau}\dv{x^\nu}{\tau}
+    + g_{\phi\nu}\dv[2]{x^\nu}{\tau}
+    - \frac{1}{2}\partial_\phi g_{\alpha\beta} \dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}
+    = 0
+\end{align*}
+For the first and second term, since the metric is diagonal the only non-zero
+term is $g_{\phi\phi}$ and this term depends only on $r$ and $\theta$
+so the only derivatives that are non-zero are when $\sigma = r, \theta$.
+\\
+For the last term, no component of the metric depends on $\phi$ so all
+derivatives with respect to $\phi$ are zero.
+Then the equation becomes
+\begin{align*}
+    \partial_r g_{\phi\phi} \dv{r}{\tau}\dv{\phi}{\tau}
+    + \partial_\theta g_{\phi\phi} \dv{\theta}{\tau}\dv{\phi}{\tau}
+    + g_{\phi\phi}\dv[2]{\phi}{\tau}
+    &= 0\\
+    2r\sin^2\theta \dv{r}{\tau}\dv{\phi}{\tau}
+    + 2r^2\sin\theta\cos\theta \dv{\theta}{\tau}\dv{\phi}{\tau}
+    + r^2\sin^2\theta\dv[2]{\phi}{\tau}
+    &= 0\\
+    \frac{2}{r}\dv{r}{\tau}\dv{\phi}{\tau}
+    + 2\frac{\cos\theta}{\sin\theta} \dv{\theta}{\tau}\dv{\phi}{\tau}
+    + \dv[2]{\phi}{\tau}
+    &= 0\\
+    \frac{2}{r}\dv{r}{\tau}\dv{\phi}{\tau}
+    + 2\cot\theta \dv{\theta}{\tau}\dv{\phi}{\tau}
+    + \dv[2]{\phi}{\tau}
+    &= 0
+\end{align*}
+Therefore from the 16 Christoffel symbols $\Gamma^\phi_{\mu\nu}$ that have
+$\phi$ as a superscript the only non-zero terms are
+\begin{align*}
+    \Gamma^\phi_{r\phi} = \Gamma^\phi_{\phi r} &= \frac{1}{r}
+    \qquad\qquad    
+    \Gamma^\phi_{\theta\phi} = \Gamma^\phi_{\phi\theta} = \cot\theta
+\end{align*}
+Finally, we can check that the result we got for $\Gamma^\phi_{r\phi}$
+matches to the result given by equation (17.10) by computing it as follows
+\begin{align*}
+    \Gamma^\phi_{r\phi}
+    = \frac{1}{2} g^{\phi\sigma}[
+    \partial_r g_{\phi\sigma} + \partial_\phi g_{\sigma r}
+    - \partial_\sigma g_{r\phi}]
+\end{align*}
+Given that no metric component depends on $\phi$ we can drop the second term,
+the third term is zero as well since the metric is diagonal.
+Also, since the metric is diagonal the only non-zero terms are when
+$\sigma = \phi$, then the equation becomes
+\begin{align*}
+    \Gamma^\phi_{r\phi}
+    = \frac{1}{2} g^{\phi\phi}[\partial_r g_{\phi\phi}]
+    = \frac{1}{2} \frac{1}{g_{\phi\phi}}[2r\sin^2\theta]
+    = \frac{1}{2} \frac{1}{r^2\sin^2\theta}[2r\sin^2\theta]
+    = \frac{1}{r}
+\end{align*}
+Where we used that $g^{\mu\nu} = 1/g_{\mu\nu}$ since the metric is diagonal.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P17.4}}\\
+Let us take a LIF centered on a given event, then the absolute gradient reduces
+to the ordinary gradient and hence we get that
+\begin{align*}
+    \nabla_\beta(B^\mu_\nu A^\alpha)
+    &= \partial_\beta(B^\mu_\nu A^\alpha)\\
+    &= (\partial_\beta B^\mu_\nu) A^\alpha + (\partial_\beta A^\alpha)B^\mu_\nu\\
+    &= (\nabla_\beta B^\mu_\nu) A^\alpha + (\nabla_\beta A^\alpha)B^\mu_\nu
+\end{align*}
+Where we used the product rule of the ordinary gradient.
+Since the last equation is a tensor equation, if it holds in any coordinate
+system, it must hold in all. Therefore the absolute gradient obeys the product
+rule.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P17.6}}\\
+The correct way of computing $\bm{a}$ is by using equation (17.12) where we
+compute $d\bm{v}/dt$ taking into account the change in the basis vectors
+\begin{align*}
+    a^\mu = \dv{\bm{v}}{t} = \dv{v^\mu}{t} + \Gamma^\mu_{\alpha\beta}v^\alpha v^\beta
+\end{align*}
+Let us consider first the case of cartesian coordinates.
+\\
+We see that the Christoffel symbols can be calculated using the equation
+\begin{align*}
+    \Gamma^\alpha_{\mu\nu} = \frac{1}{2} g^{\alpha\sigma}[
+    \partial_\mu g_{\nu\sigma} + \partial_\nu g_{\sigma \mu}
+    - \partial_\sigma g_{\mu\nu}]
+\end{align*}
+Since all components of the metric are constant (either 0 or 1) then all
+derivatives are zero and hence the Christoffel components are all zero, hence
+\begin{align*}
+    a^\mu = \dv{v^\mu}{t} = 0
+\end{align*}
+Where we used that $v^x = v$ and $v^y = 0$ i.e. the object is moving with
+constant velocity in cartesian coordinates.
+\\
+So, as expected, the components of $\bm{a}$ are zero in cartesian coordinates.
+\\
+Now, let us compute the acceleration in the sinusoidal coordinates $u, w$
+where $u = x$ and $w = y - A\sin(bx)$ then from problem P5.5 we know that
+metric in matrix form is
+\begin{align*}
+    g_{\mu\nu} &= \begin{bmatrix}
+        1 + (Ab)^2\cos^2(bu) & Ab\cos(bu)\\
+        Ab\cos(bu) & 1
+    \end{bmatrix}
+\end{align*}
+We see that $\det(g_{\mu\nu}) = 1$ so the inverse metric is given by
+\begin{align*}
+    g^{\mu\nu} &= \begin{bmatrix}
+        1 & -Ab\cos(bu)\\
+        -Ab\cos(bu) & 1 + (Ab)^2\cos^2(bu)
+    \end{bmatrix}
+\end{align*}
+For the case $\alpha = u$ we can compute the Christoffel symbols as follows
+\begin{align*}
+    \Gamma^u_{uu}
+    &= \frac{1}{2}g^{uu}[\partial_ug_{uu} + \partial_ug_{uu} - \partial_ug_{uu}]
+    + \frac{1}{2}g^{uw}[\partial_ug_{uw} + \partial_ug_{wu} - \partial_wg_{uu}]\\
+    &= \frac{1}{2}g^{uu}\partial_ug_{uu} + g^{uw}\partial_ug_{uw}\\
+    &= -A^2b^3\sin(bu)\cos(bu) + A^2b^3\cos(bu)\sin(bu)\\
+    &= 0
+\end{align*}
+\begin{align*}
+    \Gamma^u_{uw}
+    &= \frac{1}{2}g^{uu}[\partial_ug_{wu} + \partial_wg_{uu} - \partial_ug_{uw}]
+    + \frac{1}{2}g^{uw}[\partial_ug_{ww} + \partial_wg_{wu} - \partial_wg_{uw}]\\
+    &= 0
+\end{align*}
+\begin{align*}
+    \Gamma^u_{wu}
+    &= \frac{1}{2}g^{uu}[\partial_wg_{uu} + \partial_ug_{uw} - \partial_ug_{wu}]
+    + \frac{1}{2}g^{uw}[\partial_wg_{uw} + \partial_ug_{ww} - \partial_wg_{wu}]\\
+    &= 0
+\end{align*}
+\begin{align*}
+    \Gamma^u_{ww}
+    &= \frac{1}{2}g^{uu}[\partial_wg_{wu} + \partial_wg_{uw} - \partial_ug_{ww}]
+    + \frac{1}{2}g^{uw}[\partial_wg_{ww} + \partial_wg_{ww} - \partial_wg_{ww}]\\
+    &= 0
+\end{align*}
+For the case $\alpha = w$ we can compute the Christoffel symbols as follows
+\begin{align*}
+    \Gamma^w_{uu}
+    &= \frac{1}{2}g^{wu}[\partial_ug_{uu} + \partial_ug_{uu} - \partial_ug_{uu}]
+    + \frac{1}{2}g^{ww}[\partial_ug_{uw} + \partial_ug_{wu} - \partial_wg_{uu}]\\
+    &= \frac{1}{2}g^{wu}\partial_ug_{uu} + g^{ww}\partial_ug_{uw}\\
+    &= Ab\cos(bu) A^2b^3\cos(bu)\sin(bu) - (1 + (Ab)^2\cos^2(bu))Ab^2\sin(bu)\\
+    &= A^3b^4\cos^2(bu)\sin(bu) - Ab^2\sin(bu) - A^3b^4\cos^2(bu)\sin(bu)\\
+    &= - Ab^2\sin(bu)
+\end{align*}
+\begin{align*}
+    \Gamma^w_{uw}
+    &= \frac{1}{2}g^{wu}[\partial_ug_{wu} + \partial_wg_{u} - \partial_ug_{uw}]
+    + \frac{1}{2}g^{ww}[\partial_ug_{ww} + \partial_wg_{wu} - \partial_wg_{uw}]\\
+    &= 0
+\end{align*}
+\begin{align*}
+    \Gamma^w_{wu}
+    &= \frac{1}{2}g^{wu}[\partial_wg_{u} + \partial_ug_{uw} - \partial_ug_{wu}]
+    + \frac{1}{2}g^{ww}[\partial_wg_{uw} + \partial_ug_{ww} - \partial_wg_{wu}]\\
+    &= 0
+\end{align*}
+\begin{align*}
+    \Gamma^w_{ww}
+    &= \frac{1}{2}g^{wu}[\partial_wg_{wu} + \partial_wg_{uw} - \partial_ug_{ww}]
+    + \frac{1}{2}g^{ww}[\partial_wg_{ww} + \partial_wg_{ww} - \partial_wg_{ww}]\\
+    &= 0
+\end{align*}
+Therefore the only non-zero Christoffel symbol is $\Gamma^w_{uu}$, then
+\begin{align*}
+    a^u = \dv{v^u}{t} = \dv{t}(v) = 0
+\end{align*}
+And
+\begin{align*}
+    a^w &= \dv{v^w}{t} + \Gamma^w_{uu} (v^u)^2\\
+    &= Ab^2v^2\sin(bu) - Ab^2\sin(bu)v^2\\
+    &= 0
+\end{align*}
+Where we used that $v^u = v$ and $v^w = -Abv\cos(bu)$.
+\\
+Therefore the components of the acceleration in the sinusoidal coordinate
+system are zero as well.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P17.7}}\\
+We know that an observer at rest at $r$ has a four-velocity $\bm{u} = \bm{o}_t$
+and the only non-zero component of $\bm{u}$ is the $t$ component given by
+\begin{align*}
+    u^t = \frac{1}{\sqrt{1 + 2GM/r}}
+\end{align*}
+The rest of the component are 0 because the observer is at rest.
+\\
+On the other hand, we know that the acceleration component are given by
+\begin{align*}
+    a^\mu &= \dv{u^\mu}{\tau} + \Gamma_{\alpha\beta}^\mu u^\alpha u^\beta
+\end{align*}
+So, for $\mu = t$ we get that
+\begin{align*}
+    a^t &= \dv{u^t}{\tau} + \Gamma_{rt}^t u^r u^t +  \Gamma_{tr}^t u^t u^r\\
+    &= u^r\dv{u^t}{r} + 0\\
+    &= 0
+\end{align*}
+Where we used that $u^r = 0$.
+In the case of $\mu = r$
+\begin{align*}
+    a^r &= \dv{u^r}{\tau} + \Gamma_{\alpha\beta}^r u^\alpha u^\beta\\
+    a^r &= 0 + \bigg[\frac{GM}{r^2}\bigg(1 - \frac{2GM}{r}\bigg)\bigg]
+    \bigg(\frac{1}{\sqrt{1 - 2GM/r}}\bigg)^2\\
+    a^r &= \frac{GM}{r^2}
+\end{align*}
+For $\mu = \theta$ we see that $u^\phi = u^r = u^\theta = 0$ and the only non-zero
+Christoffel symbols are $\Gamma_{r\theta}^\theta, \Gamma_{\theta r}^\theta$
+and $\Gamma_{\phi\phi}^\theta$, hence
+\begin{align*}
+    a^\theta &= 0
+\end{align*}
+And for $\mu = \phi$ we see that the only non-zero
+Christoffel symbols are $\Gamma_{r\phi}^\phi, \Gamma_{\phi r}^\phi,
+\Gamma_{\theta\phi}^\phi$ and $\Gamma_{\phi\theta}^\phi$ hence again
+\begin{align*}
+    a^\phi &= 0
+\end{align*}
+Finally, we compute the magnitude $a = \sqrt{\bm{a}\cdot\bm{a}}$ as follows
+\begin{align*}
+    a &= \sqrt{g_{rr}a^ra^r}\\
+    &= \sqrt{\bigg(1 - \frac{2GM}{r}\bigg)^{-1}\frac{(GM)^2}{r^4}}\\
+    &= \frac{GM}{r^2}\sqrt{\bigg(1 - \frac{2GM}{r}\bigg)^{-1}}
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P17.8}}\\
+Let $v^\mu = [(1 - 2GM/r), 0, 0, 0]$ we want to compute the components of the
+absolute gradient in the Schwartzschild coordinate basis of $v^\mu$.
+The absolute gradient components are computed using the following equation
+\begin{align*}
+    \nabla_\alpha v^\mu = \pdv{v^\mu}{x^\alpha} + \Gamma^\mu_{\alpha\nu}v^\nu
+\end{align*}
+Let $\mu = t$ then the only non-zero Christoffel symbols with $t$ as a
+superscript are $\Gamma_{tr}^t$ and $\Gamma_{rt}^t$ then
+\begin{align*}
+    \nabla_t v^t
+    &= \pdv{v^t}{t} + \Gamma^t_{tt}v^t + \Gamma^t_{tr}v^r
+    + \Gamma^t_{t\theta}v^\theta + \Gamma^t_{t\phi}v^\phi = 0
+\end{align*}
+Where we used that $v^r = 0$ and $\pdv{v^t}{t} = 0$. In the same way
+\begin{align*}
+    \nabla_r v^t
+    &= \pdv{v^t}{r} + \Gamma^t_{rt}v^t + \Gamma^t_{rr}v^r
+    + \Gamma^t_{r\theta}v^\theta + \Gamma^t_{r\phi}v^\phi\\
+    &= \pdv{v^t}{r} + \Gamma^t_{rt}v^t\\
+    &= \frac{2GM}{r^2} + \frac{GM}{r^2}\bigg(1 - \frac{2GM}{r^2}\bigg)^{-1}
+    \bigg(1 - \frac{2GM}{r^2}\bigg)\\
+    &= \frac{3GM}{r^2}
+\end{align*}
+Given that $\Gamma^t_{\theta t} = \Gamma^t_{\theta r} = \Gamma^t_{\theta \theta}
+= \Gamma^t_{\theta \phi} = 0$ and that
+$\Gamma^t_{\phi t} = \Gamma^t_{\phi r} = \Gamma^t_{\phi \theta}
+= \Gamma^t_{\phi \phi} = 0$ then
+\begin{align*}
+    \nabla_\theta v^t = 0
+    \quad\text{and}\quad
+    \nabla_\phi v^t = 0
+\end{align*}
+Let now, $\mu = r$ then the only non-zero Christoffel symbols with $r$ as a
+superscript are $\Gamma^r_{tt}, \Gamma^r_{rr}, \Gamma^r_{\theta\theta}$ and
+$\Gamma^r_{\phi\phi}$ also $\pdv{v^r}{x^\alpha} = 0$ for
+$\alpha = t, r, \theta, \phi$ so the absolute gradient components of $v^r$ are
+\begin{align*}
+    \nabla_t v^r &= \Gamma^r_{tt}v^t = \frac{GM}{r^2}\bigg(1 - \frac{2GM}{r}\bigg)^2\\
+    \nabla_r v^r &= \Gamma^r_{rr}v^r = 0\\
+    \nabla_\theta v^r &= \Gamma^r_{\theta \theta} v^\theta = 0\\
+    \nabla_\phi v^r &= \Gamma^r_{\phi \phi} v^\phi = 0
+\end{align*}
+For $\mu = \theta$ the only non-zero Christoffel symbols with $\theta$ as
+a superscript are $\Gamma^\theta_{r\theta}, \Gamma^\theta_{\theta r}$ and
+$\Gamma^\theta_{\phi\phi}$ also $\pdv{v^\theta}{x^\alpha} = 0$ for
+$\alpha = t, r, \theta, \phi$ so the absolute gradient components of $v^\theta$
+are
+\begin{align*}
+    \nabla_t v^\theta &= 0\\
+    \nabla_r v^\theta &= \Gamma^\theta_{r\theta}v^\theta = 0\\
+    \nabla_\theta v^\theta &= \Gamma^\theta_{\theta r} v^r = 0\\
+    \nabla_\phi v^\theta &= \Gamma^\theta_{\phi \phi} v^\phi = 0
+\end{align*}
+Finally for $\mu = \phi$ the only non-zero Christoffel symbols with $\phi$ as
+a superscript are $\Gamma^\phi_{r\phi}, \Gamma^\phi_{\phi r}, \Gamma^\phi_{\theta\phi}$
+and $\Gamma^\phi_{\phi\theta}$ also $\pdv{v^\phi}{x^\alpha} = 0$ for
+$\alpha = t, r, \theta, \phi$ so the absolute gradient components of $v^\phi$
+are
+\begin{align*}
+    \nabla_t v^\phi &= 0\\
+    \nabla_r v^\phi &= \Gamma^\phi_{r\phi}v^\phi = 0\\
+    \nabla_\theta v^\phi &= \Gamma^\phi_{\theta \phi} v^\phi = 0\\
+    \nabla_\phi v^\phi &= \Gamma^\phi_{\phi r} v^r
+    + \Gamma^\phi_{\phi \theta} v^\theta = 0
+\end{align*}
+Therefore the only non-zero components of the absolute gradient of $v^\mu$ are
+\begin{align*}
+    \nabla_r v^t &= \frac{3GM}{r^2}\\
+    \nabla_t v^r &= \frac{GM}{r^2}\bigg(1 - \frac{2GM}{r}\bigg)^2
+\end{align*}
+\end{proof}
+\begin{proof}{\textbf{P17.9}}\\
+The absolute gradient of the metric is
+\begin{align*}
+    \nabla_\alpha g_{\mu\nu}
+    &= \partial_\alpha g_{\mu\nu} - \Gamma_{\alpha\mu}^\sigma g_{\sigma\nu}
+    - \Gamma_{\alpha\nu}^\sigma g_{\mu\sigma}
+\end{align*}
+From equation (17.10) we know that
+\begin{align*}
+    \Gamma_{\mu\nu}^\alpha
+    = \frac{1}{2}g^{\alpha\sigma}[\partial_\mu g_{\nu\sigma}
+    + \partial_\nu g_{\sigma\mu} - \partial_\sigma g_{\mu\nu}]
+\end{align*}
+Then
+\begin{align*}
+    \nabla_\alpha g_{\mu\nu}
+    &= \partial_\alpha g_{\mu\nu}
+    - \frac{1}{2}g^{\sigma\nu}[\partial_\alpha g_{\mu\nu}
+    + \partial_\mu g_{\nu\alpha} - \partial_\nu g_{\alpha\mu}] g_{\sigma\nu}
+    - \frac{1}{2}g^{\sigma\mu}[\partial_\alpha g_{\nu\mu}
+    + \partial_\nu g_{\mu\alpha} - \partial_\mu g_{\alpha\nu}] g_{\mu\sigma}\\
+    &= \partial_\alpha g_{\mu\nu}
+    - \frac{1}{2}[\partial_\alpha g_{\mu\nu}
+    + \partial_\mu g_{\nu\alpha} - \partial_\nu g_{\alpha\mu}] 
+    - \frac{1}{2}[\partial_\alpha g_{\nu\mu}
+    + \partial_\nu g_{\mu\alpha} - \partial_\mu g_{\alpha\nu}]\\
+    &= \partial_\alpha g_{\mu\nu}
+    - \frac{1}{2}[\partial_\alpha g_{\mu\nu}
+    + \partial_\mu g_{\nu\alpha} - \partial_\nu g_{\alpha\mu}] 
+    - \frac{1}{2}[\partial_\alpha g_{\mu\nu}
+    + \partial_\nu g_{\alpha\mu} - \partial_\mu g_{\nu\alpha}]\\
+    &= \partial_\alpha g_{\mu\nu}
+    - \partial_\alpha g_{\mu\nu}
+    - \frac{1}{2}\partial_\mu g_{\nu\alpha} + \frac{1}{2}\partial_\nu g_{\alpha\mu}
+    - \frac{1}{2}\partial_\nu g_{\alpha\mu} + \frac{1}{2}\partial_\mu g_{\nu\alpha}\\
+    &= 0
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P17.10}}\\
+Let us consider a coordinate transformation such that
+\begin{align*}
+    \pdv{x^\alpha}{x'^\mu}
+    = \delta_{\mu}^\alpha - \Gamma^\alpha_{\mu\nu,P} (x'^\nu - x'^\nu_P)
+\end{align*}
+Equation (17.31) state that
+\begin{align*}
+    g'_{\mu\nu} &= \pdv{x^\alpha}{x'^\mu}\pdv{x^\beta}{x'^\nu}g_{\alpha\beta}
+\end{align*}
+Then plugging the expression we have for $\partial x^\alpha/x'^\mu$ and
+valuing the expression at $P$ give us
+\begin{align*}
+    g'_{\mu\nu,P}
+    &= [\delta_{\mu}^\alpha - \Gamma^\alpha_{\mu\sigma,P} (x'^\sigma_P - x'^\sigma_P)]
+    [\delta_{\nu}^\beta - \Gamma^\beta_{\nu\sigma,P} (x'^\sigma_P - x'^\sigma_P)]
+    g_{\alpha\beta,P}\\
+    &= \delta_{\mu}^\alpha\delta_{\nu}^\beta g_{\alpha\beta, P}\\
+    &= g_{\mu\nu, P}
+\end{align*}
+Then the primed metric at $P$ has the same components as the unprimed metric
+at $P$.
+\\
+Let us compute the derivative of equation (17.31) as follows
+\begin{align*}
+    \partial_\rho g'_{\mu\nu}
+    &= \partial_\rho
+    \bigg([\delta_{\mu}^\alpha - \Gamma^\alpha_{\mu\sigma,P} (x'^\sigma - x'^\sigma_P)]
+    [\delta_{\nu}^\beta - \Gamma^\beta_{\nu\sigma,P} (x'^\sigma - x'^\sigma_P)]
+    g_{\alpha\beta}\bigg)\\
+    &= - \Gamma^\alpha_{\mu\rho,P}
+    [\delta_{\nu}^\beta - \Gamma^\beta_{\nu\sigma,P} (x'^\sigma_P - x'^\sigma_P)]
+    g_{\alpha\beta}\\
+    &\quad- [\delta_{\mu}^\alpha - \Gamma^\alpha_{\mu\sigma,P} (x'^\sigma - x'^\sigma_P)]
+    \Gamma^\beta_{\nu\rho,P}g_{\alpha\beta}\\
+    &\quad + [\delta_{\mu}^\alpha - \Gamma^\alpha_{\mu\sigma,P} (x'^\sigma - x'^\sigma_P)]
+    [\delta_{\nu}^\beta - \Gamma^\beta_{\nu\sigma,P} (x'^\sigma - x'^\sigma_P)]
+    \partial_\rho g_{\alpha\beta}
+\end{align*}
+On the other hand, since $\nabla_\rho g_{\alpha\beta} = 0$ from equation (17.40)
+we get that
+\begin{align*}
+    0 &= \partial_\rho g_{\alpha\beta} - \Gamma^\sigma_{\rho\alpha}g_{\sigma\beta}
+    - \Gamma^\sigma_{\rho\beta}g_{\alpha\sigma}\\
+    \partial_\rho g_{\alpha\beta} &= \Gamma^\sigma_{\rho\alpha}g_{\sigma\beta}
+    + \Gamma^\sigma_{\rho\beta}g_{\alpha\sigma}
+\end{align*}
+If we value this expression at $P$ we get that
+\begin{align*}
+    \partial_\rho g_{\alpha\beta}\bigg|_P
+    &= \Gamma^\sigma_{\rho\alpha,P}g_{\sigma\beta, P}
+    + \Gamma^\sigma_{\rho\beta, P}g_{\alpha\sigma, P}
+\end{align*}
+Also, if we value the
+expression we have for $\partial_\rho g'_{\mu\nu}$ at $P$ we get that
+\begin{align*}
+    \partial_\rho g'_{\mu\nu}\bigg|_P
+    &= - \Gamma^\alpha_{\mu\rho,P}\delta_{\nu}^\beta g_{\alpha\beta,P}
+    - \delta_{\mu}^\alpha\Gamma^\beta_{\nu\rho,P}g_{\alpha\beta,P}
+    + \delta_{\mu}^\alpha \delta_{\nu}^\beta \partial_\rho g_{\alpha\beta}\bigg|_P\\
+    &= - \Gamma^\sigma_{\mu\rho,P} g_{\sigma\nu,P}
+    - \Gamma^\sigma_{\nu\rho,P}g_{\mu\sigma,P}
+    + \delta_{\mu}^\alpha \delta_{\nu}^\beta
+    [\Gamma^\sigma_{\rho\alpha,P}g_{\sigma\beta, P}
+    + \Gamma^\sigma_{\rho\beta, P}g_{\alpha\sigma, P}]\\
+    &= - \Gamma^\sigma_{\mu\rho,P} g_{\sigma\nu,P}
+    - \Gamma^\sigma_{\nu\rho,P}g_{\mu\sigma,P}
+    + \Gamma^\sigma_{\rho\mu,P}g_{\sigma\nu, P}
+    + \Gamma^\sigma_{\rho\nu, P}g_{\mu\sigma, P}\\
+    &= - \Gamma^\sigma_{\mu\rho,P}g_{\sigma\nu,P}
+    - \Gamma^\sigma_{\nu\rho,P}g_{\mu\sigma,P}
+    + \Gamma^\sigma_{\mu\rho,P}g_{\sigma\nu,P}
+    + \Gamma^\sigma_{\nu\rho,P}g_{\mu\sigma,P}\\
+    &= 0
+\end{align*}
+Where we used that $\Gamma^\sigma_{\mu\rho} = \Gamma^\sigma_{\rho\mu}$.
+\end{proof}
+\end{document}
