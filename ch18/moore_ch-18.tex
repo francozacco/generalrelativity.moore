@@ -1,0 +1,705 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{physics,amsmath}
+\usepackage{bm}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[mathscr]{euscript}
+
+
+\title{\textbf{Solved selected problems of General Relativity - Thomas A. Moore}}
+\author{Franco Zacco}
+\date{}
+
+\addtolength{\topmargin}{-3cm}
+\addtolength{\textheight}{3cm}
+
+\newcommand{\hatr}{\bm{\hat{r}}}
+\newcommand{\hatn}{\bm{\hat{n}}}
+\newcommand{\hatx}{\bm{\hat{x}}}
+\newcommand{\haty}{\bm{\hat{y}}}
+\newcommand{\hatz}{\bm{\hat{z}}}
+\newcommand{\hatth}{\bm{\hat{\theta}}}
+\newcommand{\hatphi}{\bm{\hat{\phi}}}
+\newcommand{\hatrho}{\bm{\hat{\rho}}}
+\newcommand{\esi}[1]{\bm{e}_{#1}}
+\newcommand{\etht}{\bm{e}_\theta}
+\newcommand{\sci}[1]{\times 10^{#1}}
+
+\theoremstyle{definition}
+\newtheorem*{solution*}{Solution}
+\renewcommand*{\proofname}{Solution}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{Chapter 18 - Geodesic Deviation}
+
+\begin{proof}{\textbf{BOX 18.1} - Exercise 18.1.1.}\\
+We know that $\Phi = -GM/r$ then we can compute $\partial_j \Phi$ using the
+chain rule as follows
+\begin{align*}
+    \partial_j \Phi = \pdv{\Phi}{r}\pdv{r}{x^j}
+    = \frac{GM}{r^2}\frac{\eta_{jn}x^n}{r} = \frac{GM}{r^3}\eta_{jn}x^n
+\end{align*}
+Where we used that $\partial_j r = \eta_{jn}x^n/r$.
+\\
+Now, we can compute $\partial_k\partial_j \Phi$ using the product rule as
+follows
+\begin{align*}
+    \partial_k \partial_j \Phi
+    &= \partial_k\bigg(\frac{GM}{r^3}\eta_{jn}x^n\bigg)\\
+    &= \partial_k\bigg(\frac{GM}{r^3}\bigg)\eta_{jn}x^n
+    + \frac{GM}{r^3}\partial_k\bigg(\eta_{jn}x^n\bigg)\\
+    &= \partial_k\bigg(\frac{GM}{r^3}\bigg)\eta_{jn}x^n
+    + \frac{GM}{r^3}\partial_k\bigg(\eta_{jn}x^n\bigg)\\
+    &= GM\eta_{jn}x^n \bigg(\partial_k\bigg(\frac{1}{r}\bigg)\frac{1}{r^2}
+    + \partial_k\bigg(\frac{1}{r^2}\bigg)\frac{1}{r}\bigg)
+    + \frac{GM}{r^3}\eta_{jk}x^k\\
+    &= GM\eta_{jn}x^n \bigg(-\frac{1}{r^3}\frac{1}{r^2}\eta_{km}x^m
+    + \partial_k\bigg(\frac{1}{r}\bigg)\frac{1}{r^2} +
+    \partial_k\bigg(\frac{1}{r}\bigg)\frac{1}{r^2}\bigg)
+    + \frac{GM}{r^3}\eta_{jk}x^k\\
+    &= GM\eta_{jn}x^n \bigg(-\frac{1}{r^3}\frac{1}{r^2}\eta_{km}x^m
+    -\frac{1}{r^3}\frac{1}{r^2}\eta_{km}x^m
+    -\frac{1}{r^3}\frac{1}{r^2}\eta_{km}x^m\bigg)
+    + \frac{GM}{r^3}\eta_{jk}x^k\\
+    &= -\frac{GM}{r^5}\eta_{km}\eta_{jn}x^m x^n
+    + \frac{GM}{r^3}\eta_{jk}x^k
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{BOX 18.1} - Exercise 18.1.2.}\\
+The Newtonian tidal deviation equation is
+\begin{align*}
+    \pdv[2]{n^i}{t} &= \frac{3GM}{r^5}\eta^{ij}\eta_{km}\eta_{jn}x^{m}x^{n}n^{k}
+    -\frac{GM}{r^3}\eta^{ij}\eta_{kj}n^{k}\\
+    &= \frac{3GM}{r^5}\eta_{km}\delta^{i}_{n}x^{m}x^{n}n^{k}
+    -\frac{GM}{r^3}\delta^{i}_kn^{k}
+\end{align*}
+Let $i = x$ then
+\begin{align*}
+    \pdv[2]{n^x}{t} &= \frac{3GM}{r^5}\eta_{km}\delta^{x}_{n}x^{m}x^{n}n^{k}
+    -\frac{GM}{r^3}\delta^{x}_kn^{k}\\
+    &= \frac{3GM}{r^5}\eta_{km}x^{m}x^{x}n^{k}
+    -\frac{GM}{r^3}n^{x}\\
+    &= -\frac{GM}{r^3}n^{x}
+\end{align*}
+Where we used that $x^x = 0$ (this is just $x = 0$).
+\\
+Let $i = z$ then
+\begin{align*}
+    \pdv[2]{n^z}{t}
+    &= \frac{3GM}{r^5}\eta_{km}\delta^{z}_{n}x^{m}x^{n}n^{k}
+    -\frac{GM}{r^3}\delta^{z}_kn^{k}\\
+    &= \frac{3GM}{r^5}\eta_{km}x^{m}x^{z}n^{k}
+    -\frac{GM}{r^3}n^{z}\\
+    &= \frac{3GM}{r^5}\eta_{zz}x^{z}x^{z}n^{z}
+    -\frac{GM}{r^3}n^{z}\\
+    &= \frac{3GM}{r^5}r^2 n^{z}
+    -\frac{GM}{r^3}n^{z}\\
+    &= \frac{3GM}{r^3} n^{z}
+    -\frac{GM}{r^3}n^{z}\\
+    &= \frac{2GM}{r^3} n^{z}
+\end{align*}
+Where we used that $x^x = x^y = 0$ and hence
+$r^2 = \eta_{mn}x^mx^{n} = \eta_{zz}x^zx^z$.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{BOX 18.2} - Exercise 18.2.1.}\\
+Dropping second or higher order terms of $n^\alpha$ equation (18.8) becomes
+\begin{align*}
+    0 &= \dv[2]{x^\alpha}{\tau} + \dv[2]{n^\alpha}{\tau}
+    + \Gamma_{\mu\nu}^\alpha
+    \bigg(\dv{x^\mu}{\tau}\dv{x^\nu}{\tau} + \dv{x^\mu}{\tau}\dv{n^\nu}{\tau}
+    + \dv{n^\mu}{\tau}\dv{x^\nu}{\tau}
+    \bigg)
+    + n^\sigma (\partial_\sigma\Gamma_{\mu\nu}^\alpha)
+    \bigg(\dv{x^\mu}{\tau}\dv{x^\nu}{\tau}\bigg)
+\end{align*}
+Subtracting the geodesic equation we get that
+\begin{align*}
+    0 &= \dv[2]{x^\alpha}{\tau} + \dv[2]{n^\alpha}{\tau}
+    + \Gamma_{\mu\nu}^\alpha
+    \bigg(\dv{x^\mu}{\tau}\dv{x^\nu}{\tau} + \dv{x^\mu}{\tau}\dv{n^\nu}{\tau}
+    + \dv{n^\mu}{\tau}\dv{x^\nu}{\tau}
+    \bigg)
+    + n^\sigma (\partial_\sigma\Gamma_{\mu\nu}^\alpha)
+    \bigg(\dv{x^\mu}{\tau}\dv{x^\nu}{\tau}\bigg)\\
+    &\quad- \bigg(\dv[2]{x^\alpha}{\tau}
+    + \Gamma_{\mu\nu}^\alpha\dv{x^\mu}{\tau}\dv{x^\nu}{\tau}\bigg)\\
+    0 &= \dv[2]{n^\alpha}{\tau}
+    + \Gamma_{\mu\nu}^\alpha
+    \bigg(\dv{x^\mu}{\tau}\dv{n^\nu}{\tau}
+    + \dv{n^\mu}{\tau}\dv{x^\nu}{\tau}
+    \bigg)
+    + n^\sigma (\partial_\sigma\Gamma_{\mu\nu}^\alpha)
+    \bigg(\dv{x^\mu}{\tau}\dv{x^\nu}{\tau}\bigg)\\
+    0 &= \dv[2]{n^\alpha}{\tau}
+    + \Gamma_{\mu\nu}^\alpha\dv{x^\mu}{\tau}\dv{n^\nu}{\tau}
+    + \Gamma_{\nu\mu}^\alpha\dv{x^\nu}{\tau}\dv{n^\mu}{\tau}
+    + n^\sigma (\partial_\sigma\Gamma_{\mu\nu}^\alpha)
+    \bigg(\dv{x^\mu}{\tau}\dv{x^\nu}{\tau}\bigg)\\
+    0 &= \dv[2]{n^\alpha}{\tau}
+    + 2\Gamma_{\mu\nu}^\alpha\dv{x^\mu}{\tau}\dv{n^\nu}{\tau}
+    + n^\sigma (\partial_\sigma\Gamma_{\mu\nu}^\alpha)
+    \bigg(\dv{x^\mu}{\tau}\dv{x^\nu}{\tau}\bigg)\\
+    0 &= \dv[2]{n^\alpha}{\tau}
+    + 2\Gamma_{\mu\nu}^\alpha u^\mu\dv{n^\nu}{\tau}
+    + n^\sigma (\partial_\sigma\Gamma_{\mu\nu}^\alpha) u^\mu u^\nu
+\end{align*}
+Where we used that $\Gamma_{\mu\nu}^\alpha = \Gamma_{\nu\mu}^\alpha$.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{BOX 18.3} - Exercise 18.3.1.}\\
+From equation (8.22) we have that
+\begin{align*}
+    \dv{\bm{n}}{\tau}
+    = \dv{n^\alpha}{\tau}\esi{\alpha}
+    + n^\alpha\dv{x^\mu}{\tau}\pdv{\esi{\alpha}}{x^\mu}
+\end{align*}
+Using that $\partial \esi{\beta}/\partial x^\mu
+= \Gamma_{\beta\mu}^\alpha \esi{\alpha}$ we get that
+\begin{align*}
+    \dv{\bm{n}}{\tau}
+    = \dv{n^\alpha}{\tau}\esi{\alpha}
+    + n^\sigma\dv{x^\mu}{\tau}\Gamma_{\sigma\mu}^\alpha \esi{\alpha}
+    = \bigg(\dv{n^\alpha}{\tau}
+    + \Gamma_{\sigma\mu}^\alpha n^\sigma u^\mu\bigg) \esi{\alpha}
+\end{align*}
+Where we changed the summation over $\alpha$ to be over $\sigma$ in the second
+term.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{BOX 18.4} - Exercise 18.4.1.}\\
+Equation (18.13) states that
+\begin{align*}
+    \bigg(\dv[2]{\bm{n}}{\tau}\bigg)^\alpha
+    = \dv[2]{n^\alpha}{\tau}
+    + (\partial_\sigma\Gamma_{\mu\nu}^\alpha)u^\sigma u^\mu n^\nu
+    + \Gamma_{\mu\nu}^\alpha \dv{u^\mu}{\tau}n^\nu
+    + 2\Gamma_{\mu\nu}^\alpha u^\mu \dv{n^\nu}{\tau}
+    + \Gamma_{\sigma\nu}^\alpha\Gamma_{\beta\gamma}^\nu u^\sigma u^\beta n^\gamma
+\end{align*}
+Plugging in equations (18.24) we get that
+\begin{align*}
+    \bigg(\dv[2]{\bm{n}}{\tau}\bigg)^\alpha
+    &= -2\Gamma_{\mu\nu}^\alpha u^\mu \dv{n^\nu}{\tau}
+    - (\partial_\sigma \Gamma_{\mu\nu}^\alpha) u^\mu u^\nu n^\sigma
+    + (\partial_\sigma\Gamma_{\mu\nu}^\alpha)u^\sigma u^\mu n^\nu\\
+    &\quad- \Gamma_{\mu\nu}^\alpha\Gamma_{\sigma\beta}^\mu u^\sigma u^\beta n^\nu
+    + 2\Gamma_{\mu\nu}^\alpha u^\mu \dv{n^\nu}{\tau}
+    + \Gamma_{\sigma\nu}^\alpha\Gamma_{\beta\gamma}^\nu u^\sigma u^\beta n^\gamma\\
+    %
+    &= - (\partial_\sigma \Gamma_{\mu\nu}^\alpha) u^\mu u^\nu n^\sigma
+    + (\partial_\sigma\Gamma_{\mu\nu}^\alpha)u^\sigma u^\mu n^\nu
+    - \Gamma_{\mu\nu}^\alpha\Gamma_{\sigma\beta}^\mu u^\sigma u^\beta n^\nu\\
+    &\quad+ \Gamma_{\sigma\nu}^\alpha\Gamma_{\beta\gamma}^\nu u^\sigma u^\beta n^\gamma\\
+    %
+    &= - (\partial_\nu \Gamma_{\mu\sigma}^\alpha) u^\mu u^\sigma n^\nu
+    + (\partial_\sigma\Gamma_{\mu\nu}^\alpha)u^\sigma u^\mu n^\nu
+    - \Gamma_{\nu\gamma}^\alpha\Gamma_{\sigma\mu}^\gamma u^\sigma u^\mu n^\nu\\
+    &\quad+ \Gamma_{\sigma\gamma}^\alpha\Gamma_{\mu\nu}^\gamma u^\sigma u^\mu n^\nu\\
+    %
+    &= (\partial_\sigma\Gamma_{\mu\nu}^\alpha
+    - \partial_\nu \Gamma_{\mu\sigma}^\alpha
+    + \Gamma_{\sigma\gamma}^\alpha\Gamma_{\mu\nu}^\gamma
+    - \Gamma_{\nu\gamma}^\alpha\Gamma_{\mu\sigma}^\gamma) u^\sigma u^\mu n^\nu
+\end{align*}
+Where in the third equality, we renamed some of the indices in each term.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{BOX 18.5} - Exercise 18.5.1.}\\
+We compute the metric equation for the case $\mu = w$ as follows
+\begin{align*}
+    0 &= \dv{\tau}(g_{w\nu}\dv{x^\nu}{\tau})
+    - \frac{1}{2}\partial_w g_{\alpha\beta}\dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}\\
+    0 &= \dv{\tau}(\sin^2(u)\dv{w}{\tau}) - 0\\
+    0 &= 2\sin(u)\cos(u)\dv{u}{\tau}\dv{w}{\tau} + \sin^2(u)\dv[2]{w}{\tau}\\
+    0 &= \dv[2]{w}{\tau} + 2\frac{\cos(u)}{\sin(u)}\dv{u}{\tau}\dv{w}{\tau}\\
+    0 &= \dv[2]{w}{\tau} + 2\cot(u)\dv{u}{\tau}\dv{w}{\tau}
+\end{align*}
+Therefore comparing this with equation (18.27) we see that
+\begin{align*}
+    \Gamma_{uw}^{w} = \Gamma_{wu}^{w} = \cot(u)
+\end{align*}
+and for the rest of the components, we get that $\Gamma_{\alpha\beta}^{w} = 0$.
+\end{proof}
+\begin{proof}{\textbf{BOX 18.5} - Exercise 18.5.2.}\\
+Let us evaluate the component $R_{wuw}^u$ of the Riemann tensor as follows
+\begin{align*}
+    R_{wuw}^u &= \partial_u \Gamma_{ww}^u - \Gamma_{w\sigma}^u\Gamma_{wu}^\sigma\\
+    &= \partial_u \Gamma_{ww}^u - \Gamma_{wu}^u\Gamma_{wu}^u -\Gamma_{ww}^u\Gamma_{wu}^w\\
+    &= \frac{1}{a^2}(\sin^2(u) - \cos^2(u)) - 0 + \frac{1}{a^2}\sin(u)\cos(u)\cot(u)\\
+    &= \frac{1}{a^2}(\sin^2(u) - \cos^2(u)) + \frac{1}{a^2}\cos^2(u)\\
+    &= \frac{\sin^2(u)}{a^2}
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P18.1}}\\
+From the Newtonian tidal deviation equation, we know that if we choose the $z$
+axis such that both particles are on it, then the separation vector
+$\vec{n}(t)$ has only one non-zero component $n^z$.
+\\
+Also, if we assume that the separation vector has a small magnitude compared to
+earth's radius we can use the approximated equation (18.4), which states the
+following
+\begin{align*}
+    \dv[2]{n^z}{t} = \frac{2GM}{R^3} n^z
+\end{align*}
+We know that the solution to this second order differential equation is
+\begin{align*}
+    n^z = C_1 \cosh(\sqrt{\frac{2GM}{R^3}}t) + C_2 \sinh(\sqrt{\frac{2GM}{R^3}}t)
+\end{align*}
+Where $C_1$ and $C_2$ are constants. Also, we have that
+\begin{align*}
+    \dv{n^z}{t} = \sqrt{\frac{2GM}{R^3}}\bigg(
+        C_1 \sinh(\sqrt{\frac{2GM}{R^3}}t) + C_2 \cosh(\sqrt{\frac{2GM}{R^3}}t)
+    \bigg)
+\end{align*}
+Since the balls start from rest then $C_2 = 0$.
+Also, the balls, start 1 meter apart so from the equation for $n^z(0)$ we get
+that $C_1 = 1$, then the equation becomes
+\begin{align*}
+    n^z = \cosh(\sqrt{\frac{2GM}{R^3}}t)
+\end{align*}
+So the relative acceleration is given by
+\begin{align*}
+    \dv[2]{n^z}{t} = \frac{2GM}{R^3} \cosh(\sqrt{\frac{2GM}{R^3}}t)
+\end{align*}
+On the other hand, to determine how long it takes for the separation of the
+balls to grow $1nm$ we compute the following
+\begin{align*}
+    t &= \frac{\cosh^{-1}(n^z)}{\sqrt{\frac{2GM}{R^3}}}\\
+    &= \frac{\cosh^{-1}(1 + 10^{-9})}{
+    \sqrt{\frac{8.87 \sci{-3}}{(6378\sci{3})^3}}}\\
+    &= \frac{4.472\sci{-5}}{5.843\sci{-12}} \\
+    &= 7.653\sci{6}~m
+    \approx 25.527~ms
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P18.2}}\\
+Let an infinite flat plate of uniformly distributed mass where $\vec{g}$ is
+constant in magnitude and direction.
+Then the potential must be of the form $\Phi = C z$ where $z$ is the
+perpendicular distance from the plate to the particle so
+$$\vec{g} = -\grad{\Phi} = (0, 0, -C)$$
+Then the tidal deviation equation become
+\begin{align*}
+    \dv[2]{n^i}{t} = -\eta^{ij} \pdv[2]{\Phi}{x^k}{x^j}n^k = 0
+\end{align*}
+Since every second derivative of $\Phi$ vanishes. This implies that there is
+no relative acceleration between balls freely falling on a reference frame
+near the plate.
+\\
+If this result holds in general relativity, then $d^2\bm{n}/d\tau^2 = 0$
+and this implies that we are in a flat spacetime i.e. in an empty spacetime
+which is not true. Therefore, this field cannot be real in general relativity.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P18.3}}
+\begin{itemize}
+\item [\textbf{a.}] From the geodesic equation
+\begin{align*}
+    \dv{\tau}(g_{\mu\nu}\dv{x^\nu}{\tau})
+    - \frac{1}{2}\partial_\mu g_{\alpha\beta}\dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}
+    = 0
+\end{align*}
+We see that if $\mu = t, y$ or $z$ then since no $g_{\mu\nu}$ depends on $t, y$
+or $z$ then the second term of the geodesic equation is 0 (all derivatives or
+$g_{\mu\nu}$ are zero) implying that all Christoffel symbols where the super
+index is $t, y$ or $z$ are zero.
+\\
+For the case where $\mu = x$ we have
+\begin{align*}
+    \dv{\tau}(g_{xx}\dv{x}{\tau})
+    - \frac{1}{2}\partial_x g_{xx}\dv{x}{\tau}\dv{x}{\tau}
+    &= 0\\
+    \dv{\tau}(f(x)\dv{x}{\tau})
+    - \frac{1}{2}\partial_x f(x)\dv{x}{\tau}\dv{x}{\tau}
+    &= 0\\
+    \dv{f(x)}{\tau}\dv{x}{\tau} + f(x)\dv[2]{x}{\tau}
+    - \frac{1}{2}\dv{f(x)}{x}\dv{x}{\tau}\dv{x}{\tau}
+    &= 0\\
+    \dv{f(x)}{x}\dv{x}{\tau}\dv{x}{\tau} + f(x)\dv[2]{x}{\tau}
+    - \frac{1}{2}\dv{f(x)}{x}\dv{x}{\tau}\dv{x}{\tau}
+    &= 0\\
+    \dv[2]{x}{\tau}
+    + \frac{1}{2f(x)}\dv{f(x)}{x}\dv{x}{\tau}\dv{x}{\tau}
+    &= 0
+\end{align*}
+Then the only non-zero Christoffel symbol is
+\begin{align*}
+    \Gamma^x_{xx} = \frac{1}{2f(x)}\dv{f(x)}{x}
+\end{align*}
+
+\item [\textbf{b.}] The Riemann tensor is defined as
+\begin{align*}
+    R^\alpha_{\beta\mu\nu} = \partial_\mu\Gamma^\alpha_{\beta\nu}
+    - \partial_\nu\Gamma^\alpha_{\beta\mu}
+    + \Gamma^\alpha_{\mu\gamma}\Gamma^\gamma_{\beta\nu}
+    - \Gamma^\alpha_{\nu\sigma}\Gamma^\sigma_{\beta\mu}
+\end{align*}
+Given that all derivatives with respect to $t,y$ or $z$ are zero and that all
+Christoffel symbols where the super index is $t,y$ or $z$ are all zero as well,
+then $\mu$,$\nu$ and $\alpha$ cannot take these values. Then the only possible
+non-zero component of the Riemann tensor might be 
+\begin{align*}
+    R^x_{\beta xx} = \partial_x\Gamma^x_{\beta x}
+    - \partial_x\Gamma^x_{\beta x}
+    + \Gamma^x_{x\gamma}\Gamma^\gamma_{\beta x}
+    - \Gamma^x_{x\sigma}\Gamma^\sigma_{\beta x}
+\end{align*}
+But, since the only non-zero Christoffel symbol is $\Gamma^x_{xx}$ then must be 
+that $\beta = x$ and the summations of $\gamma$ and $\sigma$ have only one term
+i.e.
+\begin{align*}
+    R^x_{xxx} = \partial_x\Gamma^x_{xx}
+    - \partial_x\Gamma^x_{xx}
+    + \Gamma^x_{xx}\Gamma^x_{xx}
+    - \Gamma^x_{xx}\Gamma^x_{xx}
+    = 0
+\end{align*}
+Therefore all components of the Riemann tensor are zero, implying a flat
+spacetime.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P18.4}}
+Let the metric
+$$ds^2 = dr^2 + r^2d\theta^2$$
+Then from the geodesic equation
+\begin{align*}
+    \dv{\tau}(g_{\mu\nu}\dv{x^\nu}{\tau})
+    - \frac{1}{2}\partial_\mu g_{\alpha\beta}\dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}
+    = 0
+\end{align*}
+When $\mu = \theta$ we have that
+\begin{align*}
+    \dv{\tau}(g_{\theta\theta}\dv{\theta}{\tau}) &= 0\\
+    \dv{\tau}(r^2\dv{\theta}{\tau}) &= 0\\
+    2r\dv{r}{\tau}\dv{\theta}{\tau} + r^2\dv[2]{\theta}{\tau} &= 0\\
+    \dv[2]{\theta}{\tau} + \frac{2}{r}\dv{r}{\tau}\dv{\theta}{\tau} &= 0
+\end{align*}
+Where we used that all derivatives of $g_{\mu\nu}$ with respect to $\theta$
+are zero.
+Then the only non-zero Christoffel symbols when $\theta$ is a super index are
+\begin{align*}
+    \Gamma^\theta_{r\theta} = \Gamma^\theta_{\theta r} = \frac{1}{r}
+\end{align*}
+When $\mu = r$ we have that
+\begin{align*}
+    \dv{\tau}(g_{rr}\dv{r}{\tau})
+    - \frac{1}{2}\partial_r g_{\theta \theta}\dv{\theta}{\tau}\dv{\theta}{\tau}
+    &= 0\\
+    \dv[2]{r}{\tau}
+    - r\dv{\theta}{\tau}\dv{\theta}{\tau}
+    &= 0
+\end{align*}
+So we see that the only non-zero Christoffel symbol is
+\begin{align*}
+    \Gamma^r_{\theta\theta} = -r
+\end{align*}
+Then, the component $R^r_{\theta r \theta}$ of the Riemann tensor is
+\begin{align*}
+    R^r_{\theta r\theta} = \partial_r\Gamma^r_{\theta\theta}
+    - \partial_\theta\Gamma^r_{\theta r}
+    + \Gamma^r_{r\gamma}\Gamma^\gamma_{\theta r}
+    - \Gamma^r_{\theta\sigma}\Gamma^\sigma_{\theta r}
+\end{align*}
+We see that $\partial_\theta\Gamma^r_{\theta r} = 0$ since $\Gamma^r_{\theta r}$ 
+does not depend on $\theta$, also, $\Gamma^r_{r\gamma} = 0$ for any value of
+$\gamma$ and must be that $\sigma = \theta$ then
+\begin{align*}
+    R^r_{\theta r\theta} = \partial_r\Gamma^r_{\theta\theta}
+    - \Gamma^r_{\theta\theta}\Gamma^\theta_{\theta r}
+    = \partial_r(-r) - (-r)\frac{1}{r}
+    = -1 +1 = 0
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P18.5}}
+Let the metric
+\begin{align*}
+    ds^2 = \frac{dp^2}{1 -kp^2} + p^2dq^2
+\end{align*}
+Then when $\mu = p$ the geodesic equation becomes
+\begin{align*}
+    \dv{\tau}(g_{pp}\dv{p}{\tau})
+    - \frac{1}{2}\bigg(\partial_p g_{pp}\dv{p}{\tau}\dv{p}{\tau}
+    + \partial_p g_{qq}\dv{q}{\tau}\dv{q}{\tau}\bigg)
+    &= 0\\
+    \dv{\tau}(\frac{1}{1 - kp^2}\dv{p}{\tau})
+    - \frac{1}{2}\bigg(\frac{2kp}{(1 - kp^2)^2}\dv{p}{\tau}\dv{p}{\tau}
+    + 2p\dv{q}{\tau}\dv{q}{\tau}\bigg) &= 0\\
+    \dv{p}(\frac{1}{1 - kp^2})\dv{p}{\tau}\dv{p}{\tau}
+    + \frac{1}{1 - kp^2}\dv[2]{p}{\tau}
+    - \frac{kp}{(1 - kp^2)^2}\dv{p}{\tau}\dv{p}{\tau}
+    - p\dv{q}{\tau}\dv{q}{\tau} &= 0\\
+    \frac{2kp}{(1 - kp^2)^2}\dv{p}{\tau}\dv{p}{\tau}
+    + \frac{1}{1 - kp^2}\dv[2]{p}{\tau}
+    - \frac{kp}{(1 - kp^2)^2}\dv{p}{\tau}\dv{p}{\tau}
+    - p\dv{q}{\tau}\dv{q}{\tau} &= 0\\
+    \dv[2]{p}{\tau} + \frac{kp}{1 - kp^2}\dv{p}{\tau}\dv{p}{\tau}
+    - (1 - kp^2)p\dv{q}{\tau}\dv{q}{\tau} &= 0
+\end{align*}
+Then the Christoffel symbols when $p$ is a superscript are
+\begin{align*}
+    \Gamma^p_{pp} = \frac{kp}{1 - kp^2}
+    \qquad 
+    \Gamma^p_{qq} = (kp^2 - 1)p
+\end{align*}
+When $\mu = q$ we get that
+\begin{align*}
+    \dv{\tau}(g_{qq}\dv{q}{\tau})
+    - \frac{1}{2}\bigg(\partial_q g_{pp}\dv{p}{\tau}\dv{p}{\tau}
+    + \partial_q g_{qq}\dv{q}{\tau}\dv{q}{\tau}\bigg)
+    &= 0\\
+    \dv{\tau}(p^2\dv{q}{\tau}) - 0 &= 0\\
+    \dv{p}(p^2)\dv{p}{\tau}\dv{q}{\tau} + p^2\dv[2]{q}{\tau} &= 0\\
+    \dv[2]{q}{\tau} + \frac{2}{p}\dv{p}{\tau}\dv{q}{\tau} &= 0
+\end{align*}
+Then the Christoffel symbols when $q$ is a superscript are
+\begin{align*}
+    \Gamma^q_{pq} = \Gamma^q_{qp} = \frac{1}{p}
+\end{align*}
+Since in a two-dimensional space the components of the Riemann tensor are
+either identically zero or equal to $\pm R^p_{qpq}$, then we need to compute
+only $R^p_{qpq}$
+\begin{align*}
+    R^p_{qpq} &= \partial_p\Gamma^p_{qq}
+    - \partial_q\Gamma^p_{qp}
+    + \Gamma^p_{p\gamma}\Gamma^\gamma_{qq}
+    - \Gamma^p_{q\sigma}\Gamma^\sigma_{qp}\\
+    &= \partial_p\Gamma^p_{qq}
+    + \Gamma^p_{pp}\Gamma^p_{qq}
+    - \Gamma^p_{qq}\Gamma^q_{qp}\\
+    &= 3kp^2 - 1 + \frac{kp}{1 - kp^2}(kp^2 - 1)p - \frac{(kp^2 - 1)p}{p}\\
+    &= 3kp^2 - 1 - kp^2 - kp^2 + 1\\
+    &= kp^2
+\end{align*}
+Therefore this metric describes a curved space.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P18.6}}
+\begin{itemize}
+\item [\textbf{a.}] From BOX 17.6 we know that
+\begin{align*}
+    0 = \dv[2]{t}{\tau} + \frac{2GM}{r^2}\bigg(1 - \frac{2GM}{r}\bigg)^{-1}\dv{r}{\tau}\dv{t}{\tau}
+\end{align*}
+Then the only non-zero Christoffel symbols that have $t$ as a superscript are
+\begin{align*}
+    \Gamma_{rt}^t = \Gamma_{tr}^t
+    = \frac{GM}{r^2}\bigg(1 - \frac{2GM}{r}\bigg)^{-1}
+\end{align*}
+\item [\textbf{b.}] We want to compute now ${R^t}_{rtr}$ then
+\begin{align*}
+    {R^t}_{rtr} &= \partial_t\Gamma^t_{rr}
+    - \partial_r\Gamma^t_{rt}
+    + \Gamma^t_{t\gamma}\Gamma^\gamma_{rr}
+    - \Gamma^t_{r\sigma}\Gamma^\sigma_{rt}\\
+    &= - \partial_r\Gamma^t_{rt}
+    + \Gamma^t_{tr}\Gamma^r_{rr}
+    - \Gamma^t_{rt}\Gamma^t_{rt}
+\end{align*}
+Then using that $\Gamma^r_{rr} = -\Gamma^t_{rt}$ we get that
+\begin{align*}
+    {R^t}_{rtr} 
+    &= - \partial_r\Gamma^t_{rt}
+    - \Gamma^t_{rt}\Gamma^t_{rt}
+    - \Gamma^t_{rt}\Gamma^t_{rt}\\
+    &= - \partial_r\Gamma^t_{rt} - 2(\Gamma^t_{rt})^2\\
+    &= -\bigg[-\frac{2GM}{r^3}\bigg(1 - \frac{2GM}{r}\bigg)^{-1} 
+    - \frac{GM}{r^2}\frac{2GM}{(r - 2GM)^2} \bigg]
+    - \frac{2(GM)^2}{r^4}\bigg(1 - \frac{2GM}{r}\bigg)^{-2}\\
+    &= -\bigg[-\frac{2GM}{r^3}\bigg(1 - \frac{2GM}{r}\bigg)^{-1} 
+    - \frac{2(GM)^2}{r^4}\bigg(1 - \frac{2GM}{r}\bigg)^{-2} \bigg]
+    - \frac{2(GM)^2}{r^4}\bigg(1 - \frac{2GM}{r}\bigg)^{-2}\\
+    &= \frac{2GM}{r^3}\bigg(1 - \frac{2GM}{r}\bigg)^{-1}
+\end{align*}
+\item [\textbf{c.}] Given that at least one component of the Riemann tensor is
+not zero then the spacetime must be curved.
+\\
+But if we take a big $r$ we can use the binomial approximation to get that
+\begin{align*}
+    {R^t}_{rtr}
+    &\approx \frac{2GM}{r^3}\bigg(1 + \frac{2GM}{r}\bigg)
+    = \frac{2GM}{r^3} + \frac{4(GM)^2}{r^4}
+\end{align*}
+Then as $r \to \infty$ we get that ${R^t}_{rtr} \to 0$, so as $r$ increases
+the spacetime becomes flatter.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P18.7}}
+The equation  of geodesic deviation states that
+\begin{align*}
+    \bigg(\dv[2]{\bm{n}}{\tau}\bigg)^\alpha
+    = -R^\alpha_{\mu\beta\sigma}u^\sigma u^\mu n^\beta
+\end{align*}
+Since we are considering a LIF we get that $\partial_{\alpha}g_{\mu\nu} = 0$
+so all Christoffel symbols are zero, but the second derivatives of $g_{\mu\nu}$
+might not be zero so the derivatives of the Christoffel symbols might not be
+zero, so from equation (18.13) we get that
+\begin{align*}
+    \bigg(\dv[2]{\bm{n}}{\tau}\bigg)^\alpha
+    = \dv[2]{n^\alpha}{\tau} + (\partial_\sigma \Gamma^\alpha_{\mu\nu})u^\sigma u^\mu n^\nu
+\end{align*}
+And replacing this in the equation of geodesic deviation we get that
+\begin{align*}
+    \dv[2]{n^\alpha}{\tau}
+    + (\partial_\sigma \Gamma^\alpha_{\mu\nu})u^\sigma u^\mu n^\nu
+    = -R^\alpha_{\mu\beta\sigma}u^\sigma u^\mu n^\beta
+\end{align*}
+Also, replacing the value of the Riemann tensor we get that
+\begin{align*}
+    \dv[2]{n^\alpha}{\tau}
+    &= -(\partial_\beta\Gamma^\alpha_{\mu\sigma}
+    - \partial_\sigma\Gamma^\alpha_{\mu\beta}) u^\sigma u^\mu n^\beta
+    -\partial_\sigma \Gamma^\alpha_{\mu\nu} u^\sigma u^\mu n^\nu\\
+    &= -\partial_\beta\Gamma^\alpha_{\mu\sigma} u^\sigma u^\mu n^\beta
+    + \partial_\sigma\Gamma^\alpha_{\mu\beta} u^\sigma u^\mu n^\beta
+    -\partial_\sigma \Gamma^\alpha_{\mu\nu} u^\sigma u^\mu n^\nu\\
+    &= -\partial_\beta\Gamma^\alpha_{\mu\nu} u^\nu u^\mu n^\beta
+    + \partial_\sigma\Gamma^\alpha_{\mu\nu} u^\sigma u^\mu n^\nu
+    -\partial_\sigma \Gamma^\alpha_{\mu\nu} u^\sigma u^\mu n^\nu\\
+    &= -\partial_\beta\Gamma^\alpha_{\mu\nu} u^\nu u^\mu n^\beta
+\end{align*}
+Where in the third step we changed the indices $\beta \to \nu$ in the second
+term.
+\\
+Since we are considering a freely falling frame then $u^t = 1$ and 0 for the 
+spacial components, so we get that
+\begin{align*}
+    \dv[2]{n^\alpha}{\tau}
+    &= -\partial_\beta\Gamma^\alpha_{tt}n^\beta
+\end{align*}
+Finally, if we consider the Riemann tensor component $R^\alpha_{t\beta t}$
+we see that
+\begin{align*}
+    R^\alpha_{t\beta t} =
+    \partial_\beta\Gamma^\alpha_{tt}
+    - \partial_t\Gamma^\alpha_{t\beta}
+\end{align*}
+But argueing that the time derivative of the Christoffel symbols are 0, 
+we get that
+\begin{align*}
+    R^\alpha_{t\beta t} = \partial_\beta\Gamma^\alpha_{tt}
+\end{align*}
+And hence
+\begin{align*}
+    \dv[2]{n^\alpha}{\tau} &= - {R^\alpha}_{t\beta t} n^\beta
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P18.8}}
+\begin{itemize}
+\item [\textbf{a.}] Let us consider $\nabla_\nu a^\alpha$ as a tensor with
+one lower index and one upper index, then the absolute gradient of it is
+\begin{align*}
+    \nabla_{\mu}(\nabla_\nu a^\alpha)
+    &= \partial_\mu (\nabla_\nu a^\alpha)
+    + \Gamma^{\alpha}_{\mu\delta} (\nabla_\nu a^\delta)
+    - \Gamma^{\sigma}_{\mu\nu} (\nabla_\sigma a^\alpha)
+\end{align*}
+Now using that 
+\begin{align*}
+    \nabla_\nu a^\alpha
+    = \partial_\nu a^\alpha + \Gamma^{\alpha}_{\nu\beta} a^{\beta}
+\end{align*}
+We get that
+\begin{align*}
+    \nabla_{\mu}(\nabla_\nu a^\alpha)
+    &= \partial_\mu(\partial_\nu a^\alpha + \Gamma^{\alpha}_{\nu\beta} a^{\beta})
+    + \Gamma^{\alpha}_{\mu\delta} (\partial_\nu a^\delta + \Gamma^{\delta}_{\nu\lambda} a^{\lambda})
+    - \Gamma^{\sigma}_{\mu\nu} (\partial_\sigma a^\alpha + \Gamma^{\alpha}_{\sigma\gamma} a^{\gamma})\\
+    %
+    &= \partial_\mu\partial_\nu a^\alpha
+    + (\partial_\mu\Gamma^{\alpha}_{\nu\beta} a^{\beta})
+    + \Gamma^{\alpha}_{\mu\delta}\partial_\nu a^\delta
+    + \Gamma^{\alpha}_{\mu\delta}\Gamma^{\delta}_{\nu\lambda} a^{\lambda}\\
+    &\quad- \Gamma^{\sigma}_{\mu\nu} \partial_\sigma a^\alpha
+    - \Gamma^{\sigma}_{\mu\nu}\Gamma^{\alpha}_{\sigma\gamma} a^{\gamma}\\
+    %
+    &= \partial_\mu\partial_\nu a^\alpha
+    + (\partial_\mu\Gamma^{\alpha}_{\nu\beta}) a^{\beta}
+    + \Gamma^{\alpha}_{\nu\beta}\partial_\mu a^{\beta}
+    + \Gamma^{\alpha}_{\mu\delta}\partial_\nu a^\delta
+    + \Gamma^{\alpha}_{\mu\delta}\Gamma^{\delta}_{\nu\lambda} a^{\lambda}\\
+    &\quad- \Gamma^{\sigma}_{\mu\nu} \partial_\sigma a^\alpha
+    - \Gamma^{\sigma}_{\mu\nu}\Gamma^{\alpha}_{\sigma\gamma} a^{\gamma}\\
+    %
+    &= \partial_\mu\partial_\nu a^\alpha
+    + (\partial_\mu\Gamma^{\alpha}_{\beta\nu}) a^{\beta}
+    + \Gamma^{\alpha}_{\beta\nu}\partial_\mu a^{\beta}
+    + \Gamma^{\alpha}_{\delta\mu}\partial_\nu a^\delta
+    + \Gamma^{\alpha}_{\delta\mu}\Gamma^{\delta}_{\lambda\nu} a^{\lambda}\\
+    &\quad- \Gamma^{\sigma}_{\nu\mu} \partial_\sigma a^\alpha
+    - \Gamma^{\sigma}_{\nu\mu}\Gamma^{\alpha}_{\gamma\sigma} a^{\gamma}
+\end{align*}
+Where we used the product rule and in the last step we used the symmetry of
+the Christoffel symbol to swap the index order.
+\item [\textbf{b.}] We see that
+\begin{align*}
+    \nabla_{\nu}(\nabla_\mu a^\alpha)
+    &= \partial_\nu\partial_\mu a^\alpha
+    + (\partial_\nu\Gamma^{\alpha}_{\beta\mu}) a^{\beta}
+    + \Gamma^{\alpha}_{\beta\mu}\partial_\nu a^{\beta}
+    + \Gamma^{\alpha}_{\delta\nu}\partial_\mu a^\delta
+    + \Gamma^{\alpha}_{\delta\nu}\Gamma^{\delta}_{\lambda\mu} a^{\lambda}\\
+    &\quad- \Gamma^{\sigma}_{\mu\nu} \partial_\sigma a^\alpha
+    - \Gamma^{\sigma}_{\mu\nu}\Gamma^{\alpha}_{\gamma\sigma} a^{\gamma}
+\end{align*}
+Then $\nabla_{\mu}(\nabla_\nu a^\alpha) - \nabla_{\nu}(\nabla_\mu a^\alpha)$
+gives us
+\begin{align*}
+    &\nabla_{\mu}(\nabla_\nu a^\alpha) - \nabla_{\nu}(\nabla_\mu a^\alpha) =\\
+    &\quad= \partial_\mu\partial_\nu a^\alpha
+    + (\partial_\mu\Gamma^{\alpha}_{\beta\nu}) a^{\beta}
+    + \Gamma^{\alpha}_{\beta\nu}\partial_\mu a^{\beta}
+    + \Gamma^{\alpha}_{\delta\mu}\partial_\nu a^\delta
+    + \Gamma^{\alpha}_{\delta\mu}\Gamma^{\delta}_{\lambda\nu} a^{\lambda}\\
+    &\qquad- \Gamma^{\sigma}_{\nu\mu} \partial_\sigma a^\alpha
+    - \Gamma^{\sigma}_{\nu\mu}\Gamma^{\alpha}_{\gamma\sigma} a^{\gamma}
+    - \partial_\nu\partial_\mu a^\alpha
+    - (\partial_\nu\Gamma^{\alpha}_{\beta\mu}) a^{\beta}
+    - \Gamma^{\alpha}_{\beta\mu}\partial_\nu a^{\beta}\\
+    &\qquad- \Gamma^{\alpha}_{\delta\nu}\partial_\mu a^\delta
+    - \Gamma^{\alpha}_{\delta\nu}\Gamma^{\delta}_{\lambda\mu} a^{\lambda}
+    + \Gamma^{\sigma}_{\mu\nu} \partial_\sigma a^\alpha
+    + \Gamma^{\sigma}_{\mu\nu}\Gamma^{\alpha}_{\gamma\sigma} a^{\gamma}\\
+    %
+    &\quad=
+    (\partial_\mu\Gamma^{\alpha}_{\beta\nu}) a^{\beta}
+    - (\partial_\nu\Gamma^{\alpha}_{\beta\mu}) a^{\beta}
+    + \Gamma^{\alpha}_{\delta\mu}\Gamma^{\delta}_{\lambda\nu} a^{\lambda}
+    - \Gamma^{\alpha}_{\delta\nu}\Gamma^{\delta}_{\lambda\mu} a^{\lambda}\\
+    &\quad=
+    (\partial_\mu\Gamma^{\alpha}_{\beta\nu}
+    - \partial_\nu\Gamma^{\alpha}_{\beta\mu}
+    + \Gamma^{\alpha}_{\delta\mu}\Gamma^{\delta}_{\beta\nu}
+    - \Gamma^{\alpha}_{\delta\nu}\Gamma^{\delta}_{\beta\mu}) a^{\beta}\\
+    &\quad= R^\alpha_{\beta\mu\nu} a^\beta
+\end{align*}
+\end{itemize}
+\end{proof}
+\end{document}
