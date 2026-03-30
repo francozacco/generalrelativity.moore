@@ -1,0 +1,878 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{physics,amsmath}
+\usepackage{bm}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[mathscr]{euscript}
+
+
+\title{\textbf{Solved selected problems of General Relativity - Thomas A. Moore}}
+\author{Franco Zacco}
+\date{}
+
+\addtolength{\topmargin}{-3cm}
+\addtolength{\textheight}{3cm}
+
+\newcommand{\hatr}{\bm{\hat{r}}}
+\newcommand{\hatn}{\bm{\hat{n}}}
+\newcommand{\hatx}{\bm{\hat{x}}}
+\newcommand{\haty}{\bm{\hat{y}}}
+\newcommand{\hatz}{\bm{\hat{z}}}
+\newcommand{\hatth}{\bm{\hat{\theta}}}
+\newcommand{\hatphi}{\bm{\hat{\phi}}}
+\newcommand{\hatrho}{\bm{\hat{\rho}}}
+\newcommand{\esi}[1]{\bm{e}_{#1}}
+\newcommand{\etht}{\bm{e}_\theta}
+\newcommand{\sci}[1]{\times 10^{#1}}
+
+\theoremstyle{definition}
+\newtheorem*{solution*}{Solution}
+\renewcommand*{\proofname}{Solution}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{Chapter 19 - The Riemann Tensor}
+
+\begin{proof}{\textbf{BOX 19.1} - Exercise 19.1.1.}\\
+We know that in a LIF
+\begin{align*}
+    R_{\alpha\beta\mu\nu} = g_{\alpha\sigma}R^{\sigma}_{\beta\mu\nu}
+    = g_{\alpha\sigma}[\partial_{\mu}\Gamma_{\beta\nu}^\sigma
+    - \partial_{\nu}\Gamma_{\beta\mu}^\sigma]
+\end{align*}
+Replacing the value of $\Gamma_{\beta\nu}^\sigma$ and $\Gamma_{\beta\mu}^\sigma$
+we get that
+\begin{align*}
+    R_{\alpha\beta\mu\nu}
+    &= g_{\alpha\sigma}[\partial_{\mu}\Gamma_{\beta\nu}^\sigma
+    - \partial_{\nu}\Gamma_{\beta\mu}^\sigma]\\
+    %
+    &= \frac{1}{2}g_{\alpha\sigma}[
+    \partial_{\mu}(g^{\sigma\gamma}[\partial_{\beta}g_{\nu\gamma}
+    + \partial_{\nu}g_{\gamma\beta} - \partial_{\gamma}g_{\beta\nu}])\\
+    &\quad
+    - \partial_{\nu}(g^{\sigma\gamma}[\partial_{\beta}g_{\mu\gamma}
+    + \partial_{\mu}g_{\gamma\beta} - \partial_{\gamma}g_{\beta\mu}])]\\
+    %
+    &= \frac{1}{2}g_{\alpha\sigma}[
+    \partial_{\mu}g^{\sigma\gamma}[\partial_{\beta}g_{\nu\gamma}
+    + \partial_{\nu}g_{\gamma\beta} - \partial_{\gamma}g_{\beta\nu}]
+    + g^{\sigma\gamma}[\partial_{\mu}\partial_{\beta}g_{\nu\gamma}
+    + \partial_{\mu}\partial_{\nu}g_{\gamma\beta}
+    - \partial_{\mu}\partial_{\gamma}g_{\beta\nu}]\\
+    &\quad
+    - \partial_{\nu}g^{\sigma\gamma}[\partial_{\beta}g_{\mu\gamma}
+    + \partial_{\mu}g_{\gamma\beta} - \partial_{\gamma}g_{\beta\mu}]
+    - g^{\sigma\gamma}[\partial_{\nu}\partial_{\beta}g_{\mu\gamma}
+    + \partial_{\nu}\partial_{\mu}g_{\gamma\beta}
+    - \partial_{\nu}\partial_{\gamma}g_{\beta\mu}]]\\
+    %
+    &= \frac{1}{2}(g_{\alpha\sigma}
+    g^{\sigma\gamma}
+    [\partial_{\mu}\partial_{\beta}g_{\nu\gamma}
+    + \partial_{\mu}\partial_{\nu}g_{\gamma\beta}
+    - \partial_{\mu}\partial_{\gamma}g_{\beta\nu}]\\
+    &\quad
+    - g_{\alpha\sigma}g^{\sigma\gamma}
+    [\partial_{\nu}\partial_{\beta}g_{\mu\gamma}
+    + \partial_{\nu}\partial_{\mu}g_{\gamma\beta}
+    - \partial_{\nu}\partial_{\gamma}g_{\beta\mu}])\\
+    %
+    &= \frac{1}{2}(
+    \delta^\gamma_{\alpha}[\partial_{\mu}\partial_{\beta}g_{\nu\gamma}
+    + \partial_{\mu}\partial_{\nu}g_{\gamma\beta}
+    - \partial_{\mu}\partial_{\gamma}g_{\beta\nu}]\\
+    &\quad
+    - \delta^\gamma_{\alpha}[\partial_{\nu}\partial_{\beta}g_{\mu\gamma}
+    + \partial_{\nu}\partial_{\mu}g_{\gamma\beta}
+    - \partial_{\nu}\partial_{\gamma}g_{\beta\mu}])\\
+    %
+    &= \frac{1}{2}(
+    \partial_{\mu}\partial_{\beta}g_{\nu\alpha}
+    + \partial_{\mu}\partial_{\nu}g_{\alpha\beta}
+    - \partial_{\mu}\partial_{\alpha}g_{\beta\nu}
+    - \partial_{\nu}\partial_{\beta}g_{\mu\alpha}
+    - \partial_{\nu}\partial_{\mu}g_{\alpha\beta}
+    + \partial_{\nu}\partial_{\alpha}g_{\beta\mu})\\
+    %
+    &= \frac{1}{2}(
+    \partial_{\beta}\partial_{\mu}g_{\alpha\nu}
+    + \partial_{\alpha}\partial_{\nu}g_{\beta\mu}
+    - \partial_{\beta}\partial_{\nu}g_{\alpha\mu}
+    - \partial_{\alpha}\partial_{\mu}g_{\beta\nu})
+\end{align*}
+In the last step, we used the symmetry of the metric and that the order of
+the partial derivatives doesn't matter.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{BOX 19.2} - Exercise 19.2.1.}\\
+We know that
+\begin{align*}
+    R_{\alpha\beta\mu\nu} &= \frac{1}{2}(
+    \partial_{\beta}\partial_{\mu}g_{\alpha\nu}
+    + \partial_{\alpha}\partial_{\nu}g_{\beta\mu}
+    - \partial_{\beta}\partial_{\nu}g_{\alpha\mu}
+    - \partial_{\alpha}\partial_{\mu}g_{\beta\nu})
+\end{align*}
+So 
+\begin{align*}
+    -R_{\alpha\beta\mu\nu} &= \frac{1}{2}(
+    \partial_{\alpha}\partial_{\mu}g_{\beta\nu}
+    + \partial_{\beta}\partial_{\nu}g_{\alpha\mu}
+    - \partial_{\alpha}\partial_{\nu}g_{\beta\mu}
+    - \partial_{\beta}\partial_{\mu}g_{\alpha\nu}
+    )
+\end{align*}
+But what we have on the LHS is just $R_{\alpha\beta\mu\nu}$ but with $\alpha$
+and $\beta$ swapped, hence
+\begin{align*}
+    -R_{\alpha\beta\mu\nu} &= \frac{1}{2}(
+    \partial_{\alpha}\partial_{\mu}g_{\beta\nu}
+    + \partial_{\beta}\partial_{\nu}g_{\alpha\mu}
+    - \partial_{\alpha}\partial_{\nu}g_{\beta\mu}
+    - \partial_{\beta}\partial_{\mu}g_{\alpha\nu}
+    ) = R_{\beta\alpha\mu\nu}
+\end{align*}
+\end{proof}
+\begin{proof}{\textbf{BOX 19.2} - Exercise 19.2.2.}\\
+Taking
+\begin{align*}
+    R_{\alpha\beta\mu\nu} &= \frac{1}{2}(
+    \partial_{\beta}\partial_{\mu}g_{\alpha\nu}
+    + \partial_{\alpha}\partial_{\nu}g_{\beta\mu}
+    - \partial_{\beta}\partial_{\nu}g_{\alpha\mu}
+    - \partial_{\alpha}\partial_{\mu}g_{\beta\nu})
+\end{align*}
+But renaming the indices as $\alpha\to \mu$, $\beta\to \nu$, $\mu\to \alpha$
+and $\nu\to \beta$ we get that
+\begin{align*}
+    R_{\mu\nu\alpha\beta} 
+    &= \frac{1}{2}(
+    \partial_{\nu}\partial_{\alpha}g_{\mu\beta}
+    + \partial_{\mu}\partial_{\beta}g_{\nu\alpha}
+    - \partial_{\nu}\partial_{\beta}g_{\mu\alpha}
+    - \partial_{\mu}\partial_{\alpha}g_{\nu\beta})\\
+    &= \frac{1}{2}(
+    \partial_{\beta}\partial_{\mu}g_{\alpha\nu}
+    + \partial_{\alpha}\partial_{\nu}g_{\beta\mu}
+    - \partial_{\beta}\partial_{\nu}g_{\alpha\mu}
+    - \partial_{\alpha}\partial_{\mu}g_{\beta\nu})
+\end{align*}
+Where In the last step, we used the symmetry of the metric and that the order
+of the partial derivatives doesn't matter.
+\\
+Therefore
+\begin{align*}
+    R_{\mu\nu\alpha\beta} = R_{\alpha\beta\mu\nu}
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{BOX 19.2} - Exercise 19.2.3.}\\
+We note that
+\begin{align*}
+    &R_{\alpha\beta\mu\nu} + R_{\alpha\nu\beta\mu} + R_{\alpha\mu\nu\beta} =\\
+    &=\frac{1}{2}(
+    \partial_{\beta}\partial_{\mu}g_{\alpha\nu}
+    + \partial_{\alpha}\partial_{\nu}g_{\beta\mu}
+    - \partial_{\beta}\partial_{\nu}g_{\alpha\mu}
+    - \partial_{\alpha}\partial_{\mu}g_{\beta\nu})\\
+    &\quad + \frac{1}{2}(
+    \partial_{\nu}\partial_{\beta}g_{\alpha\mu}
+    + \partial_{\alpha}\partial_{\mu}g_{\nu\beta}
+    - \partial_{\nu}\partial_{\mu}g_{\alpha\beta}
+    - \partial_{\alpha}\partial_{\beta}g_{\nu\mu})\\
+    &\quad + \frac{1}{2}(
+    \partial_{\mu}\partial_{\nu}g_{\alpha\beta}
+    + \partial_{\alpha}\partial_{\beta}g_{\mu\nu}
+    - \partial_{\mu}\partial_{\beta}g_{\alpha\nu}
+    - \partial_{\alpha}\partial_{\nu}g_{\mu\beta})\\
+    %
+    &=\frac{1}{2}(
+    (\partial_{\beta}\partial_{\mu}g_{\alpha\nu}
+    - \partial_{\mu}\partial_{\beta}g_{\alpha\nu})
+    + (\partial_{\alpha}\partial_{\nu}g_{\beta\mu}
+    - \partial_{\alpha}\partial_{\nu}g_{\mu\beta})\\
+    &\quad
+    + (\partial_{\nu}\partial_{\beta}g_{\alpha\mu}
+    - \partial_{\beta}\partial_{\nu}g_{\alpha\mu})
+    + (\partial_{\alpha}\partial_{\mu}g_{\nu\beta}
+    - \partial_{\alpha}\partial_{\mu}g_{\beta\nu})\\
+    &\quad + 
+    (\partial_{\mu}\partial_{\nu}g_{\alpha\beta}
+    - \partial_{\nu}\partial_{\mu}g_{\alpha\beta})
+    + (\partial_{\alpha}\partial_{\beta}g_{\mu\nu}
+    - \partial_{\alpha}\partial_{\beta}g_{\nu\mu}))\\
+    %
+    &= 0
+\end{align*}
+
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{BOX 19.3} - Exercise 19.3.1.}\\
+Given that $R_{\mu\nu\alpha\beta} = R_{\alpha\beta\mu\nu}$ then for example,
+the component $R_{0201}$ is equal to $R_{0102}$, $R_{0301} = R_{0103}$ and
+so on, so from the matrix we have in (19.16) only the upper (or lower) 
+elements plus the diagonal elements are independent, then we have
+$6 + 5+ 4+ 3+ 2+ 1 = 21$ independent components.
+\end{proof}
+\begin{proof}{\textbf{BOX 19.3} - Exercise 19.3.2.}\\
+Let $\alpha = \beta = x$ where $x \in \{0,1,2,3\}$ then the equation (19.4d)
+becomes
+\begin{align*}
+    R_{xx\mu\nu} + R_{x\nu x\mu} + R_{x\mu\nu x}
+    &= 0 + R_{x\nu x\mu} - R_{x\mu x\nu}
+    = R_{x\nu x\mu} - R_{x\nu x\mu}
+    = 0
+\end{align*}
+\end{proof}
+\begin{proof}{\textbf{BOX 19.3} - Exercise 19.3.3.}\\
+In a two-dimensional space we have that $\alpha, \beta, \mu, \nu \in \{0,1\}$
+and we know that the Riemann tensor is nonzero if $\alpha \neq\beta$ and
+$\mu\neq\nu$, so the only possible components are
+\begin{align*}
+    R_{0101} \quad R_{0110} \quad R_{1001} \quad R_{1010}
+\end{align*}
+But also we know that $R_{\alpha\beta\mu\nu} = -R_{\alpha\beta\nu\mu}$
+and $R_{\alpha\beta\mu\nu} = -R_{\beta\alpha\mu\nu}$ then
+\begin{align*}
+    R_{0101} = -R_{0110} = R_{1010} = -R_{1001}
+\end{align*}
+Therefore there is only one independent component of the Riemann tensor.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{BOX 19.4} - Exercise 19.4.1.}\\
+From BOX 19.1 we know that 
+\begin{align*}
+    R_{\alpha\beta\mu\nu} &= \frac{1}{2}(
+    \partial_{\beta}\partial_{\mu}g_{\alpha\nu}
+    + \partial_{\alpha}\partial_{\nu}g_{\beta\mu}
+    - \partial_{\beta}\partial_{\nu}g_{\alpha\mu}
+    - \partial_{\alpha}\partial_{\mu}g_{\beta\nu})
+\end{align*}
+Changing $\mu\to\sigma$ and $\nu\to\mu$ we get that
+\begin{align*}
+    R_{\alpha\beta\sigma\mu} &= \frac{1}{2}(
+        \partial_{\beta}\partial_{\sigma}g_{\alpha\mu}
+        + \partial_{\alpha}\partial_{\mu}g_{\beta\sigma}
+        - \partial_{\beta}\partial_{\mu}g_{\alpha\sigma}
+        - \partial_{\alpha}\partial_{\sigma}g_{\beta\mu})
+\end{align*}
+Or changing $\mu\to\nu$ and $\nu\to\sigma$ we get that
+\begin{align*}
+    R_{\alpha\beta\nu\sigma} &= \frac{1}{2}(
+    \partial_{\beta}\partial_{\nu}g_{\alpha\sigma}
+    + \partial_{\alpha}\partial_{\sigma}g_{\beta\nu}
+    - \partial_{\beta}\partial_{\sigma}g_{\alpha\nu}
+    - \partial_{\alpha}\partial_{\nu}g_{\beta\sigma})
+\end{align*}
+Then
+\begin{align*}
+    &\partial_{\sigma} R_{\alpha\beta\mu\nu}
+    + \partial_{\nu} R_{\alpha\beta\sigma\mu} 
+    + \partial_{\mu} R_{\alpha\beta\nu\sigma} =\\
+    &=\frac{1}{2}(
+    \partial_{\sigma}\partial_{\beta}\partial_{\mu}g_{\alpha\nu}
+    + \partial_{\sigma}\partial_{\alpha}\partial_{\nu}g_{\beta\mu}
+    - \partial_{\sigma}\partial_{\beta}\partial_{\nu}g_{\alpha\mu}
+    - \partial_{\sigma}\partial_{\alpha}\partial_{\mu}g_{\beta\nu})\\
+    &\quad + \frac{1}{2}(
+    \partial_{\nu}\partial_{\beta}\partial_{\sigma}g_{\alpha\mu}
+    + \partial_{\nu}\partial_{\alpha}\partial_{\mu}g_{\beta\sigma}
+    - \partial_{\nu}\partial_{\beta}\partial_{\mu}g_{\alpha\sigma}
+    - \partial_{\nu}\partial_{\alpha}\partial_{\sigma}g_{\beta\mu})\\
+    &\quad + \frac{1}{2}(
+    \partial_{\mu}\partial_{\beta}\partial_{\nu}g_{\alpha\sigma}
+    + \partial_{\mu}\partial_{\alpha}\partial_{\sigma}g_{\beta\nu}
+    - \partial_{\mu}\partial_{\beta}\partial_{\sigma}g_{\alpha\nu}
+    - \partial_{\mu}\partial_{\alpha}\partial_{\nu}g_{\beta\sigma})\\
+    %
+    &=\frac{1}{2}[
+    (\partial_{\sigma}\partial_{\beta}\partial_{\mu}g_{\alpha\nu}
+    - \partial_{\mu}\partial_{\beta}\partial_{\sigma}g_{\alpha\nu})
+    + (\partial_{\sigma}\partial_{\alpha}\partial_{\nu}g_{\beta\mu}
+    - \partial_{\nu}\partial_{\alpha}\partial_{\sigma}g_{\beta\mu})\\
+    &\quad
+    + (\partial_{\nu}\partial_{\beta}\partial_{\sigma}g_{\alpha\mu}
+    - \partial_{\sigma}\partial_{\beta}\partial_{\nu}g_{\alpha\mu})
+    + (\partial_{\nu}\partial_{\alpha}\partial_{\mu}g_{\beta\sigma}
+    - \partial_{\mu}\partial_{\alpha}\partial_{\nu}g_{\beta\sigma})\\
+    &\quad
+    +(\partial_{\mu}\partial_{\beta}\partial_{\nu}g_{\alpha\sigma}
+    - \partial_{\nu}\partial_{\beta}\partial_{\mu}g_{\alpha\sigma})
+    + (\partial_{\mu}\partial_{\alpha}\partial_{\sigma}g_{\beta\nu}
+    - \partial_{\sigma}\partial_{\alpha}\partial_{\mu}g_{\beta\nu}) ]\\
+    %
+    &= 0
+\end{align*}
+Since this should be valid for all frames then must be that
+\begin{align*}
+    \nabla_{\sigma} R_{\alpha\beta\mu\nu}
+    + \nabla_{\nu} R_{\alpha\beta\sigma\mu} 
+    + \nabla_{\mu} R_{\alpha\beta\nu\sigma} = 0
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{BOX 19.5} - Exercise 19.5.1.}\\
+The Ricci tensor is defined as 
+\begin{align*}
+    R_{\beta\nu} = R^{\alpha}_{\beta\alpha\nu} = g^{\alpha\mu} R_{\alpha\beta\mu\nu}
+\end{align*}
+Let us consider $R_{\nu\beta}$, we see that
+\begin{align*}
+    R_{\nu\beta} &= g^{\alpha\mu} R_{\alpha\nu\mu\beta}
+    = g^{\alpha\mu} R_{\mu\beta\alpha\nu}
+    = g^{\mu\alpha} R_{\mu\beta\alpha\nu}
+\end{align*}
+Where we used that $R_{\alpha\nu\mu\beta} = R_{\mu\beta\alpha\nu}$ and that
+$g^{\alpha\mu} = g^{\mu\alpha}$.
+\\
+So if we rename indexes $\mu \to \alpha$ and $\alpha \to \mu$ we get that
+\begin{align*}
+    R_{\nu\beta} = g^{\alpha\mu} R_{\alpha\beta\mu\nu} = R_{\beta\mu}
+\end{align*}
+Therefore, the Ricci tensor is symmetric.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{BOX 19.6} - Exercise 19.6.1.}\\
+Let $\mu = \theta$ then the geodesic equation is
+\begin{align*}
+    \dv{\tau}(g_{\theta \nu}\dv{x^\nu}{\tau})
+    - \frac{1}{2}\partial_\theta g_{\alpha\beta}\dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}
+    &= 0\\
+    \dv{\tau}(g_{\theta \theta}\dv{\theta}{\tau})
+    - \frac{1}{2}\partial_\theta g_{\phi\phi}\dv{\phi}{\tau}\dv{\phi}{\tau}
+    &= 0\\
+    \dv{\tau}(r^2\dv{\theta}{\tau})
+    - r^2\sin\theta\cos\theta\dv{\phi}{\tau}\dv{\phi}{\tau}
+    &= 0\\
+    r^2\dv[2]{\theta}{\tau}
+    - r^2\sin\theta\cos\theta\dv{\phi}{\tau}\dv{\phi}{\tau}
+    &= 0\\
+    \dv[2]{\theta}{\tau}
+    - \sin\theta\cos\theta\dv{\phi}{\tau}\dv{\phi}{\tau}
+    &= 0
+\end{align*}
+Hence the only nonzero Christoffel symbol with $\theta$ as a superscript is
+\begin{align*}
+    \Gamma^\theta_{\phi\phi} = -\sin\theta\cos\theta
+\end{align*}
+\end{proof}
+\begin{proof}{\textbf{BOX 19.6} - Exercise 19.6.2.}\\
+Let us compute $R_{\theta\phi\theta\phi}$ as follows
+\begin{align*}
+    R_{\theta\phi\theta\phi}
+    &= r^2(\partial_{\theta}\Gamma^\theta_{\phi\phi} - \Gamma^\theta_{\phi\phi}
+    \Gamma^\phi_{\phi\theta})\\
+    &= r^2((\sin^2\theta - \cos^2\theta) + \sin\theta\cos\theta\cdot \cot\theta)\\
+    &= r^2(\sin^2\theta - \cos^2\theta
+    + \sin\theta\cos\theta\cdot \frac{\cos\theta}{\sin\theta})\\
+    &= r^2(\sin^2\theta - \cos^2\theta + \cos^2\theta)\\
+    &= r^2\sin^2\theta
+\end{align*}
+\end{proof}
+\begin{proof}{\textbf{BOX 19.6} - Exercise 19.6.3.}\\
+The only nonzero components of the Ricci tensor are $R_{\theta\theta}$ and
+$R_{\phi\phi}$ and they are given by
+\begin{align*}
+    R_{\theta\theta} &= g^{\phi\phi}R_{\theta\phi\theta\phi}
+    = \frac{1}{r^2\sin^2\theta} \cdot r^2\sin^2\theta = 1\\
+    R_{\phi\phi} &= g^{\theta\theta}R_{\theta\phi\theta\phi}
+    = \frac{1}{r^2} \cdot r^2\sin^2\theta = \sin^2\theta
+\end{align*}
+Hence the curvature scalar is
+\begin{align*}
+    R &= g^{\theta\theta}R_{\theta\theta} + g^{\phi\phi}R_{\phi\phi}
+    = \frac{1}{r^2}\cdot 1 + \frac{1}{r^2\sin^2\theta}\cdot\sin^2\theta
+    = \frac{2}{r^2}
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P19.1}}\\
+Let us consider the identity (19.4d) but changing names $\alpha\to\beta$ and
+$\beta\to\alpha$
+\begin{align*}
+    R_{\beta\alpha\mu\nu} + R_{\beta\nu\alpha\mu}
+    + R_{\beta\mu\nu\alpha} = 0
+\end{align*}
+Multiplying the whole equation by $g^{\alpha\beta}$ we get that
+\begin{align*}
+    g^{\alpha\beta}R_{\beta\alpha\mu\nu} + g^{\alpha\beta}R_{\beta\nu\alpha\mu}
+    + g^{\alpha\beta}R_{\beta\mu\nu\alpha} &= 0\\
+    {R^\alpha}_{\alpha\mu\nu} + {R^{\alpha}}_{\nu\alpha\mu}
+    + {R^\alpha}_{\mu\nu\alpha} &= 0\\
+    {R^\alpha}_{\alpha\mu\nu} + {R^{\alpha}}_{\mu\alpha\nu}
+    - {R^\alpha}_{\mu\alpha\nu} &= 0\\
+    {R^\alpha}_{\alpha\mu\nu} &= 0
+\end{align*}
+Where we used that ${R^{\alpha}}_{\nu\alpha\mu} = +{R^{\alpha}}_{\mu\alpha\nu}$
+and that ${R^\alpha}_{\mu\nu\alpha} = -{R^\alpha}_{\mu\alpha\nu}$
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P19.2}}\\
+From the equations $R_{\alpha\beta\mu\nu} = -R_{\alpha\beta\nu\mu}$
+and $R_{\alpha\beta\mu\nu} = -R_{\beta\alpha\mu\nu}$ a component of the 
+Riemann tensor can be nonzero only if $\alpha \neq \beta$ and $\mu\neq\nu$.
+\\
+Let's refer to the coordinates as $0, 1$ and $2$ then the only nonzero index
+value pairs for $\alpha\beta$ or $\mu\nu$ are $01, 02, 12$.
+\\
+Let's arrange the nonzero components as in the chart of BOX 19.3
+\begin{align*}
+    \begin{matrix}
+                          &\mu\nu\to & 01       & 02       & 12       \\
+    \alpha\beta\downarrow &          &          &          &          \\[7pt]
+                       01 &          & R_{0101} & R_{0102} & R_{0112} \\
+                       02 &          & R_{0201} & R_{0202} & R_{0212} \\
+                       12 &          & R_{1201} & R_{1202} & R_{1212} \\
+    \end{matrix}
+\end{align*}
+But given that we also have the identity
+$R_{\alpha\beta\mu\nu} = R_{\mu\nu\alpha\beta}$, the only the elements in the
+upper (or down) triangular part of the table are independent.
+\\
+Therefore in a three dimensional space there are only 6 independent components
+of the Riemann tensor.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P19.3}}\\
+Since must be that $\alpha \neq \beta$ and $\mu \neq \nu$ then,
+we want first, to determine the number of possible two-index combinations.
+We see that
+\begin{align*}
+\begin{matrix}
+    01 & 02 & 03 & 04 & ... & 0n &   & \text{($n-1$ elements)}\\
+       & 12 & 13 & 14 & ... & 1n &   & \text{($n-2$ elements)}\\
+       &    & 23 & 24 & ... & 2n &   & \text{($n-3$ elements)}\\
+     &  &  & \vdots &  & \vdots &   & \\
+       &    &    &    &     & (n-1)n &   & \text{($1$ element)}\\
+\end{matrix}
+\end{align*}
+Then the number of possible two-index combinations is
+\begin{align*}
+    (n-1) + (n-2) + ... + 1 = \frac{(n - 1)((n-1) + 1)}{2} = \frac{n(n-1)}{2}
+\end{align*}
+From the hint, we know that the number of off-diagonal elements of an $m \times m$
+matrix is $m^2 - m$ so in this case, we are interested in the number of elements
+of the upper triangular side of the matrix i.e. we want $(m^2 - m)/2 + m$ where
+$m = n(n-1)/2$ hence
+\begin{align*}
+    \frac{(n(n-1)/2)^2 - n(n-1)/2}{2} + \frac{n(n-1)}{2}
+    = \frac{n}{8}(n^3 - 2n^2 + 3n -2) \qquad (*)
+\end{align*}
+We may write equation 19.4d as
+\begin{align*}
+    R_{\alpha\beta\mu\nu} = -R_{\alpha\nu\beta\mu} -R_{\alpha\mu\nu\beta}
+\end{align*}
+So, if the LHS has any repeating indices then the equation becomes the equations
+19.4b or 19.4c. For example let us take $R_{0112}$ then we get that
+\begin{align*}
+    R_{0112} = -R_{0211} -R_{0121} = 0 -R_{0121} = -R_{0121}
+\end{align*}
+Then, to get a new constraint equation we need to get all four indices
+different where order doesn't matter.
+\\
+The number of elements that satisfy this is $\binom{n}{4}$ i.e.
+\begin{align*}
+    \binom{n}{4} = \frac{n(n-1)(n-2)(n-3)}{4!}
+    = \frac{n(n-1)(n-2)(n-3)}{24}
+\end{align*}
+So we must subtract all these elements from the ones we counted in $(*)$
+wince they are not independent, hence 
+\begin{align*}
+    \bigg(\frac{n^4}{8} - \frac{n^3}{4} + \frac{3n^2}{8} -\frac{n}{4}\bigg)
+    - \bigg(\frac{n^4}{24} - \frac{n^3}{4} + \frac{11n^2}{24} -\frac{n}{4}\bigg)
+    = \frac{n^4}{12} - \frac{n^2}{12} = \frac{n^2}{12}(n^2 - 1)
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P19.5}}\\
+Let us consider the "semilog" coordinates $p,q$ whose metric is
+\begin{align*}
+    ds^2 = dp^2 + \frac{dq^2}{(bq)^2}
+\end{align*}
+Let us write the geodesic equation for $\mu = p$ 
+\begin{align*}
+    \dv{\tau}(g_{p\nu}\dv{x^{\nu}}{\tau})
+    - \frac{1}{2}\partial_{p}g_{\alpha\beta}\dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}
+    &= 0\\
+    \dv[2]{p}{\tau} - 0 &= 0
+\end{align*}
+So all Christoffel symbols with $p$ as a superscript are 0.
+\\
+For $\mu = q$ we have that
+\begin{align*}
+    \dv{\tau}(g_{q\nu}\dv{x^{\nu}}{\tau})
+    - \frac{1}{2}\partial_{q}g_{\alpha\beta}\dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}
+    &= 0\\
+    \dv{\tau}(\frac{1}{b^2q^2}\dv{q}{\tau})
+    + \frac{1}{2}\frac{2}{b^2q^3}\bigg(\dv{q}{\tau}\bigg)^2
+    &= 0\\
+    -\frac{2}{b^2q^3}\bigg(\dv{q}{\tau}\bigg)^2
+    + \frac{1}{b^2q^2}\dv[2]{q}{\tau}
+    + \frac{1}{b^2q^3}\bigg(\dv{q}{\tau}\bigg)^2
+    &= 0\\
+    \dv[2]{q}{\tau}
+    - \frac{1}{q}\bigg(\dv{q}{\tau}\bigg)^2
+    &= 0
+\end{align*}
+Then the only non-zero Christoffel symbols with $q$ as a superscript is
+\begin{align*}
+    \Gamma^q_{qq} = -\frac{1}{q}
+\end{align*}
+Since we are in 2 dimensions, then by BOX 19.3 we know there is only 1
+independent component of the Riemann tensor that satisfies
+\begin{align*}
+    R_{pqpq} = -R_{pqqp} = R_{qpqp} = -R_{qppq}
+\end{align*}
+So we compute only $R_{pqpq}$ as follows
+\begin{align*}
+    R_{pqpq} &= g_{p\alpha}{R^\alpha}_{qpq}\\
+    &= g_{pp}{R^p}_{qpq} + 0\\
+    &= \partial_p\Gamma^p_{qq} - \partial_q\Gamma^p_{qp}
+    + \Gamma^p_{p\gamma} \Gamma^\gamma_{qq}
+    - \Gamma^p_{q\sigma} \Gamma^\sigma_{qp}\\
+    &= 0 - 0 + 0 - 0 = 0
+\end{align*}
+So all Riemann components are 0.\\
+Given that all Riemann tensor components are 0 then, all the components of
+the Ricci tensor are 0
+\begin{align*}
+    R_{\beta\nu} = {R^\alpha}_{\beta\alpha\nu} = 0
+\end{align*}
+In the same way, the curvature scalar is also 0
+\begin{align*}
+    R = g^{\beta\nu}R_{\beta\nu} = 0
+\end{align*}
+Therefore this metric describes a flat two-dimensional space.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P19.6}}
+Let us consider the following metric
+$$ds^2 = dp^2 + e^{2p/p_0}dq^2$$
+\begin{itemize}
+\item [\textbf{a.}] Let us write the geodesic equation for $\mu = p$
+\begin{align*}
+    \dv{\tau}(g_{p\nu}\dv{x^{\nu}}{\tau})
+    - \frac{1}{2}\partial_{p}g_{\alpha\beta}\dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}
+    &= 0\\
+    \dv[2]{p}{\tau}
+    - \frac{1}{2}\frac{2}{p_0}e^{2p/p_0}\bigg(\dv{q}{\tau}\bigg)^2
+    &= 0\\
+    \dv[2]{p}{\tau}
+    - \frac{e^{2p/p_0}}{p_0}\bigg(\dv{q}{\tau}\bigg)^2
+    &= 0
+\end{align*}
+Then the only non-zero Christoffel symbol with $p$ as a superscript is
+\begin{align*}
+    \Gamma^p_{qq} = - \frac{e^{2p/p_0}}{p_0}
+\end{align*}
+For $\mu = q$ we get that
+\begin{align*}
+    \dv{\tau}(g_{q\nu}\dv{x^{\nu}}{\tau})
+    - \frac{1}{2}\partial_{q}g_{\alpha\beta}\dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}
+    &= 0\\
+    \dv{\tau}(e^{2p/p_0}\dv{q}{\tau}) - 0
+    &= 0\\
+    \frac{2e^{2p/p_0}}{p_0}\dv{p}{\tau}\dv{q}{\tau} + e^{2p/p_0}\dv[2]{q}{\tau}
+    &= 0\\
+    \dv[2]{q}{\tau} + \frac{2}{p_0}\dv{p}{\tau}\dv{q}{\tau}
+    &= 0
+\end{align*}
+Then the only non-zero Christoffel symbols with $q$ as a superscript are
+\begin{align*}
+    \Gamma^q_{pq} = \Gamma^q_{qp} = \frac{1}{p_0}
+\end{align*}
+
+\item [\textbf{b.}] Let us compute the only independent Riemann tensor component
+as follows
+\begin{align*}
+    R_{pqpq} &= g_{p\alpha}{R^\alpha}_{qpq}\\
+    &= g_{pp}{R^p}_{qpq} + 0\\
+    &= \partial_p\Gamma^p_{qq} - \partial_q\Gamma^p_{qp}
+    + \Gamma^p_{p\gamma} \Gamma^\gamma_{qq}
+    - \Gamma^p_{q\sigma} \Gamma^\sigma_{qp}\\
+    &= - \frac{2e^{2p/p_0}}{p_0^2} - 0  + 0
+    - \bigg(- \frac{e^{2p/p_0}}{p_0}\bigg)\bigg(\frac{1}{p_0}\bigg)\\
+    &= - \frac{2e^{2p/p_0}}{p_0^2} + \frac{e^{2p/p_0}}{p_0^2}\\
+    &= -\frac{e^{2p/p_0}}{p_0^2}
+\end{align*}
+Since there is at least one non-zero component of the Riemann tensor,
+we can say that the 2D space is curved.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P19.7}}
+Let us consider the metric
+\begin{align*}
+    ds^2 = dr^2 + r^2d\theta^2 + r^2\sin^2\theta d\phi^2
+\end{align*}
+\begin{itemize}
+\item [\textbf{a.}] Let us consider the geodesic equation when $\mu = r$ then
+\begin{align*}
+    \dv{\tau}(g_{r\nu}\dv{x^{\nu}}{\tau})
+    - \frac{1}{2}\partial_{r}g_{\alpha\beta}\dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}
+    &= 0\\
+    \dv[2]{r}{\tau}
+    - \frac{1}{2}\bigg[
+        2r\bigg(\dv{\theta}{\tau}\bigg)^2
+        + 2r\sin^2\theta\bigg(\dv{\phi}{\tau}\bigg)^2
+    \bigg]
+    &= 0\\
+    \dv[2]{r}{\tau}
+    - r\bigg(\dv{\theta}{\tau}\bigg)^2
+    - r\sin^2\theta\bigg(\dv{\phi}{\tau}\bigg)^2
+    &= 0
+\end{align*}
+Then the only non-zero Christoffel symbols with $r$ as a superscript are
+\begin{align*}
+    \Gamma^r_{\theta\theta} = -r
+    \qquad
+    \Gamma^r_{\phi\phi} = -r\sin^2\theta
+\end{align*}
+If we let $\mu = \theta$ we get that
+\begin{align*}
+    \dv{\tau}(g_{\theta\nu}\dv{x^{\nu}}{\tau})
+    - \frac{1}{2}\partial_{\theta}
+    g_{\alpha\beta}\dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}
+    &= 0\\
+    \dv{\tau}(r^2\dv{\theta}{\tau})
+    - r^2\sin\theta\cos\theta\bigg(\dv{\phi}{\tau}\bigg)^2
+    &= 0\\
+    2r\dv{r}{\tau}\dv{\theta}{\tau} + r^2\dv[2]{\theta}{\tau} 
+    - r^2\sin\theta\cos\theta\bigg(\dv{\phi}{\tau}\bigg)^2
+    &= 0\\
+    \dv[2]{\theta}{\tau} + \frac{2}{r}\dv{r}{\tau}\dv{\theta}{\tau}
+    - \sin\theta\cos\theta\bigg(\dv{\phi}{\tau}\bigg)^2
+    &= 0
+\end{align*}
+Then the only non-zero Christoffel symbols with $\theta$ as a superscript are
+\begin{align*}
+    \Gamma^\theta_{r\theta} = \Gamma^\theta_{\theta r} = \frac{1}{r}
+    \qquad
+    \Gamma^\theta_{\phi\phi} = - \sin\theta\cos\theta
+\end{align*}
+We already knew the last one from the BOX 19.6.
+\\
+Finally, if we let $\mu = \phi$ we get that
+\begin{align*}
+    \dv{\tau}(g_{\phi\nu}\dv{x^{\nu}}{\tau})
+    - \frac{1}{2}\partial_{\phi}
+    g_{\alpha\beta}\dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}
+    &= 0\\
+    \dv{\tau}(r^2\sin^2\theta\dv{\phi}{\tau})
+    - 0 &= 0\\
+    2r\sin^2\theta\dv{r}{\tau}\dv{\phi}{\tau}
+    + r^2\bigg(2\sin\theta\cos\theta\dv{\theta}{\tau}\dv{\phi}{\tau}
+    + \sin^2\theta\dv[2]{\phi}{\tau}\bigg)
+    &= 0\\
+    \dv[2]{\phi}{\tau}
+    + \frac{2}{r}\dv{r}{\tau}\dv{\phi}{\tau}
+    + 2\frac{\cos\theta}{\sin\theta}\dv{\theta}{\tau}\dv{\phi}{\tau}
+    &= 0
+\end{align*}
+So the only non-zero Christoffel symbols with $\phi$ as a superscript are
+\begin{align*}
+    \Gamma^\phi_{r\phi} = \Gamma^\phi_{\phi r} = \frac{1}{r}
+    \qquad
+    \Gamma^\phi_{\theta\phi} = \Gamma^\phi_{\phi\theta} = \cot\theta
+\end{align*}
+Again, we already knew the last one from the BOX 19.6.
+
+\item[\textbf{b.}]
+We know that in this case, the Riemann tensor component
+$R_{\theta\phi\theta\phi}$ is given by
+\begin{align*}
+    R_{\theta\phi\theta\phi} =
+    r^2(\partial_\theta\Gamma^\theta_{\phi\phi}
+    + \Gamma^\theta_{\theta\gamma}\Gamma^\gamma_{\phi\phi}
+    - \Gamma^\theta_{\phi\sigma}\Gamma^\sigma_{\phi\theta})
+\end{align*}
+We cannot remove the middle term since
+$\Gamma^\theta_{\theta r}$ and $\Gamma^r_{\phi\phi}$ are non-zero, then we get
+that
+\begin{align*}
+    R_{\theta\phi\theta\phi} &=
+    r^2(\partial_\theta\Gamma^\theta_{\phi\phi}
+    - \Gamma^\theta_{\phi\phi}\Gamma^\phi_{\phi\theta})
+    + r^2\Gamma^\theta_{\theta r}\Gamma^r_{\phi\phi}\\
+    &= r^2((\sin^2\theta - \cos^2\theta)
+    + (\sin\theta\cos\theta) \cdot \cot\theta)
+    - r^2\bigg(\frac{1}{r}\cdot r\sin^2\theta\bigg)\\
+    &= r^2(\sin^2\theta - \cos^2\theta + \cos^2\theta)
+    - r^2\sin^2\theta\\
+    &= r^2\sin^2\theta - r^2\sin^2\theta\\
+    &= 0
+\end{align*}
+Therefore we get an additional term $r^2\sin^2\theta$ which cancels the 
+$r^2\sin^2\theta$ we had when we considered $r$ as a constant.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P19.8}}\\
+\begin{itemize}
+\item [\textbf{a.}]
+In any coordinate basis we note that
+\begin{align*}
+    \bm{R}
+    &= R_{\zeta\gamma\delta\sigma}\bm{e}^\zeta\bm{e}^\gamma\bm{e}^\delta\bm{e}^\sigma \\
+    &= g_{\zeta\lambda}{R^\lambda}_{\gamma\delta\sigma}\bm{e}^\zeta\bm{e}^\gamma\bm{e}^\delta\bm{e}^\sigma 
+\end{align*}
+So
+\begin{align*}
+    (R_{\rho\beta\mu\nu})_{obs}
+    &= (\bm{o}_\rho)^\zeta (\bm{o}_\beta)^\gamma (\bm{o}_\mu)^\delta (\bm{o}_\nu)^\sigma
+    g_{\zeta\lambda}{R^\lambda}_{\gamma\delta\sigma} 
+\end{align*}
+Now, raising the index $\alpha$ we get that
+\begin{align*}
+    ({R^\alpha}_{\beta\mu\nu})_{obs}
+    &= \eta^{\alpha\rho}(R_{\rho\beta\mu\nu})_{obs}\\
+    &= \eta^{\alpha\rho}
+    (\bm{o}_\rho)^\zeta (\bm{o}_\beta)^\gamma (\bm{o}_\mu)^\delta (\bm{o}_\nu)^\sigma
+    g_{\zeta\lambda}{R^\lambda}_{\gamma\delta\sigma} 
+\end{align*}
+
+\item [\textbf{b.}] Let us consider the Riemann tensor component
+$({R^t}_{ztz})_{obs}$ then, we see that
+\begin{align*}
+    ({R^t}_{ztz})_{obs}
+    &= \eta^{t\rho}
+    (\bm{o}_\rho)^\zeta (\bm{o}_z)^\gamma (\bm{o}_t)^\delta (\bm{o}_z)^\sigma
+    g_{\zeta\lambda}{R^\lambda}_{\gamma\delta\sigma} \\
+    &= -(\bm{o}_t)^\zeta (\bm{o}_z)^\gamma (\bm{o}_t)^\delta (\bm{o}_z)^\sigma
+    g_{\zeta\lambda}{R^\lambda}_{\gamma\delta\sigma} 
+\end{align*}
+Also, we know that for an observer falling radially we have that
+\begin{align*}
+    (\bm{o}_t)^{\mu} = \begin{bmatrix}
+        \left(1 - \frac{2GM}{r}\right)^{-1}\\[7pt]
+        -\sqrt{\frac{2GM}{r}}\\[7pt]
+        0\\
+        0
+    \end{bmatrix}
+    \qquad
+    (\bm{o}_z)^{\mu} = \begin{bmatrix}
+        \frac{-\sqrt{2GM/r}}{1 - 2GM/r}\\[7pt]
+        1\\
+        0\\
+        0
+    \end{bmatrix}
+\end{align*}
+Hence
+% Because of the symmetries of the Riemann tensor we only need to evaluate the
+% component ${R^t}_{rtr}$, hence
+\begin{align*}
+    ({R^t}_{ztz})_{obs}
+    &= -(
+    (\bm{o}_t)^t (\bm{o}_z)^r (\bm{o}_t)^t (\bm{o}_z)^r g_{tt}{R^t}_{rtr} 
+    + (\bm{o}_t)^t (\bm{o}_z)^r (\bm{o}_t)^r (\bm{o}_z)^t g_{tt}{R^t}_{rrt}\\
+    &\quad
+    + (\bm{o}_t)^r (\bm{o}_z)^t (\bm{o}_t)^r (\bm{o}_z)^t g_{rr}{R^r}_{trt}
+    + (\bm{o}_t)^r (\bm{o}_z)^t (\bm{o}_t)^t (\bm{o}_z)^r g_{rr}{R^r}_{ttr}
+    )\\[7pt]
+    &= -(
+    (\bm{o}_t)^t (\bm{o}_z)^r (\bm{o}_t)^t (\bm{o}_z)^r R_{trtr} 
+    + (\bm{o}_t)^t (\bm{o}_z)^r (\bm{o}_t)^r (\bm{o}_z)^t R_{trrt}\\
+    &\quad
+    + (\bm{o}_t)^r (\bm{o}_z)^t (\bm{o}_t)^r (\bm{o}_z)^t R_{rtrt}
+    + (\bm{o}_t)^r (\bm{o}_z)^t (\bm{o}_t)^t (\bm{o}_z)^r R_{rttr}
+    )\\[7pt]
+    &= -(
+    (\bm{o}_t)^t (\bm{o}_z)^r (\bm{o}_t)^t (\bm{o}_z)^r R_{trtr} 
+    - (\bm{o}_t)^t (\bm{o}_z)^r (\bm{o}_t)^r (\bm{o}_z)^t R_{trtr}\\
+    &\quad
+    + (\bm{o}_t)^r (\bm{o}_z)^t (\bm{o}_t)^r (\bm{o}_z)^t R_{trtr}
+    - (\bm{o}_t)^r (\bm{o}_z)^t (\bm{o}_t)^t (\bm{o}_z)^r R_{trtr}
+    )\\[7pt]
+    &= -(
+    (\bm{o}_t)^t (\bm{o}_z)^r (\bm{o}_t)^t (\bm{o}_z)^r
+    + (\bm{o}_t)^r (\bm{o}_z)^t (\bm{o}_t)^r (\bm{o}_z)^t\\
+    &\quad- 2(\bm{o}_t)^t (\bm{o}_z)^r (\bm{o}_t)^r (\bm{o}_z)^t
+    ) R_{trtr}\\[7pt]
+    &= -(
+    (\bm{o}_t)^t (\bm{o}_t)^t
+    + (\bm{o}_t)^r (\bm{o}_z)^t (\bm{o}_t)^r (\bm{o}_z)^t
+    - 2(\bm{o}_t)^t (\bm{o}_t)^r (\bm{o}_z)^t
+    ) R_{trtr}
+\end{align*}
+Where we used that $(\bm{o}_z)^r = 1$.\\
+Now, we replace all the other values as follows
+\begin{align*}
+    ({R^t}_{ztz})_{obs}
+    &= -\bigg(\bigg(1 -\frac{2GM}{r}\bigg)^{-2} 
+    + \frac{2GM}{r}\frac{2GM}{r}\bigg(1 -\frac{2GM}{r}\bigg)^{-2}\\
+    &\quad- 2\bigg(1 -\frac{2GM}{r}\bigg)^{-1}\frac{2GM}{r}
+    \bigg(1 -\frac{2GM}{r}\bigg)^{-1}\bigg) R_{trtr}\\[7pt]
+    &= -\bigg(
+    1 - 2\frac{2GM}{r} + \frac{(2GM)^2}{r^2}
+    \bigg)\bigg(1 -\frac{2GM}{r}\bigg)^{-2} R_{trtr}\\[7pt]
+    &= -\bigg(1 - \frac{2GM}{r}\bigg)^2
+    \bigg(1 -\frac{2GM}{r}\bigg)^{-2} R_{trtr}\\[7pt]
+    &= - g_{tt} {R^t}_{rtr}\\[7pt]
+    &= \bigg(1 - \frac{2GM}{r}\bigg)
+    \frac{2GM}{r^3}\bigg(1 - \frac{2GM}{r}\bigg)^{-1}\\
+    &= \frac{2GM}{r^3}
+\end{align*}
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P19.9}}\\
+From problem 18.7 we know that the extremities will experience a force given by
+\begin{align*}
+    m\dv[2]{n^z}{t} = -m{R^z}_{tzt} n^z
+\end{align*}
+Because they are in the same locally inertial frame as the center of mass.
+\\
+Also, we note that
+\begin{align*}
+    {R^z}_{tzt} = g^{zz}R_{ztzt} = -g^{zz}R_{tzzt} =
+    g^{zz}R_{tztz} = g^{zz}g^{tt}{R^t}_{ztz} = -{R^t}_{ztz}
+\end{align*}
+Where we used that $g^{zz} = g^{rr}$ in the Schwarzschild metric. So
+\begin{align*}
+    m\dv[2]{n^z}{t} &= m{R^t}_{ztz} n^z
+    = m\frac{2GM}{r^3} n^z
+\end{align*}
+If we take the force to be $F_{max}$ and we solve for $r = R$ we get that 
+\begin{align*}
+    R = \bigg(\frac{2GMm}{F_{max}}n^z\bigg)^{1/3}
+\end{align*}
+So, at $r = R$ the force gets to $F_{max}$ where we start feeling serious pain.
+\\
+Now, from equation (14.4) we see that the proper time measured by a particle 
+falling from rest at $r = R$ to $r = 0$ is
+\begin{align*}
+    \Delta \tau &= \frac{\pi}{2}\sqrt{\frac{R^3}{2GM}}
+    = \frac{\pi}{2}\sqrt{\frac{mn^z}{F_{max}}}
+\end{align*}
+Assuming that $F_{max} = 200~N$, $n^z = 1~m$ and $m = 30~kg$ then this time is
+\begin{align*}
+    \Delta \tau 
+    &= \frac{\pi}{2}\sqrt{\frac{30}{200}} = 0.60~s
+\end{align*}
+Since the pain impulses travel at about $1~m/s$ along the nerves, then the
+person would not feel any pain since it would take 1s to arrive the pain signal
+to the brain from the extremities, but we fall faster than that into $r = 0$. 
+\end{proof}
+\end{document}
