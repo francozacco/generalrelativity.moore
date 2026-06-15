@@ -1,0 +1,693 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{physics,amsmath}
+\usepackage{bm}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[mathscr]{euscript}
+
+
+\title{\textbf{Solved selected problems of General Relativity - Thomas A. Moore}}
+\author{Franco Zacco}
+\date{}
+
+\addtolength{\topmargin}{-3cm}
+\addtolength{\textheight}{3cm}
+
+\newcommand{\hatr}{\bm{\hat{r}}}
+\newcommand{\hatn}{\bm{\hat{n}}}
+\newcommand{\hatx}{\bm{\hat{x}}}
+\newcommand{\haty}{\bm{\hat{y}}}
+\newcommand{\hatz}{\bm{\hat{z}}}
+\newcommand{\hatth}{\bm{\hat{\theta}}}
+\newcommand{\hatphi}{\bm{\hat{\varphi}}}
+\newcommand{\hatrho}{\bm{\hat{\rho}}}
+\newcommand{\esi}[1]{\bm{e}_{#1}}
+\newcommand{\etht}{\bm{e}_\theta}
+\newcommand{\sci}[1]{\times 10^{#1}}
+
+\theoremstyle{definition}
+\newtheorem*{solution*}{Solution}
+\renewcommand*{\proofname}{Solution}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{Chapter 20 - The Stress-Energy Tensor}
+
+\begin{proof}{\textbf{BOX 20.1} - Exercise 20.1.1.}\\
+If the source of the gravitational field of the box were the total energy,
+then we would not be firing particles to infinity with energy we create out of
+nothing, since after the matter-antimatter combination, the photons created
+would hold kinetic energy, which would still be in the box because it's
+perfectly mirrored, in short, because of the conservation of energy, we cannot
+create energy out of nothing.
+\end{proof}
+
+\begin{proof}{\textbf{BOX 20.2} - Exercise 20.2.1.}\\
+Let us consider the Stress-Energy components $T^{ij} = \rho_0 u^i u^j$ where
+$i$ and $j$ are both spatial indices, then we see that
+\begin{align*}
+    T^{ij} &= \rho_0 u^i u^j = n_0 m u^i u^j 
+    = n_0 m (u^tv_i) u^j
+    = (n_0 u^t)v_i (m u^j) =\\
+    &= n v_i p^j
+    = \frac{(n A v_i dt) p^j}{A dt}
+\end{align*}
+Therefore $T^{ij}$ is the i-flux of j-momentum.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{BOX 20.3} - Exercise 20.3.1.}\\
+If we consider the component $T^{xx}$ then the integral over $p^x$ becomes
+\begin{align*}
+    \int_{-\infty}^\infty f([p^x]^2) (p^x)^2 ~dp^x
+\end{align*}
+We note that the integrand is an even function, so the integral along a
+symmetric interval is not necessarily 0, as opposed to the case where the 
+integrand is an odd function like $f([p^x]^2) p^x$.
+\end{proof}
+
+\begin{proof}{\textbf{BOX 20.3} - Exercise 20.3.2.}\\
+Since the selection of the $x$ direction was arbitrary must be true for any
+other direction. Hence be symmetry we have that $T^{xx} = T^{yy} = T^{zz}$.
+\end{proof}
+
+\begin{proof}{\textbf{BOX 20.3} - Exercise 20.3.3.}\\
+We note that $N(|\vec{p}|)/L^3$ is the number density of particles having
+momentum $\vec{p}$ and $p^t$ is the energy of a single particle with momentum
+$\vec{p}$, then $N(|\vec{p}|)p^t/L^3$ is the energy density of particles with
+momentum $\vec{p}$.
+\\
+Then, in the integral
+\begin{align*}
+    T^{tt} = \frac{1}{L^3}\iiint dp^xdp^ydp^z N(|\vec{p}|)p^t
+\end{align*}
+We are summing across the whole momentum space i.e. we are considering all
+possible momentums inside the box so we get that $T^{tt} = \rho$ where $\rho$
+is the total energy density inside the box.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{BOX 20.4} - Exercise 20.4.1.}\\
+In a LIF where the fluid at a given event is (at least instantaneously) at rest
+the metric $g_{\mu\nu} = \eta_{\mu\nu}$ and the fluid's four-velocity at that
+event is $u^\mu = [1,0,0,0]$.\\
+Given that $T^{\mu\nu} = (\rho_0 + p_0)u^\mu u^\nu + p_0g^{\mu\nu}$ then if
+$\mu \neq \nu$ then $T^{\mu\nu} = 0$ because the first term vanishes and the
+only non-zero components of $\eta^{\mu\nu}$ are the ones where $\mu = \nu$.\\
+If $\mu = \nu = t$ we see that
+\begin{align*}
+    T^{tt} = (\rho_0 + p_0)u^t u^t + p_0\eta^{tt}
+    = (\rho_0 + p_0)\cdot 1 + p_0\cdot (-1)
+    = \rho_0
+\end{align*}
+And if $\mu = \nu = x \text{ or } y \text{ or } z$ we get that 
+\begin{align*}
+    T^{xx} = (\rho_0 + p_0)u^x u^x + p_0\eta^{xx} = 0 + p_0 \cdot 1
+    = p_0\\
+    T^{yy} = (\rho_0 + p_0)u^y u^y + p_0\eta^{yy} = 0 + p_0 \cdot 1
+    = p_0\\
+    T^{zz} = (\rho_0 + p_0)u^z u^z + p_0\eta^{zz} = 0 + p_0 \cdot 1
+    = p_0
+\end{align*}
+Therefore 
+\begin{align*}
+    T^{\mu\nu} = \begin{bmatrix}
+        \rho_0 & 0 & 0 & 0\\
+        0 & p_0 & 0 & 0\\
+        0 & 0 & p_0 & 0\\
+        0 & 0 & 0 & p_0
+    \end{bmatrix}
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{BOX 20.5} - Exercise 20.5.1.}\\
+Equation (20.29) states that
+\begin{align*}
+    u^{\mu}u^{\nu}\partial_{\mu}(\rho_0 + p_0)
+    + (\rho_0 + p_0)[u^{\nu}\partial_{\mu}u^\mu + u^\mu \partial_\mu u^\nu] 
+    + \eta^{\mu\nu}\partial_\mu p_0 = 0
+\end{align*}
+So multiplying the equation by $u_\nu$ we get that
+\begin{align*}
+    u_{\nu}u^{\mu}u^{\nu}\partial_{\mu}(\rho_0 + p_0)
+    + (\rho_0 + p_0)[u_{\nu}u^{\nu}\partial_{\mu}u^\mu + u_{\nu}u^\mu \partial_\mu u^\nu] 
+    + u_{\nu}\eta^{\mu\nu}\partial_\mu p_0
+    &= 0\\
+    -u^{\mu}\partial_{\mu}(\rho_0 + p_0)
+    + (\rho_0 + p_0)[-\partial_{\mu}u^\mu + u_{\nu}u^\mu \partial_\mu u^\nu] 
+    + u^{\mu}\partial_\mu p_0
+    &= 0
+\end{align*}
+Where we used that $u^\nu u_\nu = -1$.\\
+Now, using that $u_\nu\partial_{\mu}u^\nu = 0$ we see that
+\begin{align*}
+    -u^{\mu}\partial_{\mu}(\rho_0 + p_0)
+    + (\rho_0 + p_0)[-\partial_{\mu}u^\mu + 0] 
+    + u^{\mu}\partial_\mu p_0
+    &= 0\\
+    -u^{\mu}\partial_{\mu}\rho_0 - u^{\mu}\partial_{\mu}p_0
+    -\rho_0\partial_{\mu} u^\mu - p_0\partial_{\mu}u^\mu
+    + u^{\mu}\partial_\mu p_0
+    &= 0\\
+    -u^{\mu}\partial_{\mu}\rho_0
+    -\rho_0\partial_{\mu} u^\mu - p_0\partial_{\mu}u^\mu
+    &= 0\\
+    \partial_{\mu}(\rho_0 u^{\mu}) + p_0\partial_{\mu}u^\mu
+    &= 0
+\end{align*}
+\end{proof}
+
+\begin{proof}{\textbf{BOX 20.5} - Exercise 20.5.2.}\\
+Multiplying the equation $\partial_{\mu}(\rho_0 u^{\mu}) + p_0\partial_{\mu}u^\mu = 0$
+by $u^\nu$ we get that
+\begin{align*}
+    u^\nu\partial_{\mu}(\rho_0 u^{\mu}) + u^\nu p_0\partial_{\mu}u^\mu
+    &= 0
+\end{align*}
+Subtracting this equation from equation (20.29) we get that
+\begin{align*}
+    &u^{\mu}u^{\nu}\partial_{\mu}(\rho_0 + p_0)
+    + (\rho_0 + p_0)[u^{\nu}\partial_{\mu}u^\mu + u^\mu \partial_\mu u^\nu] 
+    + \eta^{\mu\nu}\partial_\mu p_0\\
+    &- u^\nu u^{\mu}\partial_{\mu}\rho_0 - u^\nu \rho_0\partial_{\mu}u^\mu 
+    - u^\nu p_0\partial_{\mu}u^\mu
+    = 0\\[6pt]
+    &u^{\mu}u^{\nu}\partial_{\mu}p_0
+    + (\rho_0 + p_0)u^\mu \partial_\mu u^\nu
+    + \eta^{\mu\nu}\partial_\mu p_0
+    = 0\\[6pt]
+    &(u^{\mu}u^{\nu} + \eta^{\mu\nu})\partial_{\mu}p_0
+    + (\rho_0 + p_0)u^\mu \partial_\mu u^\nu
+    = 0\\
+\end{align*}
+Therefore
+\begin{align*}
+    (\rho_0 + p_0)u^\mu \partial_\mu u^\nu
+    = -(u^{\mu}u^{\nu} + \eta^{\mu\nu})\partial_{\mu}p_0
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P20.1}}\\
+Let us consider the ionized hydrogen plasma at the sun's center, where the
+density is $160~g/cm^3$ and the temperature is $1.5\sci{7}~K$.
+\\
+We can compute the energy of an individual electron in the plasma by
+\begin{align*}
+    p^t_e &= m_e + \frac{3}{2}k_B T\\
+    &= 9.109\sci{-31}~kg + \frac{3}{2}\cdot 1.536\sci{-49}~kg/K \cdot 1.5\sci{7}~K\\
+    &\approx 9.109\sci{-31}~kg
+\end{align*}
+In the same way for a proton we ge that $p^t_p \approx m_p = 1.672\sci{-27}{kg}$.
+\\
+Also, we can compute the number density of particles as follows
+\begin{align*}
+    n = 160~\frac{g}{cm^3} \frac{2 \cdot 6.022\sci{23}~particles}{1~g}
+    = 1.927\sci{26}~\frac{particles}{cm^3}
+\end{align*}
+Since the particles are not moving relativistically then we may assume $u^t = 1$
+and hence $\rho = n p^t = \rho_0$ so the energy density is
+\begin{align*}
+    \rho_0 &= \frac{n}{2} p^t_e + \frac{n}{2} p^t_p\\
+    &= \frac{1.927\sci{26}}{2} \cdot 9.109\sci{-31}
+    + \frac{1.927\sci{26}}{2} \cdot 1.672\sci{-27}\\
+    &= 8.776\sci{-5} + 0.161\\
+    &= 0.16108~kg/cm^3 = 161.08 ~g/cm^3
+\end{align*}
+We note that $\rho_0 \approx \text{mass density}$.
+\\
+Now, using the ideal gas law we see that
+\begin{align*}
+    p_0 &= \frac{N}{V} k_B T \\
+    &= n k_B T\\
+    &= 1.927\sci{26} \cdot 1.536\sci{-46} \cdot 1.5\sci{7}\\
+    &= 4.439\sci{-13}~g/cm^3
+\end{align*}
+Therefore we note that $p_0 \ll \rho_0$ and we have all the components of the 
+stress-energy tensor.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P20.2}}\\
+From equation (20.21) we know that $p_0 = T^{xx} = \rho_0 (u^{x})^2$
+we want that $\rho_0 = 100 p_0$ so we get that
+\begin{align*}
+    p_0 &= 100 p_0 (u^{x})^2\\
+    u^{x} &= \sqrt{\frac{1}{100}} = 0.1
+\end{align*}
+In the same way, we see that $u^{y} = u^{z} = 0.1$. Then we get that
+\begin{align*}
+    v_x = u^x\sqrt{1 - v^2} = 0.1\sqrt{1 - v^2}
+\end{align*}
+In the same way we have that $v_y = v_z = 0.1\sqrt{1 - v^2}$.
+Then we solve for $v$ as follows 
+\begin{align*}
+    v &= \sqrt{v_x^2 + v_y^2 + v_z^2}\\
+    v &= \sqrt{3\cdot 0.01(1 - v^2)}\\
+    v^2 &= 0.03 - 0.03v^2\\
+    v^2(1 + 0.03) &= 0.03\\
+    v &= \sqrt{\frac{0.03}{1.03}} = 0.171
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P20.3}}\\
+Given that the star's pressure is negligible then equation (20.16) becomes
+\begin{align*}
+    T^{\mu\nu} = \rho u^\mu u^\nu
+\end{align*}
+Also, the velocity at any point of the star, in spherical coordinates has 
+the form
+\begin{align*}
+    \bm{v} = r\omega \sin\theta \hatphi
+\end{align*}
+or in cartesian coordinates (the LIF coordinates)
+\begin{align*}
+    \bm{v} &= r\omega \sin\theta(-\sin\varphi \hatx + \cos\varphi \haty)\\
+    &= -y\omega\hatx + x\omega\haty
+\end{align*}
+Where we used that $x = r\sin\theta\cos\varphi$ and $y = r\sin\theta\sin\varphi$.
+\\
+Then, the four-velocity $u^\alpha$ of the star, ignoring the terms of order $v^2$,
+gives us
+\begin{align*}
+    u^\alpha = \begin{bmatrix}
+        1 \\ v_x \\ v_y \\ 0
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        1 \\ -y\omega \\ x\omega \\ 0
+    \end{bmatrix}
+\end{align*}
+Therefore the stress-energy tensor for the rotating star is
+\begin{align*}
+    T^{\mu\nu} = \begin{bmatrix}
+        \rho & -\rho y\omega & \rho x\omega & 0\\
+        -\rho y\omega & \rho y^2\omega^2 & -\rho yx\omega^2 & 0\\
+        \rho x\omega & -\rho yx\omega^2 & \rho x^2\omega^2 & 0\\
+        0 &  0 & 0 & 0
+    \end{bmatrix}
+\end{align*}
+But this form of the stress-energy tensor still has components of order $v_x^2$
+and $v_y^2$, so dropping them we get that
+\begin{align*}
+    T^{\mu\nu} = \begin{bmatrix}
+        \rho & -\rho y\omega & \rho x\omega & 0\\
+        -\rho y\omega & 0 & 0 & 0\\
+        \rho x\omega & 0 & 0 & 0\\
+        0 &  0 & 0 & 0
+    \end{bmatrix}
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P20.4}}\\
+Let us consider an ideal gas of photons in a perfectly-mirrored box in a LIF
+at rest with respect to the box.\\
+We know that
+\begin{align*}
+    T^{\mu\nu} = \frac{1}{L^3}\iiint dp^x dp^y dp^z N(|\vec{p}|) \frac{p^\mu p^\nu}{p^t}
+\end{align*}
+In particular if $\mu = \nu = t$ then we have that
+\begin{align*}
+    T^{tt} = \frac{1}{L^3}\iiint dp^x dp^y dp^z N(|\vec{p}|)p^t
+\end{align*}
+We know that $N(|\vec{p}|)/L^3$ is the number density of photons having
+momentum $\vec{p}$ and $p^t = E$ is the energy of a single photon with momentum
+$\vec{p}$, then $N(|\vec{p}|)p^t/L^3$ is the energy density of particles with
+momentum $\vec{p}$.\\
+Then the integral is the sum of all energy densities across the whole momentum
+space so $T^{tt} = \rho$ where $\rho$ is the total energy density inside the box.
+\\
+Now, if $\mu = \nu = x$ we have that
+\begin{align*}
+    T^{xx}
+    &= \frac{1}{L^3}\iiint dp^x dp^y dp^z N(|\vec{p}|) \frac{p^x p^x}{p^t}\\
+    &= \frac{1}{L^3}\iiint dp^x dp^y dp^z N(|\vec{p}|) \frac{E^2v_x^2}{E}\\
+    &= \frac{1}{L^3}\iiint dp^x dp^y dp^z N(|\vec{p}|) E v_x^2
+\end{align*}
+Where we used that $p^x = Ev_x$, in the same way we see that
+\begin{align*}
+    T^{yy} &= \frac{1}{L^3}\iiint dp^x dp^y dp^z N(|\vec{p}|) E v_y^2\\
+    T^{zz} &= \frac{1}{L^3}\iiint dp^x dp^y dp^z N(|\vec{p}|) E v_z^2
+\end{align*}
+Hence
+\begin{align*}
+    T^{xx} + T^{yy} + T^{zz}
+    &= \frac{1}{L^3}\iiint dp^x dp^y dp^z N(|\vec{p}|) E (v_x^2 + v_y^2 + v_z^2)\\
+    &= \frac{1}{L^3}\iiint dp^x dp^y dp^z N(|\vec{p}|) E\\
+    &= \rho
+\end{align*}
+Where we used that $v_x^2 + v_y^2 + v_z^2 = 1$ for photons.\\
+Also, we know that for an ideal gas $T^{xx} = T^{yy} = T^{zz}$, so we get that
+\begin{align*}
+    T^{xx} = \frac{1}{3}\rho
+    \qquad
+    T^{yy} = \frac{1}{3}\rho
+    \qquad
+    T^{zz} = \frac{1}{3}\rho
+\end{align*}
+We see that the same mathematical argument works to show that all off-diagonal
+elements in the stress-energy tensor are 0.\\
+Therefore the stress-energy tensor for an ideal gas of photons is
+\begin{align*}
+    T^{\mu\nu} = \begin{bmatrix}
+        \rho & 0 & 0 & 0\\
+        0 & \frac{1}{3} \rho & 0 & 0\\
+        0 & 0 & \frac{1}{3} \rho & 0\\
+        0 & 0 & 0 & \frac{1}{3} \rho
+    \end{bmatrix}
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P20.5}}\\
+\begin{itemize}
+\item [\textbf{a.}] We know that
+\begin{align*}
+    F^{\mu\nu}
+    = \begin{bmatrix}
+        0 & E_x & E_y & E_z\\
+        -E_x & 0 & B_z & -B_y\\ 
+        -E_y & -B_z & 0 & B_x\\ 
+        -E_z & B_y & -B_x & 0\\ 
+    \end{bmatrix}
+\end{align*}
+Before computing $F^{\mu\nu}F_{\mu\nu}$ we need to note 
+first that in a LIF $F_{\mu\nu}$ is given by
+\begin{align*}
+    F_{\alpha\beta} = \eta_{\alpha\mu} \eta_{\beta\nu}F^{\mu\nu}
+    = \begin{bmatrix}
+        0 & -E_x & -E_y & -E_z\\
+        E_x & 0 & B_z & -B_y\\ 
+        E_y & -B_z & 0 & B_x\\ 
+        E_z & B_y & -B_x & 0\\ 
+    \end{bmatrix}
+\end{align*}
+Now, we see that
+\begin{align*}
+    F^{\mu\nu}F_{\mu\nu}
+    &= F^{tx}F_{tx} + F^{ty}F_{ty} + F^{tz}F_{tz}
+    + F^{xt}F_{xt} + F^{xy}F_{xy} + F^{xz}F_{xz}\\
+    &\quad + F^{yt}F_{yt} + F^{yx}F_{yx} + F^{yz}F_{yz}
+    + F^{zt}F_{zt} + F^{zx}F_{zx} + F^{zy}F_{zy}\\
+    %
+    &= -E_x^2 -E_y^2  -E_z^2
+    -E_x^2 + B_z^2 + B_y^2
+    -E_y^2 + B_z^2 + B_x^2
+    -E_z^2 + B_y^2 + B_x^2\\
+    &= 2(B^2 - E^2)
+\end{align*}
+Where we used that $E^2 = E_x^2 + E_y^2 + E_z^2$ and
+$B^2 = B_x^2 + B_y^2 + B_z^2$.\\
+Let us consider now a second-rank tensor defined as 
+\begin{align*}
+    T^{\mu\nu} = F^{\mu\alpha}F^{\nu}_{\alpha}
+    + Cg^{\mu\nu}F^{\alpha\beta}F_{\alpha\beta}
+\end{align*}
+We see that
+\begin{align*}
+    F^{\nu}_{\alpha} &= \eta_{\alpha\mu} F^{\mu\nu}
+    = \begin{bmatrix}
+        0 & -E_x & -E_y & -E_z\\
+        -E_x & 0 & B_z & -B_y\\ 
+        -E_y & -B_z & 0 & B_x\\ 
+        -E_z & B_y & -B_x & 0\\ 
+    \end{bmatrix}
+\end{align*}
+Then if we compute $T^{tt}$ in a LIF we get that
+\begin{align*}
+    T^{tt}
+    &= F^{t\alpha}F^{t}_{\alpha} + C\eta^{tt}F^{\alpha\beta}F_{\alpha\beta}\\
+    &= -E_x^2 - E_y^2 - E_z^2  -2C(B^2 - E^2)\\
+    &= -E^2 -2C(B^2 - E^2)\\
+    &= -2CB^2 + E^2(2C - 1)
+\end{align*}
+We need that $-2C = 2C - 1$ so $C = 1/4$ and hence must be that
+\begin{align*}
+    T^{\mu\nu} = -\frac{1}{4\pi k} \bigg(F^{\mu\alpha}F^{\nu}_{\alpha}
+    + \frac{1}{4}g^{\mu\nu}F^{\alpha\beta}F_{\alpha\beta}\bigg)
+\end{align*}
+So when $\mu = \nu = t$ we get that
+\begin{align*}
+    T^{tt} = -\frac{1}{4\pi k} \bigg(-\frac{1}{2}(E^2 + B^2)\bigg)
+    = \frac{1}{8\pi k}(E^2 + B^2) = \rho_E
+\end{align*}
+as we wanted.\\
+Also, we need to check if the defintion of $T^{\mu\nu}$ we gave is symmetric,
+since the metric $g^{\mu\nu}$ is symmetric we only need to show that
+$F^{\mu\alpha}F^{\nu}_{\alpha}$ is symmetric.\\
+We see that
+\begin{align*}
+    F^{t\alpha}{F_{\alpha}}^{t} &= -E_x^2 -E_y^2 - E_z^2 = -E^2\\
+    F^{t\alpha}{F_{\alpha}}^{x} &= -E_yB_z + E_zB_y\\
+    F^{t\alpha}{F_{\alpha}}^{y} &= E_xB_z - E_zB_x\\
+    F^{t\alpha}{F_{\alpha}}^{z} &= -E_xB_y + E_yB_x
+\end{align*}
+\begin{align*}
+    F^{x\alpha}{F_{\alpha}}^{t} &= -B_zE_y + B_yE_z = F^{t\alpha}{F_\alpha}^{x}\\
+    F^{x\alpha}{F_{\alpha}}^{x} &= E_x^2 - B_z^2 - B_y^2\\
+    F^{x\alpha}{F_{\alpha}}^{y} &= E_xE_y + B_xB_y\\
+    F^{x\alpha}{F_{\alpha}}^{z} &= E_xE_z + B_xB_z
+\end{align*}
+\begin{align*}
+    F^{y\alpha}{F_{\alpha}}^{t} &= E_xB_z - E_zB_x = F^{t\alpha}{F_{\alpha}}^{y}\\
+    F^{y\alpha}{F_{\alpha}}^{x} &= E_yE_x + B_xB_z = F^{x\alpha}{F_{\alpha}}^{y}\\
+    F^{y\alpha}{F_{\alpha}}^{y} &= E_y^2 - B_z^2 - B_x^2\\
+    F^{y\alpha}{F_{\alpha}}^{z} &= E_yE_z + B_yB_z
+\end{align*}
+\begin{align*}
+    F^{z\alpha}{F_{\alpha}}^{t} &= -E_xB_y + E_yB_x = F^{t\alpha}{F_{\alpha}}^{z}\\
+    F^{z\alpha}{F_{\alpha}}^{x} &= E_xE_z + B_xB_z = F^{x\alpha}{F_{\alpha}}^{z}\\
+    F^{z\alpha}{F_{\alpha}}^{y} &= E_yE_z + B_yB_z = F^{y\alpha}{F_{\alpha}}^{z}\\
+    F^{z\alpha}{F_{\alpha}}^{z} &= E_z^2 - B_y^2 - B_x^2
+\end{align*}
+Therefore since $F^{\mu\alpha}F^{\nu}_{\alpha}$ is symmetric then $T^{\mu\nu}$
+is symmetric.
+\item [\textbf{b.}] Let us compute $T^{tx}$ as follows
+\begin{align*}
+    T^{tx} &= - \frac{1}{4\pi k} \bigg(
+        F^{t\alpha}{F_{\alpha}}^{x}
+        + \frac{1}{4}\eta^{tx}F^{\alpha\beta}F_{\alpha\beta}
+    \bigg)\\
+    &= - \frac{1}{4\pi k} \bigg(E_zB_y - E_yB_z\bigg)\\
+    &= - \frac{1}{4\pi k} \bigg(\vec{E} \times \vec{B}\bigg)_x
+\end{align*} 
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P20.6}}
+\begin{itemize}
+\item [\textbf{a.}] We know that if $i$ and $j$ are spatial coordinates
+then $T^{ij}$ is the $i$-flux of $j$-momentum.\\
+On the other hand, we saw that if a plate with area $A$ is placed perpendicular
+to the $x$ direction (in the path of the dust particles) then, for example,
+$T^{yx}A$ is the $y$-momentum per unit of coordinate time $t$.\\\\
+Suppose we are in a LIF.
+If the plate is in any position we can generalize this by taking a unit normal
+four-vector perpendicular to $A$ with components $\bm{n} = [0, n_x, n_y, n_z]$
+where the time component is 0 since it's purely a spatial vector.\\
+Then $T^{\mu\nu} A n_\nu$ is the $\mu$-momentum per unit of time, where $\mu$
+is a spatial coordinate.\\
+If $\mu$ is a time coordinate then $T^{t\nu}$ is the $\nu$-flux of energy so
+$T^{t\nu} A n_\nu$ is the $\nu$-energy per unit of time.
+Therefore the four-force $\bm{F}$ is given by
+\begin{align*}
+    \bm{F} = \bigg(\dv{\bm{p}}{\tau}\bigg)^\mu = T^{\mu\nu} A n_\nu
+    = T^{\mu\nu} A \eta_{\nu\alpha} n^\alpha
+\end{align*}
+Where we added in the last step $\eta_{\nu\alpha}$ since we are working on a
+LIF and it doesn't change the equation since the time component of $\bm{n}$ is
+0.\\
+Finally, we can generalize this, using the appropiate metric as 
+\begin{align*}
+    \bm{F} = \bigg(\dv{\bm{p}}{\tau}\bigg)^\mu
+    = T^{\mu\nu} A g_{\nu\alpha} n^\alpha
+\end{align*}
+
+\item [\textbf{b.}] Let us consider a perfect fluid. If $\bm{n}$ represents
+a wall in space and $\bm{u}$ represents the fluid's four velocity then if
+the fluid is at rest with respect to the wall we must have that
+$\bm{u} \cdot \bm{n} = g_{\nu\alpha}u^{\nu} n^\alpha = 0$ since the only
+non-zero component of $u^\nu$ is $u^t = 1$ but $n^t = 0$.\\
+Then the four-force exerted on any patch of area $A$ on the wall of the
+container holding the perfect fluid at rest is
+\begin{align*}
+    \bm{F} = \bigg(\dv{\bm{p}}{\tau}\bigg)^\mu
+    &= T^{\mu\nu} A g_{\nu\alpha} n^\alpha\\
+    &= [(\rho_0 + p_0)u^\mu u^\nu + p_0 g^{\mu\nu}]A g_{\nu\alpha} n^\alpha\\   
+    &= 0 + p_0 g^{\mu\nu}A g_{\nu\alpha} n^\alpha\\
+    &= p_0 A \delta^{\mu}_{\alpha} n^\alpha\\
+    &= p_0 A n^\mu
+\end{align*}
+Therefore the magnitude of the four-force exerted on any patch of area $A$
+on the wall of the container is $p_0 A$.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P20.7}}\\
+Let us consider the tensor $T^{\mu\nu} = - \Lambda g^{\mu\nu}$ if we take a LIF
+then the tensor becomes $T^{\mu\nu} = - \Lambda \eta^{\mu\nu}$ i.e.
+\begin{align*}
+    T^{\mu\nu} = \begin{bmatrix}
+        \Lambda & 0 & 0 & 0\\
+        0 & -\Lambda & 0 & 0\\
+        0 & 0 & -\Lambda & 0\\
+        0 & 0 & 0 & -\Lambda
+    \end{bmatrix}
+\end{align*}
+Comparing this Stress-Energy tensor to the one we found for a perfect fluid
+then we see that the pressure $p_0 = -\Lambda$ and since lambda is a positive
+scalar then the pressure is negative, so if $T^{\mu\nu}$ is a Stress-Energy 
+tensor of a real fluid must be, for example, that
+\begin{align*}
+    T^{xx} = -\Lambda
+    = \frac{1}{L^3}\iiint N(|\vec{p}|)\frac{(p^x)^2}{p^t}~dp^x dp^y dp^z
+\end{align*}
+But $N(|\vec{p}|) \geq 0$, $(p^x)^2 \geq 0$ and $p^t = m/\sqrt{1 - v^2}$ which
+is also positive, so the integral must be positive as well.\\
+Therefore $T^{\mu\nu} = - \Lambda g^{\mu\nu}$ cannot represent a real fluid's 
+Stress-Energy tensor.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P20.8}}
+\begin{itemize}
+\item [\textbf{a.}]
+Let us consider the second-rank tensor $M_{\alpha\beta,obs}$
+defined as the tensor product of two four-vectors
+\begin{align*}
+    M_{\alpha\beta,obs} &= A_{\alpha, obs} B_{\beta, obs}\\
+    &= (\bm{o}_{\alpha})^\sigma g_{\sigma\gamma} A^{\gamma}
+    (\bm{o}_{\beta})^\lambda g_{\lambda\delta} B^{\delta}
+\end{align*}
+We also note that
+\begin{align*}
+    M^{\mu\nu}_{obs}
+    &= \eta^{\mu\alpha} \eta^{\nu\beta} M_{\alpha\beta,obs} \\
+    &= \eta^{\mu\alpha} \eta^{\nu\beta}
+    (\bm{o}_{\alpha})^\sigma g_{\sigma\gamma} A^{\gamma}
+    (\bm{o}_{\beta})^\lambda g_{\lambda\delta} B^{\delta} \\
+    &= \eta^{\mu\alpha} \eta^{\nu\beta}A^{\gamma}B^{\delta}
+    g_{\gamma\sigma} (\bm{o}_{\alpha})^\sigma
+    g_{\delta\lambda} (\bm{o}_{\beta})^\lambda \\
+    &= \eta^{\mu\alpha} \eta^{\nu\beta}M^{\gamma\delta}
+    g_{\gamma\sigma} (\bm{o}_{\alpha})^\sigma
+    g_{\delta\lambda} (\bm{o}_{\beta})^\lambda
+\end{align*}
+Therefore for the stress-energy tensor we get that
+\begin{align*}
+    T^{\mu\nu}_{obs}
+    &= \eta^{\mu\alpha} \eta^{\nu\beta} T^{\gamma\delta}
+    g_{\gamma\sigma} (\bm{o}_{\alpha})^\sigma
+    g_{\delta\lambda} (\bm{o}_{\beta})^\lambda
+\end{align*}
+\item [\textbf{b.}]
+Let us consider an observer with four-velocity $\bm{u}_{obs}$ with respect 
+to the local rest frame of a perfect fluid.\\
+We know that the stress-energy tensor of the perfect fluid is given by equation
+(20.15) so in the obeserver's frame the energy density is
+\begin{align*}
+    T^{tt}_{obs}
+    &= \eta^{tt} \eta^{tt} T^{\gamma\delta}
+    g_{\gamma\sigma} (\bm{o}_{t})^\sigma
+    g_{\delta\lambda} (\bm{o}_{t})^\lambda\\
+    &= T^{\gamma\delta}
+    g_{\gamma\sigma} (\bm{u}_{obs})^\sigma
+    g_{\delta\lambda} (\bm{u}_{obs})^\lambda
+\end{align*}
+Where we used that $\bm{o}_{t} = \bm{u}_{obs}$, also, we see that in the rest
+frame of the perfect fluid $\bm{u}_{obs}$ is
+\begin{align*}
+    (\bm{u}_{obs})^\mu = \begin{bmatrix}
+        \gamma \\ \gamma v_x \\ \gamma v_y \\ \gamma v_z
+    \end{bmatrix}
+\end{align*}
+Also, since the local rest frame is inertial $g_{\mu\nu} = \eta_{\mu\nu}$,
+hence
+\begin{align*}
+    T^{tt}_{obs}
+    &= T^{\gamma\delta}
+    \eta_{\gamma\sigma} (\bm{u}_{obs})^\sigma
+    \eta_{\delta\lambda} (\bm{u}_{obs})^\lambda\\
+    &= T^{tt}\gamma^2 + T^{xx}\gamma^2 v_x^2 + T^{yy}\gamma^2 v_y^2
+    + T^{zz}\gamma^2 v_z^2\\
+    &= \rho_0\gamma^2 + p_0\gamma^2v^2\\
+    &= \rho_0\gamma^2 + p_0\gamma^2v^2 + \gamma^2p_0 - \gamma^2p_0\\
+    &= \rho_0\gamma^2 - p_0\gamma^2(1 - v^2) + \gamma^2p_0\\
+    &= (\rho_0 + p_0)\gamma^2 - p_0
+\end{align*}
+Finally, if we assume the fluid in the observer's frame moves at the same speed
+but in the opposite spatial direction, then the component $u^t$ of the fluid
+velocity in the observer's frame is $u^t = \gamma$ and
+from equation (20.16) we get that
+\begin{align*}
+    T^{tt} &= (\rho_0 + p_0)(u^t)^2 + p_0\eta^{tt}
+    = (\rho_0 + p_0)\gamma^2 - p_0
+\end{align*}
+\end{itemize}
+\end{proof}
+
+\begin{proof}{\textbf{P20.9}}\\
+We know that 
+\begin{align*}
+    \rho_{obs} = T^{\mu\nu}\eta_{\mu\alpha}\eta_{\nu\beta} u^\alpha_{obs} u^\beta_{obs}
+\end{align*}
+and that
+\begin{align*}
+    T^{\mu\nu} = \begin{bmatrix}
+        \rho & 0 & 0 & 0\\
+        0 & \alpha\rho & 0 & 0\\
+        0 & 0 & \alpha\rho & 0\\
+        0 & 0 & 0 & \alpha\rho\\
+    \end{bmatrix}
+    \qquad
+    \bm{u}_{obs}^\alpha = \gamma\begin{bmatrix}
+        1, v_x, v_y, v_z
+    \end{bmatrix}
+\end{align*}
+Then in the original LIF
+\begin{align*}
+    \rho_{obs}
+    &= T^{tt} (u^t_{obs})^2
+    + T^{xx} (u^x_{obs})^2
+    + T^{yy} (u^y_{obs})^2
+    + T^{zz} (u^z_{obs})^2\\
+    &= \rho\gamma^2
+    + \alpha\rho\gamma^2v_x^2
+    + \alpha\rho\gamma^2v_y^2
+    + \alpha\rho\gamma^2v_z^2\\
+    &= \rho\gamma^2
+    + \alpha\rho\gamma^2v^2\\
+    &= \rho\gamma^2
+    + \alpha\rho\gamma^2v^2 + \alpha\rho\gamma^2 - \alpha\rho\gamma^2\\
+    &= \rho\gamma^2 - \alpha\rho\gamma^2(1-v^2) + \alpha\rho\gamma^2\\
+    &= \rho\gamma^2(1 + \alpha) - \alpha\rho
+\end{align*}
+We want that $\rho(\gamma^2(1 + \alpha) - \alpha) > 0$ then assuming $\rho > 0$
+must be that
+\begin{align*}
+    \gamma^2\alpha - \alpha &> - \gamma^2\\
+    \alpha(\gamma^2 - 1) &> -\gamma^2\\
+    \alpha &> -\frac{\gamma^2}{\gamma^2 - 1}\\
+    \alpha &> \frac{1}{(1- v^2)(1 - \frac{1}{1-v^2})}\\
+    \alpha &> \frac{1}{(1- v^2) - 1}\\
+    \alpha &> -\frac{1}{v^2}
+\end{align*}
+Since $\alpha > -1/v^2$ needs to hold for every speed if we set $v = 1$ we get
+that
+\begin{align*}
+    \alpha > -1
+\end{align*}
+\end{proof}
+\end{document}
