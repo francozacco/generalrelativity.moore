@@ -1,0 +1,590 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{physics,amsmath}
+\usepackage{bm}
+\usepackage{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[mathscr]{euscript}
+
+
+\title{\textbf{Solved selected problems of General Relativity - Thomas A. Moore}}
+\author{Franco Zacco}
+\date{}
+
+\addtolength{\topmargin}{-3cm}
+\addtolength{\textheight}{3cm}
+
+\newcommand{\hatr}{\bm{\hat{r}}}
+\newcommand{\hatn}{\bm{\hat{n}}}
+\newcommand{\hatx}{\bm{\hat{x}}}
+\newcommand{\haty}{\bm{\hat{y}}}
+\newcommand{\hatz}{\bm{\hat{z}}}
+\newcommand{\hatth}{\bm{\hat{\theta}}}
+\newcommand{\hatphi}{\bm{\hat{\varphi}}}
+\newcommand{\hatrho}{\bm{\hat{\rho}}}
+\newcommand{\esi}[1]{\bm{e}_{#1}}
+\newcommand{\etht}{\bm{e}_\theta}
+\newcommand{\sci}[1]{\times 10^{#1}}
+
+\theoremstyle{definition}
+\newtheorem*{solution*}{Solution}
+\renewcommand*{\proofname}{Solution}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section*{Chapter 21 - The Einstein Equation}
+
+\begin{proof}{\textbf{BOX 21.1} - Exercise 21.1.1.}\\
+Let us consider a LIF. We know that
+\begin{align*}
+    \nabla_{\delta} R^{\gamma\sigma}
+    = g^{\gamma\beta} g^{\sigma\nu} g^{\alpha\mu}
+    \nabla_{\delta} R_{\alpha\beta\mu\nu}
+\end{align*}
+If we set $\delta = \sigma$ then
+\begin{align*}
+    \nabla_{\sigma} R^{\gamma\sigma}
+    &= g^{\gamma\beta} g^{\sigma\nu} g^{\alpha\mu}
+    \nabla_{\sigma} R_{\alpha\beta\mu\nu}\\
+    &= \frac{1}{2}g^{\gamma\beta} g^{\sigma\nu} g^{\alpha\mu}(
+        \partial_{\sigma}\partial_\beta\partial_\mu g_{\alpha\nu}
+        + \partial_{\sigma}\partial_\alpha\partial_\nu g_{\beta\mu}
+        - \partial_{\sigma}\partial_\beta\partial_\nu g_{\alpha\mu}
+        - \partial_{\sigma}\partial_\alpha\partial_\mu g_{\beta\nu}
+    )
+\end{align*}
+We can rename $\alpha \leftrightarrow\sigma$ and $\mu\leftrightarrow\nu$ since
+they are dummy indices so for the second term we see that
+\begin{align*}
+    T_2 = g^{\alpha\mu} g^{\sigma\nu}
+    \partial_{\alpha}\partial_\sigma\partial_\mu g_{\beta\nu}
+\end{align*}
+Which is identical to the fourth term so they cancel out.
+Doing the same thing to the first term we see that
+\begin{align*}
+    T_1 = g^{\alpha\mu} g^{\sigma\nu}
+    \partial_{\alpha}\partial_\beta\partial_\nu g_{\sigma\mu}
+\end{align*}
+But this is not the same as the third term so we cannot cancel them out, hence
+\begin{align*}
+    \nabla_{\sigma} R^{\gamma\sigma}
+    &= \frac{1}{2}g^{\gamma\beta} g^{\sigma\nu} g^{\alpha\mu}(
+        \partial_{\sigma}\partial_\beta\partial_\mu g_{\alpha\nu}
+        - \partial_{\sigma}\partial_\beta\partial_\nu g_{\alpha\mu}
+    )
+\end{align*}
+
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{BOX 21.2} - Exercise 21.2.1.}\\
+The second term of equation (21.30) is
+\begin{align*}
+    + \nabla_\nu g^{\gamma\sigma} g^{\alpha\mu} g^{\beta\nu} R_{\alpha\beta\sigma\mu}
+\end{align*}
+We know that $R_{\alpha\beta\sigma\mu} = + R_{\sigma\mu\alpha\beta}$
+and that $R_{\sigma\mu\alpha\beta} = -R_{\mu\sigma\alpha\beta}$ because of 
+the symmetries of the Riemann tensor, hence the second term of equation (21.30)
+can be written as
+\begin{align*}
+    - \nabla_\nu g^{\gamma\sigma} g^{\alpha\mu} g^{\beta\nu} R_{\mu\sigma\alpha\beta}
+\end{align*}
+In the same way for the third term, we have that
+$$R_{\alpha\beta\nu\sigma} = R_{\nu\sigma\alpha\beta}
+= -R_{\nu\sigma\beta\alpha}$$
+\end{proof}
+\begin{proof}{\textbf{BOX 21.2} - Exercise 21.2.2.}\\
+From equation (21.30) and applying the definition of Ricci tensor, we have that
+\begin{align*}
+    \nabla_{\sigma} g^{\gamma\sigma} R
+    - \nabla_\nu g^{\gamma\sigma} g^{\alpha\mu} g^{\beta\nu} R_{\mu\sigma\alpha\beta}
+    - \nabla_\mu g^{\gamma\sigma} g^{\alpha\mu} g^{\beta\nu} R_{\nu\sigma\beta\alpha}
+    &= 0 \\
+    \nabla_{\sigma} g^{\gamma\sigma} R
+    - \nabla_\nu g^{\gamma\sigma} g^{\beta\nu} R_{\sigma\beta}
+    - \nabla_\mu g^{\gamma\sigma} g^{\alpha\mu} R_{\sigma\alpha}
+    &= 0 \\
+    \nabla_{\sigma} g^{\gamma\sigma} R
+    - \nabla_\nu R^{\gamma\nu}
+    - \nabla_\mu R^{\gamma\mu}
+    &= 0 \\
+    \nabla_{\sigma} g^{\gamma\sigma} R
+    - 2\nabla_\sigma R^{\gamma\sigma}
+    &= 0 \\
+    \frac{1}{2}\nabla_{\sigma} g^{\gamma\sigma} R
+    - \nabla_\sigma R^{\gamma\sigma}
+    &= 0
+\end{align*}
+Where we contracted $R_{\sigma\alpha}$ and $R_{\sigma\beta}$ and we renamed the
+dummy indices $\nu \leftrightarrow \sigma$ and $\mu \leftrightarrow \sigma$.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{BOX 21.3} - Exercise 21.3.1.}\\
+We know that $g_{\nu\sigma} g^{\mu\sigma} ={\delta^\mu}_\nu$ so if $\nu = \mu$
+then we are summing the diagonal elements of ${\delta^\mu}_\nu$ (the trace),
+hence
+\begin{align*}
+    {\delta^{\mu}}_\mu = 1 + 1 + 1 + 1 = 4
+\end{align*}
+\end{proof}
+
+\begin{proof}{\textbf{BOX 21.3} - Exercise 21.3.2.}\\
+We know that $R = g_{\mu\nu}R^{\mu\nu}$ and that $T = g_{\mu\nu}T^{\mu\nu}$
+then starting from equation (21.33) we see that
+\begin{align*}
+    g_{\mu\nu}R^{\mu\nu} - \frac{1}{2}g_{\mu\nu}g^{\mu\nu}R
+    + \Lambda g_{\mu\nu}g^{\mu\nu} &= \kappa g_{\mu\nu} T^{\mu\nu} \\
+    R - 2R + 4\Lambda  &= \kappa T \\
+    - R + 4\Lambda  &= \kappa T
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P21.1}}\\
+\begin{itemize}
+\item [\textbf{(a)}] The Einstein equation in the Newtonian limit states that
+\begin{align*}
+    \laplacian{\Phi} = \frac{1}{2}\kappa\rho - \Lambda
+\end{align*}
+If we consider the empty-space, then $\rho = 0$ and hence
+\begin{align*}
+    \laplacian{\Phi} = - \Lambda
+\end{align*}
+Also, for this problem we know that 
+\begin{align*}
+    \laplacian{\Phi} = \frac{1}{r^2}\dv{r}(r^2\dv{\Phi}{r})
+\end{align*}
+Hence
+\begin{align*}
+    \frac{1}{r^2}\dv{r}(r^2\dv{\Phi}{r}) &= - \Lambda \\
+    \dv{r}(r^2\dv{\Phi}{r}) &= - \Lambda r^2
+\end{align*}
+Therefore, by integration we see that
+\begin{align*}
+    \int_0^r \dv{r}(r^2\dv{\Phi}{r})~dr &= - \Lambda \int_0^r r^2~dr \\
+    r^2\dv{\Phi}{r} &= - \Lambda \frac{r^3}{3} \\
+    -\dv{\Phi}{r} &= \frac{\Lambda}{3}r
+\end{align*}
+\item [\textbf{(b)}] Let us require that
+\begin{align*}
+    \frac{1}{3}\Lambda r \ll \frac{GM_{\odot}}{r^2}
+\end{align*}
+If we consider a scale where $r \sim 10^{12}~m$ and $GM_\odot \sim 1500~m$
+then
+\begin{align*}
+    \frac{\Lambda}{8\pi G} \ll \frac{3GM_{\odot}}{8\pi Gr^3}
+    = \frac{3 \cdot 1500}{8\pi\cdot 1477\cdot (10^{12})^3}
+    = 1.21\sci{-37}~\frac{\text{solar mass}}{m^3}
+\end{align*}
+Hence
+\begin{align*}
+    \frac{\Lambda}{8\pi G} \ll 2.41\sci{-7}~\frac{kg}{m^3}
+\end{align*}
+Where we used that $M_\odot = 2\sci{30}~kg$.
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P21.2}}\\
+The Einstein tensor is defined as
+\begin{align*}
+    G^{\mu\nu} = R^{\mu\nu} - \frac{1}{2}g^{\mu\nu}R
+    = R^{\mu\nu} - \frac{1}{2}g^{\mu\nu}g_{\alpha\beta}R^{\alpha\beta}
+\end{align*}
+So if $R^{\mu\nu} = 0$ both terms become 0 and hence $G^{\mu\nu} = 0$.\\
+On the other hand, if $G^{\mu\nu} = 0$ then
+\begin{align*}
+    R^{\mu\nu} - \frac{1}{2}g^{\mu\nu}R &= 0
+\end{align*}
+Multiplying both sides of the equation by $g_{\mu\nu}$ we get that
+\begin{align*}
+    g_{\mu\nu}R^{\mu\nu} - \frac{1}{2}g_{\mu\nu}g^{\mu\nu}R &= 0\\
+    R - \frac{1}{2}4R &= 0\\
+    R &= 0
+\end{align*}
+Where we used that $g_{\mu\nu}g^{\mu\nu} = \delta_\mu^\mu = 4$ and that
+$R = g_{\mu\nu}R^{\mu\nu}$.\\
+Therefore, since $R^{\mu\nu} - \frac{1}{2}g^{\mu\nu}R = 0$ we see that
+\begin{align*}
+    R^{\mu\nu} &= \frac{1}{2}g^{\mu\nu}R  = 0
+\end{align*}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P21.3}}
+\begin{itemize}
+\item [\textbf{a.}] Let us consider a perfect fluid in an arbitrary coordinate
+system, then
+\begin{align*}
+    T^{\mu\nu} = (\rho_0 + p_0)u^\mu u^\nu + p_0 g^{\mu\nu}
+\end{align*}
+And hence
+\begin{align*}
+    T &= g_{\mu\nu} T^{\mu\nu} \\
+    &= g_{\mu\nu}(\rho_0 + p_0)u^\mu u^\nu + p_0 g_{\mu\nu}g^{\mu\nu} \\
+    &= -(\rho_0 + p_0) + 4p_0 \\
+    &= 3p_0 - \rho_0
+\end{align*}
+Where we used that $g_{\mu\nu} u^\mu u^\nu = \bm{u}\cdot\bm{u} = -1$.
+Therefore
+\begin{align*}
+    T^{\mu\nu} - \frac{1}{2}g^{\mu\nu}T
+    &= (\rho_0 + p_0)u^\mu u^\nu + p_0 g^{\mu\nu} 
+    - \frac{1}{2}g^{\mu\nu}(3p_0 + \rho_0) \\
+    &= (\rho_0 + p_0)u^\mu u^\nu
+    + \frac{1}{2}g^{\mu\nu}(\rho_0 - p_0)
+\end{align*}
+\item [\textbf{b.}]
+On a LOF where the fluid is at rest we have that
+\begin{align*}
+    T^{\mu\nu}
+    &= \begin{bmatrix}
+        \rho_0 & 0 & 0 & 0 \\
+        0 & p_0 & 0 & 0 \\
+        0 & 0 & p_0 & 0 \\
+        0 & 0 & 0 & p_0
+    \end{bmatrix}
+\end{align*}
+Also, $u^t = 1$, $u^i = 0$ for $i \in \{x,y,z\}$ and
+$g^{\mu\nu} = \eta^{\mu\nu}$. Then
+\begin{align*}
+    T^{tt} - \frac{1}{2}\eta^{tt}T
+    &= \rho_0 + p_0
+    - \frac{1}{2}(\rho_0 - p_0)
+    = \frac{1}{2}(\rho_0 + 3p_0) \\
+    T^{xx} - \frac{1}{2}\eta^{xx}T
+    &= \frac{1}{2}(\rho_0 - p_0) \\
+    T^{yy} - \frac{1}{2}\eta^{yy}T
+    &= \frac{1}{2}(\rho_0 - p_0) \\
+    T^{zz} - \frac{1}{2}\eta^{zz}T
+    &= \frac{1}{2}(\rho_0 - p_0)
+\end{align*}
+\end{itemize}
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P21.4}}\\
+The vacuum stress-energy tensor $T^{\mu\nu}_{vac}$ depends only on $g^{\mu\nu}$,
+in any LIF $g^{\mu\nu} = \eta^{\mu\nu}$ which components are constant, so 
+$T^{\mu\nu}_{vac}$ is the same for every observer in a LIF.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P21.5}}\\
+Let us consider a universe of two dimensions, where $R_{\mu\nu} = 0$.\\
+In two dimensions, we know that there is only one independent component of the
+Riemann tensor and, it is related to the non-zero components as
+\begin{align*}
+    R_{0101} = -R_{0110} = R_{1010} = -R_{1001}
+\end{align*}
+The rest of the Riemann tensor components are 0.\\
+We see that
+\begin{align*}
+    R_{00} 
+    &= g^{00} R_{0000} + g^{01} R_{0010} + g^{10} R_{1000} + g^{11} R_{1010}
+    = g^{11} R_{1010} = g^{11} R_{0101} \\
+    R_{01} 
+    &= g^{00} R_{0001} + g^{01} R_{0011} + g^{10} R_{1001} + g^{11} R_{1011}
+    = g^{10} R_{1001} = -g^{10} R_{0101} \\
+    R_{10} 
+    &= g^{00} R_{0100} + g^{01} R_{0110} + g^{10} R_{1100} + g^{11} R_{1110}
+    = g^{01} R_{0110} = -g^{01} R_{0101} \\
+    R_{11} 
+    &= g^{00} R_{0101} + g^{01} R_{0111} + g^{10} R_{1101} + g^{11} R_{1111}
+    = g^{00} R_{0101}
+\end{align*}
+Given that $R_{\mu\nu} = 0$, if we assume that not all the metric components
+are 0 then must be that 
+\begin{align*}
+    R_{0101} = 0
+\end{align*}
+Therefore, the only independent Riemann tensor component is 0, and hence the
+spacetime must be flat.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P21.6}}\\
+Let us consider a universe of three dimensions, where $R_{\mu\nu} = 0$.\\
+In three dimensions, we know because of problem P19.2 that there are 6
+independent components of the Riemann tensor and they are
+\begin{align*}
+    R_{0101}\quad R_{0202}\quad R_{1212}\quad
+    R_{0102}\quad R_{0212}\quad R_{0112}
+\end{align*}
+If we take a LIF we see that
+\begin{align*}
+    R_{00} 
+    &= g^{11}R_{1010} + g^{12}R_{1020} + g^{21}R_{2010} + g^{22}R_{2020} \\
+    &= g^{11}R_{0101} + (g^{12}+ g^{21}) R_{0102} + g^{22}R_{0202} \\
+    &= R_{0101} + R_{0202}
+\end{align*}
+Where in the last step we used that $g^{\mu\nu} = \eta^{\mu\nu}$ in a LIF.
+In the same way
+\begin{align*}
+    R_{01} &= g^{22}R_{2021} = R_{2021} = R_{0212} \\
+    R_{02} &= g^{11}R_{1012} = R_{1012} = -R_{0112} \\
+    R_{10} &= R_{01} = R_{0212} \\
+    R_{11} &= g^{00}R_{0101} + g^{22}R_{2121} = R_{0101} + R_{1212} \\
+    R_{12} &= g^{00}R_{0102} = R_{0102}\\
+    R_{20} &= R_{02} = -R_{0112}\\
+    R_{21} &= R_{12} = R_{0102}\\
+    R_{22} &= g^{00}R_{0202} + g^{11}R_{1212} = R_{0202} + R_{1212}
+\end{align*}
+Since $R_{\mu\nu} = 0$ then we see that
+\begin{align*}
+    R_{0212} = R_{0112} = R_{0102} = 0
+\end{align*}
+But also we get that
+\begin{align*}
+    R_{0101} + R_{0202} &= 0 \quad
+    R_{0101} + R_{1212} = 0 \quad
+    R_{0202} + R_{1212} = 0 \quad
+\end{align*}
+Then $R_{0101} = -R_{0202}$, $R_{0101} = -R_{1212}$  which implies that
+$R_{0202} = R_{1212}$ but also $R_{0202} + R_{1212} = 0$ then
+\begin{align*}
+    R_{0202} = R_{1212} = 0
+\end{align*}
+Replacing this into the first equation we see that $R_{0101} = 0$.\\
+Therefore the Riemann tensor is 0 in the LIF, so the Riemann tensor is 0 in
+any coordinate system and hence the spacetime must be flat in vacuum.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P21.7}}\\
+The metric of a two dimensional space on a spherical surface is
+\begin{align*}
+    g_{\mu\nu} = r^2\begin{bmatrix} 1 & 0 \\ 0 & \sin^2\theta \end{bmatrix}
+    \qquad
+    g^{\mu\nu} = \frac{1}{r^2}
+    \begin{bmatrix} 1 & 0 \\ 0 & \frac{1}{\sin^2\theta} \end{bmatrix}
+\end{align*}
+and because of BOX 19.6 we know that
+\begin{align*}
+    R_{\theta\theta} = 1 \qquad
+    R_{\theta\phi} = R_{\phi\theta} = 0 \qquad
+    R_{\phi\phi} = \sin^2\theta
+\end{align*}
+and that $R = 2/r^2$. So
+\begin{align*}
+    R^{\theta\theta} &= g^{\theta\alpha}g^{\theta\beta}R_{\alpha\beta}
+    = \frac{1}{r^4} \\
+    R^{\theta\phi} &= R^{\phi\theta}
+    = g^{\theta\alpha}g^{\phi\beta}R_{\alpha\beta} = 0 \\
+    R^{\phi\phi} &= g^{\phi\alpha}g^{\phi\beta}R_{\alpha\beta}
+    = \frac{1}{r^4\sin^2\theta}
+\end{align*}
+Let us compute the Einstein tensor as follows
+\begin{align*}
+    G^{\theta\theta} &= R^{\theta\theta} - \frac{1}{2}g^{\theta\theta} R
+    = \frac{1}{r^4} - \frac{1}{2}\frac{1}{r^2}\frac{2}{r^2} = 0 \\
+    G^{\theta\phi} &= R^{\theta\phi} - \frac{1}{2}g^{\theta\phi} R
+    = 0 - 0 = 0 \\
+    G^{\phi\theta} &= R^{\phi\theta} - \frac{1}{2}g^{\phi\theta} R
+    = 0 - 0 = 0 \\
+    G^{\phi\phi} &= R^{\phi\phi} - \frac{1}{2}g^{\phi\phi} R
+    = \frac{1}{r^4\sin^2\theta}
+    - \frac{1}{2}\frac{1}{r^2\sin^2\theta}\frac{2}{r^2} = 0
+\end{align*}
+so we see that $G^{\mu\nu} = 0$. Since the Einstein equation is given by
+\begin{align*}
+    G^{\mu\nu} = 8\pi G T^{\mu\nu}_{all}
+\end{align*}
+Then we see that $T^{\mu\nu}_{all} = 0$ i.e. the stress-energy tensor is zero.
+\end{proof}
+
+\cleardoublepage
+\begin{proof}{\textbf{P21.8}}\\
+Let us consider the metric
+$$ds^2 = -e^{2gx}dt^2 + dx^2 + dy^2 + dz^2$$
+\begin{itemize}
+\item [\textbf{a.}] We know that always must happen that
+\begin{align*}
+    \bm{u} \cdot \bm{u} &= -1 \\
+    g_{\mu\nu}\dv{x^{\mu}}{\tau}\dv{x^{\nu}}{\tau} &= -1
+\end{align*}
+Then, since the particle is at rest, we get that
+\begin{align*}
+    -e^{2gx}\bigg(\dv{t}{\tau}\bigg)^2 &= -1 \\
+    \bigg(\dv{t}{\tau}\bigg)^2 &= e^{-2gx} \\
+    \dv{t}{\tau} &= e^{-gx}
+\end{align*}
+On the other hand, the geodesic equation states that
+\begin{align*}
+0 = \dv{\tau}(g_{\mu\nu}\dv{x^\nu}{\tau})
+- \frac{1}{2}\partial_\mu g_{\alpha\beta}\dv{x^\alpha}{\tau}\dv{x^\beta}{\tau}
+\end{align*}
+Then the geodesic equation for $\mu = x$ gives us
+\begin{align*}
+0 &= \dv[2]{x}{\tau} + \frac{1}{2}\partial_x e^{2gx}\bigg(\dv{t}{\tau}\bigg)^2 \\
+0 &= \dv[2]{x}{\tau} + g e^{2gx}\bigg(\dv{t}{\tau}\bigg)^2 
+\end{align*}
+Therefore, replacing $dt/d\tau$ we see that
+\begin{align*}
+\dv[2]{x}{\tau} &= -g e^{2gx}\bigg(e^{-gx}\bigg)^2 = -g
+\end{align*}
+
+\item [\textbf{b.}] The geodesic equation for $\mu = t$ gives us
+\begin{align*}
+    0 &= \dv{\tau}(-e^{2gx}\dv{t}{\tau}) - 0 \\
+    0 &= -2ge^{2gx}\dv{x}{\tau}\dv{t}{\tau} - e^{2gx}\dv[2]{t}{\tau} \\
+    0 &= \dv[2]{t}{\tau} + 2g\dv{x}{\tau}\dv{t}{\tau}
+\end{align*}
+So we see that $\Gamma^t_{xt} = \Gamma^t_{tx} = g$.\\
+From the geodesic equation for $\mu =x$ that we solved on part (a) we also have
+that $\Gamma^x_{tt} = ge^{2gx}$.\\
+For $\mu = y$ or $\mu = z$ the geodesic euqation gives us
+\begin{align*}
+    \dv[2]{y}{\tau} = \dv[2]{z}{\tau} = 0 
+\end{align*} 
+So all Christoffel symbols with $y$ and $z$ as superscript are 0.
+
+\item [\textbf{c.}] We know that the Riemann tensor components are given by
+\begin{align*}
+    R_{\alpha\beta\mu\nu} &= g_{\alpha\gamma}R^\gamma_{\beta\mu\nu} \\
+    &= g_{\alpha\gamma}
+    (\partial_\mu \Gamma^\gamma_{\beta\nu}
+    - \partial_\nu \Gamma^\gamma_{\beta\mu}
+    + \Gamma^\gamma_{\mu\delta}\Gamma^\delta_{\beta\nu}
+    - \Gamma^\gamma_{\nu\sigma}\Gamma^\sigma_{\beta\mu}
+    )
+\end{align*}
+Given that there are only three non-zero Christoffel symbols then $\gamma$
+can only be $x$ or $t$.\\
+If $\alpha = t$ then $\gamma$ needs to be $t$ as well. Both Christoffel
+symbols $\Gamma^t_{xt}$ and $\Gamma^t_{tx}$ are constant so the first two
+terms in the Riemann tensor equation are zero, and must be that
+$\beta = x$ since $\alpha$ must be different from $\beta$.
+Finally, if $\mu = t$ and $\nu = x$ we see that
+\begin{align*}
+    R_{txtx}
+    &= g_{tt}(\Gamma^t_{t\delta}\Gamma^\delta_{xx}
+    - \Gamma^t_{x\sigma}\Gamma^\sigma_{xt})\\
+    &= -g_{tt}\Gamma^t_{xt}\Gamma^t_{xt}\\
+    &= e^{2gx}g^2
+\end{align*}
+In the case $\mu = x$ and $\nu = t$ we know that $R_{txxt} = - R_{txtx}$.\\
+If now $\alpha = x$ then $\beta = t$, then the only possible values for $\mu$
+and $\nu$ are $x$ and $t$. Suppose $\mu = x$ and $\nu = t$ then we get that
+\begin{align*}
+    R_{xtxt}
+    &= g_{xx}
+    (\partial_x \Gamma^x_{tt}
+    - \partial_t \Gamma^x_{tx}
+    + \Gamma^x_{x\delta}\Gamma^\delta_{tt}
+    - \Gamma^x_{t\sigma}\Gamma^\sigma_{tx}
+    )\\
+    &=\partial_x \Gamma^x_{tt} - \Gamma^x_{tt}\Gamma^t_{tx} \\
+    &=2g^2e^{2gx} - g^2e^{2gx} \\
+    &=g^2e^{2gx}
+\end{align*}
+This is correct since we know that
+\begin{align*}
+    R_{txtx} = -R_{xttx} = R_{xtxt} 
+\end{align*}
+So essentially there is only one nonzero independent component of the Riemann
+tensor.
+
+\item [\textbf{d.}] We can compute the Ricci tensor by contracting the Riemann
+tensor over its first and third indices
+\begin{align*}
+    R_{\beta\nu} = g^{\alpha\mu} R_{\alpha\beta\mu\nu}
+\end{align*}
+We note that $\beta$ and $\nu$ can be $x$ or $t$.
+Suppose $\beta = t$ and $\nu = t$ then
+\begin{align*}
+    R_{tt} = g^{\alpha\mu} R_{\alpha t\mu t}
+    = g^{xx} R_{xtxt} = g^2 e^{2gx}
+\end{align*}
+If $\beta = x$ and $\nu = t$ then
+\begin{align*}
+    R_{xt} = g^{\alpha\mu} R_{\alpha x\mu t}
+    = g^{tx} R_{txxt} = 0
+\end{align*}
+Where we used that necessarily $\alpha$ needs to be equal to $t$ and $\mu$
+needs to be equal to $x$ so $\alpha \neq \beta$ and $\mu \neq \nu$.
+The same happens when $\beta = t$ and $\nu = x$. 
+Finally, if $\beta = \nu = x$ we get that
+\begin{align*}
+    R_{xx} = g^{\alpha\mu} R_{\alpha x\mu x}
+    = g^{tt} R_{txtx} = -e^{-2gx}g^2e^{2gx}
+    = -g^2
+\end{align*}
+
+\item [\textbf{e.}] The vacuum Einstein equation states that $R_{\mu\nu} = 0$
+then, must be that
+\begin{align*}
+    R_{tt} = g^2 e^{2gx} &= 0  & R_{xx} = -g^2 &= 0
+\end{align*}
+Since $e^{2gx}$ is never 0 no matter the value of $x$ then must be that
+$g = 0$ so both equations hold.
+
+\item [\textbf{f.}] Suppose $g$ is nonzero inside a fluid.\\
+Let us compute the components of the Ricci tensor with upper indices
+when we are in vacuum, then
+\begin{align*}
+    R^{tt} &= g^{t\alpha}g^{t\beta}R_{\alpha\beta}
+    = e^{-2gx}e^{-2gx}g^2e^{2gx} = g^2e^{-2gx}\\
+    R^{xx} &= g^{x\alpha}g^{x\beta}R_{\alpha\beta}
+    = -g^2
+\end{align*}
+We know from equation (21.14) that
+\begin{align*}
+    R^{\mu\nu} = 8\pi G\bigg(T^{\mu\nu} - \frac{1}{2}g^{\mu\nu} T\bigg) + \Lambda g^{\mu\nu}
+\end{align*}
+if we assume that $\Lambda = 0$ then we have that
+\begin{align*}
+    R^{tt} &= g^2 e^{-2gx} = 8\pi G\bigg(T^{tt} + \frac{1}{2}e^{-2gx}T\bigg) \\
+    R^{xx} &= -g^2 = 8\pi G\bigg(T^{xx} - \frac{1}{2}T\bigg) \\
+    R^{yy} &= 0 = 8\pi G\bigg(T^{yy} - \frac{1}{2}T\bigg) \\
+    R^{zz} &= 0 = 8\pi G\bigg(T^{zz} - \frac{1}{2}T\bigg)
+\end{align*}
+On the other hand, we know that $T = g_{\mu\nu}T^{\mu\nu}$ so
+\begin{align*}
+    T = -e^{2gx}T^{tt} + T^{xx} + T^{yy} + T^{zz}
+\end{align*}
+from the equations of $R^{yy}$ and $R^{zz}$ we see that
+\begin{align*}
+    T^{yy} = \frac{T}{2} \quad\text{and}\quad T^{zz} = \frac{T}{2}
+\end{align*}
+Replacing this on the equation for $T$ we get that
+\begin{align*}
+    T &= -e^{2gx}T^{tt} + T^{xx} + T\\
+    0 &= -e^{2gx}T^{tt} + T^{xx} \\
+    T^{xx} &= e^{2gx}T^{tt}
+\end{align*}
+If we add the equations for $R^{tt}$ and $R^{xx}$ we get that
+\begin{align*}
+    g^2 - g^2 &= 8\pi G e^{2gx}\bigg(T^{tt} + \frac{1}{2}e^{-2gx}T\bigg)
+    + 8\pi G\bigg(T^{xx} - \frac{1}{2}T\bigg) \\
+    0 &= 8\pi G \bigg(e^{2gx}T^{tt} + \frac{1}{2}T + T^{xx} - \frac{1}{2}T\bigg) \\
+    0 &= 8\pi G \bigg(e^{2gx}T^{tt} + T^{xx}\bigg) \\
+    T^{xx} &= -e^{2gx}T^{tt}
+\end{align*}
+Joining this result with the previous one we see that $T^{xx} = T^{tt} = 0$.
+So from the equation for $R^{xx}$ we have that
+\begin{align*}
+    -g^2 &= 8\pi G\bigg(0 - \frac{T}{2}\bigg) \\
+    \frac{T}{2} &= \frac{8\pi G}{g^2}
+\end{align*}
+Therefore
+\begin{align*}
+    T^{zz} = T^{yy} = \frac{8\pi G}{g^2}
+\end{align*}
+If we considered a LIF where our perfect fluid is at rest with these
+stress-energy components we would see that the fluid has 
+zero energy density $\rho_0$, is making zero pressure in the $x$ direction but
+it's making a non-zero pressure in the $y$ and $z$ direction, this does not
+make sense since the pressure must be the same in any direction, we cannot
+have a prefered direction.
+
+\end{itemize}
+\end{proof}
+\end{document}
